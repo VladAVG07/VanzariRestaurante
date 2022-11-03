@@ -13,6 +13,12 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'dd.MM.yyyy',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'RON',
+       ],
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
@@ -45,6 +51,7 @@ return [
             ],
         ],
         */
+        
     ],
     'params' => $params,
 ];
