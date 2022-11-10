@@ -17,7 +17,7 @@ class CategoriiSearch extends Categorii
     public function rules()
     {
         return [
-            [['id', 'parinte'], 'integer'],
+            [['id', 'parinte', 'valid'], 'integer'],
             [['nume', 'descriere'], 'safe'],
         ];
     }
@@ -60,6 +60,7 @@ class CategoriiSearch extends Categorii
         $query->andFilterWhere([
             'id' => $this->id,
             'parinte' => $this->parinte,
+            'valid' => $this->valid,
         ]);
 
         $query->andFilterWhere(['like', 'nume', $this->nume])

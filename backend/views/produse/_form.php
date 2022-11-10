@@ -15,7 +15,7 @@ use backend\models\Categorii;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'categorie')->dropDownList(
-            ArrayHelper::map(Categorii::find()->all(), 'id','nume'), 
+            ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id','nume'), 
                     ['prompt' => 'Selecteaza Categoria']
             ) ?>
 

@@ -6,10 +6,10 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /** @var yii\web\View $this */
 /** @var backend\models\ProduseSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-
 $this->title = Yii::t('app', 'Produse');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,17 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
+    <?=
+    GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
 //            'id',
-                [
-        'attribute' => 'categorie',
-        'value'=>'categorie0.nume', //relation name with their attribute
-    ],
+            [
+                'attribute' => 'categorie',
+                'value' => 'categorie0.nume', //relation name with their attribute
+            ],
             'cod_produs',
             'nume',
             'descriere',
@@ -43,11 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Produse $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                }
             ],
         ],
-    ]); ?>
+    ]);
+    ?>
 
-    <?php Pjax::end(); ?>
+<?php Pjax::end(); ?>
 
 </div>

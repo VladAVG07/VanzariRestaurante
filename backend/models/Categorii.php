@@ -11,6 +11,7 @@ use Yii;
  * @property string $nume
  * @property string $descriere
  * @property int|null $parinte
+ * @property boolean $valid
  *
  * @property Categorii[] $categoriis
  * @property Categorii $parinte0
@@ -37,6 +38,7 @@ class Categorii extends \yii\db\ActiveRecord
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
             [['nume', 'parinte'], 'unique', 'targetAttribute' => ['nume', 'parinte']],
+            [['valid'], 'boolean'],
             [['parinte'], 'exist', 'skipOnError' => true, 'targetClass' => Categorii::class, 'targetAttribute' => ['parinte' => 'id']],
         ];
     }
@@ -51,6 +53,7 @@ class Categorii extends \yii\db\ActiveRecord
             'nume' => 'Nume',
             'descriere' => 'Descriere',
             'parinte' => 'Parinte',
+            'valid' => 'Valid'
         ];
     }
 
