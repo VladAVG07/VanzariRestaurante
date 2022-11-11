@@ -1,14 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Categorii;
 use kartik\switchinput\SwitchInput;
 
-/** @var yii\web\View $this */
-/** @var backend\models\Categorii $model */
-/** @var yii\widgets\ActiveForm $form */
+/* @var $this yii\web\View */
+/* @var $model backend\models\Categorii */
+/* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
 <div class="categorii-form">
@@ -20,10 +20,21 @@ use kartik\switchinput\SwitchInput;
     <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
 
     <?=
-            $form->field($model, 'parinte')
-            ->dropDownList(
-                    ArrayHelper::map(Categorii::find()->all(), 'id', 'nume'), ['prompt' => 'Selecteaza parintele']
-            )
+//            $form->field($model, 'parinte')
+//            ->dropDownList(
+//                    ArrayHelper::map(Categorii::find()->all(), 'id', 'nume'), ['prompt' => 'Selecteaza parintele']
+//            )
+    $form->field($model, 'parinte')->widget(\kartik\tree\TreeViewInput::widget([
+                'name' => 'kvTreeInput',
+                'value' => 'true', // preselected values
+                'query' => Categorii::find()->addOrderBy('parinte'),
+                'headingOptions' => ['label' => 'Store'],
+                'rootOptions' => ['label' => '<i class="fas fa-tree text-success"></i>'],
+                'fontAwesome' => true,
+                'asDropdown' => true,
+                'multiple' => true,
+                'options' => ['disabled' => false]
+    ]));
     ?>
 
     <?=

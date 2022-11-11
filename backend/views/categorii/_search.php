@@ -3,12 +3,13 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-/** @var yii\web\View $this */
-/** @var backend\models\CategoriiSearch $model */
-/** @var yii\widgets\ActiveForm $form */
+/* @var $this yii\web\View */
+/* @var $model backend\models\CategoriiSearch */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="categorii-search">
+<div class="row mt-2">
+    <div class="col-md-12">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -26,6 +27,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'parinte') ?>
 
+    <?= $form->field($model, 'valid') ?>
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
         <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-outline-secondary']) ?>
@@ -33,4 +36,6 @@ use yii\widgets\ActiveForm;
 
     <?php ActiveForm::end(); ?>
 
+    </div>
+    <!--.col-md-12-->
 </div>

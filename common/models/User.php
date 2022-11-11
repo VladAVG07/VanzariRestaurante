@@ -149,7 +149,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->auth_key;
     }
-
     /**
      * {@inheritdoc}
      */

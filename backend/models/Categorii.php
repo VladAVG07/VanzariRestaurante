@@ -17,21 +17,23 @@ use Yii;
  * @property Categorii $parinte0
  * @property Produse[] $produses
  */
-class Categorii extends \yii\db\ActiveRecord
-{
+class Categorii extends \yii\db\ActiveRecord {
+
+    use \kartik\tree\models\TreeTrait {
+        isDisabled as parentIsDisabled; // note the alias
+    }
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'categorii';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['nume', 'descriere'], 'required'],
             [['parinte'], 'integer'],
@@ -46,8 +48,7 @@ class Categorii extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'nume' => 'Nume',
@@ -62,8 +63,7 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoriis()
-    {
+    public function getCategoriis() {
         return $this->hasMany(Categorii::class, ['parinte' => 'id']);
     }
 
@@ -72,8 +72,7 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getParinte0()
-    {
+    public function getParinte0() {
         return $this->hasOne(Categorii::class, ['id' => 'parinte']);
     }
 
@@ -82,8 +81,22 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduses()
-    {
+    public function getProduses() {
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
     }
+
+    public static function getItems($indent = '', $parent_group = null) {
+        $items = [];
+        // for all childs of $parent_group (roots if $parent_group == null)
+        $groups = self::find()->where(['parinte' => $parent_group])
+                        ->orderBy('short_name')->all();
+        foreach ($groups as $group) {
+            // add group to items list 
+            $items[$group->id] = $indent . $group->short_name;
+            // recursively add children to the list with indent
+            $items = array_merge($items, self::getItems($indent . ' ', $group->id));
+        }
+        return $items;
+    }
+
 }
