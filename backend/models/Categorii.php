@@ -19,10 +19,6 @@ use Yii;
  */
 class Categorii extends \yii\db\ActiveRecord {
 
-    use \kartik\tree\models\TreeTrait {
-        isDisabled as parentIsDisabled; // note the alias
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -85,16 +81,22 @@ class Categorii extends \yii\db\ActiveRecord {
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
     }
 
-    public static function getItems($indent = '', $parent_group = null) {
+    public static function getChildren($parent_id) {
         $items = [];
-        // for all childs of $parent_group (roots if $parent_group == null)
-        $groups = self::find()->where(['parinte' => $parent_group])
-                        ->orderBy('short_name')->all();
-        foreach ($groups as $group) {
-            // add group to items list 
-            $items[$group->id] = $indent . $group->short_name;
-            // recursively add children to the list with indent
-            $items = array_merge($items, self::getItems($indent . ' ', $group->id));
+        $children = self::find()->where(['parinte' => $parent_id])
+                        ->orderBy('nume')->all();
+        foreach ($children as $child) {
+            $items[$child->id] = $child->nume;
+        }
+        return $items;
+    }
+
+    public static function getParents($parent_id = null) {
+        $items = [];
+        $parents = self::find()->where(['parinte' => $parent_id])
+                        ->orderBy('nume')->all();
+        foreach ($parents as $parent) {
+            $items['label'] = array_merge($items , [$parent->nume => self::getChildren($parent->id)]);
         }
         return $items;
     }

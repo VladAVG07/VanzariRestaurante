@@ -1,23 +1,28 @@
 <?php
 
-use yii\helpers\Html;
+/* @var $this yii\web\View */
+/* @var $model backend\models\Produse */
 
-/** @var yii\web\View $this */
-/** @var backend\models\Produse $model */
-
-$this->title = Yii::t('app', 'Actualizeaza produs: {name}', [
-    'name' => $model->nume,
+$this->title = Yii::t('app', 'Update Produse: {name}', [
+    'name' => $model->id,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produse'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->nume, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Actualizeaza');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produses'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
-<div class="produse-update">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <?=$this->render('_form', [
+                        'model' => $model
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+        <!--.card-body-->
+    </div>
+    <!--.card-->
 </div>

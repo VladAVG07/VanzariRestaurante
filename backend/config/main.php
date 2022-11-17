@@ -9,12 +9,6 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [
-        'treemanager' => [
-            'class' => '\kartik\tree\Module',
-        // other module settings, refer detailed documentation
-        ]
-    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
