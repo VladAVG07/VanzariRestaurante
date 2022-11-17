@@ -1,60 +1,70 @@
 <?php
 
-use backend\models\Categorii;
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
-/** @var yii\web\View $this */
-/** @var backend\models\CategoriiSearch $searchModel */
-/** @var yii\data\ActiveDataProvider $dataProvider */
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\CategoriiSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
 $this->title = Yii::t('app', 'Categorii');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categorii-index">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <?= Html::a(Yii::t('app', 'Adauga Categorie'), ['create'], ['class' => 'btn btn-success']) ?>
+                        </div>
+                    </div>
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Adauga categorie'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+                    <?php Pjax::begin(); ?>
+                    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
 
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?=
+                    GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+                            'nume',
+                            'descriere',
+                            [
+                                'attribute' => 'parinte',
+                                'value' => function($model) {
+                                    return is_null($model->parinte0) ? "Nu are parinte" : $model->parinte0->nume;
+                                }
+                            ],
+                            [
+                                'attribute' => 'valid',
+                                'format' => 'raw',
+                                'value' => function($model) {
+                                    return Html::tag('span', $model->valid ? 'Da' : 'Nu', ['style' => 'font-weight:bold;' . sprintf('color:%s', $model->valid ? '#000' : '#ff0000')]);
+                                }
+                            ],
+                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+                        ],
+                        'summary' => '<b>{begin}-{end}</b> din <b>{totalCount}</b> categorii',
+                        'summaryOptions' => ['class' => 'summary mb-2'],
+                        'pager' => [
+                            'class' => 'yii\bootstrap4\LinkPager',
+                        ]
+                    ]);
+                    ?>
 
-    <?=
-    GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            //  'id',
-            'nume',
-            'descriere',
-            [
-                'attribute' => 'parinte',
-                'value' => 'parinte0.nume', //relation name with their attribute
-            ],
-            [
-                'attribute' => 'valid',
-                'format'=>'raw',
-                'value' => function($model){
-                    return Html::tag('span',$model->valid?'Da':'Nu',['style'=>'font-weight:bold;'.sprintf('color:%s',$model->valid?'#000':'#ff0000')]);
-                }
-            ],
-//            'valid:boolean',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Categorii $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                }
-            ],
-        ],
-    ]);
-    ?>
+                    <?php Pjax::end(); ?>
 
-    <?php Pjax::end(); ?>
-
+                </div>
+                <!--.card-body-->
+            </div>
+            <!--.card-->
+        </div>
+        <!--.col-md-12-->
+    </div>
+    <!--.row-->
 </div>

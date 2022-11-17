@@ -1,18 +1,18 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Categorii;
 
-/** @var yii\web\View $this */
-/** @var backend\models\Produse $model */
-/** @var yii\widgets\ActiveForm $form */
+/* @var $this yii\web\View */
+/* @var $model backend\models\Produse */
+/* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
 <div class="produse-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+  <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'categorie')->dropDownList(
             ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id','nume'), 

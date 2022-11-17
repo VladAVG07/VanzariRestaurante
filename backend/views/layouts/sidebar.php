@@ -9,11 +9,11 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
+<!--            <div class="image">
                 <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
+            </div>-->
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block"><?= Yii::$app->user->isGuest ? "" :Yii::$app->user->identity->email?></a>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
 //                    ],
 //                    ['label' => 'Administrare Categorii', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
                     ['label' => 'Administrare', 'header' => true],
-//                    ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Categorii' ,'url' => ['categorii/index']],
                     ['label' => 'Produse', 'url' => ['produse/index']],
 //                    ['label' => 'MULTI LEVEL EXAMPLE', 'header' => true],

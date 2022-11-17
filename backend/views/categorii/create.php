@@ -2,19 +2,26 @@
 
 use yii\helpers\Html;
 
-/** @var yii\web\View $this */
-/** @var backend\models\Categorii $model */
+/* @var $this yii\web\View */
+/* @var $model backend\models\Categorii */
 
 $this->title = Yii::t('app', 'Adauga categorie');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categorii'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="categorii-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <?=$this->render('_form', [
+                        'model' => $model
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+        <!--.card-body-->
+    </div>
+    <!--.card-->
 </div>
