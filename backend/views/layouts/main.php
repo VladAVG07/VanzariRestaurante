@@ -28,7 +28,8 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
     <?php $this->head() ?>
 </head>
 <body class="hold-transition sidebar-mini">
-<?php $this->beginBody() ?>
+<?php $this->beginBody() 
+        //comentariu?>
 
 <div class="wrapper">
     <!-- Navbar -->
@@ -50,7 +51,8 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
     <?= $this->render('footer') ?>
 </div>
 
-<?php $this->endBody() ?>
+<?php $this->endBody()
+        //comentariu?>
 </body>
 </html>
 <?php $this->endPage() ?>
