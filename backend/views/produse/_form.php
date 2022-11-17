@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Categorii;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
@@ -12,23 +13,84 @@ use backend\models\Categorii;
 
 <div class="produse-form">
 
-  <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'categorie')->dropDownList(
-            ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id','nume'), 
-                    ['prompt' => 'Selecteaza Categoria']
-            ) ?>
+    <div class="row">
+        <div class="col-md-4">
+            <?=
+            $form->field($model, 'categorie')->dropDownList(
+                    ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
+            )
+            ?>
+        </div>
+        <div class="col-md-6">
 
-    <?= $form->field($model, 'cod_produs')->textInput() ?>
+            <?= $form->field($model, 'nume')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-2">
+            <?= $form->field($model, 'cod_produs')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'nume')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
+    <div class="row">
 
-    <?= $form->field($model, 'data_productie')->textInput() ?>
+        <div class="col-md-6">
+            <?= $form->field($model, 'descriere')->textArea(['maxlength' => true]) ?>
+        </div>
+        
+        <div class="col-md-6">
+            <?=
+            $form->field($model, 'data_productie')->widget(DateTimePicker::className(), [
+                'model' => $model,
+                'attribute' => 'dataProductie',
+                'options' => ['placeholder' => 'Selectati data'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd.mm.yyyy hh:ii:ss'
+                ]
+            ])
+            ?>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-2">
+            <?= $form->field($model, 'pret')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-md-5">
+            <?=
+            $form->field($model, 'dataInceput')->widget(DateTimePicker::className(), [
+                'model' => $model,
+                'attribute' => 'dataInceput',
+                'options' => ['placeholder' => 'Selectati data'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd.mm.yyyy hh:ii:ss'
+                ]
+            ])
+            ?>
+        </div>
+
+        <div class="col-md-5">
+            <?=
+            $form->field($model, 'dataSfarsit')->widget(DateTimePicker::className(), [
+                'model' => $model,
+                'attribute' => 'dataInceput',
+                'options' => ['placeholder' => 'Selectati data'],
+                'pluginOptions' => [
+                    'autoclose' => true,
+                    'format' => 'dd.mm.yyyy hh:ii:ss'
+                ]
+            ])
+            ?>
+        </div>
+    </div>
+
+
+    <br>
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Salveaza'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Salveaza'), ['class' => 'btn btn-success right float-right']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

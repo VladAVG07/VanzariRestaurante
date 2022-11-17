@@ -18,6 +18,9 @@ use Yii;
  */
 class Produse extends \yii\db\ActiveRecord
 {
+    public $pret;
+    public $dataInceput;
+    public $dataSfarsit;
     /**
      * {@inheritdoc}
      */
@@ -34,6 +37,10 @@ class Produse extends \yii\db\ActiveRecord
         return [
             [['categorie', 'cod_produs', 'nume', 'descriere', 'data_productie'], 'required'],
             [['categorie', 'cod_produs'], 'integer'],
+            ['dataInceput','required'],
+            ['dataInceput','string'],
+            ['dataSfarsit' , 'string'],
+            ['pret','number','numberPattern' => '/^[0-9]*\.[0-9]{2}$/'],
             [['data_productie'], 'safe'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
