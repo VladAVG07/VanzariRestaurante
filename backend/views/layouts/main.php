@@ -52,6 +52,7 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
 </div>
 
 <?php $this->endBody()
+        //adwdad
         //comentariu?>
 </body>
 </html>
