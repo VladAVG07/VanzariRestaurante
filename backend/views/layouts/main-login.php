@@ -8,7 +8,8 @@ $this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:
 $this->registerCssFile('https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css');
 \hail812\adminlte3\assets\PluginAsset::register($this)->add(['fontawesome', 'icheck-bootstrap']);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage() 
+        //comentariu?>
 <!DOCTYPE html>
 <html>
 <head>

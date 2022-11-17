@@ -14,7 +14,8 @@ $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/admi
 $publishedRes = Yii::$app->assetManager->publish('@vendor/hail812/yii2-adminlte3/src/web/js');
 $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\hail812\adminlte3\assets\AdminLteAsset']);
 ?>
-<?php $this->beginPage() ?>
+<?php $this->beginPage() 
+        //comentariu?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
