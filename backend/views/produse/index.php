@@ -39,6 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             'cod_produs',
                             'descriere',
+                            [
+                                    'attribute' => 'pret',
+                                    'value' => function($model) {
+                                        return $model->getPretCurent()->pret.' RON';
+                                    }
+                            ],
                             //'data_productie',
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],

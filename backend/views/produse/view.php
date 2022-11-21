@@ -27,6 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nume',
                             'descriere',
                             'data_productie',
+                            [
+                                'attribute' => 'pret curent',
+                                'value' => function($model) {
+                                    return $model->getPretCurent()->pret.' RON';
+                                }
+                            ],
                         ],
                     ])
                     ?>

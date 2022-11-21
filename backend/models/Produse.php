@@ -15,12 +15,10 @@ use Yii;
  * @property string $data_productie
  *
  * @property Categorii $categorie0
+ * @property PreturiProduse[] $preturiProduses
  */
 class Produse extends \yii\db\ActiveRecord
 {
-    public $pret;
-    public $dataInceput;
-    public $dataSfarsit;
     /**
      * {@inheritdoc}
      */
@@ -37,10 +35,6 @@ class Produse extends \yii\db\ActiveRecord
         return [
             [['categorie', 'cod_produs', 'nume', 'descriere', 'data_productie'], 'required'],
             [['categorie', 'cod_produs'], 'integer'],
-            ['dataInceput','required'],
-            ['dataInceput','string'],
-            ['dataSfarsit' , 'string'],
-            ['pret','number','numberPattern' => '/^[0-9]*\.[0-9]{2}$/'],
             [['data_productie'], 'safe'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
@@ -57,10 +51,10 @@ class Produse extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'categorie' => 'Categorie',
-            'cod_produs' => 'Cod produs',
+            'cod_produs' => 'Cod Produs',
             'nume' => 'Nume',
             'descriere' => 'Descriere',
-            'data_productie' => 'Data productie',
+            'data_productie' => 'Data Productie',
         ];
     }
 
@@ -73,4 +67,19 @@ class Produse extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categorii::class, ['id' => 'categorie']);
     }
+
+    /**
+     * Gets query for [[PreturiProduses]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPreturiProduses()
+    {
+        return $this->hasMany(PreturiProduse::class, ['produs' => 'id']);
+    }
+
+    public function getPretCurent() {
+        return $this->getPreturiProduses()->where('valid = 1')->one();
+    }
+
 }

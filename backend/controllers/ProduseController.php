@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use backend\models\PreturiProduse;
 use Yii;
 use backend\models\Produse;
 use backend\models\ProduseSearch;
+use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,13 +67,27 @@ class ProduseController extends Controller
     public function actionCreate()
     {
         $model = new Produse();
+        $modelPret = new PreturiProduse();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $modelPret->load(Yii::$app->request->post());
+                $modelPret->valid = 1;
+                $modelPret->produs = $model->id;
+                if($modelPret->save()) {
+                    $transaction->commit();
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        } catch (Exception $exception) {
+            $transaction->rollBack();
         }
 
         return $this->render('create', [
             'model' => $model,
+            'modelPret' => $modelPret
         ]);
     }
 
@@ -85,13 +101,27 @@ class ProduseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelPret = new PreturiProduse();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $modelPret->load(Yii::$app->request->post());
+                $modelPret->produs = $model->id;
+                $modelPret->valid = 1;
+                if($modelPret->save()) {
+                    $transaction->commit();
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        } catch (Exception $exception) {
+            $transaction->rollBack();
         }
 
         return $this->render('update', [
             'model' => $model,
+            'modelPret' => $modelPret
         ]);
     }
 
@@ -124,4 +154,11 @@ class ProduseController extends Controller
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
+//    private function setPret(PreturiProduse $preturiProduse , int $produsId) {
+//            $preturiProduse->load(Yii::$app->request->post());
+//            $preturiProduse->valid = 1;
+//            $preturiProduse->produs = $produsId;
+//            return $preturiProduse->save();
+//    }
 }

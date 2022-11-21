@@ -8,6 +8,7 @@ use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
+/* @var $modelPret backend\models\PreturiProduse */
 /* @var $form yii\bootstrap4\ActiveForm */
 ?>
 
@@ -43,7 +44,7 @@ use kartik\datetime\DateTimePicker;
             <?=
             $form->field($model, 'data_productie')->widget(DateTimePicker::className(), [
                 'model' => $model,
-                'attribute' => 'dataProductie',
+                'attribute' => 'data_productie',
                 'options' => ['placeholder' => 'Selectati data'],
                 'pluginOptions' => [
                     'autoclose' => true,
@@ -56,13 +57,13 @@ use kartik\datetime\DateTimePicker;
 
     <div class="row">
         <div class="col-md-2">
-            <?= $form->field($model, 'pret')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($modelPret, 'pret')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-5">
             <?=
-            $form->field($model, 'dataInceput')->widget(DateTimePicker::className(), [
-                'model' => $model,
-                'attribute' => 'dataInceput',
+            $form->field($modelPret, 'data_inceput')->widget(DateTimePicker::className(), [
+                'model' => $modelPret,
+                'attribute' => 'data_inceput',
                 'options' => ['placeholder' => 'Selectati data'],
                 'pluginOptions' => [
                     'autoclose' => true,
@@ -74,9 +75,9 @@ use kartik\datetime\DateTimePicker;
 
         <div class="col-md-5">
             <?=
-            $form->field($model, 'dataSfarsit')->widget(DateTimePicker::className(), [
-                'model' => $model,
-                'attribute' => 'dataInceput',
+            $form->field($modelPret, 'data_sfarsit')->widget(DateTimePicker::className(), [
+                'model' => $modelPret,
+                'attribute' => 'data_sfarsit',
                 'options' => ['placeholder' => 'Selectati data'],
                 'pluginOptions' => [
                     'autoclose' => true,
