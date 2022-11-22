@@ -102,11 +102,14 @@ class ProduseController extends Controller
     {
         $model = $this->findModel($id);
         $modelPret = new PreturiProduse();
+        $pretVechi = $model->getPretCurent();
 
         $transaction = Yii::$app->db->beginTransaction();
 
         try {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $pretVechi->valid = 0;
+                $pretVechi->save();
                 $modelPret->load(Yii::$app->request->post());
                 $modelPret->produs = $model->id;
                 $modelPret->valid = 1;
@@ -121,7 +124,7 @@ class ProduseController extends Controller
 
         return $this->render('update', [
             'model' => $model,
-            'modelPret' => $modelPret
+            'modelPret' => $pretVechi
         ]);
     }
 

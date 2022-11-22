@@ -1,7 +1,9 @@
 <?php
 
+use \kartik\datecontrol\Module;
+
 $params = array_merge(
-        require __DIR__ . '/../../common/config/params.php', require __DIR__ . '/../../common/config/params-local.php', require __DIR__ . '/params.php', require __DIR__ . '/params-local.php'
+    require __DIR__ . '/../../common/config/params.php', require __DIR__ . '/../../common/config/params-local.php', require __DIR__ . '/params.php', require __DIR__ . '/params-local.php'
 );
 
 return [
@@ -9,6 +11,24 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
+    'modules' => [
+        'datecontrol' => [
+            'class' => '\kartik\datecontrol\Module',
+            'displaySettings' => [
+                Module::FORMAT_DATE => 'dd-MM-yyyy',
+                Module::FORMAT_TIME => 'hh:mm:ss a',
+                Module::FORMAT_DATETIME => 'dd-MMMM-yyyy hh:mm:ss',
+            ],
+
+            // format settings for saving each date attribute (PHP format example)
+            'saveSettings' => [
+                Module::FORMAT_DATE => 'php:U', // saves as unix timestamp
+                Module::FORMAT_TIME => 'php:H:i:s',
+                Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
+            ],
+
+        ],
+    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
@@ -47,14 +67,14 @@ return [
 //             ],
 //         ],
 //    ],
-    /*
-      'urlManager' => [
-      'enablePrettyUrl' => true,
-      'showScriptName' => false,
-      'rules' => [
-      ],
-      ],
-     */
+        /*
+          'urlManager' => [
+          'enablePrettyUrl' => true,
+          'showScriptName' => false,
+          'rules' => [
+          ],
+          ],
+         */
     ],
     'params' => $params,
 ];

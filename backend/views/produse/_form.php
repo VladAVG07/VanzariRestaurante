@@ -5,6 +5,7 @@ use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Categorii;
 use kartik\datetime\DateTimePicker;
+use \kartik\datecontrol\DateControl;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
@@ -20,7 +21,7 @@ use kartik\datetime\DateTimePicker;
         <div class="col-md-4">
             <?=
             $form->field($model, 'categorie')->dropDownList(
-                    ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
+                ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
             )
             ?>
         </div>
@@ -39,17 +40,17 @@ use kartik\datetime\DateTimePicker;
         <div class="col-md-6">
             <?= $form->field($model, 'descriere')->textArea(['maxlength' => true]) ?>
         </div>
-        
+
         <div class="col-md-6">
             <?=
-            $form->field($model, 'data_productie')->widget(DateTimePicker::className(), [
-                'model' => $model,
-                'attribute' => 'data_productie',
-                'options' => ['placeholder' => 'Selectati data'],
-                'pluginOptions' => [
-                    'autoclose' => true,
-                    'format' => 'dd.mm.yyyy hh:ii:ss'
-                ]
+            $form->field($model, 'data_productie')->widget(DateControl::classname(), [
+                'type'=>DateControl::FORMAT_DATETIME,
+                'widgetOptions' => [
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
+                'language' => 'ro'
             ])
             ?>
         </div>
@@ -61,28 +62,28 @@ use kartik\datetime\DateTimePicker;
         </div>
         <div class="col-md-5">
             <?=
-            $form->field($modelPret, 'data_inceput')->widget(DateTimePicker::className(), [
-                'model' => $modelPret,
-                'attribute' => 'data_inceput',
-                'options' => ['placeholder' => 'Selectati data'],
-                'pluginOptions' => [
-                    'autoclose' => true,
-                    'format' => 'dd.mm.yyyy hh:ii:ss'
-                ]
+            $form->field($modelPret, 'data_inceput')->widget(DateControl::classname(), [
+                'type'=>DateControl::FORMAT_DATETIME,
+                'widgetOptions' => [
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
+                'language' => 'ro'
             ])
             ?>
         </div>
 
         <div class="col-md-5">
             <?=
-            $form->field($modelPret, 'data_sfarsit')->widget(DateTimePicker::className(), [
-                'model' => $modelPret,
-                'attribute' => 'data_sfarsit',
-                'options' => ['placeholder' => 'Selectati data'],
-                'pluginOptions' => [
-                    'autoclose' => true,
-                    'format' => 'dd.mm.yyyy hh:ii:ss'
-                ]
+            $form->field($modelPret, 'data_sfarsit')->widget(DateControl::classname(), [
+                'type'=>DateControl::FORMAT_DATETIME,
+                'widgetOptions' => [
+                    'pluginOptions' => [
+                        'autoclose' => true
+                    ]
+                ],
+                'language' => 'ro'
             ])
             ?>
         </div>
