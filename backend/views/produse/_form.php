@@ -43,7 +43,7 @@ use \kartik\datecontrol\DateControl;
 
         <div class="col-md-6">
             <?=
-            $form->field($model, 'data_productie')->widget(DateControl::classname(), [
+            $form->field($model, 'data_productie')->widget(DateControl::class, [
                 'type'=>DateControl::FORMAT_DATETIME,
                 'widgetOptions' => [
                     'pluginOptions' => [
@@ -62,7 +62,7 @@ use \kartik\datecontrol\DateControl;
         </div>
         <div class="col-md-5">
             <?=
-            $form->field($modelPret, 'data_inceput')->widget(DateControl::classname(), [
+            $form->field($modelPret, 'data_inceput')->widget(DateControl::class, [
                 'type'=>DateControl::FORMAT_DATETIME,
                 'widgetOptions' => [
                     'pluginOptions' => [
@@ -76,7 +76,7 @@ use \kartik\datecontrol\DateControl;
 
         <div class="col-md-5">
             <?=
-            $form->field($modelPret, 'data_sfarsit')->widget(DateControl::classname(), [
+            $form->field($modelPret, 'data_sfarsit')->widget(DateControl::class, [
                 'type'=>DateControl::FORMAT_DATETIME,
                 'widgetOptions' => [
                     'pluginOptions' => [

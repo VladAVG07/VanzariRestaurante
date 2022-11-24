@@ -17,19 +17,22 @@ use Yii;
  * @property Categorii $parinte0
  * @property Produse[] $produses
  */
-class Categorii extends \yii\db\ActiveRecord {
+class Categorii extends \yii\db\ActiveRecord
+{
 
     /**
      * {@inheritdoc}
      */
-    public static function tableName() {
+    public static function tableName()
+    {
         return 'categorii';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             [['nume', 'descriere'], 'required'],
             [['parinte'], 'integer'],
@@ -44,7 +47,8 @@ class Categorii extends \yii\db\ActiveRecord {
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'id' => 'ID',
             'nume' => 'Nume',
@@ -59,7 +63,8 @@ class Categorii extends \yii\db\ActiveRecord {
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoriis() {
+    public function getCategoriis()
+    {
         return $this->hasMany(Categorii::class, ['parinte' => 'id']);
     }
 
@@ -68,7 +73,8 @@ class Categorii extends \yii\db\ActiveRecord {
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getParinte0() {
+    public function getParinte0()
+    {
         return $this->hasOne(Categorii::class, ['id' => 'parinte']);
     }
 
@@ -77,28 +83,8 @@ class Categorii extends \yii\db\ActiveRecord {
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduses() {
+    public function getProduses()
+    {
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
     }
-
-    public static function getChildren($parent_id) {
-        $items = [];
-        $children = self::find()->where(['parinte' => $parent_id])
-                        ->orderBy('nume')->all();
-        foreach ($children as $child) {
-            $items[$child->id] = $child->nume;
-        }
-        return $items;
-    }
-
-    public static function getParents($parent_id = null) {
-        $items = [];
-        $parents = self::find()->where(['parinte' => $parent_id])
-                        ->orderBy('nume')->all();
-        foreach ($parents as $parent) {
-            $items['label'] = array_merge($items , [$parent->nume => self::getChildren($parent->id)]);
-        }
-        return $items;
-    }
-
 }

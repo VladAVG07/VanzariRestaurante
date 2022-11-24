@@ -5,10 +5,6 @@ use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use backend\models\Categorii;
 use kartik\switchinput\SwitchInput;
-use kartik\bs5dropdown\ButtonDropdown;
-use kartik\bs5dropdown\Dropdown;
-use yii\bootstrap5\NavBar;
-use yii\bootstrap5\Nav;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Categorii */
@@ -23,8 +19,13 @@ use yii\bootstrap5\Nav;
 
     <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model , 'parinte')->dropdownList(
+            ArrayHelper::map(Categorii::find()->all() , 'id' , 'nume'),
+            ['prompt' => 'Selecteaza parintele']
+    ) ?>
+
     <?=
-    $form->field($model, 'valid')->widget(SwitchInput::classname(), [
+    $form->field($model, 'valid')->widget(SwitchInput::class, [
         'pluginOptions' => [
             'onText' => 'Da',
             'offText' => 'Nu',
@@ -37,20 +38,5 @@ use yii\bootstrap5\Nav;
     </div>
 
     <?php ActiveForm::end(); ?>
-
-    <div class="dropdown">
-        <?php
-//        echo ButtonDropdown::widget([
-//            'label' => 'Parinte',
-//            'dropdown' => [
-//                'items' => [
-//                
-//                ],
-//            ],
-//            'buttonOptions' => ['class' => 'btn-outline-secondary']
-//        ]);
-        print_r(Categorii::getParents());
-        ?>
-    </div>
 
 </div>

@@ -109,6 +109,7 @@ class ProduseController extends Controller
         try {
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 $pretVechi->valid = 0;
+                $pretVechi->data_sfarsit = new \yii\db\Expression('NOW()');
                 $pretVechi->save();
                 $modelPret->load(Yii::$app->request->post());
                 $modelPret->produs = $model->id;
