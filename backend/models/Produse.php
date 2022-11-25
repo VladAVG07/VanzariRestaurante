@@ -19,6 +19,7 @@ use Yii;
  */
 class Produse extends \yii\db\ActiveRecord
 {
+    public $pret;
     /**
      * {@inheritdoc}
      */

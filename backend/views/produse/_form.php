@@ -21,7 +21,7 @@ use \kartik\datecontrol\DateControl;
         <div class="col-md-4">
             <?=
             $form->field($model, 'categorie')->dropDownList(
-                ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
+                    ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
             )
             ?>
         </div>
@@ -44,7 +44,8 @@ use \kartik\datecontrol\DateControl;
         <div class="col-md-6">
             <?=
             $form->field($model, 'data_productie')->widget(DateControl::class, [
-                'type'=>DateControl::FORMAT_DATETIME,
+                'type' => DateControl::FORMAT_DATETIME,
+                'displayFormat' => 'php:d.m.Y H:i',
                 'widgetOptions' => [
                     'pluginOptions' => [
                         'autoclose' => true
@@ -63,7 +64,8 @@ use \kartik\datecontrol\DateControl;
         <div class="col-md-5">
             <?=
             $form->field($modelPret, 'data_inceput')->widget(DateControl::class, [
-                'type'=>DateControl::FORMAT_DATETIME,
+                'type' => DateControl::FORMAT_DATETIME,
+                'displayFormat' => 'php:d.m.Y H:i',
                 'widgetOptions' => [
                     'pluginOptions' => [
                         'autoclose' => true
@@ -77,7 +79,8 @@ use \kartik\datecontrol\DateControl;
         <div class="col-md-5">
             <?=
             $form->field($modelPret, 'data_sfarsit')->widget(DateControl::class, [
-                'type'=>DateControl::FORMAT_DATETIME,
+                'type' => DateControl::FORMAT_DATETIME,
+                'displayFormat' => 'php:d.m.Y H:i',
                 'widgetOptions' => [
                     'pluginOptions' => [
                         'autoclose' => true

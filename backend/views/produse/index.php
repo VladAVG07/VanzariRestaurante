@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use backend\models\Categorii;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ProduseSearch */
@@ -36,6 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'categorie',
                                 'value' => 'categorie0.nume', //relation name with their attribute
+                              //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
+                                    'filter' => Html::activeDropDownList($searchModel, 'categorie',yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
+                                            ['class'=>'form-control','prompt' => '--Toate categoriile--']),
                             ],
                             'cod_produs',
                             'descriere',
@@ -49,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
+                        'layout'=>"{items}\n{pager}\n{summary}",
                         'pager' => [
                             'class' => 'yii\bootstrap4\LinkPager',
                         ]

@@ -60,7 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]),
                         'columns' => [
                             'data_inceput',
-                            'data_sfarsit',
+                            [
+                                'attribute' => 'data_sfarsit',
+                                'format' => 'raw',
+                                'value' => function($model) {
+                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : $model->data_sfarsit, 
+                                            ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000' , $model->data_sfarsit ? 'normal' : 'bold')]);
+                                }
+                                ],
                             'pret',
 //                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
