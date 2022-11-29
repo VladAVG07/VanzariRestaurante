@@ -19,10 +19,37 @@ use kartik\switchinput\SwitchInput;
 
     <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
 
+<!--    --><?php //echo \kartik\bs5dropdown\ButtonDropdown::widget([
+//        'label' => 'Selecteaza parintele',
+//        'dropdown' => [
+//            'items' => [
+//                ['label' => 'Action', 'url' => '#'],
+//                ['label' => 'Submenu 1', 'items' => [
+//                    ['label' => 'Action', 'url' => '#'],
+//                    ['label' => 'Another action', 'url' => '#'],
+//                    ['label' => 'Something else here', 'url' => '#'],
+////                    '<div class="dropdown-divider"></div>',
+//                    ['label' => 'Submenu 2', 'items' => [
+//                        ['label' => 'Action', 'url' => '#'],
+//                        ['label' => 'Another action', 'url' => '#'],
+//                        ['label' => 'Something else here', 'url' => '#'],
+////                        '<div class="dropdown-divider"></div>',
+//                        ['label' => 'Separated link', 'url' => '#'],
+//                    ]],
+//                ]],
+//                ['label' => 'Something else here', 'url' => '#'],
+////                '<div class="dropdown-divider"></div>',
+//                ['label' => 'Separated link', 'url' => '#'],
+//            ],
+//        ],
+//        'buttonOptions' => ['class' => 'btn-outline-secondary']
+//    ]
+//    ) ?>
+
     <?= $form->field($model , 'parinte')->dropdownList(
-            ArrayHelper::map(Categorii::find()->all() , 'id' , 'nume'),
+            Categorii::formatItemsArray(),
             ['prompt' => 'Selecteaza parintele']
-    ) ?>
+    )?>
 
     <?=
     $form->field($model, 'valid')->widget(SwitchInput::class, [
@@ -31,6 +58,10 @@ use kartik\switchinput\SwitchInput;
             'offText' => 'Nu',
         ]
     ]);
+    ?>
+
+    <?php
+        print_r(Categorii::getDropDownItems());
     ?>
 
     <div class="form-group">

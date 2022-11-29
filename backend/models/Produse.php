@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\Exception;
 
 /**
  * This is the model class for table "produse".
@@ -16,6 +17,7 @@ use Yii;
  *
  * @property Categorii $categorie0
  * @property PreturiProduse[] $preturiProduses
+ * @property Stocuri[] $stocuris
  */
 class Produse extends \yii\db\ActiveRecord
 {
@@ -79,8 +81,44 @@ class Produse extends \yii\db\ActiveRecord
         return $this->hasMany(PreturiProduse::class, ['produs' => 'id']);
     }
 
+    /**
+     * Gets query for [[Stocuris]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStocuris()
+    {
+        return $this->hasMany(Stocuri::class, ['produs' => 'id']);
+    }
+
     public function getPretCurent() {
         return $this->getPreturiProduses()->where('valid = 1')->one();
+    }
+
+    public function saveOrUpdateWithPret(PreturiProduse $modelPret) {
+
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            if ($this->load(Yii::$app->request->post()) && $this->save()) {
+                if(!$this->isNewRecord) {
+                    $pretVechi = $this->getPretCurent();
+                    $pretVechi->valid = 0;
+                    $pretVechi->data_sfarsit = new \yii\db\Expression('NOW()');
+                    $pretVechi->save();
+                }
+                $modelPret->load(Yii::$app->request->post());
+                $modelPret->valid = 1;
+                $modelPret->produs = $this->id;
+                if($modelPret->save()) {
+                    $transaction->commit();
+                    return true;
+                }
+            }
+        } catch (Exception $exception) {
+            $transaction->rollBack();
+            return false;
+        }
     }
 
 }

@@ -17,22 +17,19 @@ use Yii;
  * @property Categorii $parinte0
  * @property Produse[] $produses
  */
-class Categorii extends \yii\db\ActiveRecord
-{
+class Categorii extends \yii\db\ActiveRecord {
 
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'categorii';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['nume', 'descriere'], 'required'],
             [['parinte'], 'integer'],
@@ -47,8 +44,7 @@ class Categorii extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'nume' => 'Nume',
@@ -63,8 +59,7 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoriis()
-    {
+    public function getCategoriis() {
         return $this->hasMany(Categorii::class, ['parinte' => 'id']);
     }
 
@@ -73,8 +68,7 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getParinte0()
-    {
+    public function getParinte0() {
         return $this->hasOne(Categorii::class, ['id' => 'parinte']);
     }
 
@@ -83,8 +77,36 @@ class Categorii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduses()
-    {
+    public function getProduses() {
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
+    }
+
+    public static function getDropDownItems($indent = ' ', $idParinte = null) {
+        $items = [];
+        $categorii = self::find()->where(['parinte' => $idParinte])
+                ->all();
+
+        foreach ($categorii as $categorie) {
+            //$items[$categorie->id] = $indent.$categorie->nume;
+            $items[] = [$categorie->id => $indent . $categorie->nume];
+            $items = array_merge($items, self::getDropDownItems($indent.'-', $categorie->id));
+        }
+        
+        return $items;
+        //jumatate de problema rezolvata :)
+        //te descurci acum ?
+        //cred ca da =))ok, hai sa vedem...ma anunti, daca nu, o rezolvam impreuna :)
+        //ok, multumesc, cu placere ;)
+    }
+    
+    public static function formatItemsArray() {
+        $items = Categorii::getDropDownItems();
+        $result = [];
+        foreach($items as $item) {
+            foreach ($item as $idCategorie => $numeCategorie) {
+                $result[$idCategorie] = $numeCategorie;
+            }
+        }
+        return $result;
     }
 }

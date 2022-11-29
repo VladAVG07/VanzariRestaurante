@@ -2,19 +2,17 @@
 
 namespace backend\controllers;
 
-use backend\models\PreturiProduse;
 use Yii;
-use backend\models\Produse;
-use backend\models\ProduseSearch;
-use yii\db\Exception;
+use backend\models\Stocuri;
+use backend\models\StocuriSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ProduseController implements the CRUD actions for Produse model.
+ * StocuriController implements the CRUD actions for Stocuri model.
  */
-class ProduseController extends Controller
+class StocuriController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,12 +30,12 @@ class ProduseController extends Controller
     }
 
     /**
-     * Lists all Produse models.
+     * Lists all Stocuri models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProduseSearch();
+        $searchModel = new StocuriSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class ProduseController extends Controller
     }
 
     /**
-     * Displays a single Produse model.
+     * Displays a single Stocuri model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,27 +58,25 @@ class ProduseController extends Controller
     }
 
     /**
-     * Creates a new Produse model.
+     * Creates a new Stocuri model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Produse();
-        $modelPret = new PreturiProduse();
+        $model = new Stocuri();
 
-        if($model->saveOrUpdateWithPret($modelPret)) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'modelPret' => $modelPret
         ]);
     }
 
     /**
-     * Updates an existing Produse model.
+     * Updates an existing Stocuri model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -89,21 +85,18 @@ class ProduseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $modelPret = new PreturiProduse();
-        $pretVechi = $model->getPretCurent();
 
-        if($model->saveOrUpdateWithPret($modelPret)) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'modelPret' => $pretVechi
         ]);
     }
 
     /**
-     * Deletes an existing Produse model.
+     * Deletes an existing Stocuri model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -117,25 +110,18 @@ class ProduseController extends Controller
     }
 
     /**
-     * Finds the Produse model based on its primary key value.
+     * Finds the Stocuri model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Produse the loaded model
+     * @return Stocuri the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Produse::findOne($id)) !== null) {
+        if (($model = Stocuri::findOne($id)) !== null) {
             return $model;
         }
 
-        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-//    private function setPret(PreturiProduse $preturiProduse , int $produsId) {
-//            $preturiProduse->load(Yii::$app->request->post());
-//            $preturiProduse->valid = 1;
-//            $preturiProduse->produs = $produsId;
-//            return $preturiProduse->save();
-//    }
 }

@@ -49,6 +49,7 @@
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Categorii' ,'url' => ['categorii/index']],
                     ['label' => 'Produse', 'url' => ['produse/index']],
+                    ['label' => 'Stocuri', 'url' => ['stocuri/index']],
 //                    ['label' => 'MULTI LEVEL EXAMPLE', 'header' => true],
 //                    ['label' => 'Level1'],
 //                    [
