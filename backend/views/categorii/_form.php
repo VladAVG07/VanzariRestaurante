@@ -46,8 +46,13 @@ use kartik\switchinput\SwitchInput;
 //    ]
 //    ) ?>
 
+    <?php
+    $categorii = \backend\models\Categorii::find()->select(['id' , 'nume' , 'parinte'])
+        ->orderBy(['parinte'=> SORT_ASC])->all();
+    ?>
+
     <?= $form->field($model , 'parinte')->dropdownList(
-            Categorii::formatItemsArray(),
+            Categorii::formatItemsArray($categorii),
             ['prompt' => 'Selecteaza parintele']
     )?>
 
@@ -58,10 +63,6 @@ use kartik\switchinput\SwitchInput;
             'offText' => 'Nu',
         ]
     ]);
-    ?>
-
-    <?php
-        print_r(Categorii::getDropDownItems());
     ?>
 
     <div class="form-group">

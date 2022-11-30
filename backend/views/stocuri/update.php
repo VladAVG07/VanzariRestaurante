@@ -3,9 +3,9 @@
 /* @var $this yii\web\View */
 /* @var $model backend\models\Stocuri */
 
-$this->title = 'Update Stocuri: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Stocuris', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->title = 'Actualizeaza Stoc: ' . $model->produs0->nume;
+$this->params['breadcrumbs'][] = ['label' => 'Stocuri', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->nume, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 
