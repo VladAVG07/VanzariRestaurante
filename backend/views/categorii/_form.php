@@ -40,15 +40,15 @@ use yii\bootstrap5\Nav;
 
     <div class="dropdown">
         <?php
-//        echo ButtonDropdown::widget([
-//            'label' => 'Parinte',
-//            'dropdown' => [
-//                'items' => [
-//                
-//                ],
-//            ],
-//            'buttonOptions' => ['class' => 'btn-outline-secondary']
-//        ]);
+        echo ButtonDropdown::widget([
+            'label' => 'Parinte',
+            'dropdown' => [
+                'items' => [
+                    
+                ],
+            ],
+            'buttonOptions' => ['class' => 'btn-outline-secondary']
+        ]);
         print_r(Categorii::getParents());
         ?>
     </div>

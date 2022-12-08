@@ -19,7 +19,7 @@ use kartik\datetime\DateTimePicker;
         <div class="col-md-4">
             <?=
             $form->field($model, 'categorie')->dropDownList(
-                    ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
+                    ArrayHelper::map(Categorii::find()->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
             )
             ?>
         </div>
