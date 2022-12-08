@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Stocuri */
 
-$this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Stocuris', 'url' => ['index']];
+$this->title = "Stoc " . $model->produs0->nume;
+$this->params['breadcrumbs'][] = ['label' => 'Stocuri', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -17,24 +17,30 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <p>
-                        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
-                                'method' => 'post',
-                            ],
-                        ]) ?>
-                    </p>
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
                             'id',
-                            'produs',
+                            [
+                                'attribute' => 'Produs',
+                                'value' => function ($model) {
+                                    return $model->produs0->nume;
+                                },
+
+                            ],
                             'cantitate',
                         ],
                     ]) ?>
+                    <p>
+                        <?= Html::a('Actualizeaza', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                        <?= Html::a('Sterge', ['delete', 'id' => $model->id], [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => 'Esti sigur ca vrei sa stergi toate datele despre acest stoc?',
+                                'method' => 'post',
+                            ],
+                        ]) ?>
+                    </p>
                 </div>
                 <!--.col-md-12-->
             </div>

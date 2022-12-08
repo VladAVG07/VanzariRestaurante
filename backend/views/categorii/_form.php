@@ -19,42 +19,15 @@ use kartik\switchinput\SwitchInput;
 
     <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?php //echo \kartik\bs5dropdown\ButtonDropdown::widget([
-//        'label' => 'Selecteaza parintele',
-//        'dropdown' => [
-//            'items' => [
-//                ['label' => 'Action', 'url' => '#'],
-//                ['label' => 'Submenu 1', 'items' => [
-//                    ['label' => 'Action', 'url' => '#'],
-//                    ['label' => 'Another action', 'url' => '#'],
-//                    ['label' => 'Something else here', 'url' => '#'],
-////                    '<div class="dropdown-divider"></div>',
-//                    ['label' => 'Submenu 2', 'items' => [
-//                        ['label' => 'Action', 'url' => '#'],
-//                        ['label' => 'Another action', 'url' => '#'],
-//                        ['label' => 'Something else here', 'url' => '#'],
-////                        '<div class="dropdown-divider"></div>',
-//                        ['label' => 'Separated link', 'url' => '#'],
-//                    ]],
-//                ]],
-//                ['label' => 'Something else here', 'url' => '#'],
-////                '<div class="dropdown-divider"></div>',
-//                ['label' => 'Separated link', 'url' => '#'],
-//            ],
-//        ],
-//        'buttonOptions' => ['class' => 'btn-outline-secondary']
-//    ]
-//    ) ?>
-
     <?php
-    $categorii = \backend\models\Categorii::find()->select(['id' , 'nume' , 'parinte'])
+    $categorii = Categorii::find()->select(['id' , 'nume' , 'parinte'])
         ->orderBy(['parinte'=> SORT_ASC])->all();
     ?>
 
     <?= $form->field($model , 'parinte')->dropdownList(
             Categorii::formatItemsArray($categorii),
-            ['prompt' => 'Selecteaza parintele']
-    )?>
+            ['prompt' => 'Selecteaza Categoria']
+    )->label('Categorie')?>
 
     <?=
     $form->field($model, 'valid')->widget(SwitchInput::class, [
@@ -70,5 +43,4 @@ use kartik\switchinput\SwitchInput;
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>

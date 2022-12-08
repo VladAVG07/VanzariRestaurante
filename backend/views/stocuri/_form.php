@@ -22,7 +22,9 @@ use backend\models\Produse;
     <?= $form->field($model, 'cantitate')->textInput(
         [
             'type' => 'number',
-            'value' => 0,
+            'value' => function($model) {
+                return strval($model->cantitate);
+            },
         ]
     ) ?>
 

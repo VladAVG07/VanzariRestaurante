@@ -5,8 +5,8 @@
 
 $this->title = 'Actualizeaza Stoc: ' . $model->produs0->nume;
 $this->params['breadcrumbs'][] = ['label' => 'Stocuri', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->nume, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => $model->produs0->nume, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = 'Actualizeaza';
 ?>
 
 <div class="container-fluid">

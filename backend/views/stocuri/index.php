@@ -44,6 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                    'class' => 'kartik\grid\EditableColumn'
 //                            ],
                             'cantitate',
+//                            [
+//                                    'attribute' => 'cantitate',
+//                                    'class' => '\kartik\grid\EditableColumn',
+//                                    'editableOptions' => ['asPopover' => false],
+//                            ],
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
                         'summaryOptions' => ['class' => 'summary mb-2'],
