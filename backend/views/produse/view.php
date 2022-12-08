@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\grid\GridView;
+use yii\data\ActiveDataProvider;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
@@ -27,6 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             'nume',
                             'descriere',
                             'data_productie',
+                            [
+                                'attribute' => 'pret curent',
+                                'value' => function ($model) {
+                                    return $model->getPretCurent()->pret . ' RON';
+                                }
+                            ],
                         ],
                     ])
                     ?>
@@ -42,6 +50,34 @@ $this->params['breadcrumbs'][] = $this->title;
                         ])
                         ?>
                     </p>
+
+                    <h3>Istoric Preturi</h3>
+
+                    <?=
+                    GridView::widget([
+                        'dataProvider' => new ActiveDataProvider([
+                                'query' => $model->getPreturiProduses()
+                        ]),
+                        'columns' => [
+                            'data_inceput',
+                            [
+                                'attribute' => 'data_sfarsit',
+                                'format' => 'raw',
+                                'value' => function($model) {
+                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : $model->data_sfarsit, 
+                                            ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000' , $model->data_sfarsit ? 'normal' : 'bold')]);
+                                }
+                                ],
+                            'pret',
+//                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
+                        ],
+                            'summary' => '',
+//                        'summaryOptions' => ['class' => 'summary mb-2'],
+                        'pager' => [
+                            'class' => 'yii\bootstrap4\LinkPager',
+                        ]
+                    ]);
+                    ?>
                 </div>
                 <!--.col-md-12-->
             </div>

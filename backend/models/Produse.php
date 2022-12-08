@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\Exception;
 
 /**
  * This is the model class for table "produse".
@@ -15,12 +16,12 @@ use Yii;
  * @property string $data_productie
  *
  * @property Categorii $categorie0
+ * @property PreturiProduse[] $preturiProduses
+ * @property Stocuri[] $stocuris
  */
 class Produse extends \yii\db\ActiveRecord
 {
     public $pret;
-    public $dataInceput;
-    public $dataSfarsit;
     /**
      * {@inheritdoc}
      */
@@ -37,10 +38,6 @@ class Produse extends \yii\db\ActiveRecord
         return [
             [['categorie', 'cod_produs', 'nume', 'descriere', 'data_productie'], 'required'],
             [['categorie', 'cod_produs'], 'integer'],
-            ['dataInceput','required'],
-            ['dataInceput','string'],
-            ['dataSfarsit' , 'string'],
-            ['pret','number','numberPattern' => '/^[0-9]*\.[0-9]{2}$/'],
             [['data_productie'], 'safe'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
@@ -57,10 +54,10 @@ class Produse extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'categorie' => 'Categorie',
-            'cod_produs' => 'Cod produs',
+            'cod_produs' => 'Cod Produs',
             'nume' => 'Nume',
             'descriere' => 'Descriere',
-            'data_productie' => 'Data productie',
+            'data_productie' => 'Data Productie',
         ];
     }
 
@@ -73,4 +70,55 @@ class Produse extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categorii::class, ['id' => 'categorie']);
     }
+
+    /**
+     * Gets query for [[PreturiProduses]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPreturiProduses()
+    {
+        return $this->hasMany(PreturiProduse::class, ['produs' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Stocuris]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStocuris()
+    {
+        return $this->hasMany(Stocuri::class, ['produs' => 'id']);
+    }
+
+    public function getPretCurent() {
+        return $this->getPreturiProduses()->where('valid = 1')->one();
+    }
+
+    public function saveOrUpdateWithPret(PreturiProduse $modelPret) {
+
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            if ($this->load(Yii::$app->request->post()) && $this->save()) {
+                if(!$this->isNewRecord) {
+                    $pretVechi = $this->getPretCurent();
+                    $pretVechi->valid = 0;
+                    $pretVechi->data_sfarsit = new \yii\db\Expression('NOW()');
+                    $pretVechi->save();
+                }
+                $modelPret->load(Yii::$app->request->post());
+                $modelPret->valid = 1;
+                $modelPret->produs = $this->id;
+                if($modelPret->save()) {
+                    $transaction->commit();
+                    return true;
+                }
+            }
+        } catch (Exception $exception) {
+            $transaction->rollBack();
+            return false;
+        }
+    }
+
 }

@@ -81,24 +81,32 @@ class Categorii extends \yii\db\ActiveRecord {
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
     }
 
-    public static function getChildren($parent_id) {
+    public static function getDropDownItems($indent = ' ', $idParinte = null) {
         $items = [];
-        $children = self::find()->where(['parinte' => $parent_id])
-                        ->orderBy('nume')->all();
-        foreach ($children as $child) {
-            $items[$child->id] = $child->nume;
-        }
-        return $items;
-    }
+        $categorii = self::find()->where(['parinte' => $idParinte])
+                ->all();
 
-    public static function getParents($parent_id = null) {
-        $items = [];
-        $parents = self::find()->where(['parinte' => $parent_id])
-                        ->orderBy('nume')->all();
-        foreach ($parents as $parent) {
-            $items['label'] = array_merge($items , [$parent->nume => self::getChildren($parent->id)]);
+        foreach ($categorii as $categorie) {
+            //$items[$categorie->id] = $indent.$categorie->nume;
+            $items[] = [$categorie->id => $indent . $categorie->nume];
+            $items = array_merge($items, self::getDropDownItems($indent.'-', $categorie->id));
         }
+        
         return $items;
+        //jumatate de problema rezolvata :)
+        //te descurci acum ?
+        //cred ca da =))ok, hai sa vedem...ma anunti, daca nu, o rezolvam impreuna :)
+        //ok, multumesc, cu placere ;)
     }
-
+    
+    public static function formatItemsArray() {
+        $items = Categorii::getDropDownItems();
+        $result = [];
+        foreach($items as $item) {
+            foreach ($item as $idCategorie => $numeCategorie) {
+                $result[$idCategorie] = $numeCategorie;
+            }
+        }
+        return $result;
+    }
 }

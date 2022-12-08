@@ -2,12 +2,13 @@
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
+/* @var $modelPret \backend\models\PreturiProduse */
 
 $this->title = Yii::t('app', 'Update Produse: {name}', [
-    'name' => $model->id,
+    'name' => $model->nume,
 ]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produses'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produse'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->nume, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 
@@ -17,7 +18,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
             <div class="row">
                 <div class="col-md-12">
                     <?=$this->render('_form', [
-                        'model' => $model
+                        'model' => $model,
+                        'modelPret' => $modelPret
                     ]) ?>
                 </div>
             </div>
