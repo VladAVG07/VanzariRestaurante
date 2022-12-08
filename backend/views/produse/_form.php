@@ -17,11 +17,17 @@ use \kartik\datecontrol\DateControl;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?php
+    $categorii = Categorii::find()->select(['id' , 'nume' , 'parinte'])
+        ->orderBy(['parinte'=> SORT_ASC])->all();
+    ?>
+
     <div class="row">
         <div class="col-md-4">
             <?=
             $form->field($model, 'categorie')->dropDownList(
-                    ArrayHelper::map(Categorii::find()->where('parinte is null')->all(), 'id', 'nume'), ['prompt' => 'Selecteaza Categoria']
+                    Categorii::formatItemsArray($categorii),
+                ['prompt' => 'Selecteaza categoria']
             )
             ?>
         </div>

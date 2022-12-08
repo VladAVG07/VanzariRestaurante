@@ -101,7 +101,7 @@ class Produse extends \yii\db\ActiveRecord
 
         try {
             if ($this->load(Yii::$app->request->post()) && $this->save()) {
-                if(!$this->isNewRecord) {
+                if($this->preturiProduses) {
                     $pretVechi = $this->getPretCurent();
                     $pretVechi->valid = 0;
                     $pretVechi->data_sfarsit = new \yii\db\Expression('NOW()');
