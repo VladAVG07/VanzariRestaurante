@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * CategoriiController implements the CRUD actions for Categorii model.
+ * CategorieController implements the CRUD actions for Categorii model.
  */
 class CategoriiController extends Controller
 {
