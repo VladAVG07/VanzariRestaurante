@@ -13,7 +13,7 @@ return [
         'v1' => [
             'basePath' => '@app/modules/v1',
             'class' => 'api\modules\v1\Module',   // here is our v1 modules
-            'controllerNamespace' => 'api\modules\v1\controllers'
+           // 'controllerNamespace' => 'api\modules\v1\controllers'
 
         ]
     ],
@@ -77,6 +77,7 @@ return [
                         'code' => $code,
                     ];
                 }
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                 //}
             }
         ,
@@ -108,9 +109,9 @@ return [
             'showScriptName' => false,
             'rules' => [
                 [
-                    'class' => 'api\modules\v1\rules\CustomUrlRule',
-                    //'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/categorie', // our country api rule,
+                   // 'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/categorii', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
