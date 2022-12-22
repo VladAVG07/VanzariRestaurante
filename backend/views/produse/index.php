@@ -26,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?php Pjax::begin(); ?>
-                    <?php // echo $this->render('_search', ['model' => $searchModel]);  ?>
+                    <?php // echo $this->render('_search', ['model' => $searchModel]);
+                    //
+                    $categorii = \backend\models\Categorii::find()->select(['id' , 'nume' , 'parinte'])
+                        ->orderBy(['parinte'=> SORT_ASC])->all();
+                    //  ?>
 
                     <?=
                     GridView::widget([
@@ -40,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => 'categorie0.nume', //relation name with their attribute
                                 //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
                                 'filter' => Html::activeDropDownList($searchModel, 'categorie',
-                                    Categorii::formatItemsArray(),
+                                    Categorii::formatItemsArray($categorii),
                                     ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
                             ],
                             'cod_produs',

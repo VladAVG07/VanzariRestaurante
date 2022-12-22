@@ -23,7 +23,7 @@ class ProduseController extends Controller
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -112,7 +112,6 @@ class ProduseController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
 
@@ -128,14 +127,6 @@ class ProduseController extends Controller
         if (($model = Produse::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-
-//    private function setPret(PreturiProduse $preturiProduse , int $produsId) {
-//            $preturiProduse->load(Yii::$app->request->post());
-//            $preturiProduse->valid = 1;
-//            $preturiProduse->produs = $produsId;
-//            return $preturiProduse->save();
-//    }
 }
