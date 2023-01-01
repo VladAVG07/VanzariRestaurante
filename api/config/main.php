@@ -13,7 +13,7 @@ return [
         'v1' => [
             'basePath' => '@app/modules/v1',
             'class' => 'api\modules\v1\Module',   // here is our v1 modules
-           // 'controllerNamespace' => 'api\modules\v1\controllers'
+            'controllerNamespace' => 'api\modules\v1\controllers'
 
         ]
     ],
@@ -109,14 +109,30 @@ return [
             'showScriptName' => false,
             'rules' => [
                 [
-                   // 'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    //'class' => 'api\modules\v1\rules\CustomUrlRule',
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'v1/categorii', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
-//                    'except' => ['delete'],
+                   // 'except' => ['view','index'],
+                ],
+                [
+                    //'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/utilizatori', // our country api rule,
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>',
+                        '{user}' => '<user:>',
+                        '{pass}' => '<pass:>',
+                    ],
+                    'extraPatterns' => [
+                        'POST login' => 'login',
+                        'POST changePassword' => 'change-password'
+                    ],
+                    'except' => ['view','index','delete'],
                 ],
                 [
                     // 'class' => 'api\modules\v1\rules\CustomUrlRule',

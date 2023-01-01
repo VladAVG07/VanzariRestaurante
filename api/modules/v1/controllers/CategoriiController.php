@@ -2,7 +2,9 @@
 
 namespace api\modules\v1\controllers;
 
-class CategoriiController extends \yii\rest\ActiveController
+use yii\rest\ActiveController;
+
+class CategoriiController extends ActiveController
 {
     public $modelClass='api\modules\v1\models\Categorii';
 }

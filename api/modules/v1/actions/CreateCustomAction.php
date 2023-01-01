@@ -25,16 +25,15 @@ class CreateCustomAction extends \yii\rest\CreateAction {
      */
     public function run() {
 
-        if ($this->checkAccess) {
-            call_user_func($this->checkAccess, $this->id);
-        }
+//        if ($this->checkAccess) {
+//            call_user_func($this->checkAccess, $this->id);
+//        }
         /* @var $model \yii\db\ActiveRecord */
         $model = new $this->modelClass([
             'scenario' => $this->scenario,
         ]);
 
         $model->load(Yii::$app->getRequest()->getBodyParams(), '');
-
 
         if ($model->save()) {
             $response = Yii::$app->getResponse();
@@ -47,5 +46,4 @@ class CreateCustomAction extends \yii\rest\CreateAction {
         }
         return $model;
     }
-
 }
