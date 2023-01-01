@@ -4,7 +4,7 @@ namespace api\modules\v1\models;
 
 use backend\models\PreturiProduse as PPR;
 
-class PreturiProduse
+class PreturiProduse extends PPR
 {
 
 }

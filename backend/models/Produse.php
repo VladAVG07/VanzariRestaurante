@@ -4,6 +4,7 @@ namespace backend\models;
 
 use Yii;
 use yii\db\Exception;
+use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "produse".
@@ -95,19 +96,20 @@ class Produse extends \yii\db\ActiveRecord
         return $this->getPreturiProduses()->where('valid = 1')->one();
     }
 
-    public function saveOrUpdateWithPret(PreturiProduse $modelPret) {
+    public function saveOrUpdateWithPret($data , $formName = null) {
 
         $transaction = Yii::$app->db->beginTransaction();
+        $modelPret = new PreturiProduse();
 
         try {
-            if ($this->load(Yii::$app->request->post()) && $this->save()) {
+            if ($this->load($data , $formName) && $this->save()) {
                 if($this->preturiProduses) {
                     $pretVechi = $this->getPretCurent();
                     $pretVechi->valid = 0;
                     $pretVechi->data_sfarsit = new \yii\db\Expression('NOW()');
                     $pretVechi->save();
                 }
-                $modelPret->load(Yii::$app->request->post());
+                $modelPret->load($data , $formName);
                 $modelPret->valid = 1;
                 $modelPret->produs = $this->id;
                 if($modelPret->save()) {

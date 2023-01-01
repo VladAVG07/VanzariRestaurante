@@ -67,15 +67,14 @@ class ProduseController extends Controller
     public function actionCreate()
     {
         $model = new Produse();
-        $modelPret = new PreturiProduse();
 
-        if($model->saveOrUpdateWithPret($modelPret)) {
+        if($model->saveOrUpdateWithPret(Yii::$app->request->post())) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'modelPret' => $modelPret
+            'modelPret' => new PreturiProduse()
         ]);
     }
 
@@ -89,10 +88,10 @@ class ProduseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $modelPret = new PreturiProduse();
+//        $modelPret = new PreturiProduse();
         $pretVechi = $model->getPretCurent();
 
-        if($model->saveOrUpdateWithPret($modelPret)) {
+        if($model->saveOrUpdateWithPret(Yii::$app->request->post())) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
