@@ -77,6 +77,7 @@ return [
                         'code' => $code,
                     ];
                 }
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                 //}
             }
         ,
@@ -108,14 +109,30 @@ return [
             'showScriptName' => false,
             'rules' => [
                 [
-                    'class' => 'api\modules\v1\rules\CustomUrlRule',
-                    //'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/categorie', // our country api rule,
+                    //'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/categorii', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
-//                    'except' => ['delete'],
+                   // 'except' => ['view','index'],
+                ],
+                [
+                    //'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/utilizatori', // our country api rule,
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>',
+                        '{user}' => '<user:>',
+                        '{pass}' => '<pass:>',
+                    ],
+                    'extraPatterns' => [
+                        'POST login' => 'login',
+                        'POST changePassword' => 'change-password'
+                    ],
+                    'except' => ['view','index','delete'],
                 ],
             ],
         ]
