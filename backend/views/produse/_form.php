@@ -15,7 +15,10 @@ use \kartik\datecontrol\DateControl;
 
 <div class="produse-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'options' => ['name' => 'produse-form']
+            ]
+    ); ?>
 
     <?php
     $categorii = Categorii::find()->select(['id' , 'nume' , 'parinte'])
