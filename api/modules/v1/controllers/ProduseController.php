@@ -3,7 +3,8 @@
 namespace api\modules\v1\controllers;
 
 use api\modules\v1\models\Produse;
-use yii\helpers\VarDumper;
+use Yii;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 
 class ProduseController extends ActiveController
@@ -13,28 +14,35 @@ class ProduseController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
-        unset($actions['create'] , $actions['index'], $actions['view'], $actions['update']);
+        unset($actions['create'] , /*$actions['index'],*/ $actions['view'], $actions['update']);
         return $actions;
     }
 
-
-    public function actionIndex() {
-        $items = [];
-        $produse = Produse::find()->all();
-        foreach ($produse as $produs) {
-            $items[] = [
-                'produs' => $produs,
-                'pret' => $produs->getPretCurent()->pret,
-                'istoric_preturi' => $produs->preturiProduses,
-            ];
-        }
-        return $items;
+    public function behaviors() {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::className()   
+        ]; 
+        return $behaviors;
     }
+
+//    public function actionIndex() {
+//        $items = [];
+//        $produse = Produse::find()->all();
+//        foreach ($produse as $produs) {
+//            $items[] = [
+//                'produs' => $produs,
+//                'pret' => $produs->getPretCurent()->pret,
+//                'istoric_preturi' => $produs->preturiProduses,
+//            ];
+//        }
+//        return $items;
+//    }
 
     public function actionCreate()
     {
         $model = new Produse();
-        if($model->saveOrUpdateWithPret(\Yii::$app->request->post(), '')) {
+        if($model->saveOrUpdateWithPret(Yii::$app->request->post(), '')) {
             $model->refresh();
             return [
                 'produs' => $model,
@@ -48,7 +56,7 @@ class ProduseController extends ActiveController
 
     public function actionUpdate($id) {
         $model = Produse::findOne($id);
-        if($model !== null && $model->saveOrUpdateWithPret(\Yii::$app->request->post(), '')) {
+        if($model !== null && $model->saveOrUpdateWithPret(Yii::$app->request->post(), '')) {
             $model->refresh();
             return [
                 'produs' => $model,
