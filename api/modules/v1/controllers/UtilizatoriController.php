@@ -13,6 +13,9 @@ class UtilizatoriController extends ActiveController
     public function actionLogin()
     {
         $user = User::findByEmail(\Yii::$app->request->post('email'));
+        if($user == null) {
+            return 'Utilizatorul nu exista';
+        }
         if (!$user || !$user->validatePassword(\Yii::$app->request->post('password'))) {
             $user->addError('login','Combinatia formata din email si parola este incorecta');
         }

@@ -22225,3 +22225,226 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1672583965.7856
     'REQUEST_TIME' => 1672583965
 ]
+2023-01-01 15:27:47 [::1][-][-][error][Error] Error: Call to a member function addError() on null in C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\UtilizatoriController.php:17
+Stack trace:
+#0 [internal function]: api\modules\v1\controllers\UtilizatoriController->actionLogin()
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/utilizatori/...', Array)
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#7 {main}
+2023-01-01 15:27:46 [::1][-][-][info][application] $_GET = [
+    'email' => 'email@gmail.com'
+    'password' => 'test12345'
+]
+
+$_POST = [
+    'email' => 'radumrn@gmail.com'
+    'password' => 'test1234'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.30.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'c938a9b1-caef-44a3-ac2f-a7c01c168c81'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '43'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\Program Files\\PowerShell\\7\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk-17.0.1\\bin;C:\\Program Files\\Java\\jdk1.8.0_202\\bin;C:\\Program Files\\OpenJDK\\openjdk-8u312-b07\\bin;C:\\Users\\vladg\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\xampp\\php;C:\\composer;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.3\\bin;C:\\Program Files\\JetBrains\\CLion 2021.2.3\\bin;C:\\Users\\vladg\\.dotnet\\tools;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '52608'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/utilizatori/login'
+    'REDIRECT_QUERY_STRING' => 'email=email@gmail.com&password=test12345'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'email=email@gmail.com&password=test12345'
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/utilizatori/login?email=email@gmail.com&password=test12345'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1672586866.9514
+    'REQUEST_TIME' => 1672586866
+]
+2023-01-01 15:28:08 [::1][-][-][error][Error] Error: Call to a member function addError() on null in C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\UtilizatoriController.php:17
+Stack trace:
+#0 [internal function]: api\modules\v1\controllers\UtilizatoriController->actionLogin()
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/utilizatori/...', Array)
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#7 {main}
+2023-01-01 15:28:08 [::1][-][-][info][application] $_GET = [
+    'email' => 'email@gmail.com'
+    'password' => 'test12345'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.30.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'bed65dff-daab-4b60-9212-2030a96a5d96'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '0'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\Program Files\\PowerShell\\7\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk-17.0.1\\bin;C:\\Program Files\\Java\\jdk1.8.0_202\\bin;C:\\Program Files\\OpenJDK\\openjdk-8u312-b07\\bin;C:\\Users\\vladg\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\xampp\\php;C:\\composer;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.3\\bin;C:\\Program Files\\JetBrains\\CLion 2021.2.3\\bin;C:\\Users\\vladg\\.dotnet\\tools;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '52620'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/utilizatori/login'
+    'REDIRECT_QUERY_STRING' => 'email=email@gmail.com&password=test12345'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => 'email=email@gmail.com&password=test12345'
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/utilizatori/login?email=email@gmail.com&password=test12345'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1672586888.5364
+    'REQUEST_TIME' => 1672586888
+]
+2023-01-01 15:28:45 [::1][-][-][error][Error] Error: Call to a member function addError() on null in C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\UtilizatoriController.php:17
+Stack trace:
+#0 [internal function]: api\modules\v1\controllers\UtilizatoriController->actionLogin()
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('login', Array)
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/utilizatori/...', Array)
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#6 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#7 {main}
+2023-01-01 15:28:45 [::1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'radumrn@gmail.com'
+    'password' => 'test1234'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.30.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '71cdec7e-57dd-4ac1-bb31-adebb67c99b1'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '43'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\Program Files\\PowerShell\\7\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\Java\\jdk-17.0.1\\bin;C:\\Program Files\\Java\\jdk1.8.0_202\\bin;C:\\Program Files\\OpenJDK\\openjdk-8u312-b07\\bin;C:\\Users\\vladg\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\xampp\\php;C:\\composer;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin;C:\\Program Files\\JetBrains\\IntelliJ IDEA Community Edition 2021.2.3\\bin;C:\\Program Files\\JetBrains\\CLion 2021.2.3\\bin;C:\\Users\\vladg\\.dotnet\\tools;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.53 (Win64) OpenSSL/1.1.1n PHP/8.1.6'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '52639'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1672586925.9012
+    'REQUEST_TIME' => 1672586925
+]
