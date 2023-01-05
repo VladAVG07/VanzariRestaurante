@@ -1,9 +1,9 @@
 <?php
- 
+
 $params = array_merge(
         require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
 );
- 
+
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
@@ -12,7 +12,9 @@ return [
     'modules' => [
         'v1' => [
             'basePath' => '@app/modules/v1',
-            'class' => 'api\modules\v1\Module'   // here is our v1 modules
+            'class' => 'api\modules\v1\Module',   // here is our v1 modules
+           // 'controllerNamespace' => 'api\modules\v1\controllers'
+
         ]
     ],
     'components' => [
@@ -22,15 +24,16 @@ return [
         ],
         'response' => [
             'class' => 'yii\web\Response',
+            'format' => yii\web\Response::FORMAT_JSON,
             'on beforeSend' => function ($event) {
- 
                 $response = $event->sender;
                 $message = $response->statusText;
+                $messages = null;
                 $success = $response->isSuccessful;
                 $data = $success ? $response->data : null;
-                //var_dump($response->statusCode);
                 if ($response->statusCode == 422) {
                     $message = $response->data[0]['message'];
+                    $messages = $response->data;
                     /*   $response->data = [
                       'success' => $success,
                       'data' => $data,
@@ -42,14 +45,39 @@ return [
                         'data' => $data,
                         'message' => $response->statusText,
                     ];
-                } /* else { */
-                $response->statusCode = 200;
-                $response->data = [
-                    'success' => $success,
-                    'data' => $data,
-                    'message' => $message,
-                        //'statusCode'=>$response->statusCode,
-                ];
+                } else if ($response->statusCode == 404) {
+                    $response->data = [
+                        'success' => $success,
+                        'data' => $data,
+                        'message' => $response->statusText,
+                    ];
+                }
+
+                /* else { */
+                $message = is_array($response->data) && array_key_exists('message', $response->data) ? $response->data['message'] : $message;
+                if (Yii::$app->request->get('suppress_response_code')) {
+
+                    $code = $response->statusCode;
+                    $response->statusCode = 200;
+                    $response->data = [
+                        'success' => $success,
+                        'data' => $data,
+                        'message' => $message,
+                        'messages' => $messages,
+                        'code' => $code,
+                    ];
+                } else {
+                    $code = $response->statusCode;
+                    $response->statusCode = 200;
+                    $response->data = [
+                        'success' => $success,
+                        'data' => $data,
+                        'messages' => $messages,
+                        'message' => $message,
+                        'code' => $code,
+                    ];
+                }
+                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                 //}
             }
         ,
@@ -69,127 +97,29 @@ return [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
-        'urlBackend' => [
-            'class' => 'yii\web\urlManager',
-            'baseUrl' => 'backend/web/',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ],
+//        'urlBackend' => [
+//            'class' => 'yii\web\urlManager',
+//            'baseUrl' => 'backend/web/',
+//            'enablePrettyUrl' => true,
+//            'showScriptName' => false,
+//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
+            'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
                 [
+                   // 'class' => 'api\modules\v1\rules\CustomUrlRule',
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/sala', // our country api rule,
-                    'pluralize' => false,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>',
-                    //'{numar}' => '<numar:.*>',
-                    //'{institutie}' => '<institutie:\\w+>',
-                    ],
-                    'extraPatterns' => [
-                    //'GET save-dosar/{numar}/{institutie}' => 'save-dosar',
-                    //'GET ddd' => 'dosare', // 'xxxxx' refers to 'actionXxxxx'
-                    ],
-                    'except' => ['delete', 'create', 'update']
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/recenzie', // our country api rule,
-                    'pluralize' => false,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>',
-                    //'{numar}' => '<numar:.*>',
-                    //'{institutie}' => '<institutie:\\w+>',
-                    ],
-                    'extraPatterns' => [
-                    //'GET save-dosar/{numar}/{institutie}' => 'save-dosar',
-                    //'GET ddd' => 'dosare', // 'xxxxx' refers to 'actionXxxxx'
-                    ],
-                // 'except'=>['delete','create','update']
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/device', // our country api rule,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ],
-                // 'except' => ['delete', 'index'],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/user', // our country api rule,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>',
-                        '{user}' => '<user:>',
-                        '{pass}' => '<pass:>',
-                        '{email}' => '<email:>',
-                        '{tokens}' => '<tokens:>',
-                        '{token}' => '<token:[a-zA-Z0-9\\-_]{32}>',
-                    ],
-                    'except' => ['update', 'view', 'delete'],
-                    'extraPatterns' => [
-                        //      'GET block-user/{id}'=>'block-user',
-                        //    'GET unblock-user/{id}'=>'unblock-user',
-                        //  'POST change-password/{token}' => 'change-password',
-                        'POST edit' => 'edit',
-                        'DELETE delete-disponibilitate/{id}' => 'delete-disponibilitate',
-                        'POST add-disponibilitate' => 'add-disponibilitate',
-                        'POST add-rezervare' => 'add-rezervare',
-                        'POST edit-disponibilitate/{id}' => 'edit-disponibilitate',
-                        'GET login/{user}/{pass}' => 'login',
-                        'GET unsubscribe-push/{id}' => 'unsubscribe-push',
-                        'GET subscribe-push' => 'subscribe-push',
-                    //'GET check-email/{email}' => 'check-email',
-                    //'GET check-username/{user}' => 'check-username',
-                    //'GET reset-password/{email}' => 'reset-password',
-                    // 'GET myads' => 'myadvertiserads', // 'xxxxx' refers to 'actionXxxxx'
-                    ],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/stadiu', // our country api rule,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ],
-                    'except' => ['delete', 'create', 'update'],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/message', // our country api rule,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>',
-                        'GET test' => 'test',
-                    ],
-                    'except' => ['delete'],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/categorie-caz', // our country api rule,
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ],
-                    'except' => ['delete', 'update'],
-                ],
-                [
-                    'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/raport-detalii', // our country api rule,
+                    'controller' => 'v1/categorii', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
-                    'except' => ['delete', 'update'],
+//                    'except' => ['delete'],
                 ],
             ],
         ]
     ],
     'params' => $params,
 ];
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
