@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'pret',
                                 'value' => function ($model) {
-                                    return $model->getPretCurent()->pret . ' RON';
+                                    return $model->pret_curent . ' RON';
                                 }
                             ],
                             //'data_productie',

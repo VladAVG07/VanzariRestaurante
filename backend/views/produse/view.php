@@ -28,11 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
                             'cod_produs',
                             'nume',
                             'descriere',
-                            'data_productie',
+                            [
+                                'attribute' => 'data_productie',
+                                'value' => function($model) {
+                                    return Yii::$app->formatter->asDatetime($model->data_productie);
+                                }
+                            ],
                             [
                                 'attribute' => 'pret curent',
                                 'value' => function ($model) {
-                                    return $model->getPretCurent()->pret . ' RON';
+                                    return $model->pret_curent . ' RON';
                                 }
                             ],
                         ],
@@ -56,22 +61,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?=
                     GridView::widget([
                         'dataProvider' => new ActiveDataProvider([
-                                'query' => $model->getPreturiProduses()
-                        ]),
+                            'query' => $model->getPreturiProduses()
+                                ]),
                         'columns' => [
-                            'data_inceput',
+                            [
+                                'attribute' => 'data_inceput',
+                                'value' => function($model) {
+                                    return Yii::$app->formatter->asDatetime($model->data_inceput);
+                                }
+                            ],
                             [
                                 'attribute' => 'data_sfarsit',
                                 'format' => 'raw',
                                 'value' => function($model) {
-                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : $model->data_sfarsit, 
-                                            ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000' , $model->data_sfarsit ? 'normal' : 'bold')]);
+                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : Yii::$app->formatter->asDateTime($model->data_sfarsit), ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000', $model->data_sfarsit ? 'normal' : 'bold')]);
                                 }
-                                ],
+                            ],
                             'pret',
 //                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
-                            'summary' => '',
+                        'summary' => '',
 //                        'summaryOptions' => ['class' => 'summary mb-2'],
                         'pager' => [
                             'class' => 'yii\bootstrap4\LinkPager',

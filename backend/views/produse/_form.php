@@ -68,7 +68,7 @@ use \kartik\datecontrol\DateControl;
 
     <div class="row">
         <div class="col-md-2">
-            <?= $form->field($modelPret, 'pret')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'pret_curent')->textInput(['maxlength' => true]) ?>
         </div>
         <div class="col-md-5">
             <?=

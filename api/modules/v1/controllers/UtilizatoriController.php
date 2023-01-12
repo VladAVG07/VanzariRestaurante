@@ -3,20 +3,30 @@
 namespace api\modules\v1\controllers;
 
 use api\modules\v1\models\User;
-use yii\helpers\VarDumper;
+use Yii;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 
 class UtilizatoriController extends ActiveController
 {
     public $modelClass = 'api\modules\v1\models\User';
 
+        public function behaviors() {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::className(),
+            'only' => ['change-password'],
+        ]; 
+        return $behaviors;
+    }
+    
     public function actionLogin()
     {
-        $user = User::findByEmail(\Yii::$app->request->post('email'));
+        $user = User::findByEmail(Yii::$app->request->post('email'));
         if($user == null) {
             return 'Utilizatorul nu exista';
         }
-        if (!$user || !$user->validatePassword(\Yii::$app->request->post('password'))) {
+        if (!$user || !$user->validatePassword(Yii::$app->request->post('password'))) {
             $user->addError('login','Combinatia formata din email si parola este incorecta');
         }
         return $user;
@@ -24,8 +34,8 @@ class UtilizatoriController extends ActiveController
 
     public function actionChangePassword() {
         $user= new User();
-        $user->attributes = \Yii::$app->request->post();
-        $user->new_password = \Yii::$app->request->post('new_password');
+        $user->attributes = Yii::$app->request->post();
+        $user->new_password = Yii::$app->request->post('new_password');
 
         $userDB = User::findByEmail($user->email);
         if(!is_null($userDB) && $userDB->validatePassword($user->password)) {

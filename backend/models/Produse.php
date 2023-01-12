@@ -15,6 +15,8 @@ use yii\helpers\VarDumper;
  * @property string $nume
  * @property string $descriere
  * @property string $data_productie
+ * @property float|null $pret_curent
+ * @property int|null $valid
  *
  * @property Categorii $categorie0
  * @property PreturiProduse[] $preturiProduses
@@ -38,8 +40,9 @@ class Produse extends \yii\db\ActiveRecord
     {
         return [
             [['categorie', 'cod_produs', 'nume', 'descriere', 'data_productie'], 'required'],
-            [['categorie', 'cod_produs'], 'integer'],
+            [['categorie', 'cod_produs', 'valid'], 'integer'],
             [['data_productie'], 'safe'],
+            [['pret_curent'], 'number'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
             [['cod_produs'], 'unique'],
@@ -59,6 +62,8 @@ class Produse extends \yii\db\ActiveRecord
             'nume' => 'Nume',
             'descriere' => 'Descriere',
             'data_productie' => 'Data Productie',
+            'pret_curent' => 'Pret',
+            'valid' => 'Valid'
         ];
     }
 
@@ -112,6 +117,7 @@ class Produse extends \yii\db\ActiveRecord
                 $modelPret->load($data , $formName);
                 $modelPret->valid = 1;
                 $modelPret->produs = $this->id;
+                $modelPret->pret = $this->pret_curent;
                 if($modelPret->save()) {
                     $transaction->commit();
                     return true;
