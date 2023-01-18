@@ -144,6 +144,16 @@ return [
                     ],
 //                    'except' => ['delete'],
                 ],
+                [
+                    // 'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/comenzi', // our country api rule,
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+//                    'except' => ['delete'],
+                ],
             ],
         ]
     ],
