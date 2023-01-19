@@ -32,7 +32,7 @@ class ComenziDetalii extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['comanda', 'status', 'data_ora_inceput', 'data_ora_sfarsit'], 'required'],
+            [['comanda', 'status', 'data_ora_inceput'], 'required'],
             [['comanda', 'status'], 'integer'],
             [['data_ora_inceput', 'data_ora_sfarsit'], 'safe'],
             [['status'], 'exist', 'skipOnError' => true, 'targetClass' => ComenziStatusuri::class, 'targetAttribute' => ['status' => 'id']],

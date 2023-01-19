@@ -2,7 +2,12 @@
 
 namespace backend\models;
 
+use common\models\User;
 use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+use yii\db\Exception;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "comenzi".
@@ -26,7 +31,7 @@ use Yii;
  * @property ComenziDetalii $status0
  * @property User $utilizator0
  */
-class Comenzi extends \yii\db\ActiveRecord
+class Comenzi extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -42,7 +47,7 @@ class Comenzi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['numar_comanda', 'utilizator', 'status', 'data_ora_creare', 'data_ora_finalizare', 'pret', 'tva', 'mentiuni', 'canal', 'mod_plata'], 'required'],
+            [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
             [['numar_comanda', 'utilizator', 'status'], 'integer'],
             [['data_ora_creare', 'data_ora_finalizare'], 'safe'],
             [['pret', 'tva'], 'number'],
@@ -74,23 +79,87 @@ class Comenzi extends \yii\db\ActiveRecord
     }
 
     
-    public function saveComanda($data ,$formName = null) {
+    public function saveComanda($data) {
+        $transaction = Yii::$app->db->beginTransaction();
+        
+        try {
+            $pret = 0;
+            $produseComanda = Yii::$app->request->post('produse');
+            $this->numar_comanda = 23;
+            $this->canal = 'web';
+            $this->data_ora_creare = new Expression('NOW()');
+            $this->tva = 0.09;
+            $this->utilizator = Yii::$app->user->id;
+//            $this->status =1;
+            $this->pret = 0;
+//            $this->mod_plata = 'card';
+//            $this->mentiuni = '';
+            if($this->load(Yii::$app->request->post() , '') && $this->save()) {
+                \yii\helpers\VarDumper::dump('AM ajuns aici');
+                foreach ($produseComanda as $produs) {
+                    $modelComandaLinie = new ComenziLinii();
+                    $modelComandaLinie->comanda = $this->id;
+                    $modelComandaLinie->cantitate = $produs['cantitate'];
+                    $modelComandaLinie->produs = $produs['id'];
+                    $modelComandaLinie->pret = Produse::find()->where(['id' => $produs['id']])->one()->pret_curent * $produs['cantitate'];
+                    $pret+=$modelComandaLinie->pret;
+                    $modelComandaLinie->save();
+                }
+                $this->refresh();
+                $this->pret = $pret;
+                $statusCurent = new ComenziDetalii();
+                $statusCurent->comanda = $this->id;
+                $statusCurent->status = 1;
+                $statusCurent->data_ora_inceput = new Expression('NOW()');
+                $statusCurent->save();
+                $statusCurent->refresh();
+                $this->status = $statusCurent->id;
+                if($this->save()) {
+                    $transaction->commit();
+                    return true;
+                }
+            }
+            
+        } catch (Exception $ex) {
+            $transaction->rollBack();
+        }
+//        \yii\helpers\VarDumper::dump(Yii::$app->request->post());
+        return false;
+    }
+    
+    public function changeStatus($id) {
         $transaction = Yii::$app->db->beginTransaction();
         
         try {
             
+            $comanda = $this->findOne(['id' => $id]);
+            $statusVechi = ComenziDetalii::findOne(['id' => $comanda->status]);
+            $statusVechi->data_ora_sfarsit = new Expression('NOW()');
+            $statusVechi->save();
             
+            $statusNou = new ComenziDetalii();
+            $statusNou->comanda = $comanda->id;
+            $statusNou->status = ComenziStatusuri::findOne(['id' => Yii::$app->request->post('id_status')]);
+            $statusNou->data_ora_inceput = new Expression('NOW()');
+            $statusNou->save();
+            $statusNou->refresh();
+            
+            $comanda->status = $statusNou->id;
+            if($comanda->save()) {
+                $transaction->commit();
+                return true;
+            }
             
         } catch (Exception $ex) {
-            
+            $transaction->rollBack();
+            return false;
         }
-        
     }
     
     /**
      * Gets query for [[Bonuri]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getBonuri()
     {
@@ -100,7 +169,7 @@ class Comenzi extends \yii\db\ActiveRecord
     /**
      * Gets query for [[ComenziLiniis]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getComenziLiniis()
     {
@@ -110,7 +179,7 @@ class Comenzi extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Facturi]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getFacturi()
     {
@@ -120,7 +189,7 @@ class Comenzi extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Produses]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProduses()
     {
@@ -130,7 +199,7 @@ class Comenzi extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Status0]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getStatus0()
     {
@@ -140,7 +209,7 @@ class Comenzi extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Utilizator0]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getUtilizator0()
     {

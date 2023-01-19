@@ -17,4 +17,14 @@ use backend\models\Comenzi as C;
  */
 class Comenzi extends C{
     //put your code here
+    public function fields() {
+        $fields = parent::fields();
+        $fields['produse'] = function($model) {
+            return $model->comenziLiniis;
+        };
+//        $fields['status'] = function($model) {
+//            return $model->status0->status;
+//        };
+        return $fields;
+    }
 }

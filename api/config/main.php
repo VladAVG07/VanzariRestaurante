@@ -152,6 +152,9 @@ return [
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
+                    'extraPatterns' => [
+                        'POST changeStatus' => 'change-status',
+                    ],
 //                    'except' => ['delete'],
                 ],
             ],
