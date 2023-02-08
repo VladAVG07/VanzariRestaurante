@@ -30,8 +30,8 @@ class Facturi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['serie', 'comanda', 'data_emitere'], 'required'],
-            [['comanda'], 'integer'],
+            [['id', 'serie', 'comanda', 'data_emitere'], 'required'],
+            [['id', 'comanda'], 'integer'],
             [['data_emitere'], 'safe'],
             [['serie'], 'string', 'max' => 255],
             [['serie'], 'unique'],

@@ -34,8 +34,8 @@ class Bonuri extends \yii\db\ActiveRecord
             [['comanda'], 'integer'],
             [['data_emitere'], 'safe'],
             [['serie'], 'string', 'max' => 255],
-            [['serie'], 'unique'],
             [['comanda'], 'unique'],
+            [['serie'], 'unique'],
             [['comanda'], 'exist', 'skipOnError' => true, 'targetClass' => Comenzi::class, 'targetAttribute' => ['comanda' => 'id']],
         ];
     }
