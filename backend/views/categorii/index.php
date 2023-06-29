@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\bootstrap5\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\CategoriiSearch */
@@ -10,6 +11,19 @@ use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Categorii');
 $this->params['breadcrumbs'][] = $this->title;
+?>
+<?= \hail812\adminlte\widgets\Alert::widget([
+    'type' => 'success',
+    'body' => '<h3>Congratulations!</h3>'
+]) ?>
+<?php Modal::begin([
+    'title' => '<h2>Hello world</h2>',
+    'toggleButton' => ['label' => 'click me'],
+]);
+
+echo 'Say hello...';
+
+Modal::end();
 ?>
 <div class="container-fluid">
     <div class="row">

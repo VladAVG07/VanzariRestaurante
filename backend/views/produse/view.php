@@ -31,13 +31,34 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'data_productie',
                                 'value' => function($model) {
-                                    return Yii::$app->formatter->asDatetime($model->data_productie);
+                                    return Yii::$app->formatter->asDate($model->data_productie);
                                 }
                             ],
                             [
                                 'attribute' => 'pret curent',
                                 'value' => function ($model) {
                                     return $model->pret_curent . ' RON';
+                                }
+                            ],
+                            [
+                                'attribute' => 'stoc',
+                                'value' => function ($model) {
+                                    if ($model->stocabil)
+                                        if (!is_null(backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa')))
+                                            return backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa');
+                                        else
+                                            return 0;
+                                    else
+                                        return '-';
+                                }       
+                            ],
+                            [
+                                'attribute' => 'alerta_stoc',
+                                'value' => function ($model) {
+                                    if ($model->stocabil)
+                                        return $model->alerta_stoc;
+                                    else
+                                        return '-';
                                 }
                             ],
                         ],
@@ -67,14 +88,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             [
                                 'attribute' => 'data_inceput',
                                 'value' => function($model) {
-                                    return Yii::$app->formatter->asDatetime($model->data_inceput);
+                                    return Yii::$app->formatter->asDate($model->data_inceput);
                                 }
                             ],
                             [
                                 'attribute' => 'data_sfarsit',
                                 'format' => 'raw',
                                 'value' => function($model) {
-                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : Yii::$app->formatter->asDateTime($model->data_sfarsit), ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000', $model->data_sfarsit ? 'normal' : 'bold')]);
+                                    return Html::tag('span', ($model->data_sfarsit == null) ? '&infin;' : Yii::$app->formatter->asDate($model->data_sfarsit), ['style' => sprintf('color:%s; font-weight:%s', $model->data_sfarsit ? '#000' : '#ff0000', $model->data_sfarsit ? 'normal' : 'bold')]);
                                 }
                             ],
                             'pret',

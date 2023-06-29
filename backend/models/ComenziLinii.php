@@ -10,27 +10,26 @@ use Yii;
  * @property int $id
  * @property int $comanda
  * @property int $produs
+ * @property string $numeProdus
  * @property int $cantitate
  * @property float $pret
  *
  * @property Comenzi $comanda0
  * @property Produse $produs0
  */
-class ComenziLinii extends \yii\db\ActiveRecord
-{
+class ComenziLinii extends \yii\db\ActiveRecord {
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'comenzi_linii';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['comanda', 'produs', 'cantitate', 'pret'], 'required'],
             [['comanda', 'produs', 'cantitate'], 'integer'],
@@ -44,8 +43,7 @@ class ComenziLinii extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'comanda' => 'Comanda',
@@ -60,8 +58,7 @@ class ComenziLinii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getComanda0()
-    {
+    public function getComanda0() {
         return $this->hasOne(Comenzi::class, ['id' => 'comanda']);
     }
 
@@ -70,8 +67,7 @@ class ComenziLinii extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProdus0()
-    {
+    public function getProdus0() {
         return $this->hasOne(Produse::class, ['id' => 'produs']);
     }
 }

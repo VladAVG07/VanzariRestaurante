@@ -47,9 +47,12 @@
 //                    ['label' => 'Administrare Categorii', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
                     ['label' => 'Administrare', 'header' => true],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Comenzi', 'url' => ['comenzi/index']],
                     ['label' => 'Categorii' ,'url' => ['categorii/index'] , 'name' => 'categorii'],
                     ['label' => 'Produse', 'url' => ['produse/index']],
                     ['label' => 'Stocuri', 'url' => ['stocuri/index']],
+                    ['label' => 'Persoane', 'url' => ['persoane/index']],
+                    ['label' => 'Functii', 'url' => ['functii/index']],
 //                    ['label' => 'MULTI LEVEL EXAMPLE', 'header' => true],
 //                    ['label' => 'Level1'],
 //                    [

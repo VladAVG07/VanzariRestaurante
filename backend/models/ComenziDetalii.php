@@ -12,6 +12,7 @@ use Yii;
  * @property int $status
  * @property string $data_ora_inceput
  * @property string $data_ora_sfarsit
+ * @property string $detalii
  *
  * @property Comenzi[] $comenzis
  * @property ComenziStatusuri $status0
@@ -34,6 +35,7 @@ class ComenziDetalii extends \yii\db\ActiveRecord
         return [
             [['comanda', 'status', 'data_ora_inceput'], 'required'],
             [['comanda', 'status'], 'integer'],
+            [['detalii'], 'string', 'max' => 255],
             [['data_ora_inceput', 'data_ora_sfarsit'], 'safe'],
             [['status'], 'exist', 'skipOnError' => true, 'targetClass' => ComenziStatusuri::class, 'targetAttribute' => ['status' => 'id']],
         ];
@@ -50,6 +52,7 @@ class ComenziDetalii extends \yii\db\ActiveRecord
             'status' => 'Status',
             'data_ora_inceput' => 'Data Ora Inceput',
             'data_ora_sfarsit' => 'Data Ora Sfarsit',
+            'detalii' => 'Detalii',
         ];
     }
 

@@ -19,7 +19,6 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                 <div class="col-md-12">
                     <?=$this->render('_form', [
                         'model' => $model,
-                        'modelPret' => $modelPret
                     ]) ?>
                 </div>
             </div>

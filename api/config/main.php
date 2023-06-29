@@ -154,6 +154,9 @@ return [
                     ],
                     'extraPatterns' => [
                         'POST changeStatus' => 'change-status',
+                        'POST changeMetodaPlata' => 'change-metoda-plata',
+                        'PUT adaugareProdusComanda' => 'adaugare-produs-comanda',
+                        'PUT stergereProdusComanda' => 'stergere-produs-comanda',
                     ],
 //                    'except' => ['delete'],
                 ],

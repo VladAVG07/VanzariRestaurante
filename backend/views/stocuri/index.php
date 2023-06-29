@@ -43,7 +43,18 @@ $this->params['breadcrumbs'][] = $this->title;
 //                                    'attribute' => 'cantitate',
 //                                    'class' => 'kartik\grid\EditableColumn'
 //                            ],
-                            'cantitate',
+                        [
+                          'attribute' => 'cantitate_ramasa',
+//                            'value' => function($model){
+//                                $stocuri = backend\models\Stocuri::findAll(['produs' => $model->produs0->id]);
+//                                $cantitate = 0;
+//                                foreach ($stocuri as $stoc){
+//                                    $cantitate += $stoc->cantitate;
+//                                }
+//                                return $cantitate;
+//                            }
+                        ],
+//                            'cantitate',
 //                            [
 //                                    'attribute' => 'cantitate',
 //                                    'class' => '\kartik\grid\EditableColumn',

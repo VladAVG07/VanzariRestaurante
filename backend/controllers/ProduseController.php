@@ -67,14 +67,13 @@ class ProduseController extends Controller
     public function actionCreate()
     {
         $model = new Produse();
-
-        if($model->saveOrUpdateWithPret(Yii::$app->request->post())) {
+        $model->stocabil=0;
+        if($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'modelPret' => new PreturiProduse()
         ]);
     }
 
@@ -88,16 +87,22 @@ class ProduseController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-//        $modelPret = new PreturiProduse();
-        $pretVechi = $model->getPretCurent();
-
-        if($model->saveOrUpdateWithPret(Yii::$app->request->post())) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
+        $model->data_productie = strtotime($model->data_productie);
+        $query = PreturiProduse::find()->where(['and', ['produs' => $id],
+                        ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]]);
+        $preturiViitoare = count($query->all());
+        
+        if ($preturiViitoare==0){
+            if($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }else
+            if($model->load(Yii::$app->request->post()) && $model->updateProdus()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        
         return $this->render('update', [
             'model' => $model,
-            'modelPret' => $pretVechi
         ]);
     }
 

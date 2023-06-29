@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 use backend\models\Categorii;
-
+use rmrevin\yii\fontawesome\FA;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ProduseSearch */
@@ -26,11 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
                     <?php Pjax::begin(); ?>
-                    <?php // echo $this->render('_search', ['model' => $searchModel]);
+                    <?php
+                    // echo $this->render('_search', ['model' => $searchModel]);
                     //
-                    $categorii = \backend\models\Categorii::find()->select(['id' , 'nume' , 'parinte'])
-                        ->orderBy(['parinte'=> SORT_ASC])->all();
-                    //  ?>
+                    $categorii = \backend\models\Categorii::find()->select(['id', 'nume', 'parinte'])
+                                    ->orderBy(['parinte' => SORT_ASC])->all();
+                    //  
+                    ?>
 
                     <?=
                     GridView::widget([
@@ -38,14 +40,39 @@ $this->params['breadcrumbs'][] = $this->title;
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            'nume',
+                            [
+                                'attribute' => 'nume',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    if (!$model->stocabil) {
+                                        return $model->nume;
+                                    }
+                                    $cantitate = backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate');
+                                    if ($cantitate == 0) {
+                                        //<li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                        return Html::tag('span', $model->nume . '' . Html::tag('i', '', ['class' => 'fas fa-exclamation-triangle', 'style' => 'color: #ff0000;'])
+                                                        , ['data-toggle' => "tooltip",
+                                                    'data-placement' => "right",
+                                                    'title' => "Stoc inexistent"]
+                                        );
+                                    }else if ($cantitate < $model->alerta_stoc){
+                                        return Html::tag('span', $model->nume . '' . Html::tag('i', '', ['class' => 'fas fa-exclamation-triangle', 'style' => 'color: #ff9500;'])
+                                                        , ['data-toggle' => "tooltip",
+                                                    'data-placement' => "right",
+                                                    'title' => "Stoc limitat"]
+                                        );
+                                    }else
+                                        return $model->nume;
+                                        
+                                        
+                                }
+                            ],
+                            //  'nume',
                             [
                                 'attribute' => 'categorie',
                                 'value' => 'categorie0.nume', //relation name with their attribute
                                 //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
-                                'filter' => Html::activeDropDownList($searchModel, 'categorie',
-                                    Categorii::formatItemsArray($categorii),
-                                    ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
+                                'filter' => Html::activeDropDownList($searchModel, 'categorie', Categorii::formatItemsArray($categorii), ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
                             ],
                             'cod_produs',
                             'descriere',

@@ -54,6 +54,7 @@ class StocuriController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+        //    'istoric' => Stocuri::findAll(['produs' => $this->findModel($id)->produs]),
         ]);
     }
 
@@ -66,7 +67,7 @@ class StocuriController extends Controller
     {
         $model = new Stocuri();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->saveStoc()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

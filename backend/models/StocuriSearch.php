@@ -39,7 +39,7 @@ class StocuriSearch extends Stocuri
      */
     public function search($params)
     {
-        $query = Stocuri::find();
+        $query = Stocuri::find()->select(['id','produs',new \yii\db\Expression('SUM(cantitate_ramasa) AS cantitate_ramasa')]);
 
         // add conditions that should always apply here
 
@@ -59,8 +59,9 @@ class StocuriSearch extends Stocuri
         $query->andFilterWhere([
             'id' => $this->id,
             'produs' => $this->produs,
-            'cantitate' => $this->cantitate,
+            'cantitate' => $this->cantitate_ramasa,
         ]);
+        $query->groupBy(['produs']);
 
         return $dataProvider;
     }

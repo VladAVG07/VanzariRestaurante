@@ -36,7 +36,7 @@ class PreturiProduse extends \yii\db\ActiveRecord
             [['produs', 'valid'], 'integer'],
             [['pret'], 'number'],
             [['data_inceput', 'data_sfarsit'], 'safe'],
-            [['data_inceput', 'data_sfarsit'], 'unique'],
+           // [['data_inceput', 'data_sfarsit'], 'unique'],
             [['produs'], 'exist', 'skipOnError' => true, 'targetClass' => Produse::class, 'targetAttribute' => ['produs' => 'id']],
         ];
     }

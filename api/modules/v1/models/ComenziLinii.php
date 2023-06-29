@@ -17,4 +17,12 @@ use backend\models\ComenziLinii as CL;
  */
 class ComenziLinii  extends CL{
     //put your code here
+    public function fields() {
+        $fields = parent::fields();
+        $fields['nume_produs'] = function($model) {
+            return $model->produs0->nume;
+        };
+        unset($fields['id'], $fields['comanda'], $fields['produs']);
+        return $fields;
+    }
 }

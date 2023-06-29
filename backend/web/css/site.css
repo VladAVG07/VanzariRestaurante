@@ -88,3 +88,38 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+#list-wrapper {
+    background-color:red;
+}
+
+#invoice-POS{
+    box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
+    padding:2mm;
+    margin: 0 auto;
+    width: 80mm;
+    background: #FFF;  
+}
+#invoice-POS h4{
+    margin:0;
+    padding:0;
+    font-weight:normal;
+}
+
+.title{
+    font-size: 15px;
+     margin:0;
+    padding:0;
+}
+
+.pret-total-produs {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.bon-item{
+    padding-left:10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

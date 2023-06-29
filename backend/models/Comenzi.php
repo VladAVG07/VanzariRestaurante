@@ -22,7 +22,7 @@ use yii\db\Expression;
  * @property float $tva
  * @property string $mentiuni
  * @property string $canal
- * @property string $mod_plata
+ * @property int $mod_plata
  *
  * @property Bonuri $bonuri
  * @property ComenziLinii[] $comenziLiniis
@@ -30,6 +30,7 @@ use yii\db\Expression;
  * @property Produse[] $produses
  * @property ComenziDetalii $status0
  * @property User $utilizator0
+ * @property ModuriPlata $modPlata0
  */
 class Comenzi extends ActiveRecord {
 
@@ -46,11 +47,11 @@ class Comenzi extends ActiveRecord {
     public function rules() {
         return [
             [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
-            [['numar_comanda', 'utilizator', 'status'], 'integer'],
+            [['numar_comanda', 'utilizator', 'status', 'mod_plata'], 'integer'],
             [['data_ora_creare', 'data_ora_finalizare'], 'safe'],
             [['pret', 'tva'], 'number'],
             [['mentiuni'], 'string', 'max' => 255],
-            [['canal', 'mod_plata'], 'string', 'max' => 20],
+            [['canal'], 'string', 'max' => 20],
             [['utilizator'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['utilizator' => 'id']],
             [['status'], 'exist', 'skipOnError' => true, 'targetClass' => ComenziDetalii::class, 'targetAttribute' => ['status' => 'id']],
         ];
@@ -75,10 +76,16 @@ class Comenzi extends ActiveRecord {
         ];
     }
 
+    public function adaugaComanda(){
+        $transaction = Yii::$app->db->beginTransaction();
+        
+    }
+    
     public function saveComanda($data) {
         $transaction = Yii::$app->db->beginTransaction();
-
+        // \yii\helpers\VarDumper::dump("sunt aici");
         try {
+            //  \yii\helpers\VarDumper::dump("sunt aici");
             $pret = 0;
             $produseComanda = Yii::$app->request->post('produse');
             $this->numar_comanda = 23;
@@ -88,10 +95,12 @@ class Comenzi extends ActiveRecord {
             $this->utilizator = Yii::$app->user->id;
             //          $this->status =3;
             $this->pret = 0;
-//            $this->mod_plata = 'card';
+            //        $this->mod_plata = 1;
 //            $this->mentiuni = '';
+            //  \yii\helpers\VarDumper::dump("sunt aici");
             if ($this->load(Yii::$app->request->post(), '') && $this->save()) {
-               // \yii\helpers\VarDumper::dump('AM ajuns aici');
+                //   \yii\helpers\VarDumper::dump("sunt aici");
+                // \yii\helpers\VarDumper::dump('AM ajuns aici');
                 foreach ($produseComanda as $produs) {
                     $modelComandaLinie = new ComenziLinii();
                     $modelComandaLinie->comanda = $this->id;
@@ -99,6 +108,30 @@ class Comenzi extends ActiveRecord {
                     $modelComandaLinie->produs = $produs['id'];
                     $modelComandaLinie->pret = Produse::find()->where(['id' => $produs['id']])->one()->pret_curent * $produs['cantitate'];
                     $pret += $modelComandaLinie->pret;
+                    if (Produse::findOne(['id' => $produs['id']])->stocabil) {
+                        $query = Stocuri::find()->where(['and', ['produs' => $produs['id']], ['!=', 'cantitate_ramasa', 0]]);
+                        $stocuri = $query->all();
+                        $cantitate = $produs['cantitate'];
+                        foreach ($stocuri as $stoc) {
+                            if ($cantitate != 0) {
+                                //\yii\helpers\VarDumper::dump($stoc);
+                                if ($cantitate > $stoc->cantitate_ramasa) {
+                                    $cantitate -= $stoc->cantitate_ramasa;
+                                    $stoc->cantitate_ramasa = 0;
+                                } else {
+                                    $stoc->cantitate_ramasa -= $cantitate;
+                                    $cantitate = 0;
+                                }
+                                $save = $stoc->save();
+                                if (!$save) {
+                                    $transaction->rollBack();
+                                    return false;
+                                }
+                            } else
+                                break;
+                        }
+                        //   exit();
+                    }
                     $modelComandaLinie->save();
                     // \yii\helpers\VarDumper::dump($modelComandaLinie->errors);
                 }
@@ -109,52 +142,214 @@ class Comenzi extends ActiveRecord {
                 $statusCurent->status = 3;
                 $statusCurent->data_ora_inceput = new Expression('NOW()');
                 $statusCurent->save();
-                
+
 
                 $statusCurent->refresh();
                 $this->status = $statusCurent->id;
 //                $this->validate();
 //                \yii\helpers\VarDumper::dump( $this->errors);
+                //   \yii\helpers\VarDumper::dump("sunt aici");
                 if ($this->save()) {
+                    //   \yii\helpers\VarDumper::dump("sunt aici");
                     $transaction->commit();
                     return true;
                 }
             }
         } catch (Exception $ex) {
+            //   \yii\helpers\VarDumper::dump($this->errors);
             $transaction->rollBack();
         }
 //        \yii\helpers\VarDumper::dump(Yii::$app->request->post());
         return false;
     }
 
-    public function changeStatus($id) {
+    public function adaugareProdusComanda($id) {
         $transaction = Yii::$app->db->beginTransaction();
+        $comanda = $this->findOne(['id' => $id]);
+        $id_produs = Yii::$app->request->post('id_produs');
+        $cantitate = Yii::$app->request->post('cantitate');
 
         try {
+            if (!is_null(ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]))) {
+                $comandaLinie = ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]);
+                $comandaLinie->cantitate += $cantitate;
+                $comandaLinie->pret += Produse::find()->where(['id' => $id_produs])->one()->pret_curent * $cantitate;
+            } else {
+                $comandaLinie = new ComenziLinii();
+                $comandaLinie->comanda = $comanda->id;
+                $comandaLinie->produs = $id_produs;
+                $comandaLinie->cantitate = $cantitate;
+                $comandaLinie->pret = Produse::find()->where(['id' => $id_produs])->one()->pret_curent * $cantitate;
+            }
 
-            $comanda = $this->findOne(['id' => $id]);
-//            \yii\helpers\VarDumper::dump($comanda->id);
+            if (Produse::findOne(['id' => $id_produs])->stocabil) {
+                $query = Stocuri::find()->where(['and', ['produs' => $id_produs], ['!=', 'cantitate_ramasa', 0]]);
+                $stocuri = $query->all();
+                $c = $cantitate;
+                foreach ($stocuri as $stoc) {
+                    if ($c != 0) {
+                        //\yii\helpers\VarDumper::dump($stoc);
+                        if ($c > $stoc->cantitate_ramasa) {
+                            $c -= $stoc->cantitate_ramasa;
+                            $stoc->cantitate_ramasa = 0;
+                        } else {
+                            $stoc->cantitate_ramasa -= $c;
+                            $c = 0;
+                        }
+                        $save = $stoc->save();
+                        if (!$save) {
+                            $transaction->rollBack();
+                            return false;
+                        }
+                    } else
+                        break;
+                }
+            }
+
+            $comanda->pret += Produse::find()->where(['id' => $id_produs])->one()->pret_curent * $cantitate;
+
             $statusVechi = ComenziDetalii::findOne(['id' => $comanda->status]);
-        //    \yii\helpers\VarDumper::dump($statusVechi->id);
             $statusVechi->data_ora_sfarsit = new Expression('NOW()');
             $statusVechi->save();
 
             $statusNou = new ComenziDetalii();
             $statusNou->comanda = $comanda->id;
-         //   $statusNou->status = ComenziStatusuri::findOne(['id' => Yii::$app->request->post('id_status')]);
-            $statusNou->status = Yii::$app->request->post('id_status');
-        //    \yii\helpers\VarDumper::dump($statusNou->status->id);
             $statusNou->data_ora_inceput = new Expression('NOW()');
+            $statusNou->status = $statusVechi->status;
+            $statusNou->detalii = 'Sistem: Au fost adaugate la comanda ' . $cantitate . " " . Produse::find()->where(['id' => $id_produs])->one()->nume;
             $statusNou->save();
-            $statusNou->refresh();
-          //  \yii\helpers\VarDumper::dump($statusNou->errors);
-          //  \yii\helpers\VarDumper::dump($statusNou->id);
-         //   \yii\helpers\VarDumper::dump($comanda->status);
-        //    \yii\helpers\VarDumper::dump(' din in ');
+
+            $comanda->status = $statusNou->id;
+            if ($comandaLinie->save() && $comanda->save()) {
+                $transaction->commit();
+                return true;
+            }
+        } catch (Exception $ex) {
+            $transaction->rollBack();
+            return false;
+        }
+    }
+
+    public function stergereProdusComanda($id) {
+        $transaction = Yii::$app->db->beginTransaction();
+        $comanda = $this->findOne(['id' => $id]);
+        $id_produs = Yii::$app->request->post('id_produs');
+        $cantitate = Yii::$app->request->post('cantitate');
+
+        try {
+            $comandaLinie = ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]);
+            if ($cantitate != $comandaLinie->cantitate) {
+                $comandaLinie = ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]);
+                $comandaLinie->cantitate -= $cantitate;
+                $comandaLinie->pret -= Produse::find()->where(['id' => $id_produs])->one()->pret_curent * $cantitate;
+                $comandaLinie->save();
+            } else {
+                $comandaLinie->delete();
+            }
+
+            if (Produse::findOne(['id' => $id_produs])->stocabil) {
+                $query = Stocuri::find()->where(['produs'=>$id_produs])->andWhere(['<>','cantitate_ramasa',new Expression('cantitate')]);//Stocuri::find()->where(['and', ['produs' => $id_produs], ['!=', 'cantitate_ramasa', 'cantitate']]);
+                //$query = Stocuri::find()->where(['produs' => $id_produs])->andWhere(['!=', 'cantitate_ramasa', 'cantitate']);
+                $stocuri = $query->all();
+//                \yii\helpers\VarDumper::dump($stocuri);
+//                exit();
+                $c = $cantitate;
+                foreach (array_reverse($stocuri) as $stoc) {
+                    if ($c != 0) {
+                        if ($c > $stoc->cantitate - $stoc->cantitate_ramasa) {
+                            $c -= $stoc->cantitate - $stoc->cantitate_ramasa;
+                            $stoc->cantitate_ramasa = $stoc->cantitate;
+                        } else {
+                            $stoc->cantitate_ramasa += $c;
+                            $c = 0;
+                        }
+                        $save = $stoc->save();
+                        if (!$save) {
+                            $transaction->rollBack();
+                            return false;
+                        }
+                    } else
+                        break;
+                }
+            }
+
+            $comanda->pret -= Produse::find()->where(['id' => $id_produs])->one()->pret_curent * $cantitate;
+
+            $statusVechi = ComenziDetalii::findOne(['id' => $comanda->status]);
+            $statusVechi->data_ora_sfarsit = new Expression('NOW()');
+            $statusVechi->save();
+
+            $statusNou = new ComenziDetalii();
+            $statusNou->comanda = $comanda->id;
+            $statusNou->data_ora_inceput = new Expression('NOW()');
+            $statusNou->status = $statusVechi->status;
+            $statusNou->detalii = 'Sistem: Au fost eliminate din comanda ' . $cantitate . " " . Produse::find()->where(['id' => $id_produs])->one()->nume;
+            $statusNou->save();
+
             $comanda->status = $statusNou->id;
             if ($comanda->save()) {
                 $transaction->commit();
-               // \yii\helpers\VarDumper::dump($comanda->status);
+                return true;
+            }
+        } catch (Exception $ex) {
+            $transaction->rollBack();
+            return false;
+        }
+    }
+
+    public function changeStatus($id) {
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            $comanda = $this->findOne(['id' => $id]);
+//            \yii\helpers\VarDumper::dump($comanda->id);
+            $statusVechi = ComenziDetalii::findOne(['id' => $comanda->status]);
+            //    \yii\helpers\VarDumper::dump($statusVechi->id);
+            $statusVechi->data_ora_sfarsit = new Expression('NOW()');
+            $statusVechi->save();
+
+            $statusNou = new ComenziDetalii();
+            $statusNou->comanda = $comanda->id;
+            //   $statusNou->status = ComenziStatusuri::findOne(['id' => Yii::$app->request->post('id_status')]);
+            $statusNou->status = Yii::$app->request->post('id_status');
+            if (Yii::$app->request->post('id_status')==7)
+                $comanda->data_ora_finalizare = new Expression ('NOW()');
+            $detalii = Yii::$app->request->post('detalii');
+            if (is_null($detalii) || empty($detalii)) {
+                $statusNou->detalii = 'Sistem: Status schimbat din (' . $statusVechi->status0->nume . ') in (' . $statusNou->status0->nume . ')';
+            } else
+                $statusNou->detalii = $detalii;
+            //    \yii\helpers\VarDumper::dump($statusNou->status->id);
+            $statusNou->data_ora_inceput = new Expression('NOW()');
+            //   \yii\helpers\VarDumper::dump("sunt aici");
+            $statusNou->save();
+            $statusNou->refresh();
+            //  \yii\helpers\VarDumper::dump($statusNou->errors);
+            //  \yii\helpers\VarDumper::dump($statusNou->id);
+            //   \yii\helpers\VarDumper::dump($comanda->status);
+            //    \yii\helpers\VarDumper::dump(' din in ');
+            $comanda->status = $statusNou->id;
+            //    \yii\helpers\VarDumper::dump("sunt aici");
+            if ($comanda->save()) {
+
+                $transaction->commit();
+                //    \yii\helpers\VarDumper::dump($comanda->status0->status0->nume);
+                return true;
+            }
+        } catch (Exception $ex) {
+            $transaction->rollBack();
+            return false;
+        }
+    }
+
+    public function changeMetodaPlata($id) {
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+            $comanda = $this->findOne(['id' => $id]);
+            $comanda->mod_plata = Yii::$app->request->post('id_mod_plata');
+            if ($comanda->save()) {
+                $transaction->commit();
                 return true;
             }
         } catch (Exception $ex) {
@@ -215,6 +410,15 @@ class Comenzi extends ActiveRecord {
      */
     public function getUtilizator0() {
         return $this->hasOne(User::class, ['id' => 'utilizator']);
+    }
+
+    /**
+     * Gets query for [[ModPlata0]].
+     *
+     * @return ActiveQuery
+     */
+    public function getModPlata0() {
+        return $this->hasOne(ModuriPlata::class, ['id' => 'mod_plata']);
     }
 
 }

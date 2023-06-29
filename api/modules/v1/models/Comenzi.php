@@ -19,8 +19,28 @@ class Comenzi extends C{
     //put your code here
     public function fields() {
         $fields = parent::fields();
-        $fields['produse'] = function($model) {
-            return $model->comenziLiniis;
+        $fields['status_text'] = function($model){
+          //  \yii\helpers\VarDumper::dump($model);
+            if (is_null($model->status0)){
+                return 'Necunoscut';
+            }
+            return $model->status0->status0->nume;
+        };
+        $fields['mod_plata_text'] = function($model){
+            if (is_null($model->modPlata0)){
+                return 'Necunoscut';
+            }
+            return $model->modPlata0->nume;
+        };
+//        $fields['mod_plata'] = function ($model){
+//            return $model->modPlata0->nume;
+//        };
+        $fields['linii_comanda'] = function($model) {
+            return ComenziLinii::find()->where(['comanda'=>$model->id])->all();
+            
+         //   return \yii\helpers\ArrayHelper::toArray($model->comenziLiniis, ['\backend\models\ComenziLinii' =>['nume']]);
+           // return \yii\helpers\ArrayHelper::toArray($model->status0, ['\backend\models\ComenziDetalii' =>['comanda','status']]);
+         //   return $model->status0;
         };
 //        $fields['status'] = function($model) {
 //            return $model->status0->status;
