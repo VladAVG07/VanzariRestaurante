@@ -9,7 +9,7 @@ use yii\helpers\Url;
 
 <article class="bon-item" data-key="<?= $model->id; ?>">
     <h5 class="title">
-        <?= $model->produs0->nume ?>
+        <?= strtoupper($model->produs0->nume) ?>
     </h5>
 
     <div class="row">

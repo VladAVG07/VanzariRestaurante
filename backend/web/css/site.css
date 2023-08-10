@@ -90,7 +90,6 @@ a.desc:after {
 }
 
 #list-wrapper {
-    background-color:red;
 }
 
 #invoice-POS{
@@ -104,6 +103,11 @@ a.desc:after {
     margin:0;
     padding:0;
     font-weight:normal;
+}
+
+.sus {
+    margin:0;
+    padding:0;
 }
 
 .title{

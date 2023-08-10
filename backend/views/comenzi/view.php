@@ -13,7 +13,7 @@ use yii\bootstrap5\Modal;
 $this->title = 'Comanda numarul #' . $model->numar_comanda;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Comenzi'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-
+$printezaAction = Yii::$app->getUrlManager()->createAbsoluteUrl('comenzi/printeaza');
 $js = <<< SCRIPT
     $( document ).ready(function() {
     console.log( "ready!" );
@@ -23,8 +23,38 @@ $js = <<< SCRIPT
         });
     });
     $(function () {
-        $('#cashButton').click(function () {
-            $('#modalCash').modal('show')
+        // changed id to class
+        $('.cashButton').click(function (){
+            $.get($(this).attr('href'), function(data) {
+                $('#modalCash').modal('show').find('#modalContent').html(data)
+            });
+            return false;
+        });
+    });
+    $(function () {
+        // changed id to class
+        $('.bonButton').click(function (){
+            $.get($(this).attr('href'), function(data) {
+                $('#modalBon').modal('show').find('#modalContent').html(data)
+            });
+            return false;
+        });
+    });
+    $(function () {
+        $('.btnPrinteaza').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "$printezaAction",
+                data: {id: $model->id},
+                success: function (data) {
+                    $('#modalCash').modal('hide')
+                    $('#modal').modal('hide')
+                    location.reload(true);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
         });
     });
 });
@@ -44,7 +74,7 @@ Modal::begin([
 ?>
 <div>
     <center>
-        <a class="btn btn-app bg-success" id="cashButton" style="width:150px;height:150px;">
+        <a class="btn btn-app bg-success cashButton" style="width:150px;height:150px;" href="<?= Url::to(['comenzi/display-bon', 'id' => $model->id]); ?>">
             <i class="fas fa-money-bill" style="font-size:55px"></i><span style="font-size:30px">Cash</span>
         </a>
         <a class="btn btn-app bg-primary" id="cardButton" style="width:150px;height:150px;">
@@ -63,7 +93,30 @@ Modal::begin([
     'size' => 'modal-lg'
 ]);
 
-echo "salut";
+echo "<div id='modalContent'></div>";
+?>
+<br>
+<span class="float-right">
+    <a class="btn btn-app bg-success btnPrinteaza" style="width:130px;height:60px;text-align: center; align-items: center; display: flex; justify-content: center;">
+        <span style="font-size:25px;">Printeaza</span>
+    </a>
+</span>
+
+<?php
+Modal::end();
+?>
+
+<?php
+Modal::begin([
+    'title' => '<h4>Bonul fiscal</h4>',
+    'id' => 'modalBon',
+    'size' => 'modal-lg'
+]);
+
+echo "<div id='modalContent'></div>";
+?>
+
+<?php
 Modal::end();
 ?>
 
@@ -128,7 +181,11 @@ Modal::end();
                     ])
                     ?>
                     <p>
-                        <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
+                        <?php if ($model->status0->status != 7) { ?>
+                            <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
+                        <?php } else { ?>
+                             <?= Html::a('Vizualizare bon', ['comenzi/display-bon', 'id' => $model->id], ['class' => 'btn btn-success bonButton']) ?>
+                        <?php } ?>
                         <?= Html::a(Yii::t('app', 'Actualizeaza'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
                         <?=
                         Html::a(Yii::t('app', 'Sterge'), ['delete', 'id' => $model->id], [
