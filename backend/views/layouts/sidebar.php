@@ -45,6 +45,8 @@
 //                        ]
 //                    ],
 //                    ['label' => 'Administrare Categorii', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
+                    ['label' => 'Restaurante', 'header' => true],
+                    ['label' => 'Restaurante', 'url' => ['restaurante/index']],
                     ['label' => 'Administrare', 'header' => true],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Comenzi', 'url' => ['comenzi/index']],

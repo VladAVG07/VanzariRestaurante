@@ -26,7 +26,8 @@
         "kartik-v/yii2-grid": "dev-master",
         "kartik-v/yii2-editable": "dev-master",
         "kartik-v/yii2-widget-datepicker": "v1.4.8",
-        "rmrevin/yii2-fontawesome": "2.10.*"
+        "rmrevin/yii2-fontawesome": "2.10.*",
+        "borales/yii2-phone-input": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
