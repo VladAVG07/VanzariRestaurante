@@ -32958,3 +32958,127 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1686994653.1476
     'REQUEST_TIME' => 1686994653
 ]
+2023-09-14 15:31:46 [::1][1][-][error][yii\db\Exception] PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'property_column' in 'where clause' in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1168): yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(436): yii\db\Command->queryInternal('fetchColumn', 0)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Query.php(506): yii\db\Command->queryScalar()
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Query.php(368): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\ActiveDataProvider.php(168): yii\db\Query->count('*', NULL)
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(169): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(101): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(114): yii\data\BaseDataProvider->prepare()
+#10 C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\ProduseController.php(83): yii\data\BaseDataProvider->getModels()
+#11 [internal function]: api\modules\v1\controllers\ProduseController->prepareDataProvider(Object(yii\rest\IndexAction), NULL)
+#12 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\rest\IndexAction.php(143): call_user_func(Array, Object(yii\rest\IndexAction), NULL)
+#13 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\rest\IndexAction.php(117): yii\rest\IndexAction->prepareDataProvider()
+#14 [internal function]: yii\rest\IndexAction->run()
+#15 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Action.php(93): call_user_func_array(Array, Array)
+#16 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\Action->runWithParams(Array)
+#17 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index', Array)
+#18 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/inde...', Array)
+#19 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#21 {main}
+
+Next yii\db\Exception: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'property_column' in 'where clause'
+The SQL being executed was: SELECT COUNT(*) FROM (SELECT `p`.*, SUM(s.cantitate_ramasa) AS `cantitate` FROM `produse` `p` LEFT JOIN `stocuri` `s` ON p.id = s.produs WHERE (`p`.`disponibil`=1) AND (`property_column`='7') GROUP BY `p`.`id` HAVING (cantitate > 0) OR (p.stocabil = 0)) `c` in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException(Object(PDOException), 'SELECT COUNT(*)...')
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1168): yii\db\Command->internalExecute('SELECT COUNT(*)...')
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(436): yii\db\Command->queryInternal('fetchColumn', 0)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Query.php(506): yii\db\Command->queryScalar()
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Query.php(368): yii\db\Query->queryScalar('COUNT(*)', NULL)
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\ActiveDataProvider.php(168): yii\db\Query->count('*', NULL)
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(169): yii\data\ActiveDataProvider->prepareTotalCount()
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\ActiveDataProvider.php(105): yii\data\BaseDataProvider->getTotalCount()
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(101): yii\data\ActiveDataProvider->prepareModels()
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\data\BaseDataProvider.php(114): yii\data\BaseDataProvider->prepare()
+#10 C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\ProduseController.php(83): yii\data\BaseDataProvider->getModels()
+#11 [internal function]: api\modules\v1\controllers\ProduseController->prepareDataProvider(Object(yii\rest\IndexAction), NULL)
+#12 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\rest\IndexAction.php(143): call_user_func(Array, Object(yii\rest\IndexAction), NULL)
+#13 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\rest\IndexAction.php(117): yii\rest\IndexAction->prepareDataProvider()
+#14 [internal function]: yii\rest\IndexAction->run()
+#15 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Action.php(93): call_user_func_array(Array, Array)
+#16 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\Action->runWithParams(Array)
+#17 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index', Array)
+#18 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/inde...', Array)
+#19 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#20 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#21 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'property_column' in 'where clause'
+)
+
+2023-09-14 15:31:46 [::1][1][-][info][application] $_GET = [
+    'filter-property' => '7'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '8eee6e86da28f0d18c31cd3faad24b7f5ca41616fe047c565d67ec967c49c1b3a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"k2nFqftcAtm7SngrmB5jTd8neclmAMwv\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.32.3'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'ea169037-d82b-40f7-826e-e9ee4e7a4dfc'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=8eee6e86da28f0d18c31cd3faad24b7f5ca41616fe047c565d67ec967c49c1b3a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22k2nFqftcAtm7SngrmB5jTd8neclmAMwv%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '59193'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse'
+    'REDIRECT_QUERY_STRING' => 'filter-property=7'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'filter-property=7'
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse?filter-property=7'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694705506.5609
+    'REQUEST_TIME' => 1694705506
+]

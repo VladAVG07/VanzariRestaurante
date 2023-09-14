@@ -40,7 +40,13 @@ class FunctiiSearch extends Functii
      */
     public function search($params)
     {
-        $query = Functii::find();
+        $query = Functii::find()
+                ->innerJoin('restaurante_functii rf','rf.functie = functii.id')
+                ->innerJoin('restaurante r','rf.restaurant = r.id')
+                ->innerJoin('restaurante_user ru','ru.restaurant = r.id')
+                ->innerJoin('user u','ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id]);
+                
 
         // add conditions that should always apply here
 

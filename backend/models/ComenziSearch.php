@@ -41,7 +41,9 @@ class ComenziSearch extends Comenzi
      */
     public function search($params)
     {
-        $query = Comenzi::find();
+        $query = Comenzi::find()
+                ->innerJoin('user u','comenzi.utilizator = u.id')
+                ->where(['u.id' => \Yii::$app->user->id]);
 
         // add conditions that should always apply here
 

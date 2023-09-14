@@ -20,8 +20,13 @@ use kartik\switchinput\SwitchInput;
     <?= $form->field($model, 'descriere')->textInput(['maxlength' => true]) ?>
 
     <?php
-    $categorii = Categorii::find()->select(['id' , 'nume' , 'parinte'])
-        ->orderBy(['parinte'=> SORT_ASC])->all();
+    $categorii = Categorii::find()
+                ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
+                ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id])
+                ->orderBy(['parinte'=> SORT_ASC])->all();
     ?>
 
     <?= $form->field($model , 'parinte')->dropdownList(

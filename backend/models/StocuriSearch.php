@@ -39,7 +39,16 @@ class StocuriSearch extends Stocuri
      */
     public function search($params)
     {
-        $query = Stocuri::find()->select(['id','produs',new \yii\db\Expression('SUM(cantitate_ramasa) AS cantitate_ramasa')]);
+        $query = Stocuri::find()
+                ->select(['stocuri.id','produs',new \yii\db\Expression('SUM(cantitate_ramasa) AS cantitate_ramasa')])
+                ->innerJoin('produse p', 'stocuri.produs = p.id')
+                ->innerJoin('categorii c', 'p.categorie = c.id')
+                ->innerJoin('restaurante_categorii rc', 'rc.categorie = c.id')
+                ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id]);
+                
 
         // add conditions that should always apply here
 

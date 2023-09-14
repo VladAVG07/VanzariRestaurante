@@ -40,7 +40,14 @@ class PersoaneSearch extends Persoane
      */
     public function search($params)
     {
-        $query = Persoane::find();
+        $query = Persoane::find()
+                ->innerJoin('functii_persoane fp','fp.persoana = persoane.id')
+                ->innerJoin('functii f', 'fp.functie = f.id')
+                ->innerJoin('restaurante_functii rf','rf.functie = f.id')
+                ->innerJoin('restaurante r','rf.restaurant = r.id')
+                ->innerJoin('restaurante_user ru','ru.restaurant = r.id')
+                ->innerJoin('user u','ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id]);
 
         // add conditions that should always apply here
 

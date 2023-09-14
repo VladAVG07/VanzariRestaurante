@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\bootstrap4\ActiveForm;
 use kartik\datetime\DateTimePicker;
 use \kartik\datecontrol\DateControl;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Persoane */
@@ -32,7 +33,12 @@ use \kartik\datecontrol\DateControl;
     <div class="row">
         <div class="col-md-4">
             <?=
-            $form->field($model, 'functie')->dropdownList(\yii\helpers\ArrayHelper::map(\backend\models\Functii::find()->all(), 'id', 'nume'),['prompt' => '--Selecteaza functia--'])
+            $form->field($model, 'functie')->dropdownList(ArrayHelper::map(\backend\models\Functii::find()
+                ->innerJoin('restaurante_functii rf','rf.functie = functii.id')
+                ->innerJoin('restaurante r','rf.restaurant = r.id')
+                ->innerJoin('restaurante_user ru','ru.restaurant = r.id')
+                ->innerJoin('user u','ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id])->all(), 'id', 'nume'),['prompt' => '--Selecteaza functia--'])
             ?>
         </div>
         <div class="col-md-4">

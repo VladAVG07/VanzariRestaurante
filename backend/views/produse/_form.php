@@ -41,8 +41,14 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     ?>
 
     <?php
-    $categorii = Categorii::find()->select(['id', 'nume', 'parinte'])
-                    ->orderBy(['parinte' => SORT_ASC])->all();
+    $categorii = Categorii::find()
+                ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
+                ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id])
+               // ->select(['id', 'nume', 'parinte'])
+                ->orderBy(['parinte' => SORT_ASC])->all();
     ?>
 
     <div class="row">

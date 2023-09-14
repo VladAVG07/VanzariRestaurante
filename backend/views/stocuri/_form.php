@@ -19,7 +19,13 @@ use \kartik\datecontrol\DateControl;
         <div class="col-md-6">
             <?=
             $form->field($model, 'produs')->dropdownList(
-                    ArrayHelper::map(Produse::find()->where(['stocabil' => 1])->all(), 'id', 'nume'), ['prompt' => '--Selecteaza produsul--']
+                    ArrayHelper::map(Produse::find()
+                ->innerJoin('categorii c', 'produse.categorie = c.id')
+                ->innerJoin('restaurante_categorii rc', 'rc.categorie = c.id')
+                ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['stocabil' => 1, 'u.id' => \Yii::$app->user->id])->all(), 'id', 'nume'), ['prompt' => '--Selecteaza produsul--']
             )
             ?>
         </div>

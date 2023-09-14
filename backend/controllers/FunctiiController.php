@@ -66,7 +66,7 @@ class FunctiiController extends Controller
     {
         $model = new Functii();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->salveazaFunctie()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

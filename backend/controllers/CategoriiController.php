@@ -66,7 +66,7 @@ class CategoriiController extends Controller
     {
         $model = new Categorii();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->salveazaCategorie()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

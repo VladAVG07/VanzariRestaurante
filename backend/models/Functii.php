@@ -49,6 +49,23 @@ class Functii extends \yii\db\ActiveRecord
         ];
     }
     
+    
+    public function salveazaFunctie(){
+        $transaction = Yii::$app->db->beginTransaction();
+        $save=$this->save();
+        $restaurantFunctie = new RestauranteFunctii();
+        $restaurantFunctie->restaurant = RestauranteUser::findOne(['user' => Yii::$app->user->id])->restaurant;
+        $restaurantFunctie->functie = $this->id;
+        $restaurantFunctie->data_ora = Date('Y-m-d H:i:s');
+        $save = $restaurantFunctie->save();
+        if ($save){
+            $transaction->commit();
+            return true;
+        }
+        $transaction->rollBack();
+        return false;
+    }
+    
     /**
      * Gets query for [[FunctiiPersoanes]].
      *
