@@ -1,0 +1,492 @@
+a:14:{s:6:"config";s:5126:"a:5:{s:10:"phpVersion";s:5:"8.2.4";s:10:"yiiVersion";s:8:"2.0.48.1";s:11:"application";a:8:{s:3:"yii";s:8:"2.0.48.1";s:4:"name";s:14:"My Application";s:7:"version";s:3:"1.0";s:8:"language";s:2:"ro";s:14:"sourceLanguage";s:5:"en-US";s:7:"charset";s:5:"UTF-8";s:3:"env";s:3:"dev";s:5:"debug";b:1;}s:3:"php";a:5:{s:7:"version";s:5:"8.2.4";s:6:"xdebug";b:0;s:3:"apc";b:0;s:8:"memcache";b:0;s:9:"memcached";b:0;}s:10:"extensions";a:20:{s:23:"yiisoft/yii2-bootstrap4";a:3:{s:4:"name";s:23:"yiisoft/yii2-bootstrap4";s:7:"version";s:8:"2.0.11.0";s:5:"alias";a:1:{s:15:"@yii/bootstrap4";s:69:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-bootstrap4/src";}}s:29:"hail812/yii2-adminlte-widgets";a:3:{s:4:"name";s:29:"hail812/yii2-adminlte-widgets";s:7:"version";s:7:"1.0.5.0";s:5:"alias";a:1:{s:25:"@hail812/adminlte/widgets";s:75:"C:\xampp\htdocs\VanzariRestaurante\vendor/hail812/yii2-adminlte-widgets/src";}}s:22:"hail812/yii2-adminlte3";a:3:{s:4:"name";s:22:"hail812/yii2-adminlte3";s:7:"version";s:7:"1.1.8.0";s:5:"alias";a:1:{s:18:"@hail812/adminlte3";s:68:"C:\xampp\htdocs\VanzariRestaurante\vendor/hail812/yii2-adminlte3/src";}}s:25:"kartik-v/yii2-krajee-base";a:3:{s:4:"name";s:25:"kartik-v/yii2-krajee-base";s:7:"version";s:7:"3.0.5.0";s:5:"alias";a:1:{s:12:"@kartik/base";s:71:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-krajee-base/src";}}s:33:"kartik-v/yii2-bootstrap5-dropdown";a:3:{s:4:"name";s:33:"kartik-v/yii2-bootstrap5-dropdown";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:19:"@kartik/bs5dropdown";s:79:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-bootstrap5-dropdown/src";}}s:25:"kartik-v/yii2-datecontrol";a:3:{s:4:"name";s:25:"kartik-v/yii2-datecontrol";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:19:"@kartik/datecontrol";s:71:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-datecontrol/src";}}s:31:"kartik-v/yii2-widget-activeform";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-activeform";s:7:"version";s:7:"1.6.4.0";s:5:"alias";a:1:{s:12:"@kartik/form";s:77:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-widget-activeform/src";}}s:23:"kartik-v/yii2-popover-x";a:3:{s:4:"name";s:23:"kartik-v/yii2-popover-x";s:7:"version";s:7:"1.3.5.0";s:5:"alias";a:1:{s:15:"@kartik/popover";s:69:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-popover-x/src";}}s:22:"kartik-v/yii2-editable";a:3:{s:4:"name";s:22:"kartik-v/yii2-editable";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:16:"@kartik/editable";s:68:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-editable/src";}}s:20:"kartik-v/yii2-dialog";a:3:{s:4:"name";s:20:"kartik-v/yii2-dialog";s:7:"version";s:7:"1.0.6.0";s:5:"alias";a:1:{s:14:"@kartik/dialog";s:66:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-dialog/src";}}s:18:"kartik-v/yii2-grid";a:3:{s:4:"name";s:18:"kartik-v/yii2-grid";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:12:"@kartik/grid";s:64:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-grid/src";}}s:31:"kartik-v/yii2-widget-datepicker";a:3:{s:4:"name";s:31:"kartik-v/yii2-widget-datepicker";s:7:"version";s:7:"1.4.8.0";s:5:"alias";a:1:{s:12:"@kartik/date";s:77:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-widget-datepicker/src";}}s:35:"kartik-v/yii2-widget-datetimepicker";a:3:{s:4:"name";s:35:"kartik-v/yii2-widget-datetimepicker";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:16:"@kartik/datetime";s:81:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-widget-datetimepicker/src";}}s:32:"kartik-v/yii2-widget-switchinput";a:3:{s:4:"name";s:32:"kartik-v/yii2-widget-switchinput";s:7:"version";s:10:"dev-master";s:5:"alias";a:1:{s:19:"@kartik/switchinput";s:74:"C:\xampp\htdocs\VanzariRestaurante\vendor/kartik-v/yii2-widget-switchinput";}}s:24:"rmrevin/yii2-fontawesome";a:3:{s:4:"name";s:24:"rmrevin/yii2-fontawesome";s:7:"version";s:8:"2.10.3.0";s:5:"alias";a:1:{s:24:"@rmrevin/yii/fontawesome";s:66:"C:\xampp\htdocs\VanzariRestaurante\vendor/rmrevin/yii2-fontawesome";}}s:23:"yiisoft/yii2-bootstrap5";a:4:{s:4:"name";s:23:"yiisoft/yii2-bootstrap5";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:15:"@yii/bootstrap5";s:69:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-bootstrap5/src";}s:9:"bootstrap";s:40:"yii\bootstrap5\i18n\TranslationBootstrap";}s:18:"yiisoft/yii2-debug";a:3:{s:4:"name";s:18:"yiisoft/yii2-debug";s:7:"version";s:8:"2.1.24.0";s:5:"alias";a:1:{s:10:"@yii/debug";s:64:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-debug/src";}}s:18:"yiisoft/yii2-faker";a:3:{s:4:"name";s:18:"yiisoft/yii2-faker";s:7:"version";s:7:"2.0.5.0";s:5:"alias";a:1:{s:10:"@yii/faker";s:64:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-faker/src";}}s:16:"yiisoft/yii2-gii";a:3:{s:4:"name";s:16:"yiisoft/yii2-gii";s:7:"version";s:7:"2.2.6.0";s:5:"alias";a:1:{s:8:"@yii/gii";s:62:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-gii/src";}}s:26:"yiisoft/yii2-symfonymailer";a:3:{s:4:"name";s:26:"yiisoft/yii2-symfonymailer";s:7:"version";s:7:"2.0.4.0";s:5:"alias";a:1:{s:18:"@yii/symfonymailer";s:72:"C:\xampp\htdocs\VanzariRestaurante\vendor/yiisoft/yii2-symfonymailer/src";}}}}";s:3:"log";s:14868:"a:1:{s:8:"messages";a:36:{i:0;a:6:{i:0;s:68:"Bootstrap with yii\bootstrap5\i18n\TranslationBootstrap::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1694704642.09436;i:4;a:0:{}i:5;i:2762584;}i:1;a:6:{i:0;s:33:"Bootstrap with yii\log\Dispatcher";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1694704642.098076;i:4;a:0:{}i:5;i:2871864;}i:2;a:6:{i:0;s:21:"Loading module: debug";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1694704642.098105;i:4;a:0:{}i:5;i:2872504;}i:3;a:6:{i:0;s:44:"Bootstrap with yii\debug\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1694704642.125269;i:4;a:0:{}i:5;i:4090120;}i:4;a:6:{i:0;s:19:"Loading module: gii";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1694704642.136279;i:4;a:0:{}i:5;i:4535576;}i:5;a:6:{i:0;s:42:"Bootstrap with yii\gii\Module::bootstrap()";i:1;i:8;i:2;s:31:"yii\base\Application::bootstrap";i:3;d:1694704642.13729;i:4;a:0:{}i:5;i:4559952;}i:25;a:6:{i:0;s:35:"Route requested: 'v1/comenzi/index'";i:1;i:8;i:2;s:34:"yii\web\Application::handleRequest";i:3;d:1694704642.14076;i:4;a:0:{}i:5;i:4726048;}i:26;a:6:{i:0;s:18:"Loading module: v1";i:1;i:8;i:2;s:26:"yii\base\Module::getModule";i:3;d:1694704642.140768;i:4;a:0:{}i:5;i:4727512;}i:27;a:6:{i:0;s:30:"Route to run: v1/comenzi/index";i:1;i:8;i:2;s:30:"yii\base\Controller::runAction";i:3;d:1694704642.150725;i:4;a:0:{}i:5;i:5001896;}i:28;a:6:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.180032;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6314992;}i:29;a:6:{i:0;s:61:"Opening DB connection: mysql:host=localhost;dbname=restaurant";i:1;i:4;i:2;s:23:"yii\db\Connection::open";i:3;d:1694704642.180112;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6317112;}i:34;a:6:{i:0;s:764:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'user' AND `kcu`.`TABLE_NAME` = 'user'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.197086;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6396984;}i:37;a:6:{i:0;s:72:"SELECT * FROM `user` WHERE `auth_key`='bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.205012;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6665192;}i:40;a:6:{i:0;s:49:"User '1' logged in from ::1. Session not enabled.";i:1;i:4;i:2;s:19:"yii\web\User::login";i:3;d:1694704642.216134;i:4;a:0:{}i:5;i:7072208;}i:41;a:6:{i:0;s:65:"Rate limit skipped: "user" does not implement RateLimitInterface.";i:1;i:4;i:2;s:37:"yii\filters\RateLimiter::beforeAction";i:3;d:1694704642.216224;i:4;a:0:{}i:5;i:7071760;}i:42;a:6:{i:0;s:75:"Running action: api\modules\v1\controllers\ComenziController::actionIndex()";i:1;i:8;i:2;s:36:"yii\base\InlineAction::runWithParams";i:3;d:1694704642.216278;i:4;a:0:{}i:5;i:7070768;}i:43;a:6:{i:0;s:51:"SELECT COUNT(*) FROM `comenzi` WHERE `utilizator`=1";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.222832;i:4;a:0:{}i:5;i:7344848;}i:46;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `comenzi`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.224315;i:4;a:0:{}i:5;i:7383800;}i:49;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi' AND `kcu`.`TABLE_NAME` = 'comenzi'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238206;i:4;a:0:{}i:5;i:7391768;}i:52;a:6:{i:0;s:52:"SELECT * FROM `comenzi` WHERE `utilizator`=1 LIMIT 1";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.239016;i:4;a:0:{}i:5;i:7405776;}i:55;a:6:{i:0;s:46:"SELECT * FROM `comenzi_detalii` WHERE `id`=121";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.24166;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7468288;}i:58;a:6:{i:0;s:40:"SHOW FULL COLUMNS FROM `comenzi_detalii`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.242127;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7473872;}i:61;a:6:{i:0;s:786:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_detalii' AND `kcu`.`TABLE_NAME` = 'comenzi_detalii'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.258132;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7481320;}i:64;a:6:{i:0;s:46:"SELECT * FROM `comenzi_statusuri` WHERE `id`=7";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.26044;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7503232;}i:67;a:6:{i:0;s:42:"SHOW FULL COLUMNS FROM `comenzi_statusuri`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.260987;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7509992;}i:70;a:6:{i:0;s:790:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_statusuri' AND `kcu`.`TABLE_NAME` = 'comenzi_statusuri'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.276535;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7515864;}i:73;a:6:{i:0;s:41:"SELECT * FROM `moduri_plata` WHERE `id`=1";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.278672;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7534960;}i:76;a:6:{i:0;s:37:"SHOW FULL COLUMNS FROM `moduri_plata`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.279099;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7540416;}i:79;a:6:{i:0;s:780:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'moduri_plata' AND `kcu`.`TABLE_NAME` = 'moduri_plata'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.297221;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7546288;}i:82;a:6:{i:0;s:48:"SELECT * FROM `comenzi_linii` WHERE `comanda`=56";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.299524;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7584256;}i:85;a:6:{i:0;s:38:"SHOW FULL COLUMNS FROM `comenzi_linii`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.300138;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7591120;}i:88;a:6:{i:0;s:782:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_linii' AND `kcu`.`TABLE_NAME` = 'comenzi_linii'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.316399;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7598152;}i:91;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=7";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.319924;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7661656;}i:94;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `produse`";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320533;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7667824;}i:97;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'produse' AND `kcu`.`TABLE_NAME` = 'produse'";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.338652;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7677576;}i:100;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=8";i:1;i:4;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.340035;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7681032;}}}";s:9:"profiling";s:25932:"a:3:{s:6:"memory";i:7784152;s:4:"time";d:0.28968000411987305;s:8:"messages";a:48:{i:30;a:6:{i:0;s:61:"Opening DB connection: mysql:host=localhost;dbname=restaurant";i:1;i:80;i:2;s:23:"yii\db\Connection::open";i:3;d:1694704642.180142;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6317920;}i:31;a:6:{i:0;s:61:"Opening DB connection: mysql:host=localhost;dbname=restaurant";i:1;i:96;i:2;s:23:"yii\db\Connection::open";i:3;d:1694704642.181985;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6365472;}i:32;a:6:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.182016;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6365256;}i:33;a:6:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.195631;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6376656;}i:35;a:6:{i:0;s:764:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'user' AND `kcu`.`TABLE_NAME` = 'user'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.19714;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6398024;}i:36;a:6:{i:0;s:764:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'user' AND `kcu`.`TABLE_NAME` = 'user'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.197807;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6399880;}i:38;a:6:{i:0;s:72:"SELECT * FROM `user` WHERE `auth_key`='bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.205042;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6666320;}i:39;a:6:{i:0;s:72:"SELECT * FROM `user` WHERE `auth_key`='bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.205504;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6668600;}i:44;a:6:{i:0;s:51:"SELECT COUNT(*) FROM `comenzi` WHERE `utilizator`=1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.22286;i:4;a:0:{}i:5;i:7345384;}i:45;a:6:{i:0;s:51:"SELECT COUNT(*) FROM `comenzi` WHERE `utilizator`=1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.223323;i:4;a:0:{}i:5;i:7345744;}i:47;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `comenzi`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.224342;i:4;a:0:{}i:5;i:7384120;}i:48;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `comenzi`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238039;i:4;a:0:{}i:5;i:7394632;}i:50;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi' AND `kcu`.`TABLE_NAME` = 'comenzi'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238221;i:4;a:0:{}i:5;i:7392216;}i:51;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi' AND `kcu`.`TABLE_NAME` = 'comenzi'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238777;i:4;a:0:{}i:5;i:7395208;}i:53;a:6:{i:0;s:52:"SELECT * FROM `comenzi` WHERE `utilizator`=1 LIMIT 1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.239032;i:4;a:0:{}i:5;i:7406312;}i:54;a:6:{i:0;s:52:"SELECT * FROM `comenzi` WHERE `utilizator`=1 LIMIT 1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.239328;i:4;a:0:{}i:5;i:7408136;}i:56;a:6:{i:0;s:46:"SELECT * FROM `comenzi_detalii` WHERE `id`=121";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.241691;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7469416;}i:57;a:6:{i:0;s:46:"SELECT * FROM `comenzi_detalii` WHERE `id`=121";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.242057;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7470984;}i:59;a:6:{i:0;s:40:"SHOW FULL COLUMNS FROM `comenzi_detalii`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.242145;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7474784;}i:60;a:6:{i:0;s:40:"SHOW FULL COLUMNS FROM `comenzi_detalii`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.257815;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7481352;}i:62;a:6:{i:0;s:786:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_detalii' AND `kcu`.`TABLE_NAME` = 'comenzi_detalii'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.258303;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7482360;}i:63;a:6:{i:0;s:786:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_detalii' AND `kcu`.`TABLE_NAME` = 'comenzi_detalii'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.25923;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7485432;}i:65;a:6:{i:0;s:46:"SELECT * FROM `comenzi_statusuri` WHERE `id`=7";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.260499;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7505640;}i:66;a:6:{i:0;s:46:"SELECT * FROM `comenzi_statusuri` WHERE `id`=7";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.260919;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7506992;}i:68;a:6:{i:0;s:42:"SHOW FULL COLUMNS FROM `comenzi_statusuri`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.261005;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7510904;}i:69;a:6:{i:0;s:42:"SHOW FULL COLUMNS FROM `comenzi_statusuri`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.276221;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7514008;}i:71;a:6:{i:0;s:790:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_statusuri' AND `kcu`.`TABLE_NAME` = 'comenzi_statusuri'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.276587;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7516904;}i:72;a:6:{i:0;s:790:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_statusuri' AND `kcu`.`TABLE_NAME` = 'comenzi_statusuri'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.277509;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7518760;}i:74;a:6:{i:0;s:41:"SELECT * FROM `moduri_plata` WHERE `id`=1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.278697;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7536088;}i:75;a:6:{i:0;s:41:"SELECT * FROM `moduri_plata` WHERE `id`=1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.278955;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7537432;}i:77;a:6:{i:0;s:37:"SHOW FULL COLUMNS FROM `moduri_plata`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.279134;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7541328;}i:78;a:6:{i:0;s:37:"SHOW FULL COLUMNS FROM `moduri_plata`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.296959;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7544400;}i:80;a:6:{i:0;s:780:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'moduri_plata' AND `kcu`.`TABLE_NAME` = 'moduri_plata'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.297275;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7547328;}i:81;a:6:{i:0;s:780:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'moduri_plata' AND `kcu`.`TABLE_NAME` = 'moduri_plata'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.29808;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7549184;}i:83;a:6:{i:0;s:48:"SELECT * FROM `comenzi_linii` WHERE `comanda`=56";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.299569;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7585384;}i:84;a:6:{i:0;s:48:"SELECT * FROM `comenzi_linii` WHERE `comanda`=56";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.300037;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7587432;}i:86;a:6:{i:0;s:38:"SHOW FULL COLUMNS FROM `comenzi_linii`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.300183;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7592032;}i:87;a:6:{i:0;s:38:"SHOW FULL COLUMNS FROM `comenzi_linii`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.316117;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7597672;}i:89;a:6:{i:0;s:782:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_linii' AND `kcu`.`TABLE_NAME` = 'comenzi_linii'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.316437;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7599192;}i:90;a:6:{i:0;s:782:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_linii' AND `kcu`.`TABLE_NAME` = 'comenzi_linii'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.317331;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7602248;}i:92;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=7";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320045;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7662784;}i:93;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=7";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320411;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7665016;}i:95;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `produse`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320557;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7668736;}i:96;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `produse`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.338257;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7679816;}i:98;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'produse' AND `kcu`.`TABLE_NAME` = 'produse'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.338705;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7678616;}i:99;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'produse' AND `kcu`.`TABLE_NAME` = 'produse'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.339579;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7681160;}i:101;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=8";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.340082;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7682160;}i:102;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=8";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.340544;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7684232;}}}";s:2:"db";s:25136:"a:1:{s:8:"messages";a:46:{i:32;a:6:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.182016;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6365256;}i:33;a:6:{i:0;s:29:"SHOW FULL COLUMNS FROM `user`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.195631;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6376656;}i:35;a:6:{i:0;s:764:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'user' AND `kcu`.`TABLE_NAME` = 'user'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.19714;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6398024;}i:36;a:6:{i:0;s:764:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'user' AND `kcu`.`TABLE_NAME` = 'user'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.197807;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6399880;}i:38;a:6:{i:0;s:72:"SELECT * FROM `user` WHERE `auth_key`='bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.205042;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6666320;}i:39;a:6:{i:0;s:72:"SELECT * FROM `user` WHERE `auth_key`='bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.205504;i:4;a:1:{i:0;a:5:{s:4:"file";s:57:"C:\xampp\htdocs\VanzariRestaurante\common\models\User.php";s:4:"line";i:75;s:8:"function";s:7:"findOne";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"::";}}i:5;i:6668600;}i:44;a:6:{i:0;s:51:"SELECT COUNT(*) FROM `comenzi` WHERE `utilizator`=1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.22286;i:4;a:0:{}i:5;i:7345384;}i:45;a:6:{i:0;s:51:"SELECT COUNT(*) FROM `comenzi` WHERE `utilizator`=1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.223323;i:4;a:0:{}i:5;i:7345744;}i:47;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `comenzi`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.224342;i:4;a:0:{}i:5;i:7384120;}i:48;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `comenzi`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238039;i:4;a:0:{}i:5;i:7394632;}i:50;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi' AND `kcu`.`TABLE_NAME` = 'comenzi'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238221;i:4;a:0:{}i:5;i:7392216;}i:51;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi' AND `kcu`.`TABLE_NAME` = 'comenzi'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.238777;i:4;a:0:{}i:5;i:7395208;}i:53;a:6:{i:0;s:52:"SELECT * FROM `comenzi` WHERE `utilizator`=1 LIMIT 1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.239032;i:4;a:0:{}i:5;i:7406312;}i:54;a:6:{i:0;s:52:"SELECT * FROM `comenzi` WHERE `utilizator`=1 LIMIT 1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.239328;i:4;a:0:{}i:5;i:7408136;}i:56;a:6:{i:0;s:46:"SELECT * FROM `comenzi_detalii` WHERE `id`=121";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.241691;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7469416;}i:57;a:6:{i:0;s:46:"SELECT * FROM `comenzi_detalii` WHERE `id`=121";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.242057;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7470984;}i:59;a:6:{i:0;s:40:"SHOW FULL COLUMNS FROM `comenzi_detalii`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.242145;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7474784;}i:60;a:6:{i:0;s:40:"SHOW FULL COLUMNS FROM `comenzi_detalii`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.257815;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7481352;}i:62;a:6:{i:0;s:786:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_detalii' AND `kcu`.`TABLE_NAME` = 'comenzi_detalii'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.258303;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7482360;}i:63;a:6:{i:0;s:786:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_detalii' AND `kcu`.`TABLE_NAME` = 'comenzi_detalii'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.25923;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:24;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7485432;}i:65;a:6:{i:0;s:46:"SELECT * FROM `comenzi_statusuri` WHERE `id`=7";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.260499;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7505640;}i:66;a:6:{i:0;s:46:"SELECT * FROM `comenzi_statusuri` WHERE `id`=7";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.260919;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7506992;}i:68;a:6:{i:0;s:42:"SHOW FULL COLUMNS FROM `comenzi_statusuri`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.261005;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7510904;}i:69;a:6:{i:0;s:42:"SHOW FULL COLUMNS FROM `comenzi_statusuri`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.276221;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7514008;}i:71;a:6:{i:0;s:790:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_statusuri' AND `kcu`.`TABLE_NAME` = 'comenzi_statusuri'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.276587;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7516904;}i:72;a:6:{i:0;s:790:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_statusuri' AND `kcu`.`TABLE_NAME` = 'comenzi_statusuri'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.277509;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:27;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7518760;}i:74;a:6:{i:0;s:41:"SELECT * FROM `moduri_plata` WHERE `id`=1";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.278697;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7536088;}i:75;a:6:{i:0;s:41:"SELECT * FROM `moduri_plata` WHERE `id`=1";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.278955;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7537432;}i:77;a:6:{i:0;s:37:"SHOW FULL COLUMNS FROM `moduri_plata`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.279134;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7541328;}i:78;a:6:{i:0;s:37:"SHOW FULL COLUMNS FROM `moduri_plata`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.296959;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7544400;}i:80;a:6:{i:0;s:780:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'moduri_plata' AND `kcu`.`TABLE_NAME` = 'moduri_plata'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.297275;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7547328;}i:81;a:6:{i:0;s:780:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'moduri_plata' AND `kcu`.`TABLE_NAME` = 'moduri_plata'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.29808;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:30;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7549184;}i:83;a:6:{i:0;s:48:"SELECT * FROM `comenzi_linii` WHERE `comanda`=56";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.299569;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7585384;}i:84;a:6:{i:0;s:48:"SELECT * FROM `comenzi_linii` WHERE `comanda`=56";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.300037;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7587432;}i:86;a:6:{i:0;s:38:"SHOW FULL COLUMNS FROM `comenzi_linii`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.300183;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7592032;}i:87;a:6:{i:0;s:38:"SHOW FULL COLUMNS FROM `comenzi_linii`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.316117;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7597672;}i:89;a:6:{i:0;s:782:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_linii' AND `kcu`.`TABLE_NAME` = 'comenzi_linii'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.316437;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7599192;}i:90;a:6:{i:0;s:782:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'comenzi_linii' AND `kcu`.`TABLE_NAME` = 'comenzi_linii'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.317331;i:4;a:1:{i:0;a:5:{s:4:"file";s:68:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\Comenzi.php";s:4:"line";i:39;s:8:"function";s:3:"all";s:5:"class";s:18:"yii\db\ActiveQuery";s:4:"type";s:2:"->";}}i:5;i:7602248;}i:92;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=7";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320045;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7662784;}i:93;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=7";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320411;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7665016;}i:95;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `produse`";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.320557;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7668736;}i:96;a:6:{i:0;s:32:"SHOW FULL COLUMNS FROM `produse`";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.338257;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7679816;}i:98;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'produse' AND `kcu`.`TABLE_NAME` = 'produse'";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.338705;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7678616;}i:99;a:6:{i:0;s:770:"SELECT
+    `kcu`.`CONSTRAINT_NAME` AS `constraint_name`,
+    `kcu`.`COLUMN_NAME` AS `column_name`,
+    `kcu`.`REFERENCED_TABLE_NAME` AS `referenced_table_name`,
+    `kcu`.`REFERENCED_COLUMN_NAME` AS `referenced_column_name`
+FROM `information_schema`.`REFERENTIAL_CONSTRAINTS` AS `rc`
+JOIN `information_schema`.`KEY_COLUMN_USAGE` AS `kcu` ON
+    (
+        `kcu`.`CONSTRAINT_CATALOG` = `rc`.`CONSTRAINT_CATALOG` OR
+        (`kcu`.`CONSTRAINT_CATALOG` IS NULL AND `rc`.`CONSTRAINT_CATALOG` IS NULL)
+    ) AND
+    `kcu`.`CONSTRAINT_SCHEMA` = `rc`.`CONSTRAINT_SCHEMA` AND
+    `kcu`.`CONSTRAINT_NAME` = `rc`.`CONSTRAINT_NAME`
+WHERE `rc`.`CONSTRAINT_SCHEMA` = database() AND `kcu`.`TABLE_SCHEMA` = database()
+AND `rc`.`TABLE_NAME` = 'produse' AND `kcu`.`TABLE_NAME` = 'produse'";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.339579;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7681160;}i:101;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=8";i:1;i:80;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.340082;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7682160;}i:102;a:6:{i:0;s:36:"SELECT * FROM `produse` WHERE `id`=8";i:1;i:96;i:2;s:21:"yii\db\Command::query";i:3;d:1694704642.340544;i:4;a:1:{i:0;a:5:{s:4:"file";s:73:"C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\models\ComenziLinii.php";s:4:"line";i:23;s:8:"function";s:5:"__get";s:5:"class";s:23:"yii\db\BaseActiveRecord";s:4:"type";s:2:"->";}}i:5;i:7684232;}}}";s:5:"event";s:8657:"a:48:{i:0;a:5:{s:4:"time";d:1694704642.1397;s:4:"name";s:13:"beforeRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:1;a:5:{s:4:"time";d:1694704642.150897;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:2;a:5:{s:4:"time";d:1694704642.150905;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:21:"api\modules\v1\Module";}i:3;a:5:{s:4:"time";d:1694704642.17187;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:4;a:5:{s:4:"time";d:1694704642.181976;s:4:"name";s:9:"afterOpen";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:17:"yii\db\Connection";}i:5;a:5:{s:4:"time";d:1694704642.206351;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"common\models\User";}i:6;a:5:{s:4:"time";d:1694704642.206395;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"common\models\User";}i:7;a:5:{s:4:"time";d:1694704642.206673;s:4:"name";s:11:"beforeLogin";s:5:"class";s:17:"yii\web\UserEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\User";}i:8;a:5:{s:4:"time";d:1694704642.213172;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:9;a:5:{s:4:"time";d:1694704642.213225;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:10;a:5:{s:4:"time";d:1694704642.213239;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:11;a:5:{s:4:"time";d:1694704642.213245;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:12;a:5:{s:4:"time";d:1694704642.213267;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:13;a:5:{s:4:"time";d:1694704642.213287;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:14;a:5:{s:4:"time";d:1694704642.213294;s:4:"name";s:18:"missingTranslation";s:5:"class";s:32:"yii\i18n\MissingTranslationEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:25:"yii\i18n\PhpMessageSource";}i:15;a:5:{s:4:"time";d:1694704642.216186;s:4:"name";s:10:"afterLogin";s:5:"class";s:17:"yii\web\UserEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:12:"yii\web\User";}i:16;a:5:{s:4:"time";d:1694704642.216254;s:4:"name";s:12:"beforeAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:44:"api\modules\v1\controllers\ComenziController";}i:17;a:5:{s:4:"time";d:1694704642.218956;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:18;a:5:{s:4:"time";d:1694704642.221737;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:44:"api\modules\v1\controllers\ComenziController";}i:19;a:5:{s:4:"time";d:1694704642.224267;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"api\modules\v1\models\Comenzi";}i:20;a:5:{s:4:"time";d:1694704642.239362;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"api\modules\v1\models\Comenzi";}i:21;a:5:{s:4:"time";d:1694704642.239396;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"api\modules\v1\models\Comenzi";}i:22;a:5:{s:4:"time";d:1694704642.240032;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:23;a:5:{s:4:"time";d:1694704642.24209;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"backend\models\ComenziDetalii";}i:24;a:5:{s:4:"time";d:1694704642.259375;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:29:"backend\models\ComenziDetalii";}i:25;a:5:{s:4:"time";d:1694704642.260246;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:26;a:5:{s:4:"time";d:1694704642.260953;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:31:"backend\models\ComenziStatusuri";}i:27;a:5:{s:4:"time";d:1694704642.277662;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:31:"backend\models\ComenziStatusuri";}i:28;a:5:{s:4:"time";d:1694704642.278546;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:29;a:5:{s:4:"time";d:1694704642.279022;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:26:"backend\models\ModuriPlata";}i:30;a:5:{s:4:"time";d:1694704642.298193;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:26:"backend\models\ModuriPlata";}i:31;a:5:{s:4:"time";d:1694704642.299373;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:32;a:5:{s:4:"time";d:1694704642.300063;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:34:"api\modules\v1\models\ComenziLinii";}i:33;a:5:{s:4:"time";d:1694704642.317473;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:34:"api\modules\v1\models\ComenziLinii";}i:34;a:5:{s:4:"time";d:1694704642.317523;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:34:"api\modules\v1\models\ComenziLinii";}i:35;a:5:{s:4:"time";d:1694704642.317538;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:34:"api\modules\v1\models\ComenziLinii";}i:36;a:5:{s:4:"time";d:1694704642.319467;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:37;a:5:{s:4:"time";d:1694704642.32048;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:22:"backend\models\Produse";}i:38;a:5:{s:4:"time";d:1694704642.339768;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:22:"backend\models\Produse";}i:39;a:5:{s:4:"time";d:1694704642.339864;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:18:"yii\db\ActiveQuery";}i:40;a:5:{s:4:"time";d:1694704642.340585;s:4:"name";s:4:"init";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:22:"backend\models\Produse";}i:41;a:5:{s:4:"time";d:1694704642.340622;s:4:"name";s:9:"afterFind";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:22:"backend\models\Produse";}i:42;a:5:{s:4:"time";d:1694704642.342942;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:21:"api\modules\v1\Module";}i:43;a:5:{s:4:"time";d:1694704642.342961;s:4:"name";s:11:"afterAction";s:5:"class";s:20:"yii\base\ActionEvent";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:44;a:5:{s:4:"time";d:1694704642.342978;s:4:"name";s:12:"afterRequest";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:19:"yii\web\Application";}i:45;a:5:{s:4:"time";d:1694704642.343036;s:4:"name";s:10:"beforeSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:46;a:5:{s:4:"time";d:1694704642.345501;s:4:"name";s:12:"afterPrepare";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}i:47;a:5:{s:4:"time";d:1694704642.34563;s:4:"name";s:9:"afterSend";s:5:"class";s:14:"yii\base\Event";s:8:"isStatic";s:1:"0";s:11:"senderClass";s:16:"yii\web\Response";}}";s:4:"mail";s:6:"a:0:{}";s:8:"timeline";s:91:"a:3:{s:5:"start";d:1694704642.059866;s:3:"end";d:1694704642.350248;s:6:"memory";i:7784152;}";s:4:"dump";s:6:"a:0:{}";s:6:"router";s:3974:"a:3:{s:8:"messages";a:19:{i:6;a:6:{i:0;a:3:{s:4:"rule";s:3:"gii";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140543;i:4;a:0:{}i:5;i:4714800;}i:7;a:6:{i:0;a:3:{s:4:"rule";s:12:"gii/<id:\w+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140574;i:4;a:0:{}i:5;i:4715392;}i:8;a:6:{i:0;a:3:{s:4:"rule";s:41:"gii/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140579;i:4;a:0:{}i:5;i:4715984;}i:9;a:6:{i:0;a:3:{s:4:"rule";s:5:"debug";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140608;i:4;a:0:{}i:5;i:4716736;}i:10;a:6:{i:0;a:3:{s:4:"rule";s:43:"debug/<controller:[\w\-]+>/<action:[\w\-]+>";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140613;i:4;a:0:{}i:5;i:4717328;}i:11;a:6:{i:0;a:3:{s:4:"rule";s:16:"yii\rest\UrlRule";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140619;i:4;a:0:{}i:5;i:4717920;}i:12;a:6:{i:0;a:3:{s:4:"rule";s:16:"yii\rest\UrlRule";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140622;i:4;a:0:{}i:5;i:4718512;}i:13;a:6:{i:0;a:3:{s:4:"rule";s:16:"yii\rest\UrlRule";s:5:"match";b:0;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140625;i:4;a:0:{}i:5;i:4719104;}i:14;a:6:{i:0;a:3:{s:4:"rule";s:28:"POST v1/comenzi/changeStatus";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140637;i:4;a:0:{}i:5;i:4720128;}i:15;a:6:{i:0;a:3:{s:4:"rule";s:33:"POST v1/comenzi/changeMetodaPlata";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140644;i:4;a:0:{}i:5;i:4720784;}i:16;a:6:{i:0;a:3:{s:4:"rule";s:36:"PUT v1/comenzi/adaugareProdusComanda";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140648;i:4;a:0:{}i:5;i:4721440;}i:17;a:6:{i:0;a:3:{s:4:"rule";s:36:"PUT v1/comenzi/stergereProdusComanda";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140653;i:4;a:0:{}i:5;i:4722416;}i:18;a:6:{i:0;a:3:{s:4:"rule";s:29:"PUT,PATCH v1/comenzi/<id:\w+>";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140657;i:4;a:0:{}i:5;i:4723064;}i:19;a:6:{i:0;a:3:{s:4:"rule";s:26:"DELETE v1/comenzi/<id:\w+>";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140662;i:4;a:0:{}i:5;i:4723712;}i:20;a:6:{i:0;a:3:{s:4:"rule";s:28:"GET,HEAD v1/comenzi/<id:\w+>";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140717;i:4;a:0:{}i:5;i:4724360;}i:21;a:6:{i:0;a:3:{s:4:"rule";s:15:"POST v1/comenzi";s:5:"match";b:0;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140723;i:4;a:0:{}i:5;i:4724992;}i:22;a:6:{i:0;s:40:"Request parsed with URL rule: v1/comenzi";i:1;i:8;i:2;s:29:"yii\web\UrlRule::parseRequest";i:3;d:1694704642.140744;i:4;a:0:{}i:5;i:4725952;}i:23;a:6:{i:0;a:3:{s:4:"rule";s:19:"GET,HEAD v1/comenzi";s:5:"match";b:1;s:6:"parent";s:16:"yii\rest\UrlRule";}i:1;i:8;i:2;s:30:"yii\rest\UrlRule::parseRequest";i:3;d:1694704642.140749;i:4;a:0:{}i:5;i:4726144;}i:24;a:6:{i:0;a:3:{s:4:"rule";s:16:"yii\rest\UrlRule";s:5:"match";b:1;s:6:"parent";N;}i:1;i:8;i:2;s:32:"yii\web\UrlManager::parseRequest";i:3;d:1694704642.140753;i:4;a:0:{}i:5;i:4726360;}}s:5:"route";s:16:"v1/comenzi/index";s:6:"action";s:59:"api\modules\v1\controllers\ComenziController::actionIndex()";}";s:7:"request";s:5861:"a:15:{s:7:"flashes";a:0:{}s:10:"statusCode";i:200;s:14:"requestHeaders";a:8:{s:13:"authorization";s:39:"Bearer bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O";s:10:"user-agent";s:21:"PostmanRuntime/7.32.3";s:6:"accept";s:3:"*/*";s:13:"postman-token";s:36:"a5aca06e-52d7-4491-90da-93a62ac2712d";s:4:"host";s:9:"localhost";s:15:"accept-encoding";s:17:"gzip, deflate, br";s:10:"connection";s:10:"keep-alive";s:6:"cookie";s:172:"_csrf=28c88c609c94579aee36369abb46fd65808a21850d43659365772b383488b9d0a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D4s4XjEYKve-OC7QrD0-hJxbsy6DDH7Y%22%3B%7D";}s:15:"responseHeaders";a:12:{s:12:"X-Powered-By";s:9:"PHP/8.2.4";s:4:"Vary";s:6:"Accept";s:24:"X-Pagination-Total-Count";s:1:"4";s:23:"X-Pagination-Page-Count";s:1:"4";s:25:"X-Pagination-Current-Page";s:1:"1";s:21:"X-Pagination-Per-Page";s:1:"1";s:4:"Link";s:343:"<http://localhost/VanzariRestaurante/api/web/v1/comenzi?per-page=1&page=1>; rel=self, <http://localhost/VanzariRestaurante/api/web/v1/comenzi?per-page=1&page=1>; rel=first, <http://localhost/VanzariRestaurante/api/web/v1/comenzi?per-page=1&page=4>; rel=last, <http://localhost/VanzariRestaurante/api/web/v1/comenzi?per-page=1&page=2>; rel=next";s:12:"Content-Type";s:31:"application/json; charset=UTF-8";s:11:"X-Debug-Tag";s:13:"650324021ee6b";s:16:"X-Debug-Duration";s:3:"287";s:12:"X-Debug-Link";s:64:"/VanzariRestaurante/api/web/debug/default/view?tag=650324021ee6b";s:10:"Set-Cookie";s:204:"_csrf=65baf3951eb0ec8f72b903bca63835929359cfbf4335d44383ca461916eabd15a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%2242rnyS_zwKe8VkoZcaFfUP3SihqCnpSn%22%3B%7D; path=/; HttpOnly; SameSite=Lax";}s:5:"route";s:16:"v1/comenzi/index";s:6:"action";s:59:"api\modules\v1\controllers\ComenziController::actionIndex()";s:12:"actionParams";a:0:{}s:7:"general";a:5:{s:6:"method";s:3:"GET";s:6:"isAjax";b:0;s:6:"isPjax";b:0;s:7:"isFlash";b:0;s:18:"isSecureConnection";b:0;}s:11:"requestBody";a:0:{}s:6:"SERVER";a:49:{s:16:"REDIRECT_MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:19:"REDIRECT_MYSQL_HOME";s:16:"\xampp\mysql\bin";s:21:"REDIRECT_OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:29:"REDIRECT_PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:14:"REDIRECT_PHPRC";s:10:"\xampp\php";s:12:"REDIRECT_TMP";s:10:"\xampp\tmp";s:15:"REDIRECT_STATUS";s:3:"200";s:7:"MIBDIRS";s:24:"C:/xampp/php/extras/mibs";s:10:"MYSQL_HOME";s:16:"\xampp\mysql\bin";s:12:"OPENSSL_CONF";s:31:"C:/xampp/apache/bin/openssl.cnf";s:20:"PHP_PEAR_SYSCONF_DIR";s:10:"\xampp\php";s:5:"PHPRC";s:10:"\xampp\php";s:3:"TMP";s:10:"\xampp\tmp";s:15:"HTTP_USER_AGENT";s:21:"PostmanRuntime/7.32.3";s:11:"HTTP_ACCEPT";s:3:"*/*";s:18:"HTTP_POSTMAN_TOKEN";s:36:"a5aca06e-52d7-4491-90da-93a62ac2712d";s:9:"HTTP_HOST";s:9:"localhost";s:20:"HTTP_ACCEPT_ENCODING";s:17:"gzip, deflate, br";s:15:"HTTP_CONNECTION";s:10:"keep-alive";s:11:"HTTP_COOKIE";s:172:"_csrf=28c88c609c94579aee36369abb46fd65808a21850d43659365772b383488b9d0a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22D4s4XjEYKve-OC7QrD0-hJxbsy6DDH7Y%22%3B%7D";s:4:"PATH";s:1159:"C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python311\Scripts\;C:\Python311\;C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files\Git\cmd;C:\WINDOWS\system32\config\systemprofile\AppData\Roaming\npm;C:\WINDOWS\system32\config\systemprofile\AppData\Roaming\npm;C:\Users\vladg\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\vladg\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA 2022.2\bin;C:\Users\vladg\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\vladg\AppData\Local\GitHubDesktop\bin;C:\Users\vladg\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\vladg\AppData\Roaming\Composer\vendor\bin;C:\Users\vladg\AppData\Local\Microsoft\WindowsApps;C:\Users\vladg\AppData\Roaming\npm;C:\Users\vladg\AppData\Roaming\nvm;C:\Program Files\nodejs";s:10:"SystemRoot";s:10:"C:\WINDOWS";s:7:"COMSPEC";s:27:"C:\WINDOWS\system32\cmd.exe";s:7:"PATHEXT";s:62:".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW";s:6:"WINDIR";s:10:"C:\WINDOWS";s:16:"SERVER_SIGNATURE";s:94:"<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+";s:15:"SERVER_SOFTWARE";s:46:"Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4";s:11:"SERVER_NAME";s:9:"localhost";s:11:"SERVER_ADDR";s:3:"::1";s:11:"SERVER_PORT";s:2:"80";s:11:"REMOTE_ADDR";s:3:"::1";s:13:"DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:14:"REQUEST_SCHEME";s:4:"http";s:14:"CONTEXT_PREFIX";s:0:"";s:21:"CONTEXT_DOCUMENT_ROOT";s:15:"C:/xampp/htdocs";s:12:"SERVER_ADMIN";s:20:"postmaster@localhost";s:15:"SCRIPT_FILENAME";s:52:"C:/xampp/htdocs/VanzariRestaurante/api/web/index.php";s:11:"REMOTE_PORT";s:5:"58976";s:12:"REDIRECT_URL";s:38:"/VanzariRestaurante/api/web/v1/comenzi";s:21:"REDIRECT_QUERY_STRING";s:10:"per-page=1";s:17:"GATEWAY_INTERFACE";s:7:"CGI/1.1";s:15:"SERVER_PROTOCOL";s:8:"HTTP/1.1";s:14:"REQUEST_METHOD";s:3:"GET";s:12:"QUERY_STRING";s:10:"per-page=1";s:11:"REQUEST_URI";s:49:"/VanzariRestaurante/api/web/v1/comenzi?per-page=1";s:11:"SCRIPT_NAME";s:37:"/VanzariRestaurante/api/web/index.php";s:8:"PHP_SELF";s:37:"/VanzariRestaurante/api/web/index.php";s:18:"REQUEST_TIME_FLOAT";d:1694704642.033741;s:12:"REQUEST_TIME";i:1694704642;}s:3:"GET";a:1:{s:8:"per-page";s:1:"1";}s:4:"POST";a:0:{}s:6:"COOKIE";a:1:{s:5:"_csrf";s:130:"28c88c609c94579aee36369abb46fd65808a21850d43659365772b383488b9d0a:2:{i:0;s:5:"_csrf";i:1;s:32:"D4s4XjEYKve-OC7QrD0-hJxbsy6DDH7Y";}";}s:5:"FILES";a:0:{}s:7:"SESSION";a:0:{}}";s:4:"user";s:1303:"a:5:{s:2:"id";i:1;s:8:"identity";a:10:{s:2:"id";s:1:"1";s:8:"username";s:7:"'admin'";s:8:"auth_key";s:34:"'bKT7Yr_yoegVvKUbK4VfNmgsnbG9Th8O'";s:13:"password_hash";s:62:"'$2y$13$KQojHEdjpk9ZtF3sBE76OO4GP6grPGQwOKQENEnSBoCjKEEqRvql2'";s:20:"password_reset_token";s:4:"null";s:5:"email";s:29:"'admin@vanzari-restaurant.ro'";s:6:"status";s:2:"10";s:10:"created_at";s:10:"1666886456";s:10:"updated_at";s:10:"1666886456";s:18:"verification_token";s:45:"'s-QOlSfYUerGXH4c7w9t3DvGu2nkaSj8_1666886456'";}s:10:"attributes";a:10:{i:0;a:2:{s:9:"attribute";s:2:"id";s:5:"label";s:2:"Id";}i:1;a:2:{s:9:"attribute";s:8:"username";s:5:"label";s:8:"Username";}i:2;a:2:{s:9:"attribute";s:8:"auth_key";s:5:"label";s:8:"Auth Key";}i:3;a:2:{s:9:"attribute";s:13:"password_hash";s:5:"label";s:13:"Password Hash";}i:4;a:2:{s:9:"attribute";s:20:"password_reset_token";s:5:"label";s:20:"Password Reset Token";}i:5;a:2:{s:9:"attribute";s:5:"email";s:5:"label";s:5:"Email";}i:6;a:2:{s:9:"attribute";s:6:"status";s:5:"label";s:6:"Status";}i:7;a:2:{s:9:"attribute";s:10:"created_at";s:5:"label";s:10:"Created At";}i:8;a:2:{s:9:"attribute";s:10:"updated_at";s:5:"label";s:10:"Updated At";}i:9;a:2:{s:9:"attribute";s:18:"verification_token";s:5:"label";s:18:"Verification Token";}}s:13:"rolesProvider";N;s:19:"permissionsProvider";N;}";s:5:"asset";s:6:"a:0:{}";s:7:"summary";a:13:{s:3:"tag";s:13:"650324021ee6b";s:3:"url";s:65:"http://localhost/VanzariRestaurante/api/web/v1/comenzi?per-page=1";s:4:"ajax";i:0;s:6:"method";s:3:"GET";s:2:"ip";s:3:"::1";s:4:"time";d:1694704642.033741;s:10:"statusCode";i:200;s:8:"sqlCount";i:23;s:21:"excessiveCallersCount";i:0;s:9:"mailCount";i:0;s:9:"mailFiles";a:0:{}s:10:"peakMemory";i:7784152;s:14:"processingTime";d:0.28968000411987305;}s:10:"exceptions";a:0:{}}

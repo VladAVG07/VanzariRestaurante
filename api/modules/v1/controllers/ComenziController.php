@@ -47,10 +47,10 @@ class ComenziController extends ActiveController {
                     return $model;
                 }
             }
-            if (!$produs->disponibil){
-                $model->addError('eroare', 'In comanda exista cel putin un produs indisponibil');
-                return $model;
-            }
+//            if (!$produs->disponibil){
+//                $model->addError('eroare', 'In comanda exista cel putin un produs indisponibil');
+//                return $model;
+//            }
         }
         if ($model->saveComanda(Yii::$app->request->post())) {
             $model->refresh();

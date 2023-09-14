@@ -32958,3 +32958,1562 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1686994653.1476
     'REQUEST_TIME' => 1686994653
 ]
+2023-08-31 14:17:53 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\HttpHeaderAuth.php(65): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(58): yii\filters\auth\HttpHeaderAuth->authenticate(Object(yii\web\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#8 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index', Array)
+#9 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/comenzi/inde...', Array)
+#10 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#12 {main}
+2023-08-31 14:17:53 [::1][-][-][info][application] $_GET = [
+    'page' => '1'
+    'per-page' => '0'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.29.2'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '5c6e97e9-335b-4ef1-be71-7aa1de1df8ad'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55646'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'REDIRECT_QUERY_STRING' => 'page=1&per-page=0'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'page=1&per-page=0'
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/comenzi?page=1&per-page=0'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693491473.6904
+    'REQUEST_TIME' => 1693491473
+]
+2023-08-31 17:24:10 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:24:09 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '48'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '52779'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693502649.6014
+    'REQUEST_TIME' => 1693502649
+]
+2023-08-31 17:36:24 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:36:23 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '48'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '53374'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693503383.0962
+    'REQUEST_TIME' => 1693503383
+]
+2023-08-31 17:37:17 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:37:16 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '48'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '53375'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693503436.7524
+    'REQUEST_TIME' => 1693503436
+]
+2023-08-31 17:46:13 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:46:13 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '61845'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693503973.3632
+    'REQUEST_TIME' => 1693503973
+]
+2023-08-31 17:48:38 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:48:38 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '58098'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693504118.4571
+    'REQUEST_TIME' => 1693504118
+]
+2023-08-31 17:50:17 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:50:17 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '51478'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693504217.5838
+    'REQUEST_TIME' => 1693504217
+]
+2023-08-31 17:51:11 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:51:11 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '51479'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693504271.3161
+    'REQUEST_TIME' => 1693504271
+]
+2023-08-31 17:51:31 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:51:31 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '51480'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693504291.5939
+    'REQUEST_TIME' => 1693504291
+]
+2023-08-31 17:51:57 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-08-31 17:51:57 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '26'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '51481'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693504317.3044
+    'REQUEST_TIME' => 1693504317
+]
+2023-09-02 10:35:29 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\HttpHeaderAuth.php(65): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(58): yii\filters\auth\HttpHeaderAuth->authenticate(Object(yii\web\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#8 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('create', Array)
+#9 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/comenzi/crea...', Array)
+#10 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#12 {main}
+2023-09-02 10:35:29 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.32.3'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '96ac1b00-ee97-4c97-8223-9f44f22939ef'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '237'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55649'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693650929.1504
+    'REQUEST_TIME' => 1693650929
+]
+2023-09-02 10:36:08 [::1][1][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "stocabil" on null in C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\controllers\ComenziController.php:44
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\controllers\ComenziController.php(44): yii\base\ErrorHandler->handleError(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 44)
+#1 [internal function]: api\modules\v1\controllers\ComenziController->actionCreate()
+#2 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('create', Array)
+#5 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/comenzi/crea...', Array)
+#6 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#8 {main}
+2023-09-02 10:36:07 [::1][1][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.32.3'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '53c1581c-e618-460d-86a9-3b3effe1e548'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '237'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55664'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693650967.9404
+    'REQUEST_TIME' => 1693650967
+]
+2023-09-02 10:36:55 [::1][1][-][error][yii\base\ErrorException:2] yii\base\ErrorException: Attempt to read property "disponibil" on array in C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\controllers\ComenziController.php:50
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\api\modules\v1\controllers\ComenziController.php(50): yii\base\ErrorHandler->handleError(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 50)
+#1 [internal function]: api\modules\v1\controllers\ComenziController->actionCreate()
+#2 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#3 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('create', Array)
+#5 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/comenzi/crea...', Array)
+#6 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#8 {main}
+2023-09-02 10:36:55 [::1][1][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '7f53508be46818aa392ec12cc0f759749b3cf43df180606f68ae2236fdf39caea:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"kJT9LkG7hD9xYCY9WZCL59AcGYZm6fhV\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.32.3'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '8f308a64-9e50-4414-88d3-5ce7c81a345e'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '236'
+    'HTTP_COOKIE' => '_csrf=7f53508be46818aa392ec12cc0f759749b3cf43df180606f68ae2236fdf39caea%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22kJT9LkG7hD9xYCY9WZCL59AcGYZm6fhV%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55673'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/comenzi'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693651015.6494
+    'REQUEST_TIME' => 1693651015
+]
+2023-09-02 10:59:43 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-09-02 10:59:41 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '48'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '62091'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693652381.3777
+    'REQUEST_TIME' => 1693652381
+]
+2023-09-02 11:00:30 [192.168.0.24][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.0.24
+2023-09-02 11:00:28 [192.168.0.24][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => '192.168.0.185'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'HTTP_USER_AGENT' => 'Expo/1017559 CFNetwork/1474 Darwin/23.0.0'
+    'CONTENT_LENGTH' => '48'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-GB,en;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 192.168.0.185 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '192.168.0.185'
+    'SERVER_ADDR' => '192.168.0.185'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '192.168.0.24'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55249'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/utilizatori/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1693652428.8482
+    'REQUEST_TIME' => 1693652428
+]
+2023-09-14 14:14:58 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\HttpHeaderAuth.php(65): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(58): yii\filters\auth\HttpHeaderAuth->authenticate(Object(yii\web\User), Object(yii\web\Request), Object(yii\web\Response))
+#2 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\rest\IndexAction))
+#3 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#6 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Controller.php(218): yii\base\Controller->beforeAction(Object(yii\rest\IndexAction))
+#7 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\rest\IndexAction))
+#8 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index', Array)
+#9 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/inde...', Array)
+#10 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#11 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#12 {main}
+2023-09-14 14:14:57 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.32.3'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '2eafb9b4-4b98-45be-bd93-9f8031ab57f3'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '55790'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/produse'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/produse'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694700897.1323
+    'REQUEST_TIME' => 1694700897
+]
+2023-09-14 14:42:39 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:42:38 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57351'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702558.9373
+    'REQUEST_TIME' => 1694702558
+]
+2023-09-14 14:42:41 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:42:41 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57351'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702561.8909
+    'REQUEST_TIME' => 1694702561
+]
+2023-09-14 14:42:53 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:42:53 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57356'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702573.3874
+    'REQUEST_TIME' => 1694702573
+]
+2023-09-14 14:42:56 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:42:56 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57356'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702576.8991
+    'REQUEST_TIME' => 1694702576
+]
+2023-09-14 14:42:57 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:42:57 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57356'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702577.3809
+    'REQUEST_TIME' => 1694702577
+]
+2023-09-14 14:43:33 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:43:33 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57383'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702613.6349
+    'REQUEST_TIME' => 1694702613
+]
+2023-09-14 14:43:34 [127.0.0.1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/login". in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/login', Array)
+#1 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurante\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurante\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-09-14 14:43:33 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = [
+    'email' => 'email@gmail.com'
+    'password' => 'test123'
+]
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_ACCEPT' => 'application/json, text/plain, */*'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'CONTENT_LENGTH' => '40'
+    'HTTP_HOST' => '10.0.2.2'
+    'HTTP_CONNECTION' => 'Keep-Alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip'
+    'HTTP_USER_AGENT' => 'okhttp/4.9.2'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Intel\\Shared Libraries\\redist\\intel64\\compiler;C:\\Python311\\Scripts\\;C:\\Python311\\;C:\\Python310\\Scripts\\;C:\\Python310\\;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\dotnet\\;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2022.2\\bin;C:\\Users\\vladg\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\vladg\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\vladg\\AppData\\Local\\JetBrains\\Toolbox\\scripts;C:\\Users\\vladg\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\vladg\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\vladg\\AppData\\Roaming\\npm;C:\\Users\\vladg\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4 Server at 10.0.2.2 Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.56 (Win64) OpenSSL/1.1.1t PHP/8.2.4'
+    'SERVER_NAME' => '10.0.2.2'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurante/api/web/index.php'
+    'REMOTE_PORT' => '57383'
+    'REDIRECT_URL' => '/VanzariRestaurante/api/web/v1/login'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurante/api/web/v1/login'
+    'SCRIPT_NAME' => '/VanzariRestaurante/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurante/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1694702613.8988
+    'REQUEST_TIME' => 1694702613
+]
