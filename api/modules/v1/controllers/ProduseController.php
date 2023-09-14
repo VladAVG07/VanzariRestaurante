@@ -51,11 +51,11 @@ public function actionIndex() {
             'query' => $query,
         ]);
     }*/
-    public function prepareDataProvider() {
+   public function prepareDataProvider() {
     $pageSize = Yii::$app->request->get('per-page', 10); // Number of elements per page
     $filterProperty = Yii::$app->request->get('filter-property', null); // Property filter value
     $filterValue = Yii::$app->request->get('filter-value', null); // Property filter value
-
+    $page = Yii::$app->request->get('page', 1); // Page number, default to 1 if not specified
 
     $query = (new \yii\db\Query())
         ->select([
@@ -67,7 +67,7 @@ public function actionIndex() {
         ->where(['p.disponibil' => 1]);
 
     // Apply property filter if provided
-    if ($filterProperty !== null && $filterValue!==null) {
+    if ($filterProperty !== null && $filterValue !== null) {
         $query->andWhere([$filterProperty => $filterValue]);
     }
 
@@ -78,6 +78,7 @@ public function actionIndex() {
         'query' => $query,
         'pagination' => [
             'pageSize' => $pageSize,
+            'page' => $page - 1, // Convert to 0-based page index
         ],
     ]);
 
@@ -88,6 +89,7 @@ public function actionIndex() {
         'items_per_page' => $dataProvider->getPagination()->getPageSize(),
     ];
 }
+
 
 
 
