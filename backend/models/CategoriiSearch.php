@@ -9,13 +9,12 @@ use backend\models\Categorii;
 /**
  * CategoriiSearch represents the model behind the search form of `backend\models\Categorii`.
  */
-class CategoriiSearch extends Categorii
-{
+class CategoriiSearch extends Categorii {
+
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'parinte', 'valid'], 'integer'],
             [['nume', 'descriere'], 'safe'],
@@ -25,8 +24,7 @@ class CategoriiSearch extends Categorii
     /**
      * {@inheritdoc}
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -38,10 +36,14 @@ class CategoriiSearch extends Categorii
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
-        $query = Categorii::find();
-
+    public function search($params) {
+        $query = Categorii::find()
+                ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
+                ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['u.id' => \Yii::$app->user->id]);
+        
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -64,8 +66,9 @@ class CategoriiSearch extends Categorii
         ]);
 
         $query->andFilterWhere(['like', 'nume', $this->nume])
-            ->andFilterWhere(['like', 'descriere', $this->descriere]);
+                ->andFilterWhere(['like', 'descriere', $this->descriere]);
 
         return $dataProvider;
     }
+
 }

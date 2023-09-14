@@ -88,6 +88,24 @@ class Categorii extends \yii\db\ActiveRecord
         return $this->hasMany(Produse::class, ['categorie' => 'id']);
     }
 
+    public function salveazaCategorie(){
+        $transaction = Yii::$app->db->beginTransaction();
+        $restaurant_categorie = new RestauranteCategorii();
+        $save = $this->save();
+        $restaurant_categorie->categorie = $this->id;
+        $restaurant_categorie->data_ora = date('Y-m-d H:i:s');
+        $idUserConectat = Yii::$app->user->id;
+        $idRestaurant = RestauranteUser::findOne(['user' => $idUserConectat])->restaurant;
+        $restaurant_categorie->restaurant = $idRestaurant;
+        $save = $restaurant_categorie->save();
+        if ($save){
+            $transaction->commit();
+            return true;
+        }
+        $transaction->rollBack();
+        return false;
+    }
+    
     public static function formatItemsArray($categorii)
     {
         $items = Categorii::getDropDownitems($categorii);

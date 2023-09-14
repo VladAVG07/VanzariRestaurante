@@ -17,8 +17,18 @@ class ProduseController extends ActiveController {
         $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
         return $actions;
     }
+public function actionIndex() {
+    $searchModel = new ProduseSearch();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-    public function prepareDataProvider() {
+    return [
+        'items' => $dataProvider->getModels(),
+        'total_pages' => $dataProvider->getPagination()->getPageCount(),
+        'current_page' => $dataProvider->getPagination()->getPage() + 1,
+        'items_per_page' => $dataProvider->getPagination()->getPageSize(),
+    ];
+}
+   /* public function prepareDataProvider() {
         //$modelClass = $this->modelClass;
 //        $query = $modelClass::find();
 //        $query->innerJoin('dosare_utilizatori', 'dosar.id=dosare_utilizatori.dosar');
@@ -40,7 +50,46 @@ class ProduseController extends ActiveController {
         return $dataProvider = new \yii\data\ActiveDataProvider([
             'query' => $query,
         ]);
+    }*/
+    public function prepareDataProvider() {
+    $pageSize = Yii::$app->request->get('per-page', 10); // Number of elements per page
+    $filterProperty = Yii::$app->request->get('filter-property', null); // Property filter value
+    $filterValue = Yii::$app->request->get('filter-value', null); // Property filter value
+
+
+    $query = (new \yii\db\Query())
+        ->select([
+            'p.*',
+            'SUM(s.cantitate_ramasa) AS cantitate'
+        ])
+        ->from('produse p')
+        ->leftJoin('stocuri s', 'p.id = s.produs')
+        ->where(['p.disponibil' => 1]);
+
+    // Apply property filter if provided
+    if ($filterProperty !== null && $filterValue!==null) {
+        $query->andWhere([$filterProperty => $filterValue]);
     }
+
+    $query->groupBy('p.id')
+        ->having(['OR', 'cantitate > 0', 'p.stocabil = 0']);
+
+    $dataProvider = new \yii\data\ActiveDataProvider([
+        'query' => $query,
+        'pagination' => [
+            'pageSize' => $pageSize,
+        ],
+    ]);
+
+    return [
+        'items' => $dataProvider->getModels(),
+        'total_pages' => $dataProvider->getPagination()->getPageCount(),
+        'current_page' => $dataProvider->getPagination()->getPage() + 1, // Yii pagination is 0-based
+        'items_per_page' => $dataProvider->getPagination()->getPageSize(),
+    ];
+}
+
+
 
     public function behaviors() {
         $behaviors = parent::behaviors();

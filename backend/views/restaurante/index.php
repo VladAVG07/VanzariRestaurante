@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\RestauranteSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Restaurantes');
+$this->title = Yii::t('app', 'Restaurante');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container-fluid">
