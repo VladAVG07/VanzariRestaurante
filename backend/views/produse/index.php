@@ -47,8 +47,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     if (!$model->stocabil) {
                                         return $model->nume;
                                     }
-                                    $cantitate = backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate');
-                                    yii\helpers\VarDumper::dump($cantitate);
+                                    $cantitate = backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa');
+                                   // yii\helpers\VarDumper::dump($cantitate);
                                     if ($cantitate == 0) {
                                         //<li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
                                         return Html::tag('span', $model->nume . '' . Html::tag('i', '', ['class' => 'fas fa-exclamation-triangle', 'style' => 'color: #ff0000;'])

@@ -71,6 +71,10 @@ class ComenziController extends ActiveController {
         ]);
     }
 
+    public function actionIstoricComenzi($telefon){
+        return \backend\models\Comenzi::getComenzi($telefon);
+    }
+    
     public function actionChangeStatus($id) {
         $model = Comenzi::findOne($id);
         if ($model->status == 8){

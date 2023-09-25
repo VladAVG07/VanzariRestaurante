@@ -150,13 +150,15 @@ return [
                     'controller' => 'v1/comenzi', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
-                        '{id}' => '<id:\\w+>'
+                        '{id}' => '<id:\\w+>',
+                        '{telefon}'=>'<telefon:\\w+>'
                     ],
                     'extraPatterns' => [
                         'POST changeStatus' => 'change-status',
                         'POST changeMetodaPlata' => 'change-metoda-plata',
                         'PUT adaugareProdusComanda' => 'adaugare-produs-comanda',
                         'PUT stergereProdusComanda' => 'stergere-produs-comanda',
+                        'GET istoricComenzi' => 'istoric-comenzi',
                     ],
 //                    'except' => ['delete'],
                 ],
