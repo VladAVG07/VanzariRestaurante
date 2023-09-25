@@ -55,7 +55,7 @@ public function actionIndex() {
     $pageSize = Yii::$app->request->get('per-page', 10); // Number of elements per page
     $filterProperty = Yii::$app->request->get('filter-property', null); // Property filter value
     $filterValue = Yii::$app->request->get('filter-value', null); // Property filter value
-
+    $page=Yii::$app->request->get('page',1);
 
     $query = (new \yii\db\Query())
         ->select([
@@ -78,6 +78,7 @@ public function actionIndex() {
         'query' => $query,
         'pagination' => [
             'pageSize' => $pageSize,
+            'page'=>$page-1,
         ],
     ]);
 
