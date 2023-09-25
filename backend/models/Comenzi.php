@@ -421,4 +421,14 @@ class Comenzi extends ActiveRecord {
         return $this->hasOne(ModuriPlata::class, ['id' => 'mod_plata']);
     }
 
+    
+    public static function getComenzi($telefon){
+        $userId= \Yii::$app->user->id;
+        $restaurant= RestauranteUser::find()->where(['user'=>$userId])->one();
+        return Comenzi::find()
+                ->innerJoin('user u','comenzi.utilizator = u.id')
+                ->innerJoin('restaurante_user ru', 'ru.user=u.id')
+                ->where(['numar_telefon'=>$telefon,'ru.restaurant'=>$restaurant->restaurant])->all();
+              
+    }
 }

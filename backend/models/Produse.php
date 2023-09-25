@@ -137,7 +137,7 @@ class Produse extends \yii\db\ActiveRecord {
     public function updateProdus() {
         $transaction = Yii::$app->db->beginTransaction();
         $pret = new PreturiProduse();
-        $this->data_productie = date('Y-m-d', $this->data_productie);
+        $this->data_productie = date('Y-m-d', strtotime($this->data_productie));
         if ($this->stocabil == 0)
             $this->alerta_stoc = 0;
         $save = $this->save();

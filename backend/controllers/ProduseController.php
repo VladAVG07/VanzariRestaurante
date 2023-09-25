@@ -59,6 +59,40 @@ class ProduseController extends Controller
         ]);
     }
 
+    public function actionProceseazaComanda($categorie=NULL) {
+        $linii = []; //Yii::$app->session->get('produseCos', []);
+        $searchModel = new ProduseSearch();
+        if($categorie){
+            $searchModel->categorie=$categorie;
+        }
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+//        $linie=new \backend\models\LinieComanda([
+//            'cantitate'=>3,
+//            'produs'=>90,
+//        ]);A
+//        $linii[]=$linie;
+        //Yii::$app->session->set('produseCos', $linii);
+        $dataProviderCos = new \yii\data\ArrayDataProvider([
+            'allModels' => $linii,
+        ]);
+        $cat= \backend\models\Categorii::findOne($categorie);
+        if(\Yii::$app->request->isAjax){
+            return $this->renderAjax('_list_view', [
+                    //'searchModel' => $searchModel
+                    'categorie'=> sprintf('list-%s',\yii\helpers\Inflector::slug($cat->nume)),
+                    'dataProvider' => $dataProvider,
+                    
+        ]);
+        }
+        return $this->render('view_products', [
+                    //'searchModel' => $searchModel
+                    'model' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    'dataProviderCos' => $dataProviderCos,
+        ]);
+    }
+    
     /**
      * Creates a new Produse model.
      * If creation is successful, the browser will be redirected to the 'view' page.

@@ -41,9 +41,11 @@ class ComenziSearch extends Comenzi
      */
     public function search($params)
     {
+        $restaurant= RestauranteUser::find()->where(['user'=> \Yii::$app->user->id])->one();
         $query = Comenzi::find()
                 ->innerJoin('user u','comenzi.utilizator = u.id')
-                ->where(['u.id' => \Yii::$app->user->id]);
+                ->innerJoin('restaurante_user ru', 'ru.user=u.id')
+                ->where(['ru.restaurant'=>$restaurant->restaurant]);
 
         // add conditions that should always apply here
 

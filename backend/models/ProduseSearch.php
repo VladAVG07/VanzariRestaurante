@@ -79,7 +79,7 @@ class ProduseSearch extends Produse {
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'categorie' => $this->categorie,
+            'rc.categorie' => $this->categorie,
             'cod_produs' => $this->cod_produs,
             'data_productie' => $this->data_productie,
             // 'pret' => $this->pret,

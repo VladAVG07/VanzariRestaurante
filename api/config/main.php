@@ -12,9 +12,8 @@ return [
     'modules' => [
         'v1' => [
             'basePath' => '@app/modules/v1',
-            'class' => 'api\modules\v1\Module',   // here is our v1 modules
+            'class' => 'api\modules\v1\Module', // here is our v1 modules
             'controllerNamespace' => 'api\modules\v1\controllers'
-
         ]
     ],
     'components' => [
@@ -116,7 +115,13 @@ return [
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
-                   // 'except' => ['view','index'],
+                    'extraPatterns' => [
+                        'GET category-product-count' => 'category-product-count',
+                        'GET min-max-prices' => 'min-max-prices',
+
+                    ]
+
+                // 'except' => ['view','index'],
                 ],
                 [
                     //'class' => 'api\modules\v1\rules\CustomUrlRule',
@@ -132,7 +137,7 @@ return [
                         'POST login' => 'login',
                         'POST changePassword' => 'change-password'
                     ],
-                    'except' => ['view','index','delete'],
+                    'except' => ['view', 'index', 'delete'],
                 ],
                 [
                     // 'class' => 'api\modules\v1\rules\CustomUrlRule',
@@ -150,13 +155,15 @@ return [
                     'controller' => 'v1/comenzi', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [
-                        '{id}' => '<id:\\w+>'
+                        '{id}' => '<id:\\w+>',
+                        '{telefon}' => '<telefon:\\w+>'
                     ],
                     'extraPatterns' => [
                         'POST changeStatus' => 'change-status',
                         'POST changeMetodaPlata' => 'change-metoda-plata',
                         'PUT adaugareProdusComanda' => 'adaugare-produs-comanda',
                         'PUT stergereProdusComanda' => 'stergere-produs-comanda',
+                        'GET istoricComenzi' => 'istoric-comenzi',
                     ],
 //                    'except' => ['delete'],
                 ],
