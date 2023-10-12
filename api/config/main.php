@@ -142,6 +142,10 @@ return [
                     'tokens' => [
                         '{id}' => '<id:\\w+>'
                     ],
+                    'extraPatterns' => [
+                        'GET verificaStoc' => 'verifica-stoc',
+                        'POST produsSesiune' => 'produs-sesiune'
+                        ]
 //                    'except' => ['delete'],
                 ],
                 [

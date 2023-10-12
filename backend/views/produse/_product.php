@@ -77,6 +77,15 @@ flex: 1;
 }
 CSS;
 $this->registerCss($style);
+
+if ($model->stocabil){
+    $query= \backend\models\Stocuri::find()
+            ->select(['stocuri.id','produs',new \yii\db\Expression('SUM(cantitate_ramasa) AS cantitate_ramasa')])
+            ->innerJoin('produse p', 'stocuri.produs = p.id')
+            ->where(['p.id' => $model->id]);
+    $stocRamas = $query->one()->cantitate_ramasa; 
+}
+
 ?>
 <div class="meal-container js-meal-container js-meal-search-popularOPON0O17Q" id="popularOPON0O17Q">
     <div tabindex="0" role="button" class="meal meal__top-button js-meal-item" itemscope="" itemtype="http://schema.org/Product">
@@ -84,12 +93,24 @@ $this->registerCss($style);
             <div class="meal-json"><?= \yii\helpers\Json::encode($model->toArray()) ?></div>
             <div class="meal__description-texts js-meal-description-text">
                 <span class="meal-name" itemprop="name">
-                    <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?></span>
+                    <?php if ($model->stocabil){ ?>
+                        <?php if (is_null($stocRamas) || $stocRamas == 0){ ?>
+                            <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?>   <span style="color:#ff0000;">Stoc: 0</span> </span>
+                        <?php } else if ($stocRamas < $model->alerta_stoc){ ?> 
+                            <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?>   <span style="color:#ff9500;">Stoc: <?= $stocRamas ?></span> </span>
+                        <?php } else { ?> 
+                            <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?>   <span style="color:green;">Stoc: <?= $stocRamas ?></span> </span>
+                        <?php } ?>
+                    <?php }else{ ?>
+                        <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?></span>
+                    <?php } ?>
+                        
+                     
                 </span>
                 <div class="meal__description-additional-info" itemprop="description"><?= $model->descriere ?></div>
                 <div class="meal__description-choose-from">Alege: Usturoi, Branza de burduf, Gorgonzola, Mozzarella, Parmezan, Pecorinno, Ceapa și mai multe.</div>
 
-                <div itemprop="price" class="meal__price"><?= Yii::$app->formatter->asCurrency($model->pret)?></div>
+                <div itemprop="price" class="meal__price"><?= Yii::$app->formatter->asCurrency($model->pret_curent)?></div>
                 <div class="sizeattributecontainer" id="sizeattributecontainerOPON0O17Q"></div>                
             </div>
         </div>

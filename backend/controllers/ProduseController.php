@@ -14,13 +14,12 @@ use yii\filters\VerbFilter;
 /**
  * ProduseController implements the CRUD actions for Produse model.
  */
-class ProduseController extends Controller
-{
+class ProduseController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::class,
@@ -35,14 +34,13 @@ class ProduseController extends Controller
      * Lists all Produse models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ProduseSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -52,21 +50,20 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
-    public function actionProceseazaComanda($categorie=NULL) {
+    public function actionProceseazaComanda($categorie = NULL) {
         $linii = []; //Yii::$app->session->get('produseCos', []);
         $searchModel = new ProduseSearch();
-        if($categorie){
-            $searchModel->categorie=$categorie;
+        if ($categorie) {
+            $searchModel->categorie = $categorie;
         }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        
+
 //        $linie=new \backend\models\LinieComanda([
 //            'cantitate'=>3,
 //            'produs'=>90,
@@ -76,14 +73,13 @@ class ProduseController extends Controller
         $dataProviderCos = new \yii\data\ArrayDataProvider([
             'allModels' => $linii,
         ]);
-        $cat= \backend\models\Categorii::findOne($categorie);
-        if(\Yii::$app->request->isAjax){
+        $cat = \backend\models\Categorii::findOne($categorie);
+        if (\Yii::$app->request->isAjax) {
             return $this->renderAjax('_list_view', [
-                    //'searchModel' => $searchModel
-                    'categorie'=> sprintf('list-%s',\yii\helpers\Inflector::slug($cat->nume)),
-                    'dataProvider' => $dataProvider,
-                    
-        ]);
+                        //'searchModel' => $searchModel
+                        'categorie' => sprintf('list-%s', \yii\helpers\Inflector::slug($cat->nume)),
+                        'dataProvider' => $dataProvider,
+            ]);
         }
         return $this->render('view_products', [
                     //'searchModel' => $searchModel
@@ -93,21 +89,29 @@ class ProduseController extends Controller
         ]);
     }
     
+    public function actionComandaSesiune($idUser, $idProdus, $cantitate){
+        $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
+            ->bindValue(':user_id', $idUser)
+            ->bindValue(':produs_id', $idProdus)
+            ->bindValue(':cantitate', $cantitate)
+            ->queryOne();
+        return $result;
+    }
+
     /**
      * Creates a new Produse model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Produse();
-        $model->stocabil=0;
-        if($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
+        $model->stocabil = 0;
+        if ($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -118,25 +122,24 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
         $model->data_productie = strtotime($model->data_productie);
         $query = PreturiProduse::find()->where(['and', ['produs' => $id],
-                        ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]]);
+            ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]]);
         $preturiViitoare = count($query->all());
-        
-        if ($preturiViitoare==0){
-            if($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
+
+        if ($preturiViitoare == 0) {
+            if ($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
-        }else
-            if($model->load(Yii::$app->request->post()) && $model->updateProdus()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        
+        } else
+        if ($model->load(Yii::$app->request->post()) && $model->updateProdus()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
         return $this->render('update', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -147,8 +150,7 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }
@@ -160,11 +162,11 @@ class ProduseController extends Controller
      * @return Produse the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Produse::findOne($id)) !== null) {
             return $model;
         }
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
 }

@@ -26,6 +26,14 @@ class ComenziLinii extends \yii\db\ActiveRecord {
         return 'comenzi_linii';
     }
 
+    public function increaseCantitate() {
+        $this->cantitate++;
+    }
+
+    public function decreaseCantitate() {
+        $this->cantitate--;
+    }
+    
     /**
      * {@inheritdoc}
      */
@@ -69,5 +77,12 @@ class ComenziLinii extends \yii\db\ActiveRecord {
      */
     public function getProdus0() {
         return $this->hasOne(Produse::class, ['id' => 'produs']);
+    }
+    
+    public function getTotal() {
+        if (empty($this->pret)|| !isset($this->pret)) {
+            return $this->cantitate * $this->produs0->pret_curent;
+        }
+        return $this->pret;
     }
 }

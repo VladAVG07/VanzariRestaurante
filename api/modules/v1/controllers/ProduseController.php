@@ -118,5 +118,35 @@ public function actionIndex() {
         }
         return 'error';
     }
-
+    
+    public function actionVerificaStoc($id) {
+        $produs= Produse::findOne($id);
+       // var_dump($produs);
+        if ($produs && $produs->stocabil) {
+            $query = \backend\models\Stocuri::find()
+                    ->select(['stocuri.id', 'produs', new \yii\db\Expression('SUM(cantitate_ramasa) AS cantitate_ramasa')])
+                    ->innerJoin('produse p', 'stocuri.produs = p.id')
+                    ->where(['p.id' => $produs->id]);
+            $stocRamas = $query->one()->cantitate_ramasa;
+            return ['stoc'=>is_null($stocRamas)?0:$stocRamas];
+        }
+        $m=new \yii\base\Model();
+        $m->addError('error','Produsul nu este stocabil');
+        return $m;
+    }
+    
+    public function actionProdusSesiune(){
+        //luam prin post id user, produs, cantitate
+        //fac ce a zis chat gpt
+        //update la partea din dreapta
+        $idUser = \Yii::$app->request->post('id');
+        $idProdus = \Yii::$app->request->post('produs');
+        $cantitate = \Yii::$app->request->post('cantitate');
+        $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
+            ->bindValue(':user_id', $idUser)
+            ->bindValue(':produs_id', $idProdus)
+            ->bindValue(':cantitate', $cantitate)
+            ->queryOne();
+        return $result;
+    }
 }

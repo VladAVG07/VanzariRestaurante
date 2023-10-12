@@ -55,6 +55,7 @@
                     ['label' => 'Stocuri', 'url' => ['stocuri/index']],
                     ['label' => 'Persoane', 'url' => ['persoane/index']],
                     ['label' => 'Functii', 'url' => ['functii/index']],
+                    ['label' => 'Setari Livrare', 'url' => ['setari-livrare/index']],
 //                    ['label' => 'MULTI LEVEL EXAMPLE', 'header' => true],
 //                    ['label' => 'Level1'],
 //                    [

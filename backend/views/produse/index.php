@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'cod_produs',
                             'descriere',
                             [
-                                'attribute' => 'pret',
+                                'attribute' => 'pretLivrare',
                                 'value' => function ($model) {
                                     return $model->pret_curent . ' RON';
                                 }

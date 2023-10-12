@@ -16,6 +16,12 @@ $urlSearch = '';
 
 $urlProduse = \yii\helpers\Url::toRoute('produse/proceseaza-comanda');
 $urlCreazaComanda = \yii\helpers\Url::toRoute('comenzi/create');
+$urlVerificaStoc = \yii\helpers\Url::toRoute('produse/verifica-stoc');
+$authKey= Yii::$app->user->identity->auth_key;
+$verificaStoc = 'http://localhost/VanzariRestaurant/api/web/v1/produse/verifica-stoc';
+$comandaSesiune = Yii::$app->urlManager->createUrl('produse/comanda-sesiune');
+$produsSesiune = 'http://localhost/VanzariRestaurant/api/web/v1/produse/produs-sesiune';
+$idUser = Yii::$app->user->id;
 
 $style = <<< CSS
 .cart-meal-amount{
@@ -137,10 +143,10 @@ $formatJs = <<< SCRIPT
             return l.id!==id;
         });
         if(linii.length>0){
-            const x=linii.reduce((a, b) => (a + b.pret),0);
+            const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
             if(x>0){
                 $('#sum').show();
-                $('.cart-sum-price').text(x+' Lei');
+                $('.cart-sum-price').text(x.toFixed(2)+' Lei');
             }
             $('#cos-list').html(linii.map(Item));
         
@@ -157,8 +163,29 @@ $formatJs = <<< SCRIPT
         const selector=`div[data-key='\${id}']`;
         const product=JSON.parse($(selector).find('.meal-json').text());
         linii=linii.map((l)=>{
+            const bearerToken = '$authKey';
+                $.ajax({
+                    type: "POST",
+                    url: '$produsSesiune',
+                    data: {
+                        id: '$idUser',
+                        produs: product.id,
+                        cantitate: -1
+                    },
+                    beforeSend: function(xhr) {
+                    // Set the Authorization header with the Bearer token
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
             if(l.id===product.id){
-                return {...l,cantitate:l.cantitate-1,pret:product.pret*(l.cantitate-1)};
+                console.log(l.cantitate);
+                return {...l,cantitate:l.cantitate-1,pret:parseFloat(product.pret_curent*(l.cantitate-1)).toFixed(2)};
             }
             return l;
         }).filter(item => {
@@ -170,10 +197,10 @@ $formatJs = <<< SCRIPT
         });;
         if(linii.length>0){
             $('#cos-list').html(linii.map(Item));
-            const x=linii.reduce((a, b) => (a + b.pret),0);
+            const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
             if(x>0){
                 $('#sum').show();
-                $('.cart-sum-price').text(x+' Lei');
+                $('.cart-sum-price').text(x.toFixed(2)+' Lei');
                 $('#btn-comanda').removeClass('disabled btn-default');
                 $('#btn-comanda').addClass('btn-danger');
             }
@@ -191,18 +218,53 @@ $formatJs = <<< SCRIPT
         const selector=`div[data-key='\${id}']`;
         const product=JSON.parse($(selector).find('.meal-json').text());
         linii=linii.map((l)=>{
+            const bearerToken = '$authKey';
+                $.ajax({
+                    type: "POST",
+                    url: '$produsSesiune',
+                    data: {
+                        id: '$idUser',
+                        produs: product.id,
+                        cantitate: 1
+                    },
+                    beforeSend: function(xhr) {
+                    // Set the Authorization header with the Bearer token
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+//            const bearerToken = '$authKey';
+//            $.ajax({
+//                    type: "GET",
+//                    url: '$verificaStoc?id='+product.id,
+//                    beforeSend: function(xhr) {
+//                    // Set the Authorization header with the Bearer token
+//                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//                    },
+//                    success: function (data) {
+//                        console.log(data);
+//                    },
+//                    error: function (error) {
+//                        console.log(error);
+//                    }
+//                });
             if(l.id===product.id){
-                return {...l,cantitate:l.cantitate+1,pret:product.pret*(l.cantitate+1)};
+                return {...l,cantitate:l.cantitate+1,pret:parseFloat(product.pret_curent*(l.cantitate+1)).toFixed(2)};
             }
             return l;
         });
         $('#cos-list').html(linii.map(Item));
-        const x=linii.reduce((a, b) => (a + b.pret),0);
+        const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
         if(x>0){
             $('#sum').show();
             $('#btn-comanda').removeClass('disabled btn-default');
             $('#btn-comanda').addClass('btn-danger');
-            $('.cart-sum-price').text(x+' Lei');
+            $('.cart-sum-price').text(x.toFixed(2)+' Lei');
         }
     });
     const Item=({id,cantitate,denumire,simbol,pret})=>`
@@ -215,29 +277,50 @@ $formatJs = <<< SCRIPT
                     <button class="remove edit-delete" onclick="">-</button>
                     <button class="add edit-delete">+</button>
                 </div>
-                <span class="cart-meal-price"><span class="price">\${pret}</span> \${simbol}</span>
-                <button class="cart-delete-button"><i class="fa  fa-trash-o red"></i></button>
+                <span class="cart-meal-price"><span class="price">\${pret}</span> Lei</span>
+                <button class="cart-delete-button"><i class="fas fa-trash-alt" style="color: #ff0000;"></i></button>
             </div>
         </div>
         </div>`;
     $('.tab-content').on('click','.left-corner',function(){
         let product=JSON.parse($(this).parent().parent().find('.meal-json').text());
-        const linie={id:product.id,cantitate:1,denumire:product.denumire,simbol:product.simbol,pret:product.pret};
+        const linie={id:product.id,cantitate:1,denumire:product.nume,pret:product.pret_curent};
         let existent=false;
+        const bearerToken = '$authKey';
+                $.ajax({
+                    type: "POST",
+                    url: '$produsSesiune',
+                    data: {
+                        id: '$idUser',
+                        produs: product.id,
+                        cantitate: 1
+                    },
+                    beforeSend: function(xhr) {
+                    // Set the Authorization header with the Bearer token
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
         linii=linii.map((l)=>{
             if(l.id===linie.id){
                 existent=true;
-                return {...l,cantitate:l.cantitate+1,pret:product.pret*(l.cantitate+1)};
+                return {...l,cantitate:l.cantitate+1,pret:parseFloat(product.pret_curent*(l.cantitate+1)).toFixed(2)};
             }
             return l;
         });
         if(!existent){
             linii.push(linie);
         }
-        const x=linii.reduce((a, b) => (a + b.pret),0);
+        const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+        console.log('x=',x);
         if(x>0){
             $('#sum').show();
-            $('.cart-sum-price').text(x+' Lei');
+            $('.cart-sum-price').text(x.toFixed(2)+' Lei');
             $('#btn-comanda').removeClass('disabled btn-default');
             $('#btn-comanda').addClass('btn-danger');
         }
@@ -300,8 +383,8 @@ SCRIPT;
 $this->registerJs($formatJs, yii\web\View::POS_END);
 ?>
 <div class="row">
-    <div class="col-sm-12">
-        <div class="col-sm-7">
+    <!--<div class="col-md-12">-->
+        <div class="col-md-7">
             <div class="produse-view box box-primary">
                 <?php
                 $form = ActiveForm::begin([
@@ -346,11 +429,18 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                 $form->end();
                 ?>
                 <div class="row">
-                    <div class="col-sm-12">
-                        <div class="nav-tabs-custom">
-                            <ul class="nav nav-tabs">
+                    <div class="col-sm-12 card">
+                        <div class="nav-tabs-custom card-header p-2">
+                            <ul class="nav nav-tabs nav-pills">
                                 <?php
-                                $categorii = \backend\models\Categorii::find()->all();
+                                $categorii = \backend\models\Categorii::find()
+                                        ->innerJoin('produse p','p.categorie = categorii.id')
+                                        ->innerJoin('restaurante_categorii rc','rc.categorie=categorii.id')
+                                        ->innerJoin('restaurante r','rc.restaurant=r.id')
+                                        ->innerJoin('restaurante_user ru','ru.restaurant=r.id')
+                                        ->innerJoin('user u','ru.user=u.id')
+                                        ->where(['u.id' => \Yii::$app->user->id])
+                                        ->all();
                                 $x = 0;
                                 $active = 'active';
                                 $expanded = true;
@@ -360,7 +450,8 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                                         $active = '';
                                         $expanded = false;
                                     }
-                                    echo Html::tag('li', Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-toggle' => 'tab', 'data-id' => $categorie->id, 'aria-expanded' => $expanded, 'class' => 'taba']), ['class' => $active]);
+                                   // echo Html::a('AICI');
+                                    echo Html::tag('li', Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-toggle' => 'tab', 'data-id' => $categorie->id, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['class' => $active]);
 
                                     $x++;
                                 }
@@ -370,6 +461,7 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                                 <?php
                                 $x = 0;
                                 foreach ($categorii as $categorie) {
+                                  //  echo Html::a('AICI');
                                     echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane ' . ($x > 0 ? '' : 'active'), 'id' => yii\helpers\Inflector::slug($categorie->nume)]);
                                     $x++;
                                 }
@@ -384,9 +476,9 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                 </div>
             </div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-md-5">
             <div class="cos">
-                <div class="box box-danger">
+                <div class="box box-danger card" style="padding:1.25rem;">
                     <div class="box-header text-center with-border">
                         <h3 class="box-title">Istoric comenzi</h3>
                         <br />
@@ -403,7 +495,7 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                     </div>
                     <!-- /.box-body -->
                 </div>
-                <div class="box box-primary">
+                <div class="box box-primary card" style="padding:1.25rem;">
                     <div class="box-header text-center with-border">
                         <h3 class="box-title">Cos</h3>
 
@@ -445,7 +537,7 @@ yii\widgets\Pjax::end();
                 </div>
             </div>
         </div>
-    </div>
+    <!--</div>-->
 </div>
 
 

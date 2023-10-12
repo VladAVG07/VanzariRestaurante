@@ -33750,3 +33750,1037 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1695394911.1186
     'REQUEST_TIME' => 1695394911
 ]
+2023-10-05 14:33:35 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/produse/verifica-stoc/10". in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:33:35 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '3ba0d597-02be-4d44-9734-81c9d17e9d57'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '55931'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516414.9725
+    'REQUEST_TIME' => 1696516414
+]
+2023-10-05 14:34:12 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: v1/produse/verifica-stoc&id=10 in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php:149
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc&i...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:34:12 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '621957b2-fbcd-48e4-a308-6f52a95e3960'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '55962'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc&id=10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc&id=10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516452.8448
+    'REQUEST_TIME' => 1696516452
+]
+2023-10-05 14:34:20 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/produse/verifica-stoc/10". in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:34:19 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '6872ead2-a78d-43ea-9985-3f12b715ee72'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '55971'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516459.922
+    'REQUEST_TIME' => 1696516459
+]
+2023-10-05 14:34:48 [::1][1][-][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Lipsesc parametrii obligatori: id in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php:202
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc', Array)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#6 {main}
+2023-10-05 14:34:47 [::1][1][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '898f40e3-de7d-4849-8fa8-5424f4241e7f'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=68b3100a5e832ed455b25fb81f1d021fa6cd33f57b7d46e45b6399adf7bca403a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22y4g-fz7QhdH0uYzEgnOT_FlHAAbhlHvI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56001'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516487.8868
+    'REQUEST_TIME' => 1696516487
+]
+2023-10-05 14:34:54 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/produse/verifica-stoc/10". in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:34:54 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'e2e6f085-561b-4b6e-90a0-d770f9596be6'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56011'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516494.7896
+    'REQUEST_TIME' => 1696516494
+]
+2023-10-05 14:35:14 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/produse/verifica-stoc/10". in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:35:14 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'ae9c12e3-2745-4a40-bf91-2323b0531a2a'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56034'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516514.7836
+    'REQUEST_TIME' => 1696516514
+]
+2023-10-05 14:35:16 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "v1/produse/verifica-stoc/10". in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 14:35:16 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_csrf' => '57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'CONTENT_TYPE' => 'application/json'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => 'b6980951-7151-4e08-aef5-c69cd5d8c546'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '351'
+    'HTTP_COOKIE' => '_csrf=57deda33a521e0d2297bb9413d4f2f211a1e1b529787920fe0e2113be77be951a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22VOyLFBaXUbso6d5kJzTYM2c_nmHjXIAY%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56034'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc/10'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516516.6604
+    'REQUEST_TIME' => 1696516516
+]
+2023-10-05 14:43:15 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(222): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc', Array)
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2023-10-05 14:43:15 [::1][-][-][info][application] $_GET = [
+    'id' => '3'
+]
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-backend' => 'ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a:2:{i:0;s:17:\"_identity-backend\";i:1;s:47:\"[10,\"aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE\",2592000]\";}'
+    'advanced-backend' => 'ls3kpd2lom4vhivjp6tugaio41'
+    '_csrf-backend' => 'ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'none'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ro;q=0.8'
+    'HTTP_COOKIE' => '_identity-backend=ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A47%3A%22%5B10%2C%22aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE%22%2C2592000%5D%22%3B%7D; advanced-backend=ls3kpd2lom4vhivjp6tugaio41; _csrf-backend=ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56476'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'REDIRECT_QUERY_STRING' => 'id=3'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'id=3'
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc?id=3'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696516995.0882
+    'REQUEST_TIME' => 1696516995
+]
+2023-10-05 14:49:24 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(222): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc', Array)
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2023-10-05 14:49:24 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-backend' => 'ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a:2:{i:0;s:17:\"_identity-backend\";i:1;s:47:\"[10,\"aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE\",2592000]\";}'
+    'advanced-backend' => 'ls3kpd2lom4vhivjp6tugaio41'
+    '_csrf-backend' => 'ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_X_CSRF_TOKEN' => 'M7bKHY8RzsgElrpWXqpntiQfFVru1JgyBvNBHKlueAMF151t90Kr_m7giQIW4Q6FSkdsPJ2br3ZuwxJXngkVSg=='
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost/VanzariRestaurant/backend/web/index.php?r=produse/proceseaza-comanda'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ro;q=0.8'
+    'HTTP_COOKIE' => '_identity-backend=ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A47%3A%22%5B10%2C%22aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE%22%2C2592000%5D%22%3B%7D; advanced-backend=ls3kpd2lom4vhivjp6tugaio41; _csrf-backend=ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '56722'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696517364.0304
+    'REQUEST_TIME' => 1696517364
+]
+2023-10-05 14:59:43 [::1][10][-][error][yii\web\HttpException:400] yii\web\BadRequestHttpException: Lipsesc parametrii obligatori: id in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php:202
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(51): yii\web\Controller->bindActionParams(Object(yii\base\InlineAction), Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc', Array)
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#5 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#6 {main}
+2023-10-05 14:59:43 [::1][10][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-backend' => 'ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a:2:{i:0;s:17:\"_identity-backend\";i:1;s:47:\"[10,\"aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE\",2592000]\";}'
+    'advanced-backend' => 'ls3kpd2lom4vhivjp6tugaio41'
+    '_csrf-backend' => 'ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"'
+    'HTTP_X_CSRF_TOKEN' => '4Yi5TZo7lI69jnQWVumeseJiZGsNQi-_bwOLrMPiUEnX6e494mjxuNf4R0IeoveCjDodDX4NGPsHM9jn9IU9AA=='
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost/VanzariRestaurant/backend/web/index.php?r=produse/proceseaza-comanda'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ro;q=0.8'
+    'HTTP_COOKIE' => '_identity-backend=ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A47%3A%22%5B10%2C%22aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE%22%2C2592000%5D%22%3B%7D; advanced-backend=ls3kpd2lom4vhivjp6tugaio41; _csrf-backend=ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '57380'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696517983.8007
+    'REQUEST_TIME' => 1696517983
+]
+2023-10-05 15:01:33 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: v1/produse/verifica-stoc&id=9 in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php:149
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('verifica-stoc&i...', Array)
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/veri...', Array)
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Pagina nu a fost găsită. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#2 {main}
+2023-10-05 15:01:33 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity-backend' => 'ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a:2:{i:0;s:17:\"_identity-backend\";i:1;s:47:\"[10,\"aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE\",2592000]\";}'
+    'advanced-backend' => 'ls3kpd2lom4vhivjp6tugaio41'
+    '_csrf-backend' => 'ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI\";}'
+    '_csrf' => '61e1cf66f24ca4d60bea9de3c3b9c744fda93fd6e72280a6f4f649fa663c1896a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"AYxezri-zMaw7onOdchmjxPnbfUdComZ\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"117\", \"Not;A=Brand\";v=\"8\", \"Chromium\";v=\"117\"'
+    'HTTP_X_CSRF_TOKEN' => 'd3M2Yn6p06uf-U9RTDvTqeRHIywy1QaaYejxvZbHYZpBEmESBvq2nfWPfAUEcLqaih9aSkGaMd4J2KL2oaAM0w=='
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_REFERER' => 'http://localhost/VanzariRestaurant/backend/web/index.php?r=produse/proceseaza-comanda'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,ro;q=0.8'
+    'HTTP_COOKIE' => '_identity-backend=ae900bddd6a3f9dccf9fff341589697f81fcc379d2273d762bc3ff35d5593907a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A47%3A%22%5B10%2C%22aymAFi68sp3MR4rvTG2A7Q3FMSXb8MoE%22%2C2592000%5D%22%3B%7D; advanced-backend=ls3kpd2lom4vhivjp6tugaio41; _csrf-backend=ece22c1e5bf464309f539cddadcfd57cef6f2db8daabe7c498be94d5ff6bbf57a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226aWpxSe6jv3THKi3nXyfsO7Dh0SK7gmI%22%3B%7D; _csrf=61e1cf66f24ca4d60bea9de3c3b9c744fda93fd6e72280a6f4f649fa663c1896a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22AYxezri-zMaw7onOdchmjxPnbfUdComZ%22%3B%7D'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '57461'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc&id=9'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/verifica-stoc&id=9'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1696518092.9895
+    'REQUEST_TIME' => 1696518092
+]
+2023-10-12 12:06:13 [::1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(222): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2023-10-12 12:06:12 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '2648e571-a958-46af-9763-0ea8db89ee42'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '0'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '59143'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1697112372.6181
+    'REQUEST_TIME' => 1697112372
+]
+2023-10-12 12:07:02 [::1][3][-][error][yii\db\IntegrityException] PDOException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user' cannot be null in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php:1302
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1302): PDOStatement->execute()
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1168): yii\db\Command->internalExecute('SELECT Verifica...')
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(424): yii\db\Command->queryInternal('fetch', NULL)
+#3 C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\ProduseController.php(149): yii\db\Command->queryOne()
+#4 [internal function]: api\modules\v1\controllers\ProduseController->actionProdusSesiune()
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+
+Next yii\db\IntegrityException: SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'user' cannot be null
+The SQL being executed was: SELECT VerificaSiGestioneazaSesiuneProdus(NULL, NULL, NULL) as result in C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Schema.php:676
+Stack trace:
+#0 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1307): yii\db\Schema->convertException(Object(PDOException), 'SELECT Verifica...')
+#1 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(1168): yii\db\Command->internalExecute('SELECT Verifica...')
+#2 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\db\Command.php(424): yii\db\Command->queryInternal('fetch', NULL)
+#3 C:\xampp\htdocs\VanzariRestaurant\api\modules\v1\controllers\ProduseController.php(149): yii\db\Command->queryOne()
+#4 [internal function]: api\modules\v1\controllers\ProduseController->actionProdusSesiune()
+#5 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#6 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#7 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\xampp\htdocs\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\xampp\htdocs\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [0] => 23000
+    [1] => 1048
+    [2] => Column 'user' cannot be null
+)
+
+2023-10-12 12:07:02 [::1][3][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_USER_AGENT' => 'PostmanRuntime/7.33.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_POSTMAN_TOKEN' => '35d0dc22-43bb-49e7-b932-6317a0d88f25'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '0'
+    'PATH' => 'C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\PuTTY\\;C:\\Program Files\\Git\\cmd;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Stefan\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Stefan\\AppData\\Local\\GitHubDesktop\\bin;C:\\Users\\Stefan\\AppData\\Roaming\\Composer\\vendor\\bin;'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.54 (Win64) OpenSSL/1.1.1p PHP/8.1.10'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '59164'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1697112422.0804
+    'REQUEST_TIME' => 1697112422
+]
