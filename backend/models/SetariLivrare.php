@@ -18,7 +18,7 @@ use Yii;
 class SetariLivrare extends \yii\db\ActiveRecord
 {
     
-    public $pretLivrare;
+    public $pret;
     
     /**
      * {@inheritdoc}
@@ -34,9 +34,9 @@ class SetariLivrare extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['restaurant', 'produs', 'comanda_minima'], 'required'],
+            [['restaurant', 'produs', 'comanda_minima', 'pret'], 'required'],
             [['restaurant', 'produs'], 'integer'],
-            [['comanda_minima'], 'number'],
+            [['comanda_minima','pret'], 'number'],
             [['restaurant'], 'exist', 'skipOnError' => true, 'targetClass' => Restaurante::class, 'targetAttribute' => ['restaurant' => 'id']],
             [['produs'], 'exist', 'skipOnError' => true, 'targetClass' => Produse::class, 'targetAttribute' => ['produs' => 'id']],
         ];
@@ -52,10 +52,26 @@ class SetariLivrare extends \yii\db\ActiveRecord
             'restaurant' => 'Restaurant',
             'produs' => 'Produs',
             'comanda_minima' => 'Comanda minima',
-            'pretLivrare'=>'Cost livrare',
+            'pret'=>'Cost livrare',
         ];
     }
 
+    public function salveazaSetareLivrare(){
+        $restauranteUser = RestauranteUser::findOne(['user' => \Yii::$app->user->id]);
+        $idRestaurant = $restauranteUser->restaurant;
+        $pret_curent = $this->pret;
+        $comanda_minima = $this->comanda_minima;
+        $result = Yii::$app->db->createCommand('SELECT AdaugaCategorieSiProdus(:restaurant_id, :pret_curent, :comanda_minima) as result')
+            ->bindValue(':restaurant_id', $idRestaurant)
+            ->bindValue(':pret_curent', $pret_curent)
+            ->bindValue(':comanda_minima', $comanda_minima)
+            ->queryOne();
+        if ($result==1)
+            return true;
+        else
+            return false;
+    }
+    
     /**
      * Gets query for [[Produs0]].
      *

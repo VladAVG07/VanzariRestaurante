@@ -66,7 +66,7 @@ class SetariLivrareController extends Controller
     {
         $model = new SetariLivrare();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->salveazaSetareLivrare()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

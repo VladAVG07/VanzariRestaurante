@@ -74,11 +74,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'value' => 'categorie0.nume', //relation name with their attribute
                                 //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
                                 'filter' => Html::activeDropDownList($searchModel, 'categorie', Categorii::formatItemsArray($categorii), ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
-                            ],
+                            ], 
                             'cod_produs',
                             'descriere',
                             [
-                                'attribute' => 'pretLivrare',
+                                'attribute' => 'pret',
                                 'value' => function ($model) {
                                     return $model->pret_curent . ' RON';
                                 }

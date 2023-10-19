@@ -11,6 +11,8 @@ use backend\models\SetariLivrare;
  */
 class SetariLivrareSearch extends SetariLivrare
 {
+        public $produsPret; // Add this sorting attribute
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +20,7 @@ class SetariLivrareSearch extends SetariLivrare
     {
         return [
             [['id', 'restaurant', 'produs'], 'integer'],
-            [['comanda_minima'], 'number'],
+            [['comanda_minima','pret'], 'number'],
         ];
     }
 
@@ -40,14 +42,34 @@ class SetariLivrareSearch extends SetariLivrare
      */
     public function search($params)
     {
-        $query = SetariLivrare::find();
-
+        $query = SetariLivrare::find()
+                    ->innerJoin('restaurante r', 'r.id = setari_livrare.restaurant')
+                    ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                    ->innerJoin('user u', 'ru.user = u.id')
+                    ->where(['u.id'=> \Yii::$app->user->id]);
+        if(\Yii::$app->user->identity->email==='admin@admin.com'){
+             $query = SetariLivrare::find();
+                   // ->innerJoin('restaurante r', 'r.id = setari_livrare.restaurant')
+                   // ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                    //->innerJoin('user u', 'ru.user = u.id')
+                    //->where(['u.id'=> \Yii::$app->user->id]);
+        }
+       
+        $query->joinWith('produs0');
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort' => [
+            'defaultOrder' => ['id' => SORT_DESC], // Set the default sorting order
+        ],
+            
         ]);
 
+        $dataProvider->sort->attributes['pret'] = [
+            'asc' => ['produse.pret_curent' => SORT_ASC],
+            'desc' => ['produse.pret_curent' => SORT_DESC],
+        ];
         $this->load($params);
 
         if (!$this->validate()) {
@@ -62,7 +84,10 @@ class SetariLivrareSearch extends SetariLivrare
             'restaurant' => $this->restaurant,
             'produs' => $this->produs,
             'comanda_minima' => $this->comanda_minima,
+            'produse.pret_curent'=>$this->pret
         ]);
+        //$query->andFilterWhere(['like', 'produse.pret_curent', $this->pret]);
+
 
         return $dataProvider;
     }

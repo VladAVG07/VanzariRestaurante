@@ -23,6 +23,14 @@ $comandaSesiune = Yii::$app->urlManager->createUrl('produse/comanda-sesiune');
 $produsSesiune = 'http://localhost/VanzariRestaurant/api/web/v1/produse/produs-sesiune';
 $idUser = Yii::$app->user->id;
 
+$setariLivrare = backend\models\SetariLivrare::find()
+                ->innerJoin('restaurante r', 'r.id = setari_livrare.restaurant')
+                ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                ->innerJoin('user u', 'ru.user = u.id')
+                ->where(['u.id' => $idUser])->orderBy(['id'=>SORT_DESC])->one();
+$pretLivrare=$setariLivrare->produs0->pret_curent;
+$comandaMinima=$setariLivrare->comanda_minima;
+$livrare=0;
 $style = <<< CSS
 .cart-meal-amount{
         width:40px;
@@ -118,6 +126,7 @@ button.add{
 }        
 CSS;
 $this->registerCss($style);
+
 $formatJs = <<< SCRIPT
    let linii=[];
        
@@ -136,6 +145,18 @@ $formatJs = <<< SCRIPT
                 }
         });
         });
+   function verificareTotal(x){
+        let livrare = 0;
+        if (x>=$comandaMinima){
+            livrare = 0;
+            
+        }
+        else{
+            livrare=$pretLivrare;
+        }
+         $('.cart-sum-price-livrare').text(livrare.toFixed(2)+' Lei');
+        return x+livrare;
+   }
    $('.cos').on('click', '.cart-delete-button',function(){
         $(this).parent().parent().remove(); 
         let id=parseInt($(this).parent().attr('data-id'));
@@ -144,8 +165,10 @@ $formatJs = <<< SCRIPT
         });
         if(linii.length>0){
             const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+            const xxx=verificareTotal(x);
             if(x>0){
                 $('#sum').show();
+                $('.cart-sum-price-sub').text((xxx).toFixed(2)+' Lei');
                 $('.cart-sum-price').text(x.toFixed(2)+' Lei');
             }
             $('#cos-list').html(linii.map(Item));
@@ -198,9 +221,11 @@ $formatJs = <<< SCRIPT
         if(linii.length>0){
             $('#cos-list').html(linii.map(Item));
             const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+            const xxx=verificareTotal(x);
             if(x>0){
                 $('#sum').show();
-                $('.cart-sum-price').text(x.toFixed(2)+' Lei');
+                $('.cart-sum-price').text(xxx.toFixed(2)+' Lei');
+                $('.cart-sum-price-sub').text(x.toFixed(2)+' Lei');
                 $('#btn-comanda').removeClass('disabled btn-default');
                 $('#btn-comanda').addClass('btn-danger');
             }
@@ -260,11 +285,13 @@ $formatJs = <<< SCRIPT
         });
         $('#cos-list').html(linii.map(Item));
         const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+        const xxx=verificareTotal(x);
         if(x>0){
             $('#sum').show();
             $('#btn-comanda').removeClass('disabled btn-default');
             $('#btn-comanda').addClass('btn-danger');
-            $('.cart-sum-price').text(x.toFixed(2)+' Lei');
+            $('.cart-sum-price').text(xxx.toFixed(2)+' Lei');
+            $('.cart-sum-price-sub').text(x.toFixed(2)+' Lei');
         }
     });
     const Item=({id,cantitate,denumire,simbol,pret})=>`
@@ -317,10 +344,12 @@ $formatJs = <<< SCRIPT
             linii.push(linie);
         }
         const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+        const xxx=verificareTotal(x);
         console.log('x=',x);
         if(x>0){
             $('#sum').show();
-            $('.cart-sum-price').text(x.toFixed(2)+' Lei');
+            $('.cart-sum-price').text(xxx.toFixed(2)+' Lei');
+            $('.cart-sum-price-sub').text(x.toFixed(2)+' Lei');
             $('#btn-comanda').removeClass('disabled btn-default');
             $('#btn-comanda').addClass('btn-danger');
         }
@@ -522,10 +551,10 @@ yii\widgets\Pjax::end();
                     <div class="box-footer text-center">
                         <div id="sum" class="cart-sum js-basket-sum" style="display:none;margin-bottom: 20px;"><div class="cart-row js-subtotal-row" style="display: flex;">
                                 <span class="cart-sum-name grey">Sub-total</span>
-                                <span class="cart-sum-price grey">32,00 lei</span>
+                                <span class="cart-sum-price-sub grey">32,00 lei</span>
                             </div><div class="cart-row js-delivery-costs-row" style="display: flex;">
-                                <span class="cart-sum-name grey">Costuri de livrare</span>
-                                <span class="cart-sum-price grey">4,00 lei</span>
+                                <span class="cart-sum-name grey"><?=$setariLivrare->produs0->nume?></span>
+                                <span class="cart-sum-price-livrare grey"><?=$setariLivrare->produs0->pret_curent?> lei</span>
                             </div><div class="cart-row row-sum js-total-costs-row" style="display: flex;font-weight: bold">
                                 <span class="cart-sum-name">Total</span>
                                 <span class="cart-sum-price">36,00 lei</span>
