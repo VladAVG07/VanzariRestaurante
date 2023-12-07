@@ -45,7 +45,7 @@ class ProduseSearch extends Produse {
                 ->innerJoin('restaurante r', 'rc.restaurant = r.id')
                 ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
                 ->innerJoin('user u', 'ru.user = u.id')
-                ->where(['u.id' => \Yii::$app->user->id]);
+                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>','produse.nume', 'Cost livrare']);
 
         // add conditions that should always apply here
 
@@ -86,7 +86,7 @@ class ProduseSearch extends Produse {
             'preturi_produse.valid' => 1
         ]);
         $query->andWhere(['preturi_produse.valid' => 1]);
-        $query->andFilterWhere(['like', 'nume', $this->nume])
+        $query->andFilterWhere(['like', 'produse.nume', $this->nume])
                 ->andFilterWhere(['like', 'descriere', $this->descriere])
                 ->andFilterCompare('pret', $this->pret);
 

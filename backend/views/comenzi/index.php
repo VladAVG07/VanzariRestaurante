@@ -17,7 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a(Yii::t('app', 'Adauga Comanda'), ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a(Yii::t('app', 'Adauga Comanda'), ['produse/proceseaza-comanda'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a(Yii::t('app', 'Editeaza interfata'), ['produse/editeaza-interfata'], ['class' => 'btn btn-primary']) ?>
                         </div>
                     </div>
 

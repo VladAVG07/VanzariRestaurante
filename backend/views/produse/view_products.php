@@ -2,22 +2,29 @@
 
 use yii\helpers\Html;
 use kartik\form\ActiveForm;
-use  \yii\bootstrap5\Modal;
+use \yii\bootstrap5\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Produse */
 /* @var $form \kartik\form\ActiveForm */
 
+// Include KioskBoard JavaScript and CSS assets
+//$this->registerJsFile('../../vendor/npm-asset/kioskboard/dist/kioskboard-2.3.0.min.js', ['position' => \yii\web\View::POS_HEAD]);
+//$this->registerCssFile('../../vendor/npm-asset/kioskboard/dist/kioskboard-2.3.0.min.css');
+//$this->registerJsFile('https://code.jquery.com/jquery-3.6.0.min.js', ['position' => \yii\web\View::POS_HEAD]);
+$this->registerCssFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css', ['position' => \yii\web\View::POS_HEAD]);
+//$this->registerCssFile('../index.css');
+
 $this->params['breadcrumbs'][] = ['label' => 'Produses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$searchId = Html::getInputId($model, 'denumire');
+$searchId = Html::getInputId($model, 'nume');
 $urlSearch = '';
 
 $urlProduse = \yii\helpers\Url::toRoute('produse/proceseaza-comanda');
 $urlCreazaComanda = \yii\helpers\Url::toRoute('comenzi/create');
 $urlVerificaStoc = \yii\helpers\Url::toRoute('produse/verifica-stoc');
-$authKey= Yii::$app->user->identity->auth_key;
+$authKey = Yii::$app->user->identity->auth_key;
 $verificaStoc = 'http://localhost/VanzariRestaurant/api/web/v1/produse/verifica-stoc';
 $comandaSesiune = Yii::$app->urlManager->createUrl('produse/comanda-sesiune');
 $produsSesiune = 'http://localhost/VanzariRestaurant/api/web/v1/produse/produs-sesiune';
@@ -27,10 +34,10 @@ $setariLivrare = backend\models\SetariLivrare::find()
                 ->innerJoin('restaurante r', 'r.id = setari_livrare.restaurant')
                 ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
                 ->innerJoin('user u', 'ru.user = u.id')
-                ->where(['u.id' => $idUser])->orderBy(['id'=>SORT_DESC])->one();
-$pretLivrare=$setariLivrare->produs0->pret_curent;
-$comandaMinima=$setariLivrare->comanda_minima;
-$livrare=0;
+                ->where(['u.id' => $idUser])->orderBy(['id' => SORT_DESC])->one();
+$pretLivrare = $setariLivrare->produs0->pret_curent;
+$comandaMinima = $setariLivrare->comanda_minima;
+$livrare = 0;
 $style = <<< CSS
 .cart-meal-amount{
         width:40px;
@@ -127,12 +134,50 @@ button.add{
 CSS;
 $this->registerCss($style);
 
+
+$formatJsH = <<< SCRIPT
+      var inputElement = $("#$searchId");
+      var modal = $("#myModal");
+      inputElement.on("click", function() {
+        modal.css("display", "block");
+        console.log('salut');
+      });
+      $(".close-tst").on("click", function() {
+        modal.css("display", "none");
+      });
+      
+//     $(document).on('click', function(event) {
+//        if(event.target===$("#produsesearch-nume")[0])
+//            return;
+//        console.log(event.target);
+//         var modal = $("#myModal");
+//         modal.css("display", "none");
+//    });
+SCRIPT;
+$this->registerJs($formatJsH, yii\web\View::POS_END);
+
 $formatJs = <<< SCRIPT
    let linii=[];
-       
+        
+   $('.btn-app').on('click',function(){
+        const tabId=$(this).attr('href');
+        console.log('salut');
+        const categorieMare=$(this).attr('data-id');
+        console.log(categorieMare);
+       $.ajax({// create an AJAX call...
+                data: {'categorieMare':categorieMare}, // get the form data
+                type: 'GET', // GET or POST
+                url: '$urlProduse', // the file to call
+                success: function (data) { // on success..
+                    $(tabId+' > .box-body').html(data);
+                    //$.pjax.reload({container: '#lista_produse'});
+                }
+        });
+   });
+        
    $('.nav-tabs').on('click','.taba',function(){
        const tabId=$(this).attr('href');
-        console.log('tabId'+tabId);
+      //  console.log('salut');
        const categorie=$(this).attr('data-id');
         //alert($('#search-form').attr('action'));
         $.ajax({// create an AJAX call...
@@ -357,24 +402,39 @@ $formatJs = <<< SCRIPT
     });
     let timer;
     let timeout=1000;
-    $('#$searchId').on('keyup',function(){
-        if($(this).val().length > 2 || $(this).val().length==0){ 
+    $('#$searchId').on('input',function(){
+        //console.log($(this).serialize());
+       // console.log('am apasat');
+        if($(this).val().length >= 2){ 
+        console.log('epic');
         // timer=setTimeout(function(){
                 $.ajax({// create an AJAX call...
                 data: $(this).serialize(), // get the form data
                 type: $(this).attr('method'), // GET or POST
                 url: $(this).attr('action'), // the file to call
                 success: function (data) { // on success..
-                    $('#lista_produse').html(data);
-                    //$.pjax.reload({container: '#lista_produse'});
+                    document.getElementById("rezultate-cautare1").style.display="block";
+                    $("a[class*='taba'][class*='active']").removeClass('active');
+                    $("div[class*='tab-pane'][class*='active']").removeClass('active');
+                    $('#rezultate-cautare').addClass('active');
+                    $("a[data-id*='-1']").addClass('active');
+                    //$('.taba').first().click();
+                    $(".tab-pane.active .box-body").html(data);
+                  //  $.pjax.reload({container: '#lista_produse'});
                 }
             });
           //      },timeout);
             
+        }else{
+            $('#rezultate-cautare').removeClass('active');
+            $("a[data-id*='-1']").removeClass('active');
+            $('#rezultate-cautare1').removeClass('active');
+            document.getElementById("rezultate-cautare1").style.display="none";
+            $('.taba').eq(1).click();
         }
     });
-    $('.taba').first().click();
-        
+    $('.taba').eq(1).click();
+   
     $('#btn-comanda').on('click',function(){
         const items=[];
         var fd = new FormData();  
@@ -405,167 +465,225 @@ $formatJs = <<< SCRIPT
                 }
         });
     });
-        
+     $(".kioskboard-row").on('click','.kioskboard-key',function(){
+        alert('test');
+    // var keyValue=$(this).attr("data-value");
+    // alert(keyValue);
+   });   
 SCRIPT;
 
 // Register the formatting script
 $this->registerJs($formatJs, yii\web\View::POS_END);
+
+$this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js', ['position' => \yii\web\View::POS_END]);
+//$this->registerJsFile('../index1.js', ['position' => \yii\web\View::POS_END]);
 ?>
 <div class="row">
     <!--<div class="col-md-12">-->
-        <div class="col-md-7">
-            <div class="produse-view box box-primary">
-                <?php
-                $form = ActiveForm::begin([
-                'action' => ['proceseaza-comanda'],
-                'method' => 'get',
-                'id' => 'search-form',
-                'options' => [
-                'data-pjax' => 1,
-                ],
-                ]);
-
-       Modal::begin([
-                    'title' => 'Sumar comanda',
-                    'id' => 'modal-sumar-comanda',
-                    'size' => 'modal-lrg',
-                    'closeButton' => ['id' => 'close-button'],
-                    'clientOptions' => [
-                        'backdrop' => 'static',
-                        'keyboard' => false,
-                    ]
-                ]);
+    <div class="col-md-7">
+        <div class="box box-danger card" style="padding:0.1rem;">
+            <div class="box-header text-center with-border">
+                <h3 class="box-title">Istoric comenzi</h3>
+                <h2 class="box-title">0726213098</h2>
+            </div>
+        </div>
+        <div class="produse-view box box-primary">
+            <?php
+            $form = ActiveForm::begin([
+                        'action' => ['proceseaza-comanda'],
+                        'method' => 'get',
+                        'id' => 'search-form',
+                        'options' => [
+                            'data-pjax' => 1,
+                        ],
+            ]);
+            //   echo Html::tag('span', 'Test', ['class' => 'test']);
+            Modal::begin([
+                'title' => 'Sumar comanda',
+                'id' => 'modal-sumar-comanda',
+                'size' => 'modal-lrg',
+                'closeButton' => ['id' => 'close-button'],
+                'clientOptions' => [
+                    'backdrop' => 'static',
+                    'keyboard' => false,
+                ]
+            ]);
 
 //                echo Html::beginTag('div');
 //                echo Html::img(sprintf('%s/images/loading.gif', Yii::getAlias('@web')), ['style' => 'padding: 20px;margin:0 auto;', 'class' => 'loading-spinner']);
-               echo Html::tag('div', '', ['id' => 'modal-sumar-comanda-content', 'class' => 'modal-body-content']);
+            echo Html::tag('div', '', ['id' => 'modal-sumar-comanda-content', 'class' => 'modal-body-content']);
 //                echo Html::endTag('div');
-                Modal::end();
-                ?>
-                <div class="row">
+            Modal::end();
+            ?>
+            <div class="row">
+                <div class="col-sm-12">
                     <div class="col-sm-12">
-                        <div class="col-sm-12">
+                        <!--<input class="js-virtual-keyboard" data-kioskboard-type="keyboard" data-kioskboard-placement="bottom" data-kioskboard-specialcharacters="false" placeholder="Your Name" />-->
+
+                        <?php
+                        echo $form->field($model, 'nume', [
+                            'addon' => ['prepend' => ['content' => '<i class="fa fa-search"></i>']]
+                        ])->textInput(['maxlength' => true, 'class' => 'input',
+                            //'id' => 'openModalButton',
+                            'data-kioskboard-type' => 'keyboard',
+                            'data-kioskboard-placement' => 'bottom',
+                            'data-kioskboard-placement' => false,
+                            'placeholder' => 'Produsul cautat...'])
+                        ?>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <div class="scrollable-list">
+                        <?php
+                        $categorii = \backend\models\Categorii::find()
+                                ->innerJoin('produse p', 'p.categorie = categorii.id')
+                                //->innerJoin('categorii c', 'c.parinte = categorii.id')
+                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+                                ->innerJoin('user u', 'ru.user=u.id')
+                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+                                ->all();
+                        $categorii1 = \backend\models\Categorii::find()
+                                //  ->innerJoin('produse p', 'p.categorie = categorii.id')
+                                ->innerJoin('categorii c', 'c.parinte = categorii.id')
+                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+                                ->innerJoin('user u', 'ru.user=u.id')
+                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+                                ->all();
+                        $categorii = array_merge($categorii, $categorii1);
+                        foreach ($categorii as $categorie) {
+                            //    echo $categorie->nume;
+                            echo Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-id' => $categorie->id, 'class' => 'btn btn-app', 'style' => 'width:200px;height:100px;
+    line-height:70px;display: inline-block;
+    margin-right: 10px;']);
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+            <div id="myModal" class="modal-tst">
+                <div class="modal-content-tst">
+                    <div class="modal-header-tst">
+                        <span class="modal-title-tst">Tastatura virtuala</span>
+                        <span class="close-tst">&times;</span>
+                    </div>
+                    <div class="keyboardContainer">
+                        <div class="simple-keyboard-main"></div>
+                        <div class="numPad">
+                            <div class="simple-keyboard-numpad"></div>
+                            <div class="simple-keyboard-numpadEnd"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <?php
+            $form->end();
+            ?>
+            <div class="row">
+                <div class="col-sm-12 card">
+                    <div class="nav-tabs-custom card-header p-2">
+                        <ul class="nav nav-tabs nav-pills">
                             <?php
-                            echo $form->field($model, 'nume', [
-                                'addon' => ['prepend' => ['content' => '<i class="fa fa-search"></i>']]
-                            ])->textInput(['maxlength' => true])
+                                       
+                            $subcategorii = \backend\models\Categorii::getSubcategories($categorii[2]->id);
+                            $x = 0;
+                            $active = 'active';
+                            $expanded = true;
+//                                $c = new \backend\models\Categorii();
+//                                $c->nume = 'Rezultate cautare';
+//                                $c->id=-1;
+                            echo Html::tag('li', Html::a('Rezultate cautare', sprintf('#%s', 'rezultate-cautare'), ['data-toggle' => 'tab', 'data-id' => -1, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['style' => 'display:none', 'id' => 'rezultate-cautare1']);
+
+                            foreach ($subcategorii as $categorie) {
+                                $class = sprintf('class="%s"', $active);
+                                if ($x > 0) {
+                                    $active = '';
+                                    $expanded = false;
+                                }
+                                // echo Html::a('AICI');
+                                echo Html::tag('li', Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-toggle' => 'tab', 'data-id' => $categorie->id, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['class' => $active]);
+
+                                $x++;
+                            }
                             ?>
+                        </ul>
+                        <div class="tab-content">
+                            <?php
+                            $x = 0;
+                            echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane', 'id' => 'rezultate-cautare']);
+
+                            foreach ($subcategorii as $categorie) {
+                                //  echo Html::a('AICI');
+                                echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane ' . ($x > 0 ? '' : 'active'), 'id' => yii\helpers\Inflector::slug($categorie->nume)]);
+                                $x++;
+                            }
+                            ?>
+
                         </div>
                     </div>
 
-                </div>
-                <?php
-                $form->end();
-                ?>
-                <div class="row">
-                    <div class="col-sm-12 card">
-                        <div class="nav-tabs-custom card-header p-2">
-                            <ul class="nav nav-tabs nav-pills">
-                                <?php
-                                $categorii = \backend\models\Categorii::find()
-                                        ->innerJoin('produse p','p.categorie = categorii.id')
-                                        ->innerJoin('restaurante_categorii rc','rc.categorie=categorii.id')
-                                        ->innerJoin('restaurante r','rc.restaurant=r.id')
-                                        ->innerJoin('restaurante_user ru','ru.restaurant=r.id')
-                                        ->innerJoin('user u','ru.user=u.id')
-                                        ->where(['u.id' => \Yii::$app->user->id])
-                                        ->all();
-                                $x = 0;
-                                $active = 'active';
-                                $expanded = true;
-                                foreach ($categorii as $categorie) {
-                                    $class = sprintf('class="%s"', $active);
-                                    if ($x > 0) {
-                                        $active = '';
-                                        $expanded = false;
-                                    }
-                                   // echo Html::a('AICI');
-                                    echo Html::tag('li', Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-toggle' => 'tab', 'data-id' => $categorie->id, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['class' => $active]);
-
-                                    $x++;
-                                }
-                                ?>
-                            </ul>
-                            <div class="tab-content">
-                                <?php
-                                $x = 0;
-                                foreach ($categorii as $categorie) {
-                                  //  echo Html::a('AICI');
-                                    echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane ' . ($x > 0 ? '' : 'active'), 'id' => yii\helpers\Inflector::slug($categorie->nume)]);
-                                    $x++;
-                                }
-                                ?>
-
-                            </div>
-                        </div>
 
 
-
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <div class="cos">
-                <div class="box box-danger card" style="padding:1.25rem;">
-                    <div class="box-header text-center with-border">
-                        <h3 class="box-title">Istoric comenzi</h3>
-                        <br />
-                        <h2 class="box-title">0726213098</h2>
-                        <!--              <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                      </div>-->
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
+    </div>
+    <div class="col-md-5">
+        <div class="cos">
+            <div class="box box-primary card" style="padding:1.25rem;">
+                <div class="box-header text-center with-border">
+                    <h3 class="box-title">Cos</h3>
 
-                    </div>
-                    <!-- /.box-body -->
+                    <!--              <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                  </div>-->
                 </div>
-                <div class="box box-primary card" style="padding:1.25rem;">
-                    <div class="box-header text-center with-border">
-                        <h3 class="box-title">Cos</h3>
-
-                        <!--              <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                      </div>-->
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-<?php
-\yii\widgets\Pjax::begin(['id' => 'cos-list', 'timeout' => 30000, 'clientOptions' => ['container' => 'pjax-container']]);
-echo yii\widgets\ListView::widget([
-    'dataProvider' => $dataProviderCos,
-    'options' => ['data-pjax' => true],
-    //   'layout' => '{items}{summary}',
-    'itemView' => '_linie_comanda'
-]);
-yii\widgets\Pjax::end();
-?>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer text-center">
-                        <div id="sum" class="cart-sum js-basket-sum" style="display:none;margin-bottom: 20px;"><div class="cart-row js-subtotal-row" style="display: flex;">
-                                <span class="cart-sum-name grey">Sub-total</span>
-                                <span class="cart-sum-price-sub grey">32,00 lei</span>
-                            </div><div class="cart-row js-delivery-costs-row" style="display: flex;">
-                                <span class="cart-sum-name grey"><?=$setariLivrare->produs0->nume?></span>
-                                <span class="cart-sum-price-livrare grey"><?=$setariLivrare->produs0->pret_curent?> lei</span>
-                            </div><div class="cart-row row-sum js-total-costs-row" style="display: flex;font-weight: bold">
-                                <span class="cart-sum-name">Total</span>
-                                <span class="cart-sum-price">36,00 lei</span>
-                            </div></div>
-<?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
-
-                    </div>
-                    <!-- /.box-footer -->
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <?php
+                    \yii\widgets\Pjax::begin(['id' => 'cos-list', 'timeout' => 30000, 'clientOptions' => ['container' => 'pjax-container']]);
+                    echo yii\widgets\ListView::widget([
+                        'dataProvider' => $dataProviderCos,
+                        'options' => ['data-pjax' => true],
+                        //   'layout' => '{items}{summary}',
+                        'itemView' => '_linie_comanda'
+                    ]);
+                    yii\widgets\Pjax::end();
+                    ?>
                 </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-center">
+                    <div id="sum" class="cart-sum js-basket-sum" style="display:none;margin-bottom: 20px;"><div class="cart-row js-subtotal-row" style="display: flex;">
+                            <span class="cart-sum-name grey">Sub-total</span>
+                            <span class="cart-sum-price-sub grey">32,00 lei</span>
+                        </div><div class="cart-row js-delivery-costs-row" style="display: flex;">
+                            <span class="cart-sum-name grey"><?= $setariLivrare->produs0->nume ?></span>
+                            <span class="cart-sum-price-livrare grey"><?= $setariLivrare->produs0->pret_curent ?> lei</span>
+                        </div><div class="cart-row row-sum js-total-costs-row" style="display: flex;font-weight: bold">
+                            <span class="cart-sum-name">Total</span>
+                            <span class="cart-sum-price">36,00 lei</span>
+                        </div></div>
+                    <?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
+
+                </div>
+                <!-- /.box-footer -->
             </div>
         </div>
+    </div>
     <!--</div>-->
 </div>
 

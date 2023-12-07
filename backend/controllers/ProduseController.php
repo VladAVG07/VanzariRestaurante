@@ -56,7 +56,51 @@ class ProduseController extends Controller {
         ]);
     }
 
-    public function actionProceseazaComanda($categorie = NULL) {
+    public function actionEditeazaInterfata() {
+        $model = new \backend\models\OrdineCategoriiForm();
+        //$model->validate();
+      //  \yii\helpers\VarDumper::dump($model->errors);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $idUri = explode(',', $model->ordineCategorii);
+            $transaction = Yii::$app->db->beginTransaction();
+            $save = true;
+            foreach ($idUri as $index => $id) {
+                $categorie = \backend\models\Categorii::findOne($id);
+                $categorie->ordine = $index + 1;
+                $save = $save && $categorie->save();
+            }
+            if ($save) {
+                $transaction->commit();
+            } else {
+                $transaction->rollBack();
+            }
+        }
+
+        return $this->render('edit_interfata', ['model' => $model]);
+    }
+
+//    public function actionModificaOrdine($ordine){
+//        $transaction = Yii::$app->db->beginTransaction();
+//        \yii\helpers\VarDumper::dump('sault');
+//        exit();
+////        $x=1;
+////        $save = true;
+////        foreach ($ordine as $ordin){
+////            $categorie = \backend\models\Categorii::findOne($ordin);
+////            $categorie->ordine = $x;
+////            $save = $categorie->save();
+////            $x++;
+////        }
+////        if ($save) {
+////            $transaction->commit();
+////        }  else{
+////            $transaction->rollBack();
+////        }
+//        
+//    }
+
+    public function actionProceseazaComanda($categorie = NULL, $categorieMare = NULL) {
+        // \yii\helpers\VarDumper::dump($categorie);
         $linii = []; //Yii::$app->session->get('produseCos', []);
         $searchModel = new ProduseSearch();
         if ($categorie) {
@@ -74,13 +118,19 @@ class ProduseController extends Controller {
             'allModels' => $linii,
         ]);
         $cat = \backend\models\Categorii::findOne($categorie);
-        if (\Yii::$app->request->isAjax) {
+        \yii\helpers\VarDumper::dump($categorieMare);
+        if (\Yii::$app->request->isAjax && is_null($categorieMare)) {
+            $catName = 'rezultate-cautare';
+            if ($cat) {
+                $catName = \yii\helpers\Inflector::slug($cat->nume);
+            }
             return $this->renderAjax('_list_view', [
-                        //'searchModel' => $searchModel
-                        'categorie' => sprintf('list-%s', \yii\helpers\Inflector::slug($cat->nume)),
+                        'searchModel' => $searchModel,
+                        'categorie' => sprintf('list-%s', $catName),
                         'dataProvider' => $dataProvider,
             ]);
         }
+        //  \yii\helpers\VarDumper::dump('sunt aici' . $categorieMare . 'da');
         return $this->render('view_products', [
                     //'searchModel' => $searchModel
                     'model' => $searchModel,
@@ -88,13 +138,13 @@ class ProduseController extends Controller {
                     'dataProviderCos' => $dataProviderCos,
         ]);
     }
-    
-    public function actionComandaSesiune($idUser, $idProdus, $cantitate){
+
+    public function actionComandaSesiune($idUser, $idProdus, $cantitate) {
         $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
-            ->bindValue(':user_id', $idUser)
-            ->bindValue(':produs_id', $idProdus)
-            ->bindValue(':cantitate', $cantitate)
-            ->queryOne();
+                ->bindValue(':user_id', $idUser)
+                ->bindValue(':produs_id', $idProdus)
+                ->bindValue(':cantitate', $cantitate)
+                ->queryOne();
         return $result;
     }
 

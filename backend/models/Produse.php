@@ -133,6 +133,13 @@ class Produse extends \yii\db\ActiveRecord {
         $transaction->rollBack();
         return false;
     }
+    
+    public function getProdusAndCategorie(){
+        if(!is_null($this->categorie0->parinte0)){
+            return sprintf('%s(%s)', $this->nume,$this->categorie0->nume);
+        }
+        return $this->nume;
+    }
 
     public function updateProdus() {
         $transaction = Yii::$app->db->beginTransaction();

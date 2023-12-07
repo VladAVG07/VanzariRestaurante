@@ -23,6 +23,7 @@ use yii\db\Expression;
  * @property string $mentiuni
  * @property string $canal
  * @property int $mod_plata
+ * @property string $adresa
  *
  * @property Bonuri $bonuri
  * @property ComenziLinii[] $comenziLiniis
@@ -48,7 +49,7 @@ class Comenzi extends ActiveRecord {
         return [
             [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
             [['numar_comanda', 'utilizator', 'status', 'mod_plata'], 'integer'],
-            [['data_ora_creare', 'data_ora_finalizare'], 'safe'],
+            [['data_ora_creare', 'data_ora_finalizare','adresa'], 'safe'],
             [['pret', 'tva'], 'number'],
             [['mentiuni'], 'string', 'max' => 255],
             [['canal'], 'string', 'max' => 20],

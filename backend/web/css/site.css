@@ -143,3 +143,9 @@ a.desc:after {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.scrollable-list {
+    overflow-x: auto; 
+    white-space: nowrap;
+    max-width: 100%; /* Adjust this value based on your design */
+}

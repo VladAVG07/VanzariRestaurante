@@ -11,6 +11,7 @@ use Yii;
  * @property string $nume
  * @property string $descriere
  * @property int|null $parinte
+ * @property int $ordine 
  * @property boolean $valid
  *
  * @property Categorii[] $categoriis
@@ -136,5 +137,28 @@ class Categorii extends \yii\db\ActiveRecord
         }
 
         return $result;
+    }
+    
+    public static function getSubcategories($parentId = null)
+    {
+        return self::find()
+            ->where(['parinte' => $parentId, 'valid' => 1])
+            ->all();
+    }
+
+    /**
+     * Get all categories with their subcategories recursively.
+     * @param int|null $parentId The parent category ID, null for main categories.
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getAllCategoriesWithSubcategories($parentId = null)
+    {
+        $categories = self::getSubcategories($parentId);
+
+        foreach ($categories as &$category) {
+            $category['subcategories'] = self::getAllCategoriesWithSubcategories($category->id);
+        }
+
+        return $categories;
     }
 }
