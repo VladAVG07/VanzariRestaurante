@@ -75,6 +75,10 @@ class ComenziController extends ActiveController {
         return \backend\models\Comenzi::getComenzi($telefon);
     }
     
+    public function actionSunaTelefonul($telefon , $idRestaurent) {
+        
+    }
+    
     public function actionChangeStatus($id) {
         $model = Comenzi::findOne($id);
         if ($model->status == 8){
