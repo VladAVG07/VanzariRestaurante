@@ -57,19 +57,26 @@ public function actionIndex() {
     $filterValue = Yii::$app->request->get('filter-value', null); // Property filter value
     $page = Yii::$app->request->get('page', 1); // Page number, default to 1 if not specified
 
-    $query = (new \yii\db\Query())
-        ->select([
-            'p.*',
-            'SUM(s.cantitate_ramasa) AS cantitate'
-        ])
-        ->from('produse p')
-        ->leftJoin('stocuri s', 'p.id = s.produs')
-        ->where(['p.disponibil' => 1]);
+        $query = (new \yii\db\Query())
+                ->select([
+                    'p.*',
+                    'SUM(s.cantitate_ramasa) AS cantitate'
+                ])
+                ->from('produse p')
+                ->leftJoin('stocuri s', 'p.id = s.produs')
+                ->where(['p.disponibil' => 1]);
 
-    // Apply property filter if provided
-    if ($filterProperty !== null && $filterValue !== null) {
-        $query->andWhere([$filterProperty => $filterValue]);
-    }
+        // Apply property filter if provided
+        if (count($filterProperties) === count($filterValues)) {
+            foreach ($filterProperties as $index => $property) {
+                $interval = explode('-',  $filterValues[$index]);
+                if (count($interval) === 2) {
+                    $query->andWhere(['BETWEEN', $property, $interval[0], $interval[1]]);
+                } else {
+                    $query->andWhere([$property => $filterValues[$index]]);
+                }
+            }
+        }
 
     $query->groupBy('p.id')
         ->having(['OR', 'cantitate > 0', 'p.stocabil = 0']);
