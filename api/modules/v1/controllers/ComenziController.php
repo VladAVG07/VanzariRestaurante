@@ -8,6 +8,8 @@
 
 namespace api\modules\v1\controllers;
 
+require __DIR__ . '/../../../../vendor/autoload.php';
+
 /**
  * Description of ComenziController
  *
@@ -18,6 +20,7 @@ use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
+use ElephantIO\Client as Client;
 
 class ComenziController extends ActiveController {
 
@@ -40,17 +43,17 @@ class ComenziController extends ActiveController {
     public function actionCreate() {
         $model = new Comenzi();
         $produseComanda = Yii::$app->request->post('produse');
-        foreach ($produseComanda as $produs){
-            if (\backend\models\Produse::findOne(['id' => $produs['id']])->stocabil){
-                if (\backend\models\Stocuri::find()->where(['produs' => $produs['id']])->sum('cantitate_ramasa') < $produs['cantitate']){
+        foreach ($produseComanda as $produs) {
+            if (\backend\models\Produse::findOne(['id' => $produs['id']])->stocabil) {
+                if (\backend\models\Stocuri::find()->where(['produs' => $produs['id']])->sum('cantitate_ramasa') < $produs['cantitate']) {
                     $model->addError('eroare', 'Nu exista suficiente produse pe stoc');
                     return $model;
                 }
             }
-            if (!$produs->disponibil){
-                $model->addError('eroare', 'In comanda exista cel putin un produs indisponibil');
-                return $model;
-            }
+//            if (!$produs->disponibil) {
+//                $model->addError('eroare', 'In comanda exista cel putin un produs indisponibil');
+//                return $model;
+//            }
         }
         if ($model->saveComanda(Yii::$app->request->post())) {
             $model->refresh();
@@ -71,13 +74,32 @@ class ComenziController extends ActiveController {
         ]);
     }
 
-    public function actionIstoricComenzi($telefon){
+    public function actionIstoricComenzi($telefon) {
         return \backend\models\Comenzi::getComenzi($telefon);
     }
-    
+
+    public function actionTelefonulSuna($telefon, $idRestaurant, $token) {
+        $url = 'http://localhost:8000';
+        $client = new Client(Client::engine(Client::CLIENT_4X, $url));
+        $client->initialize();
+        $client->of('/');
+
+// emit an event to the server
+        $data = ['telefon' => $telefon, 'idRestaurant' => $idRestaurant, 'token' => $token];
+        $client->emit('call-received', $data);
+
+
+//        $client->send(   1,
+//    null,
+//    null,
+//    json_encode(array('name' => 'foo', 'args' => 'bar')));
+        //   $client->close();
+        return 'test';
+    }
+
     public function actionChangeStatus($id) {
         $model = Comenzi::findOne($id);
-        if ($model->status == 8){
+        if ($model->status == 8) {
             $model->addError('eroare', 'Comanda este anulata!');
             return $model;
         }
@@ -103,50 +125,51 @@ class ComenziController extends ActiveController {
         $model->addError('eroare', 'Eroare nespecificata');
         return $model;
     }
-    
-    public function actionAdaugareProdusComanda($id){
+
+    public function actionAdaugareProdusComanda($id) {
         $model = Comenzi::findOne($id);
-        if ($model->status0->status0->id!=3){
+        if ($model->status0->status0->id != 3) {
             $model->addError('eroare', 'Comanda este deja in curs de pregatire');
             return $model;
         }
         $id_produs = Yii::$app->request->post('id_produs');
         $cantitate = Yii::$app->request->post('cantitate');
-        if (\backend\models\Produse::findOne(['id' => $id_produs])->stocabil){
-            if (\backend\models\Stocuri::find()->where(['produs' => $id_produs])->sum('cantitate_ramasa') < $cantitate){
+        if (\backend\models\Produse::findOne(['id' => $id_produs])->stocabil) {
+            if (\backend\models\Stocuri::find()->where(['produs' => $id_produs])->sum('cantitate_ramasa') < $cantitate) {
                 $model->addError('eroare', 'Nu sunt suficiente produse pe stoc');
                 return $model;
             }
         }
-        if ($model->adaugareProdusComanda($id)){
+        if ($model->adaugareProdusComanda($id)) {
             $model->refresh();
             return $model;
         }
         $model->addError('eroare', 'Eroare nespecificata');
         return $model;
     }
-    
-    public function actionStergereProdusComanda($id){
+
+    public function actionStergereProdusComanda($id) {
         $model = Comenzi::findOne($id);
-        if ($model->status0->status0->id!=3){
+        if ($model->status0->status0->id != 3) {
             $model->addError('eroare', 'Comanda este deja in curs de pregatire');
             return $model;
         }
         $id_produs = Yii::$app->request->post('id_produs');
         $cantitate = Yii::$app->request->post('cantitate');
-        if (is_null(\backend\models\ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]))){
+        if (is_null(\backend\models\ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs]))) {
             $model->addError('eroare', 'Comanda nu contine acest produs');
             return $model;
         }
-        if ($cantitate> \backend\models\ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs])->cantitate){
+        if ($cantitate > \backend\models\ComenziLinii::findOne(['comanda' => $id, 'produs' => $id_produs])->cantitate) {
             $model->addError('eroare', 'Comanda contine o cantitate mai mica din acest produs');
             return $model;
         }
-        if ($model->stergereProdusComanda($id)){
+        if ($model->stergereProdusComanda($id)) {
             $model->refresh();
             return $model;
         }
         $model->addError('eroare', 'Eroare nespecificata');
         return $model;
     }
+
 }

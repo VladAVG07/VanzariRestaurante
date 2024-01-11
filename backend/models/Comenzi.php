@@ -49,7 +49,7 @@ class Comenzi extends ActiveRecord {
         return [
             [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
             [['numar_comanda', 'utilizator', 'status', 'mod_plata'], 'integer'],
-            [['data_ora_creare', 'data_ora_finalizare','adresa'], 'safe'],
+            [['data_ora_creare', 'data_ora_finalizare', 'adresa'], 'safe'],
             [['pret', 'tva'], 'number'],
             [['mentiuni'], 'string', 'max' => 255],
             [['canal'], 'string', 'max' => 20],
@@ -77,11 +77,101 @@ class Comenzi extends ActiveRecord {
         ];
     }
 
-    public function adaugaComanda(){
+    public function adaugaComanda() {
         $transaction = Yii::$app->db->beginTransaction();
-        
     }
-    
+
+    public function salveazaComanda($mentiuni, $adresa) {
+        $transaction = Yii::$app->db->beginTransaction();
+        // \yii\helpers\VarDumper::dump("sunt aici");
+        try {
+            //  \yii\helpers\VarDumper::dump("sunt aici");
+            $sesiune = Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
+            $sesiuniProduse = SesiuniProduse::find()->where(['sesiune' => $sesiune])->all();
+
+            $pret = 0;
+            $this->numar_comanda = 23;
+            $this->canal = 'web';
+            $this->data_ora_creare = new Expression('NOW()');
+            $this->tva = 0.09;
+            $this->utilizator = Yii::$app->user->id;
+            $this->mentiuni = $mentiuni;
+            $this->adresa = $adresa;
+            $this->mod_plata = 1;
+            //          $this->status =3;
+            $this->pret = 0;
+            //        $this->mod_plata = 1;
+//            $this->mentiuni = '';
+            //  \yii\helpers\VarDumper::dump("sunt aici");
+            if ($this->save()) {
+                //   \yii\helpers\VarDumper::dump("sunt aici");
+                // \yii\helpers\VarDumper::dump('AM ajuns aici');
+                foreach ($sesiuniProduse as $sesiuneProdus) {
+                    if ($sesiuneProdus->cantitate != 0) {
+                        $modelComandaLinie = new ComenziLinii();
+                        $modelComandaLinie->comanda = $this->id;
+                        $modelComandaLinie->cantitate = $sesiuneProdus->cantitate;
+                        $modelComandaLinie->produs = $sesiuneProdus->produs;
+                        $modelComandaLinie->pret = Produse::find()->where(['id' => $sesiuneProdus->produs])->one()->pret_curent * $sesiuneProdus->cantitate;
+                        $pret += $modelComandaLinie->pret;
+                        if (Produse::findOne(['id' => $sesiuneProdus->produs])->stocabil) {
+                            $query = Stocuri::find()->where(['and', ['produs' => $sesiuneProdus->produs], ['!=', 'cantitate_ramasa', 0]]);
+                            $stocuri = $query->all();
+                            $cantitate = $sesiuneProdus->cantitate;
+                            foreach ($stocuri as $stoc) {
+                                if ($cantitate != 0) {
+                                    //\yii\helpers\VarDumper::dump($stoc);
+                                    if ($cantitate > $stoc->cantitate_ramasa) {
+                                        $cantitate -= $stoc->cantitate_ramasa;
+                                        $stoc->cantitate_ramasa = 0;
+                                    } else {
+                                        $stoc->cantitate_ramasa -= $cantitate;
+                                        $cantitate = 0;
+                                    }
+                                    $save = $stoc->save();
+                                    if (!$save) {
+                                        $transaction->rollBack();
+                                        return false;
+                                    }
+                                } else
+                                    break;
+                            }
+                            //   exit();
+                        }
+                        $modelComandaLinie->save();
+                        // \yii\helpers\VarDumper::dump($modelComandaLinie->errors);
+                    }
+                }
+                $this->refresh();
+                $this->pret = $pret;
+                $statusCurent = new ComenziDetalii();
+                $statusCurent->comanda = $this->id;
+                $statusCurent->status = 3;
+                $statusCurent->data_ora_inceput = new Expression('NOW()');
+                $statusCurent->save();
+
+
+                $statusCurent->refresh();
+                $this->status = $statusCurent->id;
+//                $this->validate();
+//                \yii\helpers\VarDumper::dump( $this->errors);
+                //   \yii\helpers\VarDumper::dump("sunt aici");
+                $sesiune->data_ora_sfarsit = new Expression('NOW()');
+                if ($this->save() && $sesiune->save()) {
+                    
+                    //   \yii\helpers\VarDumper::dump("sunt aici");
+                    $transaction->commit();
+                    return true;
+                }
+            }
+        } catch (Exception $ex) {
+            //   \yii\helpers\VarDumper::dump($this->errors);
+            $transaction->rollBack();
+        }
+//        \yii\helpers\VarDumper::dump(Yii::$app->request->post());
+        return false;
+    }
+
     public function saveComanda($data) {
         $transaction = Yii::$app->db->beginTransaction();
         // \yii\helpers\VarDumper::dump("sunt aici");
@@ -249,7 +339,7 @@ class Comenzi extends ActiveRecord {
             }
 
             if (Produse::findOne(['id' => $id_produs])->stocabil) {
-                $query = Stocuri::find()->where(['produs'=>$id_produs])->andWhere(['<>','cantitate_ramasa',new Expression('cantitate')]);//Stocuri::find()->where(['and', ['produs' => $id_produs], ['!=', 'cantitate_ramasa', 'cantitate']]);
+                $query = Stocuri::find()->where(['produs' => $id_produs])->andWhere(['<>', 'cantitate_ramasa', new Expression('cantitate')]); //Stocuri::find()->where(['and', ['produs' => $id_produs], ['!=', 'cantitate_ramasa', 'cantitate']]);
                 //$query = Stocuri::find()->where(['produs' => $id_produs])->andWhere(['!=', 'cantitate_ramasa', 'cantitate']);
                 $stocuri = $query->all();
 //                \yii\helpers\VarDumper::dump($stocuri);
@@ -313,8 +403,8 @@ class Comenzi extends ActiveRecord {
             $statusNou->comanda = $comanda->id;
             //   $statusNou->status = ComenziStatusuri::findOne(['id' => Yii::$app->request->post('id_status')]);
             $statusNou->status = Yii::$app->request->post('id_status');
-            if (Yii::$app->request->post('id_status')==7)
-                $comanda->data_ora_finalizare = new Expression ('NOW()');
+            if (Yii::$app->request->post('id_status') == 7)
+                $comanda->data_ora_finalizare = new Expression('NOW()');
             $detalii = Yii::$app->request->post('detalii');
             if (is_null($detalii) || empty($detalii)) {
                 $statusNou->detalii = 'Sistem: Status schimbat din (' . $statusVechi->status0->nume . ') in (' . $statusNou->status0->nume . ')';
@@ -422,14 +512,13 @@ class Comenzi extends ActiveRecord {
         return $this->hasOne(ModuriPlata::class, ['id' => 'mod_plata']);
     }
 
-    
-    public static function getComenzi($telefon){
-        $userId= \Yii::$app->user->id;
-        $restaurant= RestauranteUser::find()->where(['user'=>$userId])->one();
+    public static function getComenzi($telefon) {
+        $userId = \Yii::$app->user->id;
+        $restaurant = RestauranteUser::find()->where(['user' => $userId])->one();
         return Comenzi::find()
-                ->innerJoin('user u','comenzi.utilizator = u.id')
-                ->innerJoin('restaurante_user ru', 'ru.user=u.id')
-                ->where(['numar_telefon'=>$telefon,'ru.restaurant'=>$restaurant->restaurant])->all();
-              
+                        ->innerJoin('user u', 'comenzi.utilizator = u.id')
+                        ->innerJoin('restaurante_user ru', 'ru.user=u.id')
+                        ->where(['numar_telefon' => $telefon, 'ru.restaurant' => $restaurant->restaurant])->orderBy(['data_ora_creare' => SORT_DESC]);
     }
+
 }

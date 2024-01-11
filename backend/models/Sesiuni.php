@@ -34,7 +34,7 @@ class Sesiuni extends \yii\db\ActiveRecord
             [['user'], 'required'],
             [['user'], 'integer'],
             [['data_ora_start', 'data_ora_sfarsit'], 'safe'],
-            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user' => 'id']],
+            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::class, 'targetAttribute' => ['user' => 'id']],
         ];
     }
 
@@ -68,6 +68,6 @@ class Sesiuni extends \yii\db\ActiveRecord
      */
     public function getUser0()
     {
-        return $this->hasOne(User::class, ['id' => 'user']);
+        return $this->hasOne(\common\models\User::class, ['id' => 'user']);
     }
 }

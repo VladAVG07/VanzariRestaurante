@@ -85,4 +85,12 @@ class ComenziLinii extends \yii\db\ActiveRecord {
         }
         return $this->pret;
     }
+    
+    public function fields() {
+        $fields=parent::fields();
+        $fields['date_produs']=function($model){
+            return $model->produs0;
+        };
+        return $fields;
+    }
 }

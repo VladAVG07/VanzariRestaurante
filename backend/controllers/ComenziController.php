@@ -10,7 +10,6 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\db\Expression;
 
-
 /**
  * ComenziController implements the CRUD actions for Comenzi model.
  */
@@ -57,9 +56,9 @@ class ComenziController extends Controller {
     }
 
     public function actionDisplayBon($id) {
-                
+
         $dataProvider = new \yii\data\ActiveDataProvider([
-            'query' => \backend\models\ComenziLinii::find()->where(['comanda'=>$id]),
+            'query' => \backend\models\ComenziLinii::find()->where(['comanda' => $id]),
             'pagination' => false,
         ]);
 
@@ -68,39 +67,38 @@ class ComenziController extends Controller {
         ]);
     }
 
-    public function actionPrinteaza(){
+    public function actionPrinteaza() {
         //todo: printarea catre imprimanta, nu stim inca cum se face, daca aceasta s-a efectuat cu succes, atunci schimba starea comenzi in FINALIZAT
-    
+
         $id = Yii::$app->request->post('id');
-        $jsonContent['success']=true;
-        $jsonContent['message']='';
-        $transanction= Yii::$app->db->beginTransaction();
-        $comanda=Comenzi::findOne($id);
-        $statusCurent=$comanda->status0;
-        $statusCurent->data_ora_sfarsit=new Expression('NOW()');
-        $saved=$statusCurent->save();
-        $statusNou=new \api\modules\v1\models\ComenziDetalii([
-            'comanda'=>$id,
-            'status'=>7,
-            'data_ora_inceput'=>new Expression('NOW()'),
-            'data_ora_sfarsit'=>new Expression('NOW()'),
-            'detalii'=>'Printare bon fiscal'
+        $jsonContent['success'] = true;
+        $jsonContent['message'] = '';
+        $transanction = Yii::$app->db->beginTransaction();
+        $comanda = Comenzi::findOne($id);
+        $statusCurent = $comanda->status0;
+        $statusCurent->data_ora_sfarsit = new Expression('NOW()');
+        $saved = $statusCurent->save();
+        $statusNou = new \api\modules\v1\models\ComenziDetalii([
+            'comanda' => $id,
+            'status' => 7,
+            'data_ora_inceput' => new Expression('NOW()'),
+            'data_ora_sfarsit' => new Expression('NOW()'),
+            'detalii' => 'Printare bon fiscal'
         ]);
-        $saved=$saved&&$statusNou->save();
-        $comanda->status=$statusNou->id;
-        $comanda->data_ora_finalizare=new Expression('NOW()');
-        $saved=$saved&&$comanda->save();
-        if($saved){
+        $saved = $saved && $statusNou->save();
+        $comanda->status = $statusNou->id;
+        $comanda->data_ora_finalizare = new Expression('NOW()');
+        $saved = $saved && $comanda->save();
+        if ($saved) {
             $transanction->commit();
-        }
-        else{
+        } else {
             $transanction->rollBack();
-            $jsonContent['success']=false;
-            $jsonContent['message']='Eroare la schimbarea stausului comenzii curente';
+            $jsonContent['success'] = false;
+            $jsonContent['message'] = 'Eroare la schimbarea stausului comenzii curente';
         }
         return \yii\helpers\Json::encode($jsonContent);
     }
-    
+
     /**
      * Creates a new Comenzi model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -108,8 +106,9 @@ class ComenziController extends Controller {
      */
     public function actionCreate() {
         $model = new Comenzi();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $mentiuni = Yii::$app->request->post('mentiuni');
+        $adresa = Yii::$app->request->post('adresa');
+        if ($model->salveazaComanda($mentiuni, $adresa)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

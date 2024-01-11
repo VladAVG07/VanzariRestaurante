@@ -44,6 +44,25 @@ class ProduseController extends Controller {
         ]);
     }
 
+    public function actionIncarcareSesiune() {
+        $sesiune = \backend\models\Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
+        if (!is_null($sesiune)) {
+            $sesiuniProduse = \backend\models\SesiuniProduse::find()->where(['sesiune' => $sesiune])->all();
+            $comenziLinii = [];
+            foreach ($sesiuniProduse as $sesiuneProdus) {
+                if ($sesiuneProdus->cantitate > 0) {
+                    $comandaLine = new \backend\models\ComenziLinii();
+                    $comandaLine->produs = $sesiuneProdus->produs;
+                    $comandaLine->cantitate = $sesiuneProdus->cantitate;
+                    array_push($comenziLinii, $comandaLine);
+                }
+            }
+            return \yii\helpers\Json::encode($comenziLinii);
+        }
+        $jsonContent['success'] = false;
+        return \yii\helpers\Json::encode($jsonContent);
+    }
+
     /**
      * Displays a single Produse model.
      * @param int $id ID
@@ -59,7 +78,7 @@ class ProduseController extends Controller {
     public function actionEditeazaInterfata() {
         $model = new \backend\models\OrdineCategoriiForm();
         //$model->validate();
-      //  \yii\helpers\VarDumper::dump($model->errors);
+        //  \yii\helpers\VarDumper::dump($model->errors);
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $idUri = explode(',', $model->ordineCategorii);
             $transaction = Yii::$app->db->beginTransaction();
@@ -99,6 +118,20 @@ class ProduseController extends Controller {
 //        
 //    }
 
+    public function actionAfisareIstoric($telefon) {
+
+        $comenzi = \backend\models\Comenzi::getComenzi($telefon);
+        $dataProvider = new \yii\data\ActiveDataProvider([
+            'query' => $comenzi,
+            'pagination' => [
+                'pageSize' => 2, // Set the number of records per page here
+            ],
+        ]);
+        return $this->renderAjax('_istoric_view', [
+                    'comenzi' => $dataProvider
+        ]);
+    }
+
     public function actionProceseazaComanda($categorie = NULL, $categorieMare = NULL) {
         // \yii\helpers\VarDumper::dump($categorie);
         $linii = []; //Yii::$app->session->get('produseCos', []);
@@ -118,7 +151,7 @@ class ProduseController extends Controller {
             'allModels' => $linii,
         ]);
         $cat = \backend\models\Categorii::findOne($categorie);
-        \yii\helpers\VarDumper::dump($categorieMare);
+        //  \yii\helpers\VarDumper::dump($categorieMare);
         if (\Yii::$app->request->isAjax && is_null($categorieMare)) {
             $catName = 'rezultate-cautare';
             if ($cat) {

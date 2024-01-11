@@ -22,8 +22,10 @@ $searchId = Html::getInputId($model, 'nume');
 $urlSearch = '';
 
 $urlProduse = \yii\helpers\Url::toRoute('produse/proceseaza-comanda');
+$urlComenzi = \yii\helpers\Url::toRoute('produse/afisare-istoric');
 $urlCreazaComanda = \yii\helpers\Url::toRoute('comenzi/create');
 $urlVerificaStoc = \yii\helpers\Url::toRoute('produse/verifica-stoc');
+$urlIncarcareSesiune = yii\helpers\Url::toRoute('produse/incarcare-sesiune');
 $authKey = Yii::$app->user->identity->auth_key;
 $verificaStoc = 'http://localhost/VanzariRestaurant/api/web/v1/produse/verifica-stoc';
 $comandaSesiune = Yii::$app->urlManager->createUrl('produse/comanda-sesiune');
@@ -39,6 +41,34 @@ $pretLivrare = $setariLivrare->produs0->pret_curent;
 $comandaMinima = $setariLivrare->comanda_minima;
 $livrare = 0;
 $style = <<< CSS
+.loading-overlay {
+  //position: absolute;
+ // top: 0;
+ // left: 0;
+        padding:40px;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+ // z-index: 9999;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+  //position: absolute;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 .cart-meal-amount{
         width:40px;
 }
@@ -49,7 +79,7 @@ $style = <<< CSS
         width:45%;
 }
 .cos {
-    // position:fixed;
+     position:relative;
    //   width:inherit;
     //max-width:32%;
     // margin-right:20px;
@@ -70,6 +100,10 @@ $style = <<< CSS
 .cos-content{
         padding:20px;
 }
+.test{
+        display:none;
+}
+        
 .edit-delete{
     font-family: inherit;
     font-size: 100%;
@@ -134,6 +168,23 @@ button.add{
 CSS;
 $this->registerCss($style);
 
+$sesiune = backend\models\Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
+if (!is_null($sesiune)) {
+    $sesiuniProduse = \backend\models\SesiuniProduse::find()->where(['sesiune' => $sesiune])->all();
+    $comenziLinii = [];
+    foreach ($sesiuniProduse as $sesiuneProdus) {
+        if ($sesiuneProdus->cantitate > 0) {
+            $comandaLine = new \backend\models\ComenziLinii();
+            $comandaLine->produs = $sesiuneProdus->produs;
+            $comandaLine->cantitate = $sesiuneProdus->cantitate;
+            array_push($comenziLinii, $comandaLine);
+        }
+    }
+    $dataProvider = new \yii\data\ArrayDataProvider([
+        'allModels' => $comenziLinii,
+    ]);
+}
+
 
 $formatJsH = <<< SCRIPT
       var inputElement = $("#$searchId");
@@ -158,6 +209,65 @@ $this->registerJs($formatJsH, yii\web\View::POS_END);
 
 $formatJs = <<< SCRIPT
    let linii=[];
+   const loadingOverlay = $('#loadingOverlay');
+   window.onload = function() {
+       $.ajax({// create an AJAX call... // get the form data
+                type: 'GET', // GET or POST
+                url: '$urlIncarcareSesiune', // the file to call
+                success: function (data) { // on success..
+                    
+                    json = JSON.parse(data);
+                        console.log(json);
+                    json.forEach(function(element) {
+                        for (let i=0;i<element.cantitate;i++){
+                            incarcareProduse(element.date_produs);
+                        }
+                    });  
+                       
+            loadingOverlay.hide();
+         $('.test').show();    
+                },
+        complete: function(jqXHR, textStatus){
+           
+        }
+      
+        });
+     
+    };
+        
+        
+        
+    function incarcareProduse(y){
+      //  console.log(y);
+        const linie={id:y.id,cantitate:1,denumire:y.nume,pret:y.pret_curent};
+        let existent=false;
+        linii=linii.map((l)=>{
+            if(l.id===linie.id){
+                existent=true;
+                return {...l,cantitate:l.cantitate+1,pret:parseFloat(y.pret_curent*(l.cantitate+1)).toFixed(2)};
+            }
+            return l;
+        });
+        if(!existent){
+            linii.push(linie);
+        }
+        const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+        const xxx=verificareTotal(x);
+        console.log('x=',x);
+        if(x>0){
+            $('#sum').show();
+            $('.cart-sum-price').text(xxx.toFixed(2)+' Lei');
+            $('.cart-sum-price-sub').text(x.toFixed(2)+' Lei');
+            $('#btn-comanda').removeClass('disabled btn-default');
+            $('#btn-comanda').addClass('btn-danger');
+        }
+        $('#cos-list').html(linii.map(Item));
+    }
+        
+        
+        
+        
+        
         
    $('.btn-app').on('click',function(){
         const tabId=$(this).attr('href');
@@ -436,6 +546,7 @@ $formatJs = <<< SCRIPT
     $('.taba').eq(1).click();
    
     $('#btn-comanda').on('click',function(){
+        $("#confirmation-modal").modal("show");
         const items=[];
         var fd = new FormData();  
         let x=0;
@@ -465,26 +576,92 @@ $formatJs = <<< SCRIPT
                 }
         });
     });
+        
+    $('#btn-confirma').on('click',function(){
+        var textAdresa = $('#text-area-adresa').val();
+        var textMentiuni = $('#text-area-mentiuni').val();
+        $.ajax({// create an AJAX call...
+                data: {'mentiuni':textMentiuni,'adresa':textAdresa}, // get the form data
+                type: 'POST', // GET or POST
+              //  contentType: false,
+                //processData: false,
+                url: '$urlCreazaComanda', // the file to call
+                success: function (data) { // on success..
+//                    $(tabId+' > .box-body').html(data);
+                    console.log('a mers');
+                }
+        });
+//        $.ajax({// create an AJAX call...
+//                data: fd, // get the form data
+//                type: 'POST', // GET or POST
+//                processData: false,
+//                contentType: false,
+//                url: '$urlCreazaComanda', // the file to call
+//                success: function (data) { // on success..
+//                    //$(tabId+' > .box-body').html(data);
+//                    //$.pjax.reload({container: '#lista_produse'});
+//                }
+//        });
+    });
+        
      $(".kioskboard-row").on('click','.kioskboard-key',function(){
         alert('test');
     // var keyValue=$(this).attr("data-value");
     // alert(keyValue);
    });   
+        
+    const socket = io('http://localhost:8000', { transports: ['websocket', 'polling'] });
+        
+    socket.on('previous-orders', (data) => {
+        console.log('Previous Orders:', data);
+        
+        $.ajax({// create an AJAX call...
+                data: {'telefon':data}, // get the form data
+                type: 'GET', // GET or POST
+                url: '$urlComenzi', // the file to call
+                success: function (data) { // on success.
+                    console.log(data);
+                    $('#istoric').append(data);
+                }
+        });
+        
+    });
 SCRIPT;
 
 // Register the formatting script
 $this->registerJs($formatJs, yii\web\View::POS_END);
 
 $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js', ['position' => \yii\web\View::POS_END]);
+$this->registerJsFile('https://cdn.socket.io/4.1.2/socket.io.min.js');
 //$this->registerJsFile('../index1.js', ['position' => \yii\web\View::POS_END]);
+
+Modal::begin([
+    'title' => '<h4>Confirmare comanda</h4>',
+    'id' => 'confirmation-modal',
+]);
 ?>
+
+<h5>Adresa livrare</h5>
+<textarea id="text-area-adresa" style="width:465px;height:90px;"></textarea>
+<h5>Mentiuni</h5>
+<textarea id="text-area-mentiuni" style="width:465px;height:90px;"></textarea>
+<span class="float-right">
+    <a class="btn btn-app bg-success" id="btn-confirma" style="width:120px;height:50px;text-align: center; align-items: center; display: flex; justify-content: center;">
+        <span style="font-size:20px;">Confirma</span>
+    </a>
+</span>
+<?php
+Modal::end();
+?>
+
+
 <div class="row">
     <!--<div class="col-md-12">-->
     <div class="col-md-7">
+        
         <div class="box box-danger card" style="padding:0.1rem;">
-            <div class="box-header text-center with-border">
-                <h3 class="box-title">Istoric comenzi</h3>
-                <h2 class="box-title">0726213098</h2>
+            <div id="istoric" class="box-header with-border">
+                <h4 class="box-title"><center>Istoric comenzi</center></h4>
             </div>
         </div>
         <div class="produse-view box box-primary">
@@ -596,7 +773,6 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build
                     <div class="nav-tabs-custom card-header p-2">
                         <ul class="nav nav-tabs nav-pills">
                             <?php
-                                       
                             $subcategorii = \backend\models\Categorii::getSubcategories($categorii[2]->id);
                             $x = 0;
                             $active = 'active';
@@ -641,10 +817,13 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build
         </div>
     </div>
     <div class="col-md-5">
+        
         <div class="cos">
+          
             <div class="box box-primary card" style="padding:1.25rem;">
                 <div class="box-header text-center with-border">
                     <h3 class="box-title">Cos</h3>
+
 
                     <!--              <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -652,8 +831,19 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                   </div>-->
                 </div>
+                  <div class="loading-overlay" id="loadingOverlay">
+             <div class="loading-spinner"></div>
+        </div>
+                <div class="test">
                 <!-- /.box-header -->
                 <div class="box-body">
+                    <?php
+//                    if (!is_null($sesiune)) {
+//                        echo $this->render('_list_view_cos', [
+//                            'comenziLiniiDataProvider' => $dataProvider,
+//                        ]);
+//                    }
+                    ?>
                     <?php
                     \yii\widgets\Pjax::begin(['id' => 'cos-list', 'timeout' => 30000, 'clientOptions' => ['container' => 'pjax-container']]);
                     echo yii\widgets\ListView::widget([
@@ -679,6 +869,7 @@ $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build
                         </div></div>
                     <?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
 
+                </div>
                 </div>
                 <!-- /.box-footer -->
             </div>

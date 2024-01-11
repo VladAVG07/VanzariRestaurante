@@ -163,6 +163,7 @@ return [
                         'PUT adaugareProdusComanda' => 'adaugare-produs-comanda',
                         'PUT stergereProdusComanda' => 'stergere-produs-comanda',
                         'GET istoricComenzi' => 'istoric-comenzi',
+                        'GET telefonulSuna' => 'telefonul-suna',
                     ],
 //                    'except' => ['delete'],
                 ],
