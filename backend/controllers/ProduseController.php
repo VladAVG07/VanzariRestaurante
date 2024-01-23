@@ -157,6 +157,10 @@ class ProduseController extends Controller {
             if ($cat) {
                 $catName = \yii\helpers\Inflector::slug($cat->nume);
             }
+            $produse = Produse::findAll(['categorie'=>$cat->id]);
+            if (!$produse){
+                return $this->renderPartial('_faraproduse_view');
+            }
             return $this->renderAjax('_list_view', [
                         'searchModel' => $searchModel,
                         'categorie' => sprintf('list-%s', $catName),
@@ -172,6 +176,10 @@ class ProduseController extends Controller {
         ]);
     }
 
+    public function actionSchimbaCategoria($idCategorie){
+        return $this->renderAjax('_subcategorii_view', ['id'=>$idCategorie]);
+    }
+    
     public function actionComandaSesiune($idUser, $idProdus, $cantitate) {
         $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
                 ->bindValue(':user_id', $idUser)

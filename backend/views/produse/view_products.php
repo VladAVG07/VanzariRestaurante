@@ -15,6 +15,7 @@ use \yii\bootstrap5\Modal;
 $this->registerCssFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css', ['position' => \yii\web\View::POS_HEAD]);
 //$this->registerCssFile('../index.css');
 
+
 $this->params['breadcrumbs'][] = ['label' => 'Produses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
@@ -23,6 +24,7 @@ $urlSearch = '';
 
 $urlProduse = \yii\helpers\Url::toRoute('produse/proceseaza-comanda');
 $urlComenzi = \yii\helpers\Url::toRoute('produse/afisare-istoric');
+$urlSchimba = yii\helpers\Url::toRoute('produse/schimba-categoria');
 $urlCreazaComanda = \yii\helpers\Url::toRoute('comenzi/create');
 $urlVerificaStoc = \yii\helpers\Url::toRoute('produse/verifica-stoc');
 $urlIncarcareSesiune = yii\helpers\Url::toRoute('produse/incarcare-sesiune');
@@ -42,16 +44,16 @@ $comandaMinima = $setariLivrare->comanda_minima;
 $livrare = 0;
 $style = <<< CSS
 .loading-overlay {
-  //position: absolute;
- // top: 0;
- // left: 0;
-        padding:40px;
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+  padding:40px;
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.8);
-  //display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
  // z-index: 9999;
 }
 
@@ -62,7 +64,7 @@ $style = <<< CSS
   width: 100px;
   height: 100px;
   animation: spin 1s linear infinite;
-  //position: absolute;
+//  position: absolute;
 }
 
 @keyframes spin {
@@ -77,6 +79,10 @@ $style = <<< CSS
 }
 .cart-meal-name{
         width:45%;
+}
+        
+        .slick-dots {
+  display: none !important;
 }
 .cos {
      position:relative;
@@ -164,7 +170,19 @@ button.add{
         border-radius:5px;
         padding:5px;
         margin-left:5px;
-}        
+.carousel {
+  width: 80%; /* Adjust the width as needed */
+  margin: 50px auto; /* Center the carousel */
+}
+        
+.carousel div {
+  background: #ddd;
+  text-align: center;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 5px;
+}
+} 
 CSS;
 $this->registerCss($style);
 
@@ -196,6 +214,46 @@ $formatJsH = <<< SCRIPT
       $(".close-tst").on("click", function() {
         modal.css("display", "none");
       });
+    $('.responsive').slick({
+        dots: false,
+        arrows:false,
+        infinite: false,
+        speed: 300,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        appendDots: $('.responsive'), // Append dots to the carousel container
+    customPaging: function(slider, i) {
+        return ''; // Return an empty string to remove the page number
+      },
+        responsive: [
+        {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});   
       
 //     $(document).on('click', function(event) {
 //        if(event.target===$("#produsesearch-nume")[0])
@@ -217,10 +275,13 @@ $formatJs = <<< SCRIPT
                 success: function (data) { // on success..
                     
                     json = JSON.parse(data);
+                    console.log("aici");
                         console.log(json);
+                    
                     json.forEach(function(element) {
                         for (let i=0;i<element.cantitate;i++){
-                            incarcareProduse(element.date_produs);
+                            json1 = JSON.stringify(element.date_produs);
+                            incarcareProduse(element.date_produs, json1);
                         }
                     });  
                        
@@ -237,9 +298,9 @@ $formatJs = <<< SCRIPT
         
         
         
-    function incarcareProduse(y){
+    function incarcareProduse(y, abc){
       //  console.log(y);
-        const linie={id:y.id,cantitate:1,denumire:y.nume,pret:y.pret_curent};
+        const linie={id:y.id,cantitate:1,denumire:y.nume,pret:y.pret_curent,json:abc};
         let existent=false;
         linii=linii.map((l)=>{
             if(l.id===linie.id){
@@ -285,7 +346,7 @@ $formatJs = <<< SCRIPT
         });
    });
         
-   $('.nav-tabs').on('click','.taba',function(){
+   $('#subcategorii_content').on('click','.taba',function(){
        const tabId=$(this).attr('href');
       //  console.log('salut');
        const categorie=$(this).attr('data-id');
@@ -313,11 +374,35 @@ $formatJs = <<< SCRIPT
         return x+livrare;
    }
    $('.cos').on('click', '.cart-delete-button',function(){
+        const id=$(this).parent().attr('data-id');
+        const selector=`div[data-key='\${id}']`;
+        let index = linii.findIndex(x => x.id ==id);
+        const l = linii[index];
+        const product=JSON.parse(l.json);
+     //   console.log(product);
+            const bearerToken = '$authKey';
+                $.ajax({
+                    type: "POST",
+                    url: '$produsSesiune',
+                    data: {
+                        id: '$idUser',
+                        produs: product.id,
+                        cantitate: -l.cantitate
+                    },
+                    beforeSend: function(xhr) {
+                    // Set the Authorization header with the Bearer token
+                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
         $(this).parent().parent().remove(); 
-        let id=parseInt($(this).parent().attr('data-id'));
-        linii=linii.filter((l)=>{
-            return l.id!==id;
-        });
+        //console.log($(this).parent().parent());
+        linii.splice(index, 1);
         if(linii.length>0){
             const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
             const xxx=verificareTotal(x);
@@ -339,9 +424,12 @@ $formatJs = <<< SCRIPT
    $('.cos').on('click', '.remove',function(){
         const id=$(this).parent().parent().attr('data-id');
         const selector=`div[data-key='\${id}']`;
-        const product=JSON.parse($(selector).find('.meal-json').text());
+        let index = linii.findIndex(x => x.id ==id);
+        const l = linii[index];
+        const product=JSON.parse(l.json);
         linii=linii.map((l)=>{
-            const bearerToken = '$authKey';
+            if(l.id===product.id){
+                const bearerToken = '$authKey';
                 $.ajax({
                     type: "POST",
                     url: '$produsSesiune',
@@ -361,8 +449,6 @@ $formatJs = <<< SCRIPT
                         console.log(error);
                     }
                 });
-            if(l.id===product.id){
-                console.log(l.cantitate);
                 return {...l,cantitate:l.cantitate-1,pret:parseFloat(product.pret_curent*(l.cantitate-1)).toFixed(2)};
             }
             return l;
@@ -394,11 +480,29 @@ $formatJs = <<< SCRIPT
     });
      $('.cos').on('click', '.add',function(){
         const id=$(this).parent().parent().attr('data-id');
-        console.log('[DEBUG] Proceseaza comanda addProductInCos',id);
         const selector=`div[data-key='\${id}']`;
-        const product=JSON.parse($(selector).find('.meal-json').text());
+        let index = linii.findIndex(x => x.id ==id);
+        const l = linii[index];
+        const product=JSON.parse(l.json);
         linii=linii.map((l)=>{
-            const bearerToken = '$authKey';
+            
+//            const bearerToken = '$authKey';
+//            $.ajax({
+//                    type: "GET",
+//                    url: '$verificaStoc?id='+product.id,
+//                    beforeSend: function(xhr) {
+//                    // Set the Authorization header with the Bearer token
+//                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//                    },
+//                    success: function (data) {
+//                        console.log(data);
+//                    },
+//                    error: function (error) {
+//                        console.log(error);
+//                    }
+//                });
+            if(l.id===product.id){
+        const bearerToken = '$authKey';
                 $.ajax({
                     type: "POST",
                     url: '$produsSesiune',
@@ -418,26 +522,11 @@ $formatJs = <<< SCRIPT
                         console.log(error);
                     }
                 });
-//            const bearerToken = '$authKey';
-//            $.ajax({
-//                    type: "GET",
-//                    url: '$verificaStoc?id='+product.id,
-//                    beforeSend: function(xhr) {
-//                    // Set the Authorization header with the Bearer token
-//                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
-//                    },
-//                    success: function (data) {
-//                        console.log(data);
-//                    },
-//                    error: function (error) {
-//                        console.log(error);
-//                    }
-//                });
-            if(l.id===product.id){
                 return {...l,cantitate:l.cantitate+1,pret:parseFloat(product.pret_curent*(l.cantitate+1)).toFixed(2)};
             }
             return l;
         });
+        console.log(linii);
         $('#cos-list').html(linii.map(Item));
         const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
         const xxx=verificareTotal(x);
@@ -453,6 +542,7 @@ $formatJs = <<< SCRIPT
         <div data-key='\${id}'> 
         <div class="cart-single-meal">
             <div class="cart-row" data-restaurant="1" data-id='\${id}' data-cantitate='\${cantitate}' data-pret='\${pret}'>
+                <div class="meal-json"></div>
                 <span class="cart-meal-amount"><span class="amount">\${cantitate}</span>x</span>
                 <span class="cart-meal-name">\${denumire}</span>
                 <div class="cart-meal-edit-buttons">
@@ -464,9 +554,10 @@ $formatJs = <<< SCRIPT
             </div>
         </div>
         </div>`;
-    $('.tab-content').on('click','.left-corner',function(){
+    $('#subcategorii_content').on('click','.left-corner',function(){
         let product=JSON.parse($(this).parent().parent().find('.meal-json').text());
-        const linie={id:product.id,cantitate:1,denumire:product.nume,pret:product.pret_curent};
+        const json1=$(this).parent().parent().find('.meal-json').text();
+        const linie={id:product.id,cantitate:1,denumire:product.nume,pret:product.pret_curent,json:json1};
         let existent=false;
         const bearerToken = '$authKey';
                 $.ajax({
@@ -544,7 +635,6 @@ $formatJs = <<< SCRIPT
         }
     });
     $('.taba').eq(1).click();
-   
     $('#btn-comanda').on('click',function(){
         $("#confirmation-modal").modal("show");
         const items=[];
@@ -604,6 +694,21 @@ $formatJs = <<< SCRIPT
 //        });
     });
         
+    $('.slick-slide').on('click',function(){
+       let id = $(this).attr('data-id');
+        $.ajax({// create an AJAX call...
+                data: {'idCategorie':id}, // get the form data
+                type: 'GET', // GET or POST
+                url: '$urlSchimba', // the file to call
+                success: function (data) { // on success.
+                    console.log(data);
+                    $('#subcategorii_content').html(data);
+                        $('.taba').eq(1).click();
+
+                }
+        });
+    });
+    
      $(".kioskboard-row").on('click','.kioskboard-key',function(){
         alert('test');
     // var keyValue=$(this).attr("data-value");
@@ -611,10 +716,9 @@ $formatJs = <<< SCRIPT
    });   
         
     const socket = io('http://localhost:8000', { transports: ['websocket', 'polling'] });
-        
     socket.on('previous-orders', (data) => {
         console.log('Previous Orders:', data);
-        
+            $("#text-nr-telefon").val(data);
         $.ajax({// create an AJAX call...
                 data: {'telefon':data}, // get the form data
                 type: 'GET', // GET or POST
@@ -642,9 +746,12 @@ Modal::begin([
 ?>
 
 <h5>Adresa livrare</h5>
-<textarea id="text-area-adresa" style="width:465px;height:90px;"></textarea>
+<textarea id="text-area-adresa" class="form-control" rows="3"></textarea>
 <h5>Mentiuni</h5>
-<textarea id="text-area-mentiuni" style="width:465px;height:90px;"></textarea>
+<textarea id="text-area-mentiuni" class="form-control" rows="3"></textarea>
+<h5>Numar telefon</h5>
+<input id="text-nr-telefon" class="form-control">
+<br>
 <span class="float-right">
     <a class="btn btn-app bg-success" id="btn-confirma" style="width:120px;height:50px;text-align: center; align-items: center; display: flex; justify-content: center;">
         <span style="font-size:20px;">Confirma</span>
@@ -658,12 +765,13 @@ Modal::end();
 <div class="row">
     <!--<div class="col-md-12">-->
     <div class="col-md-7">
-        
+
         <div class="box box-danger card" style="padding:0.1rem;">
             <div id="istoric" class="box-header with-border">
                 <h4 class="box-title"><center>Istoric comenzi</center></h4>
             </div>
         </div>
+
         <div class="produse-view box box-primary">
             <?php
             $form = ActiveForm::begin([
@@ -717,7 +825,7 @@ Modal::end();
             <div class="row">
 
                 <div class="col-sm-12">
-                    <div class="scrollable-list">
+                    <div class="responsive">
                         <?php
                         $categorii = \backend\models\Categorii::find()
                                 ->innerJoin('produse p', 'p.categorie = categorii.id')
@@ -768,58 +876,17 @@ Modal::end();
             <?php
             $form->end();
             ?>
-            <div class="row">
-                <div class="col-sm-12 card">
-                    <div class="nav-tabs-custom card-header p-2">
-                        <ul class="nav nav-tabs nav-pills">
-                            <?php
-                            $subcategorii = \backend\models\Categorii::getSubcategories($categorii[2]->id);
-                            $x = 0;
-                            $active = 'active';
-                            $expanded = true;
-//                                $c = new \backend\models\Categorii();
-//                                $c->nume = 'Rezultate cautare';
-//                                $c->id=-1;
-                            echo Html::tag('li', Html::a('Rezultate cautare', sprintf('#%s', 'rezultate-cautare'), ['data-toggle' => 'tab', 'data-id' => -1, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['style' => 'display:none', 'id' => 'rezultate-cautare1']);
-
-                            foreach ($subcategorii as $categorie) {
-                                $class = sprintf('class="%s"', $active);
-                                if ($x > 0) {
-                                    $active = '';
-                                    $expanded = false;
-                                }
-                                // echo Html::a('AICI');
-                                echo Html::tag('li', Html::a($categorie->nume, sprintf('#%s', yii\helpers\Inflector::slug($categorie->nume)), ['data-toggle' => 'tab', 'data-id' => $categorie->id, 'aria-expanded' => $expanded, 'class' => 'taba nav-link']), ['class' => $active]);
-
-                                $x++;
-                            }
-                            ?>
-                        </ul>
-                        <div class="tab-content">
-                            <?php
-                            $x = 0;
-                            echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane', 'id' => 'rezultate-cautare']);
-
-                            foreach ($subcategorii as $categorie) {
-                                //  echo Html::a('AICI');
-                                echo Html::tag('div', Html::tag('div', '', ['class' => 'box-body']), ['class' => 'tab-pane ' . ($x > 0 ? '' : 'active'), 'id' => yii\helpers\Inflector::slug($categorie->nume)]);
-                                $x++;
-                            }
-                            ?>
-
-                        </div>
-                    </div>
-
-
-
-                </div>
+            <div class="row" id="subcategorii_content">
+                <?php
+                    echo $this->render('_subcategorii_view',['id'=>5]);
+                ?>
             </div>
         </div>
     </div>
     <div class="col-md-5">
-        
+
         <div class="cos">
-          
+
             <div class="box box-primary card" style="padding:1.25rem;">
                 <div class="box-header text-center with-border">
                     <h3 class="box-title">Cos</h3>
@@ -831,45 +898,45 @@ Modal::end();
                                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                                   </div>-->
                 </div>
-                  <div class="loading-overlay" id="loadingOverlay">
-             <div class="loading-spinner"></div>
-        </div>
+                <div class="loading-overlay" id="loadingOverlay">
+                    <div class="loading-spinner"></div>
+                </div>
                 <div class="test">
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <?php
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <?php
 //                    if (!is_null($sesiune)) {
 //                        echo $this->render('_list_view_cos', [
 //                            'comenziLiniiDataProvider' => $dataProvider,
 //                        ]);
 //                    }
-                    ?>
-                    <?php
-                    \yii\widgets\Pjax::begin(['id' => 'cos-list', 'timeout' => 30000, 'clientOptions' => ['container' => 'pjax-container']]);
-                    echo yii\widgets\ListView::widget([
-                        'dataProvider' => $dataProviderCos,
-                        'options' => ['data-pjax' => true],
-                        //   'layout' => '{items}{summary}',
-                        'itemView' => '_linie_comanda'
-                    ]);
-                    yii\widgets\Pjax::end();
-                    ?>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <div id="sum" class="cart-sum js-basket-sum" style="display:none;margin-bottom: 20px;"><div class="cart-row js-subtotal-row" style="display: flex;">
-                            <span class="cart-sum-name grey">Sub-total</span>
-                            <span class="cart-sum-price-sub grey">32,00 lei</span>
-                        </div><div class="cart-row js-delivery-costs-row" style="display: flex;">
-                            <span class="cart-sum-name grey"><?= $setariLivrare->produs0->nume ?></span>
-                            <span class="cart-sum-price-livrare grey"><?= $setariLivrare->produs0->pret_curent ?> lei</span>
-                        </div><div class="cart-row row-sum js-total-costs-row" style="display: flex;font-weight: bold">
-                            <span class="cart-sum-name">Total</span>
-                            <span class="cart-sum-price">36,00 lei</span>
-                        </div></div>
-                    <?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
+                        ?>
+                        <?php
+                        \yii\widgets\Pjax::begin(['id' => 'cos-list', 'timeout' => 30000, 'clientOptions' => ['container' => 'pjax-container']]);
+                        echo yii\widgets\ListView::widget([
+                            'dataProvider' => $dataProviderCos,
+                            'options' => ['data-pjax' => true],
+                            //   'layout' => '{items}{summary}',
+                            'itemView' => '_linie_comanda'
+                        ]);
+                        yii\widgets\Pjax::end();
+                        ?>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer text-center">
+                        <div id="sum" class="cart-sum js-basket-sum" style="display:none;margin-bottom: 20px;"><div class="cart-row js-subtotal-row" style="display: flex;">
+                                <span class="cart-sum-name grey">Sub-total</span>
+                                <span class="cart-sum-price-sub grey">32,00 lei</span>
+                            </div><div class="cart-row js-delivery-costs-row" style="display: flex;">
+                                <span class="cart-sum-name grey"><?= $setariLivrare->produs0->nume ?></span>
+                                <span class="cart-sum-price-livrare grey"><?= $setariLivrare->produs0->pret_curent ?> lei</span>
+                            </div><div class="cart-row row-sum js-total-costs-row" style="display: flex;font-weight: bold">
+                                <span class="cart-sum-name">Total</span>
+                                <span class="cart-sum-price">36,00 lei</span>
+                            </div></div>
+                        <?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
 
-                </div>
+                    </div>
                 </div>
                 <!-- /.box-footer -->
             </div>

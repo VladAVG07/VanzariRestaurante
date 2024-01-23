@@ -85,7 +85,6 @@ if ($model->stocabil){
             ->where(['p.id' => $model->id]);
     $stocRamas = $query->one()->cantitate_ramasa; 
 }
-
 ?>
 <div class="meal-container js-meal-container js-meal-search-popularOPON0O17Q" id="popularOPON0O17Q">
     <div tabindex="0" role="button" class="meal meal__top-button js-meal-item" itemscope="" itemtype="http://schema.org/Product">
