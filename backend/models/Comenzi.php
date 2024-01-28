@@ -24,6 +24,7 @@ use yii\db\Expression;
  * @property string $canal
  * @property int $mod_plata
  * @property string $adresa
+ * @property string $numar_telefon;
  *
  * @property Bonuri $bonuri
  * @property ComenziLinii[] $comenziLiniis
@@ -49,7 +50,7 @@ class Comenzi extends ActiveRecord {
         return [
             [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
             [['numar_comanda', 'utilizator', 'status', 'mod_plata'], 'integer'],
-            [['data_ora_creare', 'data_ora_finalizare', 'adresa'], 'safe'],
+            [['data_ora_creare', 'data_ora_finalizare', 'adresa', 'numar_telefon'], 'safe'],
             [['pret', 'tva'], 'number'],
             [['mentiuni'], 'string', 'max' => 255],
             [['canal'], 'string', 'max' => 20],
@@ -81,7 +82,7 @@ class Comenzi extends ActiveRecord {
         $transaction = Yii::$app->db->beginTransaction();
     }
 
-    public function salveazaComanda($mentiuni, $adresa) {
+    public function salveazaComanda($mentiuni, $adresa, $telefon) {
         $transaction = Yii::$app->db->beginTransaction();
         // \yii\helpers\VarDumper::dump("sunt aici");
         try {
@@ -97,6 +98,7 @@ class Comenzi extends ActiveRecord {
             $this->utilizator = Yii::$app->user->id;
             $this->mentiuni = $mentiuni;
             $this->adresa = $adresa;
+            $this->numar_telefon = $telefon;
             $this->mod_plata = 1;
             //          $this->status =3;
             $this->pret = 0;

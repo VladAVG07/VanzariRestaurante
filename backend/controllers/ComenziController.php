@@ -108,7 +108,8 @@ class ComenziController extends Controller {
         $model = new Comenzi();
         $mentiuni = Yii::$app->request->post('mentiuni');
         $adresa = Yii::$app->request->post('adresa');
-        if ($model->salveazaComanda($mentiuni, $adresa)) {
+        $telefon = Yii::$app->request->post('telefon');
+        if ($model->salveazaComanda($mentiuni, $adresa, $telefon)) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

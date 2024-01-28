@@ -268,6 +268,7 @@ $this->registerJs($formatJsH, yii\web\View::POS_END);
 $formatJs = <<< SCRIPT
    let linii=[];
    const loadingOverlay = $('#loadingOverlay');
+   
    window.onload = function() {
        $.ajax({// create an AJAX call... // get the form data
                 type: 'GET', // GET or POST
@@ -276,14 +277,14 @@ $formatJs = <<< SCRIPT
                     
                     json = JSON.parse(data);
                     console.log("aici");
-                        console.log(json);
-                    
+                    if (json.success != false){
                     json.forEach(function(element) {
                         for (let i=0;i<element.cantitate;i++){
                             json1 = JSON.stringify(element.date_produs);
                             incarcareProduse(element.date_produs, json1);
                         }
                     });  
+                    }
                        
             loadingOverlay.hide();
          $('.test').show();    
@@ -347,7 +348,9 @@ $formatJs = <<< SCRIPT
    });
         
    $('#subcategorii_content').on('click','.taba',function(){
+        let loadingOverlay1 = $('#loadingOverlay1');
        const tabId=$(this).attr('href');
+        loadingOverlay1.show();
       //  console.log('salut');
        const categorie=$(this).attr('data-id');
         //alert($('#search-form').attr('action'));
@@ -358,6 +361,8 @@ $formatJs = <<< SCRIPT
                 success: function (data) { // on success..
                     $(tabId+' > .box-body').html(data);
                     //$.pjax.reload({container: '#lista_produse'});
+        loadingOverlay1.hide();
+         
                 }
         });
         });
@@ -574,10 +579,12 @@ $formatJs = <<< SCRIPT
                     },
                     success: function (data) {
                         console.log(data);
+        
                     },
                     error: function (error) {
                         console.log(error);
                     }
+        
                 });
         linii=linii.map((l)=>{
             if(l.id===linie.id){
@@ -604,10 +611,10 @@ $formatJs = <<< SCRIPT
     let timer;
     let timeout=1000;
     $('#$searchId').on('input',function(){
-        //console.log($(this).serialize());
+        console.log($(this).serialize());
        // console.log('am apasat');
         if($(this).val().length >= 2){ 
-        console.log('epic');
+        
         // timer=setTimeout(function(){
                 $.ajax({// create an AJAX call...
                 data: $(this).serialize(), // get the form data
@@ -670,8 +677,9 @@ $formatJs = <<< SCRIPT
     $('#btn-confirma').on('click',function(){
         var textAdresa = $('#text-area-adresa').val();
         var textMentiuni = $('#text-area-mentiuni').val();
+        var telefon = $("#text-nr-telefon").val();
         $.ajax({// create an AJAX call...
-                data: {'mentiuni':textMentiuni,'adresa':textAdresa}, // get the form data
+                data: {'mentiuni':textMentiuni,'adresa':textAdresa, 'telefon':telefon}, // get the form data
                 type: 'POST', // GET or POST
               //  contentType: false,
                 //processData: false,
@@ -880,6 +888,7 @@ Modal::end();
                 <?php
                     echo $this->render('_subcategorii_view',['id'=>5]);
                 ?>
+                
             </div>
         </div>
     </div>
