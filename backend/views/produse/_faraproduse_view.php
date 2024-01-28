@@ -13,5 +13,9 @@ $this->registerCss($style);
 ?>
 
 <div class="wrapper">
-    <h1>Nu exista produse in aceasta categorie</h1>
+    <br>
+    <br>
+    <h2 style="text-align: center">Nu exista produse in aceasta categorie</h2>
+    <br>
+    <br>
 </div>

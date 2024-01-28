@@ -152,11 +152,15 @@ class ProduseController extends Controller {
         ]);
         $cat = \backend\models\Categorii::findOne($categorie);
         //  \yii\helpers\VarDumper::dump($categorieMare);
+        
         if (\Yii::$app->request->isAjax && is_null($categorieMare)) {
+            
+//            exit();
             $catName = 'rezultate-cautare';
             if ($cat) {
                 $catName = \yii\helpers\Inflector::slug($cat->nume);
             }
+            
             $produse = Produse::findAll(['categorie'=>$cat->id]);
             if (!$produse){
                 return $this->renderPartial('_faraproduse_view');
