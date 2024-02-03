@@ -1,0 +1,140 @@
+.loading-overlay {
+    /*  position: absolute;
+    //  top: 0;
+    //  left: 0; */
+    padding:40px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 9999; */
+}
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+    /*  position: absolute; */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.cart-meal-amount{
+    width:40px;
+}
+.cart-meal-price{
+    width:80px;
+}
+.cart-meal-name{
+    width:45%;
+}
+
+.slick-dots {
+    display: none !important;
+}
+.cos {
+    position:relative;
+    /*   width:inherit;
+    //max-width:32%;
+    // margin-right:20px; */
+    font-size:20px;
+}
+.cos-header {
+    text-align:center;
+    font-weight:bold;
+    padding:20px;
+    border-bottom:1px solid #cecece;
+}
+.cos-footer{
+    border-top:1px solid #cecece;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:20px;
+}
+.cos-content{
+    padding:20px;
+}
+.test{
+    display:none;
+}
+
+.edit-delete{
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+    outline: 0; 
+    cursor: pointer;
+    float: left;
+    margin-right:5px;
+    background-color:white;
+    border:1px solid #cecece;
+    border-radius:5px;
+}
+.cart-delete-button{
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+    outline: 0; 
+    cursor: pointer;
+    float: left;
+    margin-right:5px;
+    background-color:white;
+}        
+.cart-row{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.red {
+    color:red;
+    font-size:15px;
+}
+.cart-single-meal{
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.meal-json{
+    display:none;
+}
+button.cart-delete-button i {
+    font-size:25px;
+}
+button.remove {
+    width:40px;
+    height:40px;
+    background-color:red;
+    color:white;
+}
+button.add{
+    width:40px;
+    height:40px;
+    background-color:green;
+    color:white;
+}
+.price-span{
+    border:1px solid #cecece;
+    border-radius:5px;
+    padding:5px;
+    margin-left:5px;
+    .carousel {
+        width: 80%; /* Adjust the width as needed */
+        margin: 50px auto; /* Center the carousel */
+    }
+
+    .carousel div {
+        background: #ddd;
+        text-align: center;
+        padding: 20px;
+        margin: 5px;
+        border-radius: 5px;
+    }
+}
