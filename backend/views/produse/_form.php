@@ -35,6 +35,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 <div class="produse-form">
 
     <?php
+    
     $form = ActiveForm::begin([
                 'options' => ['name' => 'produse-form']
                     ]
@@ -166,6 +167,35 @@ $this->registerJs($js, \yii\web\View::POS_READY);
                 ]
             ]);
             ?>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-5">
+            <?= 
+                $form->field($model, 'imageFile')->fileInput(['id' => 'imageFile']);
+            
+                $this->registerJs("
+                    $('#imageFile').change(function(){
+                        console.log('intrat');
+                        var file = this.files[0];
+                        if (file) {
+                            var reader = new FileReader();
+                            reader.onload = function (e) {
+                                $('#imagePreview').html('<img src=\"' + e.target.result + '\" class=\"img-preview\" style=\"max-width: 70%; max-height: auto;\" />');
+                            }
+                            reader.readAsDataURL(file);
+                        } else {
+                            $('#imagePreview').html('');
+                        }
+                    });
+                ");
+            
+            ?>
+        </div>
+        <div class="col-md-7 form-group">
+            <label>Previzualizare imagine</label>
+            <div id="imagePreview"></div>
         </div>
     </div>
 

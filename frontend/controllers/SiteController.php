@@ -158,6 +158,10 @@ class SiteController extends Controller
         return $this->render('_contact_view');
     }
     
+    public function actionSchimbaCategorie($idCategorie){
+        return $this->renderAjax('_categorie_view',['id'=>$idCategorie]);
+    }
+    
     /**
      * Signs user up.
      *

@@ -10,6 +10,7 @@ use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProduseController implements the CRUD actions for Produse model.
@@ -41,6 +42,34 @@ class ProduseController extends Controller {
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'dataProvider' => $dataProvider,
+        ]);
+    }
+
+//    public function actionUpload() {
+//        $model = new UploadForm();
+//
+//        if (Yii::$app->request->isPost) {
+//            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+//            if ($model->upload()) {
+//                return;
+//            }
+//        }
+//
+//        return $this->render('upload', ['model' => $model]);
+//    }
+    
+    public function actionCreate() {
+        $model = new Produse();
+        $model->stocabil = 0;
+        if ($model->load(Yii::$app->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $numeImagine = Yii::$app->security->generateRandomString(32) . '.' . $model->imageFile->extension;
+            if ($model->saveProdus($numeImagine) && $model->upload($numeImagine))
+                return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('create', [
+                    'model' => $model,
         ]);
     }
 
@@ -152,17 +181,17 @@ class ProduseController extends Controller {
         ]);
         $cat = \backend\models\Categorii::findOne($categorie);
         //  \yii\helpers\VarDumper::dump($categorieMare);
-        
+
         if (\Yii::$app->request->isAjax && is_null($categorieMare)) {
-            
+
 //            exit();
             $catName = 'rezultate-cautare';
             if ($cat) {
                 $catName = \yii\helpers\Inflector::slug($cat->nume);
             }
-            
-            $produse = Produse::findAll(['categorie'=>$cat->id]);
-            if (!$produse){
+
+            $produse = Produse::findAll(['categorie' => $cat->id]);
+            if (!$produse) {
                 return $this->renderPartial('_faraproduse_view');
             }
             return $this->renderAjax('_list_view', [
@@ -180,10 +209,10 @@ class ProduseController extends Controller {
         ]);
     }
 
-    public function actionSchimbaCategoria($idCategorie){
-        return $this->renderAjax('_subcategorii_view', ['id'=>$idCategorie]);
+    public function actionSchimbaCategoria($idCategorie) {
+        return $this->renderAjax('_subcategorii_view', ['id' => $idCategorie]);
     }
-    
+
     public function actionComandaSesiune($idUser, $idProdus, $cantitate) {
         $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
                 ->bindValue(':user_id', $idUser)
@@ -198,17 +227,7 @@ class ProduseController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
-        $model = new Produse();
-        $model->stocabil = 0;
-        if ($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-                    'model' => $model,
-        ]);
-    }
+    
 
     /**
      * Updates an existing Produse model.

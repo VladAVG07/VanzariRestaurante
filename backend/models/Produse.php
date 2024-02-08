@@ -20,6 +20,7 @@ use yii\helpers\VarDumper;
  * @property boolean $stocabil
  * @property int $alerta_stoc
  * @property boolean $disponibil
+ * @property string $image_file
  *
  * @property Categorii $categorie0
  * @property PreturiProduse[] $preturiProduses
@@ -30,6 +31,7 @@ class Produse extends \yii\db\ActiveRecord {
     public $pret;
     public $dataInceputPret;
     public $dataSfarsitPret;
+    public $imageFile;
 
     /**
      * {@inheritdoc}
@@ -45,7 +47,8 @@ class Produse extends \yii\db\ActiveRecord {
         return [
             [['categorie', 'cod_produs', 'nume', 'descriere', 'data_productie', 'stocabil', 'disponibil'], 'required'],
             [['categorie', 'cod_produs', 'valid', 'alerta_stoc', 'pret'], 'integer'],
-            [['data_productie', 'dataInceputPret', 'dataSfarsitPret', 'pret', 'alerta_stoc'], 'safe'],
+            [['data_productie', 'dataInceputPret', 'dataSfarsitPret', 'pret', 'alerta_stoc', 'imageFile'], 'safe'],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['pret_curent', 'pret'], 'number'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
@@ -71,6 +74,16 @@ class Produse extends \yii\db\ActiveRecord {
         ];
     }
 
+    public function upload($numeImagine)
+    {
+        if ($this->validate()) {
+            $this->imageFile->saveAs('uploads/' . $numeImagine);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     /**
      * Gets query for [[Categorie0]].
      *
@@ -102,13 +115,14 @@ class Produse extends \yii\db\ActiveRecord {
         return $this->getPreturiProduses()->where('valid = 1')->one();
     }
 
-    public function saveProdus() {
+    public function saveProdus($numeImagine) {
         $transaction = \Yii::$app->db->beginTransaction();
         $pret = new PreturiProduse();
         $this->data_productie = date('Y-m-d', $this->data_productie);
         if ($this->stocabil == 0)
             $this->alerta_stoc = 0;
         $save = $this->save();
+        $this->image_file = 'uploads/' . $numeImagine;
         if (!is_null($this->pret) && !empty($this->pret)) {
             if ($save) {
                 $pret->produs = $this->id;

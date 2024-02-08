@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             return 0;
                                     else
                                         return '-';
-                                }       
+                                }
                             ],
                             [
                                 'attribute' => 'alerta_stoc',
@@ -60,6 +60,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                     else
                                         return '-';
                                 }
+                            ],
+                            [
+                                'attribute' => 'imageFile',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    \yii\helpers\VarDumper::dump($model->imageFile);
+                                    return Html::img(Yii::$app->request->baseUrl . '/' . $model->image_file, ['class' => 'img-thumbnail', 'style' => 'max-width:300px;']);
+                                },
                             ],
                         ],
                     ])
