@@ -146,6 +146,22 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
+    public function actionPaginaMeniu(){
+        return $this->render('_meniu_view');
+    }
+    
+    public function actionPaginaHome(){
+        return $this->render('_home_view');
+    }
+    
+    public function actionPaginaContact(){
+        return $this->render('_contact_view');
+    }
+    
+    public function actionSchimbaCategorie($idCategorie){
+        return $this->renderAjax('_categorie_view',['id'=>$idCategorie]);
+    }
+    
     /**
      * Signs user up.
      *
