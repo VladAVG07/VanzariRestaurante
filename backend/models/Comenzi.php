@@ -88,6 +88,11 @@ class Comenzi extends ActiveRecord {
         try {
             //  \yii\helpers\VarDumper::dump("sunt aici");
             $sesiune = Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
+            // if(is_null($sesiune)){
+            //     $sesiune=new Sesiuni();
+            //     $sesiune->user=\Yii::$app->user->id;
+            // }
+
             $sesiuniProduse = SesiuniProduse::find()->where(['sesiune' => $sesiune])->all();
 
             $pret = 0;

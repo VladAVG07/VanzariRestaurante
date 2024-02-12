@@ -246,6 +246,7 @@ class ProduseController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id) {
+        PreturiProduse::deleteAll(['produs'=>$id]);
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }

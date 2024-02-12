@@ -29,8 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php
                     // echo $this->render('_search', ['model' => $searchModel]);
                     //
-                    $categorii = \backend\models\Categorii::find()->select(['id', 'nume', 'parinte'])
-                                    ->orderBy(['parinte' => SORT_ASC])->all();
+                    $categorii = Categorii::find()
+                    ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
+                    ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                    ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                    ->innerJoin('user u', 'ru.user = u.id')
+                    ->where(['u.id' => \Yii::$app->user->id])->all();//\backend\models\Categorii::find()->select(['id', 'nume', 'parinte'])
+                                   // ->orderBy(['parinte' => SORT_ASC])->all();
                     //  
                     ?>
 
