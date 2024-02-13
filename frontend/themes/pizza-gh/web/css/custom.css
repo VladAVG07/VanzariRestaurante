@@ -1,0 +1,48 @@
+.btn-meniu-stil {
+    background-color: #f8ac20; /* Green background */
+    border: none;
+    color: white;
+    padding: 8px 18px; /* Add padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded edges */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.btn-meniu-stil:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}
+
+.floating-cart {
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    z-index: 999; /* Ensure the button is above other elements */
+}
+
+.cart-button {
+    background-color: #f8ac20; /* Green background */
+    border: 2px solid white !important;
+    border: none;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 50%; /* Make the button round */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.cart-button i {
+    font-size: 24px; /* Adjust the icon size */
+}
+
+.cart-button:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}

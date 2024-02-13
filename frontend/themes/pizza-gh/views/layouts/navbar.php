@@ -14,8 +14,8 @@ use yii\helpers\Html;
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="<?= Yii::$app->urlManager->createUrl(['site/pagina-home'])?>" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="<?= Yii::$app->urlManager->createUrl(['site/pagina-meniu'])?>" class="nav-link">Menu</a></li>
+                <li class="nav-item active"><a href="<?= Yii::$app->urlManager->createUrl(['site/pagina-home'])?>" class="nav-link">Acasa</a></li>
+                <li class="nav-item"><a href="<?= Yii::$app->urlManager->createUrl(['site/pagina-meniu'])?>" class="nav-link">Meniu</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>

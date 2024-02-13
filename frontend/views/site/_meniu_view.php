@@ -1,5 +1,16 @@
-<?php ?>
-<section class="ftco-section">
+<?php
+
+use yii\helpers\Html;
+
+$restaurantId = 7;
+$categorii = \backend\models\Categorii::find()
+        ->innerJoin('produse p', 'p.categorie = categorii.id')
+        ->innerJoin('restaurante_categorii', 'categorii.id = restaurante_categorii.categorie')
+        ->where(['restaurante_categorii.restaurant' => $restaurantId])->andWhere(['<>', 'categorii.parinte', 'null'])
+        ->andWhere(['<>', 'categorii.nume', 'Servicii'])
+        ->all();
+?>
+<!--<section class="ftco-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section ftco-animate text-center">
@@ -72,17 +83,43 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="container">
-        <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Our Menu Pricing</h2>
-                <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-                <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+        <!--        <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Our Menu Pricing</h2>
+                        <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+                        <p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    </div>
+                </div>-->
+        <!--        <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Pizza 32cm</h2>
+                        <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+                    </div>
+                </div>-->
+        <?php
+        foreach ($categorii as $categorie) {
+            $parinte = \backend\models\Categorii::findOne(['id' => $categorie->parinte]);
+            ?>
+            <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2 class="mb-4"><?= $parinte->nume . ' ' . $categorie->nume ?></h2>
+                    <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+                </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
+                <?php
+                echo $this->render('_produse_meniu_view', ['idCategorie' => $categorie->id]);
+                ?>
+            </div>
+            <?php
+        }
+        ?>
+
+
+<!--        <div class="row">
             <div class="col-md-6">
                 <div class="pricing-entry d-flex ftco-animate">
                     <div class="img" style="background-image: url(../themes/pizza-gh/web/images/pizza-1.jpg);"></div>
@@ -184,7 +221,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </section>
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
 
 $formatJs = <<< SCRIPT
-        $('.nav-link').on('click',function(){
+        $('.menu-nav-link').on('click',function(){
         
             let categorie = $(this).attr('data-id');
             $.ajax({
@@ -17,6 +17,7 @@ $formatJs = <<< SCRIPT
             }
         });
         });
+        $('.menu-nav-link').eq(0).click();   
         
 SCRIPT;
 $this->registerJs($formatJs, yii\web\View::POS_END);
@@ -99,7 +100,7 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
                             $nume = $parinte->nume.' '.$categorie->nume;
                             echo Html::a($nume, '#v-pills-'.$categorie->id,[
                                 'id' => 'v-pills-'.$categorie->id.'-tab',
-                                'class' => 'nav-link',
+                                'class' => 'nav-link menu-nav-link',
                                 'data-toggle' => 'pill',
                                 'role' => 'tab',
                                 'aria-controls' => 'v-pills-'.$categorie->id,
