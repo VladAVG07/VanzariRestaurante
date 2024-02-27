@@ -2,7 +2,7 @@
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
         <!-- <img src="<?=$assetDir?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-        <span class="brand-text font-weight-bold">Food Delivery App</span>
+        <span class="brand-text font-weight-bold"><?=Yii::$app->user->can('admin')?'Food Delivery App':Yii::$app->user->identity->restaurant->nume?></span>
     </a>
 
     <!-- Sidebar -->
@@ -12,9 +12,12 @@
 <!--            <div class="image">
                 <img src="<?=$assetDir?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>-->
+            
+            
             <div class="info">
                 <a href="#" class="d-block"><?= Yii::$app->user->isGuest ? "" :Yii::$app->user->identity->email?></a>
             </div>
+
         </div>
 
         <!-- SidebarSearch Form -->
@@ -45,8 +48,11 @@
 //                        ]
 //                    ],
 //                    ['label' => 'Administrare Categorii', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
-                    ['label' => 'Restaurante', 'header' => true],
-                    ['label' => 'Restaurante', 'url' => ['restaurante/index'], 'icon' => 'store'],
+                    ['label' => 'Administrare', 'header' => true,'visible' => Yii::$app->user->can('manager-restaurant')],
+                    ['label' => 'Setari restaurant','icon' => 'user-cog','visible' =>!is_null(Yii::$app->user->identity->restaurant) && Yii::$app->user->can('manager-restaurant'),
+                    'url'=>['restaurante/update','id'=>!is_null(Yii::$app->user->identity->restaurant)?Yii::$app->user->identity->restaurant->id:-1]],
+                    ['label' => 'Restaurante', 'header' => true,'visible' => Yii::$app->user->can('admin')],
+                    ['label' => 'Restaurante', 'url' => ['restaurante/index'], 'icon' => 'store','visible' => Yii::$app->user->can('admin')],
                     ['label' => 'Administrare', 'header' => true],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Comenzi', 'url' => ['comenzi/index'],'icon' => 'star'],

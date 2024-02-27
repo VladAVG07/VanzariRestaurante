@@ -12,6 +12,26 @@ use rmrevin\yii\fontawesome\FA;
 
 $this->title = Yii::t('app', 'Produse');
 $this->params['breadcrumbs'][] = $this->title;
+
+// Register the tooltip initialization script
+$js = <<<JS
+    // $(document).ready(function(){
+    //     $('[data-toggle="tooltip"]').tooltip({
+    //         html: true,
+    //         container: 'body'
+    //     });
+    // });
+    $(document).ready(function(){
+        $('.gridview-row').tooltip({
+            title: function() {
+                return $(this).attr('data-tooltip');
+            },
+            html: true,
+            placement: 'top'
+        });
+    });
+JS;
+$this->registerJs($js);
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -42,10 +62,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?=
                     GridView::widget([
                         'dataProvider' => $dataProvider,
+                        'rowOptions' => function ($model, $key, $index, $grid) {
+                            // Add a custom class to each row
+                            return ['class' => 'gridview-row', 'data-tooltip' => Html::decode(sprintf('<h5>Descriere produs</h5>%s',$model->descriere))];
+                        },
                         'filterModel' => $searchModel,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
-                            [
+                           /* [
                                 'attribute' => 'nume',
                                 'format' => 'raw',
                                 'value' => function ($model) {
@@ -72,16 +96,25 @@ $this->params['breadcrumbs'][] = $this->title;
                                         
                                         
                                 }
-                            ],
-                            //  'nume',
+                            ],*/
+                              ['attribute'=>'nume',
+                                // 'format'=>'raw',
+                                // 'value'=>function($model){
+                                //     return Html::tag('span',$model->nume,[
+                                //         'data-toggle'=>"tooltip",
+                                //          'data-html'=>'true', 
+                                //          'title'=>Html::decode(sprintf('<h5>Descriere produs</h5>%s',$model->descriere))
+                                //     ]);
+                                // }
+                                ],
                             [
                                 'attribute' => 'categorie',
                                 'value' => 'categorie0.nume', //relation name with their attribute
                                 //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
                                 'filter' => Html::activeDropDownList($searchModel, 'categorie', Categorii::formatItemsArray($categorii), ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
                             ], 
-                            'cod_produs',
-                            'descriere',
+                          //  'cod_produs',
+                            //['attribute'=>'descriere','format'=>'raw'],
                             [
                                 'attribute' => 'pret',
                                 'value' => function ($model) {

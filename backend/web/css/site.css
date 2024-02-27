@@ -149,3 +149,34 @@ a.desc:after {
     white-space: nowrap;
     max-width: 100%; /* Adjust this value based on your design */
 }
+
+/* .menu-img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+} */
+
+.img-thumbnail {
+    padding: 0.25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+   width: 400px;
+   height: 300px; 
+  }
+
+/*  .file-preview {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
+    display: inline-block !important;
+    margin-bottom: 5px;
+    width:auto !important;
+    min-width: 260px !important;
+} */

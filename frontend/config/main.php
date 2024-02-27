@@ -15,7 +15,7 @@ return [
         'view' => [
             'theme' => [
                 'pathMap' => [
-                    '@app/views' => '@app/themes/pizza-gh/views',
+                    '@app/views' => '@app/themes/pizzagh/views',
                     // Other mappings if needed
                 ],
             ],

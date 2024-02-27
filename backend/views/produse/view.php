@@ -25,48 +25,48 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attributes' => [
                             'id',
                             ['attribute' => 'categorie', 'format' => 'raw', 'label' => 'Denumire categorie', 'value' => sprintf('<b>%s</b>', $model->categorie0->nume)],
-                            'cod_produs',
+                           // 'cod_produs',
                             'nume',
-                            'descriere',
-                            [
-                                'attribute' => 'data_productie',
-                                'value' => function($model) {
-                                    return Yii::$app->formatter->asDate($model->data_productie);
-                                }
-                            ],
+                            ['attribute'=>'descriere','format'=>'raw'],
+                            // [
+                            //     'attribute' => 'data_productie',
+                            //     'value' => function($model) {
+                            //         return Yii::$app->formatter->asDate($model->data_productie);
+                            //     }
+                            // ],
                             [
                                 'attribute' => 'pret curent',
                                 'value' => function ($model) {
                                     return $model->pret_curent . ' RON';
                                 }
                             ],
+                            // [
+                            //     'attribute' => 'stoc',
+                            //     'value' => function ($model) {
+                            //         if ($model->stocabil)
+                            //             if (!is_null(backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa')))
+                            //                 return backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa');
+                            //             else
+                            //                 return 0;
+                            //         else
+                            //             return '-';
+                            //     }
+                            // ],
+                            // [
+                            //     'attribute' => 'alerta_stoc',
+                            //     'value' => function ($model) {
+                            //         if ($model->stocabil)
+                            //             return $model->alerta_stoc;
+                            //         else
+                            //             return '-';
+                            //     }
+                            // ],
                             [
-                                'attribute' => 'stoc',
-                                'value' => function ($model) {
-                                    if ($model->stocabil)
-                                        if (!is_null(backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa')))
-                                            return backend\models\Stocuri::find()->where(['produs' => $model->id])->sum('cantitate_ramasa');
-                                        else
-                                            return 0;
-                                    else
-                                        return '-';
-                                }
-                            ],
-                            [
-                                'attribute' => 'alerta_stoc',
-                                'value' => function ($model) {
-                                    if ($model->stocabil)
-                                        return $model->alerta_stoc;
-                                    else
-                                        return '-';
-                                }
-                            ],
-                            [
-                                'attribute' => 'imageFile',
+                                'attribute' => 'image_file',
                                 'format' => 'raw',
                                 'value' => function ($model) {
-                                    \yii\helpers\VarDumper::dump($model->imageFile);
-                                    return Html::img(Yii::$app->request->baseUrl . '/' . $model->image_file, ['class' => 'img-thumbnail', 'style' => 'max-width:300px;']);
+                                   /// \yii\helpers\VarDumper::dump($model->imageFile);
+                                    return Html::img('/backend/uploads/produse/' . (is_null($model->image_file)?'no-photo.png':$model->image_file), ['class' => 'img-thumbnail', 'style' => 'max-width:300px;']);
                                 },
                             ],
                         ],

@@ -1,0 +1,72 @@
+.btn-meniu-stil {
+    background-color: #f8ac20; /* Green background */
+    border: none;
+    color: white;
+    padding: 8px 18px; /* Add padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded edges */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.btn-meniu-stil:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}
+
+.floating-cart {
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    z-index: 999; /* Ensure the button is above other elements */
+}
+
+.cart-button {
+    background-color: #f8ac20; /* Green background */
+    border: 2px solid white !important;
+    border: none;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    cursor: pointer;
+    border-radius: 50%; /* Make the button round */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.cart-button i {
+    font-size: 2em; /* Adjust the icon size */
+}
+
+.cart-button:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}
+
+
+.modal-content {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #121618;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: gray;
+    background: url(../images/bg_4.jpg) no-repeat fixed;
+    background-size: cover; 
+}
+.bootstrap-touchspin{
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+     align-items: center !important;
+}
+.cos-produs-input{
+    text-align: center;
+}
+.modal-body{
+    margin:0;
+    padding: 5px 0px 0px 0px;
+}

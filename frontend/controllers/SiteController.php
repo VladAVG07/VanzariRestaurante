@@ -161,6 +161,10 @@ class SiteController extends Controller
     public function actionSchimbaCategorie($idCategorie){
         return $this->renderAjax('_categorie_view',['id'=>$idCategorie]);
     }
+
+    public function actionAfiseazaProdus($idProdus){
+        return $this->renderAjax('_produs_view',['id'=>$idProdus]);
+    }
     
     /**
      * Signs user up.
