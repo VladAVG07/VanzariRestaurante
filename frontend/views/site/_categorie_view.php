@@ -5,7 +5,7 @@ use yii\helpers\Html;
 
 $categorie = \backend\models\Categorii::findOne(['id' => $id]);
 $numeId = 'v-pills-' . $id;
-$ariaLabel = 'v-pills-'. $id . '-tab';
+$ariaLabel = 'v-pills-' . $id . '-tab';
 
 $produse = backend\models\Produse::findAll(['categorie' => $id]);
 $assetDir=PizzGhAsset::register($this);

@@ -12,7 +12,7 @@ $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
 $urlProdus = Url::toRoute('site/afiseaza-produs');
 
 $formatJs = <<< SCRIPT
-        $('.nav-link').on('click',function(){
+        $('.menu-nav-link').on('click',function(){
         
             let categorie = $(this).attr('data-id');
             $.ajax({
@@ -42,7 +42,6 @@ $formatJs = <<< SCRIPT
                 }
             });
         });
-
         
 SCRIPT;
 $this->registerJs($formatJs, yii\web\View::POS_END);
