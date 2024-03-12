@@ -5,25 +5,47 @@ use yii\helpers\Html;
 $subcategorii = \backend\models\Categorii::getSubcategories($id);
 
 if (!$subcategorii) {
+
+    $categorii = \backend\models\Categorii::find()
+                                ->innerJoin('produse p', 'p.categorie = categorii.id')
+                                //->innerJoin('categorii c', 'c.parinte = categorii.id')
+                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+                                ->innerJoin('user u', 'ru.user=u.id')
+                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+                                ->all();
+                        $categorii1 = \backend\models\Categorii::find()
+                                //  ->innerJoin('produse p', 'p.categorie = categorii.id')
+                                ->innerJoin('categorii c', 'c.parinte = categorii.id')
+                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+                                ->innerJoin('user u', 'ru.user=u.id')
+                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+                                ->all();
+                        $subcategorii = array_merge($categorii, $categorii1);
+
     ?>
-    <div class="col-sm-12 card">
+    <!-- <div class="col-sm-12 card">
         <div class="nav-tabs-custom card-header p-2">
             <br>
             <h3 style="text-align: center">Nu exista subcategorii</h3>
             <br>
         </div>
-    </div>
+    </div> -->
     <?php
-} else {
+} 
+//else {
     ?>
     <div class="col-sm-12 card">
         <div class="nav-tabs-custom card-header p-2">
             <ul class="nav nav-tabs nav-pills">
                 <?php
-                $subcategorii = \backend\models\Categorii::getSubcategories($id);
+              /*  $subcategorii = \backend\models\Categorii::getSubcategories($id);
                 if (!$subcategorii) {
                     
-                }
+                }*/
                 $x = 0;
                 $active = 'active';
                 $expanded = true;
@@ -66,5 +88,5 @@ if (!$subcategorii) {
         </div>
     </div>
     <?php
-}
+//}
 ?>

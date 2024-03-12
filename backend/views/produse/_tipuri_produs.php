@@ -23,7 +23,7 @@ foreach ($model->produse_detalii as $produsDetaliuForm) {
                         $form->field($produsDetaliuForm, "[$i]disponibil")->widget(SwitchInput::class, [
                             'options' => [
                                 'class' => 'form-control', 'id' => $idDisponibil,
-                                'value' => $produsDetaliuForm->disponibil
+                              //  'value' => $produsDetaliuForm->disponibil
                             ],
                             'pluginOptions' => [
                                 'onText' => 'Da',

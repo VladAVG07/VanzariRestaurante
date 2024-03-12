@@ -13,7 +13,7 @@
     <script src="../themes/pizza-gh/web/js/bootstrap-datepicker.js"></script>
     <script src="../themes/pizza-gh/web/js/jquery.timepicker.min.js"></script>
     <script src="../themes/pizza-gh/web/js/scrollax.min.js"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8yUzAKKN1bVaZD-kdrDVY8fskGWE_yuA&sensor=false"></script>
     <!-- <script src="../themes/pizza-gh/web/js/google-map.js"></script>
     <script src="../themes/pizza-gh/web/js/main.js"></script> -->
 </footer>

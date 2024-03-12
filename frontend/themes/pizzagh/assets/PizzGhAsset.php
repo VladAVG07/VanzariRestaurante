@@ -25,7 +25,8 @@ class PizzGhAsset extends AssetBundle
     ];
 
     public $js = [
-       'js/jquery.min.js',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyD8yUzAKKN1bVaZD-kdrDVY8fskGWE_yuA&sensor=false',
+       ///'js/jquery.min.js',
        'js/jquery-migrate-3.0.1.min.js',
        'js/popper.min.js',
        'js/bootstrap.min.js',

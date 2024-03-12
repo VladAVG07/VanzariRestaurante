@@ -18,6 +18,9 @@ use kartik\file\FileInput;
 /* @var $modelPret backend\models\PreturiProduse */
 /* @var $form yii\bootstrap4\ActiveForm */
 
+$fileInputId = Html::getInputId($model, 'imageFile');
+$imageRemovedId = Html::getInputId($model, 'imageRemoved');
+
 $js = <<< SCRIPT
 
     var pm=$(".produs-multiplu");
@@ -38,6 +41,12 @@ $js = <<< SCRIPT
     
         // Optionally, you can submit the form programmatically if needed
         // form.submit();
+    });
+
+    $('#$fileInputId').on('filecleared', function(event) {
+        // When the "remove" button is clicked, set the value of the hidden field to true
+        console.log('Image removed');
+        $('#$imageRemovedId').val(1);
     });
 
     function cloneAndModifyObject(originalObject, newIndex) {
@@ -126,6 +135,9 @@ $js = <<< SCRIPT
             if($(this).attr('type')!=='hidden'){
                 $(this).val('');
             }
+            if($(this).attr('type')==='checkbox'){
+                $(this).val('1');
+            }
         });
         clonedRecord.insertAfter(lastRecord);
         // Append the cloned and modified record
@@ -188,7 +200,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
     ?>
 
     <?php
-    var_dump($model->errors);
+    // var_dump($model->errors);
     $categorii = Categorii::find()
         ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
         ->innerJoin('restaurante r', 'rc.restaurant = r.id')
@@ -248,6 +260,23 @@ $this->registerJs($js, \yii\web\View::POS_READY);
                             ?>
                         </div>
                     </div> -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <?=
+                                $form->field($model, 'ordine')->textInput(['type' => 'number', 'min' => 0, 'max' => 1000, 'step' => 1]);
+                            ?>
+                        </div>
+                        <div class="col-md-6">
+                            <?=
+                                $form->field($model, 'disponibil')->widget(SwitchInput::class, [
+                                    'pluginOptions' => [
+                                        'onText' => 'Da',
+                                        'offText' => 'Nu',
+                                    ]
+                                ]);
+                            ?>
+                        </div>
+                    </div>
                     <div class="row produs-multiplu">
                         <?php
                         echo $this->render('_tipuri_produs', ['model' => $model, 'form' => $form]);
@@ -262,44 +291,46 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
 
                 <div class="col-md-auto">
-                    <?=
-                        // $form->field($model, 'imageFile')->fileInput(['id' => 'imageFile']);
-                        $form->field($model, 'imageFile')->widget(FileInput::classname(), [
-                            'options' => ['accept' => 'image/*'],
-                            'pluginOptions' => [
-                                'maxFileCount' => 1,
-                                'overwriteInitial' => true,
-                                'showClose' => false,
-                                //browseLabel: '',
-                                //removeLabel: '',
-                                //browseIcon: '<i class="bi-folder2-open"></i>',
-                                //removeIcon: '<i class="bi-x-lg"></i>',
-                                //removeTitle: 'Cancel or reset changes',
-                                //elErrorContainer: '#kv-avatar-errors-1',
-                                //msgErrorClass: 'alert alert-block alert-danger',
-                                //defaultPreviewContent: '<img src="/samples/default-avatar-male.png" alt="Your Avatar">',
-                                //layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
-                                //allowedFileExtensions: ["jpg", "png", "gif"]
-                                'showCaption' => false,
-                                'showUpload' => false,
-                                'showCancel' => false,
-                                'showRemove' => true,
-                                'browseClass' => 'btn btn-primary',
-                                'browseIcon' => '<i class="fas fa-camera"></i> ',
-                                'browseLabel' =>  'Selectati imaginea',
-                                "initialPreviewShowDelete" => false,
-                                'initialPreview' => [
-                                    !is_null($model->image_file) ? sprintf('/backend/uploads/produse/%s', $model->image_file) : null,
-                                ],
-                                'initialPreviewConfig' => [
-                                    ['caption' => $model->nume]
-                                ],
-                                'fileActionSettings' => [
-                                    'showRemove' => false, 'showRotate' => false,
-                                ],
-                                'initialPreviewAsData' => true, // defaults markup
+
+                    <?php
+                    echo $form->field($model, 'imageRemoved')->hiddenInput()->label(false);
+                    // $form->field($model, 'imageFile')->fileInput(['id' => 'imageFile']);
+                    echo $form->field($model, 'imageFile')->widget(FileInput::classname(), [
+                        'options' => ['accept' => 'image/*'],
+                        'pluginOptions' => [
+                            'maxFileCount' => 1,
+                            'overwriteInitial' => true,
+                            'showClose' => false,
+                            //browseLabel: '',
+                            //removeLabel: '',
+                            //browseIcon: '<i class="bi-folder2-open"></i>',
+                            //removeIcon: '<i class="bi-x-lg"></i>',
+                            //removeTitle: 'Cancel or reset changes',
+                            //elErrorContainer: '#kv-avatar-errors-1',
+                            //msgErrorClass: 'alert alert-block alert-danger',
+                            //defaultPreviewContent: '<img src="/samples/default-avatar-male.png" alt="Your Avatar">',
+                            //layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+                            //allowedFileExtensions: ["jpg", "png", "gif"]
+                            'showCaption' => false,
+                            'showUpload' => false,
+                            'showCancel' => false,
+                            'showRemove' => true,
+                            'browseClass' => 'btn btn-primary',
+                            'browseIcon' => '<i class="fas fa-camera"></i> ',
+                            'browseLabel' =>  'Selectati imaginea',
+                            "initialPreviewShowDelete" => false,
+                            'initialPreview' => [
+                                !is_null($model->image_file) ? sprintf('/backend/uploads/produse/%s', $model->image_file) : null,
                             ],
-                        ]);
+                            'initialPreviewConfig' => [
+                                ['caption' => $model->nume]
+                            ],
+                            'fileActionSettings' => [
+                                'showRemove' => false, 'showRotate' => false,
+                            ],
+                            'initialPreviewAsData' => true, // defaults markup
+                        ],
+                    ]);
                     ?>
 
                 </div>
@@ -318,7 +349,7 @@ $this->registerJs($js, \yii\web\View::POS_READY);
 
 </div>
 <?php
-    $script = <<< JS
+$script = <<< JS
     $('#w0').on('afterValidate', function (event, messages, errorAttributes) {
             //console.log('afterValidate');
             if (errorAttributes.length) {
@@ -332,5 +363,5 @@ $this->registerJs($js, \yii\web\View::POS_READY);
         });
     });
     JS;
-    $this->registerJs($script);
-  ?>
+$this->registerJs($script);
+?>

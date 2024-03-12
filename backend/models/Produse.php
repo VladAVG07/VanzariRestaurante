@@ -22,7 +22,9 @@ use yii\helpers\VarDumper;
  * @property int $alerta_stoc
  * @property boolean $disponibil
  * @property string $image_file
- *
+ * @property integer $ordine
+ * @property float|null $pretFinal
+ * 
  * @property Categorii $categorie0
  * @property PreturiProduse[] $preturiProduses
  * @property Stocuri[] $stocuris
@@ -38,6 +40,7 @@ class Produse extends \yii\db\ActiveRecord
     public $imagePreview;
     public $tip_produs;
     public $produse_detalii = [];
+    public $imageRemoved = 0;
 
     /**
      * {@inheritdoc}
@@ -54,7 +57,7 @@ class Produse extends \yii\db\ActiveRecord
     {
         return [
             [['categorie', 'nume', 'descriere', 'stocabil', 'disponibil', 'tip_produs'], 'required'],
-            [['categorie', 'cod_produs', 'valid', 'alerta_stoc', 'pret'], 'integer'],
+            [['categorie', 'cod_produs', 'valid', 'alerta_stoc', 'pret', 'imageRemoved', 'ordine'], 'integer'],
             [['data_productie', 'dataInceputPret', 'dataSfarsitPret', 'pret', 'alerta_stoc', 'imageFile', 'image_file'], 'safe'],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['pret_curent', 'pret'], 'number'],
@@ -89,10 +92,13 @@ class Produse extends \yii\db\ActiveRecord
             'nume' => 'Nume',
             'descriere' => 'Descriere',
             'data_productie' => 'Data Productie',
-            'pret_curent' => 'Pret',
-            'valid' => 'Valid',
+            'pret_curent' => 'Preț',
+            'pret' => 'Preț',
+            'disponibil' => 'Activ',
+            'valid' => 'Activ',
             'stocabil' => 'Stocabil',
             'image_file' => 'Imagine produs',
+            'imageFile' => 'Imagine produs',
             'tip_produs' => 'Tip produs',
         ];
     }
@@ -105,6 +111,19 @@ class Produse extends \yii\db\ActiveRecord
         } else {
             return false;
         }
+    }
+    public function afterFind()
+    {
+        parent::afterFind();
+        
+        // Custom logic here, for example, modifying attribute values
+        $detalii = $this->produseDetalii;
+
+        $pret = sprintf('%s', $detalii[0]->pret);
+        if (count($detalii) > 1) {
+            $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+        }
+        return $pret;
     }
 
     /**
@@ -124,7 +143,7 @@ class Produse extends \yii\db\ActiveRecord
      */
     public function getProduseDetalii()
     {
-        return $this->hasMany(ProduseDetalii::class, ['produs' => 'id']);
+        return $this->hasMany(ProduseDetalii::class, ['produs' => 'id'])->where(['IS', 'data_sfarsit', NULL])->orderBy(['pret' => SORT_ASC]);
     }
 
     /**
@@ -150,6 +169,37 @@ class Produse extends \yii\db\ActiveRecord
     public function getPretCurent()
     {
         return $this->getPreturiProduses()->where('valid = 1')->one();
+    }
+
+    public function getPretText()
+    {
+        $detalii = $this->produseDetalii;
+
+        $pret = sprintf('%s', $detalii[0]->pret);
+        if (count($detalii) > 1) {
+            $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+        }
+        return $pret;
+    }
+
+    public function getPretMeniu()
+    {
+        $detalii = $this->produseDetalii;
+        return implode('/', array_map(function ($el) {
+            return $el->pret;
+        }, $detalii));
+    }
+
+    public function getProdusDetaliiDescriere()
+    {
+        $detalii = $this->produseDetalii;
+        $text = implode('/', array_map(function ($el) {
+            return $el->descriere;
+        }, $detalii));
+        if (strlen(trim($text)) == 0) {
+            return '';
+        }
+        return sprintf('(%s)', $text);
     }
 
     public function saveProdus($numeImagine)
@@ -181,6 +231,7 @@ class Produse extends \yii\db\ActiveRecord
                 $save = $pret->save();
             }
         }
+        $save = $save && $this->saveProdusDetalii();
         if ($save) {
             if (!is_null($this->imageFile)) {
                 $filePath = FileUploadService::uploadFile($this->imageFile, 'uploads/produse', $numeImagine);
@@ -194,6 +245,19 @@ class Produse extends \yii\db\ActiveRecord
         }
         $transaction->rollBack();
         return false;
+    }
+
+    public function saveProdusDetalii()
+    {
+        foreach ($this->produse_detalii as $produsDetaliu) {
+            $produsDetaliu->produs = $this->id;
+            $saved = $produsDetaliu->save();
+            if (!$saved) {
+                $this->addErrors($produsDetaliu->errors);
+                return false;
+            }
+        }
+        return true;
     }
 
     public function getProdusAndCategorie()
@@ -216,9 +280,10 @@ class Produse extends \yii\db\ActiveRecord
         if (!is_null($numeImagine)) {
             $this->image_file = sprintf('%s.%s', $numeImagine, $this->imageFile->extension);
         } else {
-            $this->image_file = null;
+            if ($this->imageRemoved)
+                $this->image_file = null;
         }
-        if (file_exists($oldFile) && is_file($oldFile)) {
+        if ((!is_null($this->imageFile) || $this->imageRemoved) && file_exists($oldFile) && is_file($oldFile)) {
             unlink($oldFile);
             if (file_exists($oldMobileFile) && is_file($oldMobileFile))
                 unlink($oldMobileFile);
@@ -308,6 +373,8 @@ class Produse extends \yii\db\ActiveRecord
         //         }
         //     }
         // }
+        $rowsAffected = ProduseDetalii::updateAll(['data_sfarsit' => date('Y-m-d')], ['produs' => $this->id]);
+        $save = $save && $this->saveProdusDetalii();
         if ($save) {
             if (!is_null($numeImagine)) {
                 $filePath = FileUploadService::uploadFile($this->imageFile, 'uploads/produse', $numeImagine);

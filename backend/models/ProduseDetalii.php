@@ -12,6 +12,8 @@ use Yii;
  * @property string|null $descriere
  * @property float|null $pret
  * @property int|null $disponibil
+ * @property string $data_inceput
+ * @property string|null $data_sfarsit
  *
  * @property Produse $produs0
  */
@@ -39,6 +41,20 @@ class ProduseDetalii extends \yii\db\ActiveRecord
         ];
     }
 
+   public function beforeSave($insert)
+   {
+    if (parent::beforeSave($insert)) {
+        if ($insert) {
+            $this->data_inceput = date('Y-m-d');
+        }
+        else{
+            $this->data_sfarsit=date('Y-m-d');
+        }
+        return true;
+    }
+    return false;
+   }
+
     /**
      * {@inheritdoc}
      */
@@ -47,8 +63,8 @@ class ProduseDetalii extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'produs' => 'Produs',
-            'descriere' => 'Descriere',
-            'pret' => 'Pret',
+            'descriere' => 'Descriere opțională',
+            'pret' => 'Preț',
             'disponibil' => 'Disponibil',
         ];
     }

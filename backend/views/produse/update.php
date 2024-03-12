@@ -4,12 +4,12 @@
 /* @var $model backend\models\Produse */
 /* @var $modelPret \backend\models\PreturiProduse */
 
-$this->title = Yii::t('app', 'Update Produse: {name}', [
+$this->title = Yii::t('app', 'Actualizare produs: {name}', [
     'name' => $model->nume,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produse'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->nume, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Actualizare');
 ?>
 
 <div class="container-fluid">

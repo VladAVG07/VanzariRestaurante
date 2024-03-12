@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use backend\models\Produse;
+use backend\models\ProduseDetalii;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -11,10 +13,14 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use frontend\models\Basket;
+use frontend\models\BasketItem;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use frontend\models\FormularComanda;
+use yii\helpers\Json;
 
 /**
  * Site controller
@@ -75,7 +81,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('_home_view');
     }
 
     /**
@@ -146,26 +152,162 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    public function actionPaginaMeniu(){
+    public function actionPaginaMeniu()
+    {
         return $this->render('_meniu_view');
     }
-    
-    public function actionPaginaHome(){
+
+    public function actionPaginaHome()
+    {
         return $this->render('_home_view');
     }
-    
-    public function actionPaginaContact(){
+
+    public function actionPaginaContact()
+    {
         return $this->render('_contact_view');
     }
-    
-    public function actionSchimbaCategorie($idCategorie){
-        return $this->renderAjax('_categorie_view',['id'=>$idCategorie]);
+
+    public function actionSchimbaCategorie($idCategorie)
+    {
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('_categorie_view', ['id' => $idCategorie]);
+        }
+        return $this->renderPartial('_categorie_view', ['id' => $idCategorie]);
     }
 
-    public function actionAfiseazaProdus($idProdus){
-        return $this->renderAjax('_produs_view',['id'=>$idProdus]);
+    public function actionAfiseazaProdus($idProdus)
+    {
+        return $this->renderAjax('_produs_view', ['id' => $idProdus]);
     }
-    
+
+    public function actionStergeDinCos()
+    {
+        $request = \Yii::$app->request;
+        $idProdus = $request->post('idProdus');
+        $basket = \Yii::$app->session->get('basket');
+        $produs = Produse::findOne($idProdus);
+        if (is_null($produs)) {
+            throw new BadRequestHttpException('Id produs inexistent');
+        }
+
+        if (!is_null($basket) && array_key_exists($idProdus, $basket->basketItems)) {
+            $currentItem = $basket->basketItems[$idProdus];
+            $currentItem->cantitate -= 1;
+            if ($currentItem->cantitate == 0) {
+                unset($basket->basketItems[$idProdus]);
+            }
+        }
+        \Yii::$app->session->set('basket', $basket);
+    }
+
+    public function actionContinutCos()
+    {
+        $basket = \Yii::$app->session->get('basket');
+        return $this->renderAjax('_cos_view', [
+            'model' => $basket,
+        ]);
+    }
+
+    public function actionAdaugaInCos()
+    {
+        $request = \Yii::$app->request;
+        $idProdus = $request->post('idProdus');
+        $cantitate = $request->post('cantitate');
+        $basket = \Yii::$app->session->get('basket');
+        //  $produs = Produse::findOne($idProdus);
+        $produsDetaliu = ProduseDetalii::findOne($idProdus);
+        if (is_null($produsDetaliu)) {
+            throw new BadRequestHttpException('Id produs inexistent');
+        }
+        $produs = $produsDetaliu->produs0;
+
+        if (is_null($produs)) {
+            throw new BadRequestHttpException('Id produs inexistent');
+        }
+        if (is_null($basket)) {
+            $basket = new Basket(['metodaPlata' => 1]);
+            $basket->basketItems[$idProdus] = new BasketItem(['idProdus' => $idProdus, 'cantitate' => 1, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+        } else {
+            if (array_key_exists($idProdus, $basket->basketItems)) {
+                $currentItem = $basket->basketItems[$idProdus];
+                $currentItem->cantitate = $cantitate;
+            } else {
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'cantitate' => $cantitate, 'pret' =>  $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            }
+            $basket->basketItems[$idProdus] = $currentItem;
+            if ($cantitate == 0) {
+                unset($basket->basketItems[$idProdus]);
+            }
+        }
+        return Json::encode($basket);
+        // \Yii::$app->session->set('basket', $basket);
+        // return $this->renderAjax('_cos_view', [
+        //     'model' => $basket,
+        // ]);
+    }
+
+    public function actionProceseazaComanda()
+    {
+        $basket = \Yii::$app->session->get('basket');
+        $model=new FormularComanda();
+        if(is_null($basket)){
+            return $this->redirect('site/index');
+        }
+        return $this->render('comanda',['model'=>$model,'basket'=>$basket]);
+    }
+
+    public function actionGenereazaModalProdus()
+    {
+        $request = \Yii::$app->request;
+        $idProdus = $request->post('idProdus');
+        $produs = Produse::findOne($idProdus);
+        if (is_null($produs)) {
+            throw new BadRequestHttpException('Id produs inexistent');
+        }
+        $detalii = array_map(function ($el) {
+            return ['id' => $el->id, 'descriere' => $el->descriere, 'pret' => $el->pret];
+        }, $produs->produseDetalii);
+        $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => 1, 'pret' => $detalii[0]['pret'], 'denumire' => $produs->nume]);
+        return $this->renderAjax('_produs_in_cos_view', [
+            'model' => $currentItem,
+        ]);
+    }
+
+    public function actionProdusAdaugaInCos()
+    {
+        $request = \Yii::$app->request;
+        $idProdus = $request->post('idProdus');
+        $cantitate = $request->post('cantitate');
+        $basket = \Yii::$app->session->get('basket');
+        //$produs = Produse::findOne($idProdus);
+        $produsDetaliu = ProduseDetalii::findOne($idProdus);
+        if (is_null($produsDetaliu)) {
+            throw new BadRequestHttpException('Id produs inexistent');
+        }
+        $produs = $produsDetaliu->produs0;
+
+        $detalii = array_map(function ($el) {
+            return ['id' => $el->id, 'descriere' => $el->descriere, 'pret' => $el->pret];
+        }, $produs->produseDetalii);
+        if (is_null($basket)) {
+            $basket = new Basket(['metodaPlata' => 1]);
+            $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            $basket->basketItems[$idProdus] = $currentItem;
+        } else {
+            if (array_key_exists($idProdus, $basket->basketItems)) {
+                $currentItem = $basket->basketItems[$idProdus];
+                $currentItem->cantitate += 1;
+            } else {
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            }
+            $basket->basketItems[$idProdus] = $currentItem;
+        }
+        \Yii::$app->session->set('basket', $basket);
+        return $this->renderAjax('_produs_in_cos_view', [
+            'model' => $currentItem,
+        ]);
+    }
+
     /**
      * Signs user up.
      *

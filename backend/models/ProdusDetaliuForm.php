@@ -17,7 +17,7 @@ class ProdusDetaliuForm extends Model{
     {
         return [
             [['pret'], 'required'],
-            ['descriere','safe'],
+            [['descriere','disponibil'],'safe'],
             [['produs', 'disponibil'], 'integer'],
             [['pret'], 'number'],
             [['descriere'], 'string', 'max' => 150],

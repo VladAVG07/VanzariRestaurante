@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a(Yii::t('app', 'Adauga Categorie'), ['create'], ['class' => 'btn btn-success add-categorie', 'id'=>'add-categorie']) ?>
+                            <?= Html::a(Yii::t('app', 'Adaugă categorie'), ['create'], ['class' => 'btn btn-success add-categorie', 'id'=>'add-categorie']) ?>
                         </div>
                     </div>
 
@@ -54,8 +54,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                         ],
-                        'summary' => '<b>{begin}-{end}</b> din <b>{totalCount}</b> categorii',
+                      //  'summary' => '<b>{begin}-{end}</b> din <b>{totalCount}</b> categorii',
                         'summaryOptions' => ['class' => 'summary mb-2'],
+                        'layout' => "{items}\n{pager}\n{summary}",
                         'pager' => [
                             'class' => 'yii\bootstrap4\LinkPager',
                         ]

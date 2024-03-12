@@ -36,7 +36,7 @@ class Categorii extends \yii\db\ActiveRecord
     {
         return [
             [['nume', 'descriere'], 'required'],
-            [['parinte'], 'integer'],
+            [['parinte','ordine'], 'integer'],
             [['nume'], 'string', 'max' => 100],
             [['descriere'], 'string', 'max' => 200],
             [['nume', 'parinte'], 'unique', 'targetAttribute' => ['nume', 'parinte']],

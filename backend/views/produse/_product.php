@@ -109,7 +109,7 @@ if ($model->stocabil){
                 <div class="meal__description-additional-info" itemprop="description"><?= $model->descriere ?></div>
                 <div class="meal__description-choose-from">Alege: Usturoi, Branza de burduf, Gorgonzola, Mozzarella, Parmezan, Pecorinno, Ceapa și mai multe.</div>
 
-                <div itemprop="price" class="meal__price"><?= Yii::$app->formatter->asCurrency($model->pret_curent)?></div>
+                <div itemprop="price" class="meal__price"><?= $model->pretText?></div>
                 <div class="sizeattributecontainer" id="sizeattributecontainerOPON0O17Q"></div>                
             </div>
         </div>

@@ -2,13 +2,20 @@
 
 use yii\helpers\Html;
 
-$restaurantId = 7;
+$restaurantId = 10;
 $categorii = \backend\models\Categorii::find()
         ->innerJoin('produse p', 'p.categorie = categorii.id')
         ->innerJoin('restaurante_categorii', 'categorii.id = restaurante_categorii.categorie')
-        ->where(['restaurante_categorii.restaurant' => $restaurantId])->andWhere(['<>', 'categorii.parinte', 'null'])
+        ->where(['restaurante_categorii.restaurant' => $restaurantId])
+        //->andWhere(['<>', 'categorii.parinte', 'null'])
         ->andWhere(['<>', 'categorii.nume', 'Servicii'])
         ->all();
+
+// $urlAdaugaProdusInCos = Url::toRoute('site/produs-adauga-in-cos');
+// $urlGetContinutCos = Url::toRoute('site/continut-cos');
+// $urlStergeProdus = Url::toRoute('site/sterge-din-cos');
+
+$csrlf = sprintf('\'%s\':\'%s\'', \Yii::$app->request->csrfParam, \Yii::$app->request->getCsrfToken());
 ?>
 <!--<section class="ftco-section">
     <div class="container">
@@ -85,7 +92,7 @@ $categorii = \backend\models\Categorii::find()
         </div>
     </div>-->
 
-    <div class="container">
+    <div>
         <!--        <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
                     <div class="col-md-7 heading-section text-center ftco-animate">
                         <h2 class="mb-4">Our Menu Pricing</h2>
@@ -102,10 +109,14 @@ $categorii = \backend\models\Categorii::find()
         <?php
         foreach ($categorii as $categorie) {
             $parinte = \backend\models\Categorii::findOne(['id' => $categorie->parinte]);
+            $nume=$categorie->nume;
+            if(!is_null($parinte)){
+                $nume= $parinte->nume . ' ' . $categorie->nume;
+            }
             ?>
             <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h2 class="mb-4"><?= $parinte->nume . ' ' . $categorie->nume ?></h2>
+                    <h2 class="mb-4"><?= $nume ?></h2>
                     <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
                 </div>
             </div>

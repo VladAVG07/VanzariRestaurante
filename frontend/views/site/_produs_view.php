@@ -7,7 +7,7 @@ use kartik\touchspin\TouchSpin;
 
 $produs = Produse::findOne(['id' => $id]);
 $imagine = 'backend/uploads/produse/' . $produs->image_file;
-$assetDir = PizzGhAsset::register($this);
+$assetDir = Yii::$app->assetManager->getBundle('frontend\themes\pizzagh\assets\PizzGhAsset');
 ?>
 
 <div class="d-block text menu-wrap align-items-center">
@@ -25,21 +25,21 @@ $assetDir = PizzGhAsset::register($this);
     <div class="form-row justify-content-center">
         <div class="form-group">
             <div class="form-check">
-                <input type="radio" id="tip1" name="tip">
+                <input class="form-check-input" type="radio" id="tip1" name="tip">
                 <label for="tip1">Medie (32cm - 300gr) - 32 RON</label>
             </div>
             <div class="form-check">
-                <input type="radio" id="tip2" name="tip">
+                <input class="form-check-input" type="radio" id="tip2" name="tip">
                 <label for="tip2">Mare (40cm - 450gr) - 45 RON</label>
             </div>
             <div class="form-check">
-                <input type="radio" id="tip3" name="tip">
+                <input class="form-check-input" type="radio" id="tip3" name="tip">
                 <label for="tip3">Family (55cm - 1000gr) - 75 RON</label>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="d-flex">
     <div class="col-md-5"></div>
     <div class="col-md-2">
         <?php

@@ -1,0 +1,483 @@
+2024-03-10 12:32:23 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:32:23 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62365'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710073943.0364
+    'REQUEST_TIME' => 1710073943
+]
+2024-03-10 12:32:26 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:32:26 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62365'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710073946.7239
+    'REQUEST_TIME' => 1710073946
+]
+2024-03-10 12:32:29 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:32:29 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62365'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710073949.3207
+    'REQUEST_TIME' => 1710073949
+]
+2024-03-10 12:32:35 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:32:35 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62367'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710073955.014
+    'REQUEST_TIME' => 1710073955
+]
+2024-03-10 12:32:36 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:32:36 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62367'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710073956.3741
+    'REQUEST_TIME' => 1710073956
+]
+2024-03-10 12:38:28 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:38:28 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62425'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710074308.1511
+    'REQUEST_TIME' => 1710074308
+]
+2024-03-10 12:38:32 [127.0.0.1][-][-][error][yii\web\HttpException:401] yii\web\UnauthorizedHttpException: Your request was made with invalid credentials. in C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php:93
+Stack trace:
+#0 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\filters\auth\AuthMethod.php(76): yii\filters\auth\AuthMethod->handleFailure(Object(yii\web\Response))
+#1 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\ActionFilter.php(77): yii\filters\auth\AuthMethod->beforeAction(Object(yii\base\InlineAction))
+#2 [internal function]: yii\base\ActionFilter->beforeFilter(Object(yii\base\ActionEvent))
+#3 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Component.php(633): call_user_func(Array, Object(yii\base\ActionEvent))
+#4 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(297): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#5 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Controller.php(219): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#6 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Controller.php(176): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#7 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('produs-sesiune', Array)
+#8 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('v1/produse/prod...', Array)
+#9 C:\wamp64\www\VanzariRestaurant\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 C:\wamp64\www\VanzariRestaurant\api\web\index.php(22): yii\base\Application->run()
+#11 {main}
+2024-03-10 12:38:32 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123.0'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCESS_CONTROL_REQUEST_METHOD' => 'POST'
+    'HTTP_ACCESS_CONTROL_REQUEST_HEADERS' => 'authorization'
+    'HTTP_REFERER' => 'http://16.171.228.106/'
+    'HTTP_ORIGIN' => 'http://16.171.228.106'
+    'HTTP_DNT' => '1'
+    'HTTP_SEC_GPC' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_FETCH_DEST' => 'empty'
+    'HTTP_SEC_FETCH_MODE' => 'cors'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'PATH' => 'C:\\Users\\Marian\\bin\\Sencha\\Cmd\\4.0.5.87;C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\Git\\bin\\;D:\\Genymotion\\tools;C:\\Users\\Marian\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe;C:\\Program Files\\Intel\\WiFi\\bin\\;C:\\Program Files\\Common Files\\Intel\\WirelessCommon\\;C:\\Program Files (x86)\\Yarn\\bin\\;C:\\Users\\Marian\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;D:\\openssl-0.9.8k_X64\\bin;C:\\composer;C:\\Windows\\System32\\Wbem;c:\\Program Files (x86)\\Intel\\Intel(R) Management Engine Components\\DAL;c:\\Program Files\\Intel\\Intel(R) Management Engine Components\\DAL;C:\\Program Files\\PuTTY\\;C:\\Program Files\\nodejs\\;C:\\wamp64\\bin\\php\\php7.4.33;C:\\WINDOWS\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\WINDOWS'
+    'COMSPEC' => 'C:\\WINDOWS\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\WINDOWS'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/7.4.33 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/VanzariRestaurant/api/web/index.php'
+    'REMOTE_PORT' => '62425'
+    'REDIRECT_URL' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'OPTIONS'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/VanzariRestaurant/api/web/v1/produse/produs-sesiune'
+    'SCRIPT_NAME' => '/VanzariRestaurant/api/web/index.php'
+    'PHP_SELF' => '/VanzariRestaurant/api/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1710074311.9878
+    'REQUEST_TIME' => 1710074311
+]

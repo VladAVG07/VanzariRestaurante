@@ -3,177 +3,19 @@
 use frontend\themes\pizzagh\assets\PizzGhAsset;
 use yii\bootstrap4\Modal;
 use yii\helpers\Html;
-use kartik\touchspin\TouchSpin;
+//use kartik\touchspin\TouchSpin;
 use yii\helpers\Url;
 
-$assetDir = PizzGhAsset::register($this);
+$assetDir = Yii::$app->assetManager->getBundle('frontend\themes\pizzagh\assets\PizzGhAsset');
 
 $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
-$urlProdus = Url::toRoute('site/afiseaza-produs');
 
-$formatJs = <<< SCRIPT
-        $('.menu-nav-link').on('click',function(){
-        
-            let categorie = $(this).attr('data-id');
-            $.ajax({
-                data: {'idCategorie': categorie},
-                type: 'GET',
-                url: '$urlCategorie', 
-                success: function (data) {
-                    $('#v-pills-tabContent').html(data);
-                }
-            });
-        });
-        $(document).on('click', '.cart-button', function(e){
-            console.log('Cos apasat');
-            $('#mymodal').modal('show');
-        });
-        $(document).on('click','.btn-meniu',function(e){
-            e.preventDefault();
-            let produs = $(this).attr('data-id');
-            $('#modalProdus').modal('show');
-            
-            $.ajax({
-                data: {'idProdus': produs},
-                type: 'GET',
-                url: '$urlProdus', 
-                success: function (data) {
-                    $('.modal-produs-content').html(data);
-                }
-            });
-        });
-        
-SCRIPT;
-$this->registerJs($formatJs, yii\web\View::POS_END);
-
-Modal::begin([
-    'title' => '<h4>Detalii produs</h4>',
-    'id' => 'modalProdus',
-    'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
-    'options' => [
-        'class' => 'custom-modal-bg', // Add your custom CSS class here
-    ],
-]);
-?>
-<div class="modal-content">
-    <div class="modal-body">
-        <div class="modal-produs">
-            <div class="ftco-animate fadeInUp ftco-animated modal-produs-content" data-id="7">
-
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-    <?=Html::button('Adaugă în coș', ['class' => ['btn', 'btn-primary p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal'])?>
-    </div>
-</div>
-<?php
-Modal::end();
-?>
-
-<?php
-Modal::begin([
-    'title' => '<h4>Coșul meu</h4>',
-    'id' => 'mymodal',
-    'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
-    'options' => [
-        'class' => 'custom-modal-bg', // Add your custom CSS class here
-    ],
-]);
-
-echo '<div class="modal-content">';
-echo '   <div class="modal-body">';
-?>
-<div class="cart-items item">
-    <ul class="list-unstyled">
-        <li class="item">
-            <div class="d-flex ftco-animate fadeInUp ftco-animated" data-id="7">
-                <div class="desc">
-                    <div class="d-flex text align-items-center">
-                        <div class="col-md-8">
-                            <h5><span>Pizza traditionala</span></h5>
-                        </div>
-                        <div class="col-md-2 cos-produs align-items-center">
-                            <?php
-                            echo TouchSpin::widget([
-                                'name' => 't6',
-                                'options' => ['class' => 'cos-produs-input'],
-
-                                'pluginOptions' => [
-                                    'initval' => 1,
-                                    'min' => 1,
-                                    'max' => 100,
-                                    'buttonup_class' => 'h-50 btn btn-block btn-sm btn-primary',
-                                    'buttondown_class' => 'h-50 btn btn-sm btn-info',
-                                    'buttonup_txt' => '+',
-                                    'buttondown_txt' => '-',
-                                    // 'verticalbuttons' => true
-                                ]
-                            ]);
-                            ?>
-                        </div>
-                        <div class="col-md-2"><span class="price">2.00 RON</span></div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li class="item">
-            <div class="d-flex ftco-animate fadeInUp ftco-animated" data-id="7">
-                <div class="desc">
-                    <div class="d-flex text align-items-center">
-                        <div class="col-md-8">
-                            <h5><span>Pizza traditionala</span></h5>
-                        </div>
-                        <div class="col-md-2  cos-produs align-items-center">
-                            <!-- <div class="input-group number-spinner  align-items-center">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary p-3 px-xl-4 py-xl-3" data-dir="dwn">-</button>
-                                </span>
-                                <input type="text" class="form-control text-center" value="1">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-primary p-3 px-xl-4 py-xl-3" data-dir="up">+</button>
-                                </span>
-                            </div>
-                        </div> -->
-                            <?php
-                            echo TouchSpin::widget([
-                                'name' => 't6',
-                                'options' => ['class' => 'cos-produs-input'],
-
-                                'pluginOptions' => [
-                                    'initval' => 1,
-                                    'min' => 1,
-                                    'max' => 100,
-                                    'buttonup_class' => 'h-50 btn btn-block btn-sm btn-primary',
-                                    'buttondown_class' => 'h-50 btn btn-sm btn-info',
-                                    'buttonup_txt' => '+',
-                                    'buttondown_txt' => '-',
-                                    // 'verticalbuttons' => true
-                                ]
-                            ]);
-                            ?>
-                            
-                        </div>
-                        <div class="col-md-2"><span class="price">2.00 RON</span></div>
-                    </div>
-                </div>
-        </li>
-    </ul>
-</div>
-<?php
-echo '   </div>';
-echo '   <div class="modal-footer">';
-echo Html::button('Close', ['class' => ['btn', 'btn-primary p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal']);
-echo '   </div>';
-echo '</div>';
-
-Modal::end();
 ?>
 <section class="home-slider owl-carousel img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_1.jpg);">
     <div class="slider-item">
         <div class="overlay"></div>
         <div class="container">
-            <div class="row slider-text align-items-center" data-scrollax-parent="true">
+            <div class="d-flex slider-text align-items-center" data-scrollax-parent="true">
 
                 <div class="col-md-6 col-sm-12 ftco-animate">
                     <span class="subheading">Delicious</span>
@@ -224,46 +66,161 @@ Modal::end();
         </div>
     </div>
 </section>
+
+<section id="rest-program" class="ftco-intro">
+    <div class="container-wrap">
+        <div class="wrap d-md-flex">
+            <div class="info">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-phone"></span></div>
+                        <div class="text">
+                            <h3>+40722 885 551</h3>
+                            <p>DIO Bistro este locul unde tu și prietenii tăi o să vă simțiți minunat!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-my_location"></span></div>
+                        <div class="text">
+                            <h3>Prelungirea București numărul 123</h3>
+                            <p>Călărași, România</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-clock-o"></span></div>
+                        <div class="text">
+                            <h3>Luni - Vineri</h3>
+                            <p>08:00 - 22:00</p>
+                        </div>
+                        <div class="text">
+                            <h3>Sâmbătă - Duminică</h3>
+                            <p>10:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social d-md-flex pl-md-5 p-4 align-items-center">
+                <ul class="social-icon">
+                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
+                    <li class="ftco-animate"><a href="https://web.facebook.com/people/Dio-Bistro/100086182524636/"><span class="icon-facebook"></span></a></li>
+                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <section class="ftco-about d-md-flex">
+    	<div class="one-half img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);"></div>
+    	<div class="one-half ftco-animate">
+        <div class="heading-section ftco-animate ">
+          <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizza</span> A Restaurant</h2>
+        </div>
+        <div>
+  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+  			</div>
+    	</div>
+    </section> -->
+
+<section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-pizza-1"></span></div>
+                                <strong class="number" data-number="5432">0</strong>
+                                <span>Pizza livrate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-medal"></span></div>
+		              	<strong class="number" data-number="85">0</strong>
+		              	<span>Number of Awards</span>
+		              </div>
+		            </div>
+		          </div> -->
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-laugh"></span></div>
+                                <strong class="number" data-number="1056">0</strong>
+                                <span>Clienți mulțumiți</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-chef"></span></div>
+                                <strong class="number" data-number="14">0</strong>
+                                <span>Angajați</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="ftco-menu">
     <div class="container-fluid">
         <div class="row d-md-flex">
-            <!--<div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);">-->
-        </div>
-        <div class="col-lg-12 ftco-animate p-md-5">
-            <div class="row">
-                <div class="col-md-12 nav-link-wrap mb-5">
-                    <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <?php
-                        $restaurantId = 7;
-                        $categorii = \backend\models\Categorii::find()
-                            ->innerJoin('produse p', 'p.categorie = categorii.id')
-                            ->innerJoin('restaurante_categorii', 'categorii.id = restaurante_categorii.categorie')
-                            ->where(['restaurante_categorii.restaurant' => $restaurantId])->andWhere(['<>', 'categorii.parinte', 'null'])
-                            ->andWhere(['<>', 'categorii.nume', 'Servicii'])
-                            ->all();
-
-                        foreach ($categorii as $categorie) {
-                            $parinte = \backend\models\Categorii::findOne(['id' => $categorie->parinte]);
-                            $nume = $parinte->nume . ' ' . $categorie->nume;
-                            echo Html::a($nume, '#v-pills-' . $categorie->id, [
-                                'id' => 'v-pills-' . $categorie->id . '-tab',
-                                'class' => 'nav-link',
-                                'data-toggle' => 'pill',
-                                'role' => 'tab',
-                                'aria-controls' => 'v-pills-' . $categorie->id,
-                                'aria-selected' => 'false',
-                                'data-id' => $categorie->id,
-                            ]);
-                        }
-                        ?>
-                        <!--<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Pasta</a>-->
+            <div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);">
+            </div>
+            <div class="col-lg-8 ftco-animate p-md-5 fadeInUp ftco-animated">
+                <div class="row">
+                    <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <?php
+                            $restaurantId = 10;
+                            $categorii = \backend\models\Categorii::find()
+                                ->innerJoin('produse p', 'p.categorie = categorii.id')
+                                ->innerJoin('restaurante_categorii', 'categorii.id = restaurante_categorii.categorie')
+                                ->where(['restaurante_categorii.restaurant' => $restaurantId])
+                                //->andWhere(['<>', 'categorii.parinte', 'null'])
+                                ->andWhere(['<>', 'categorii.nume', 'Servicii'])
+                                ->orderBy(['ordine'=>SORT_ASC,'nume'=>SORT_ASC])
+                                ->all();
+                            //var_dump($categorii);
+                            //exit();
+                            $i = 0;
+                            $idCategorie = -1;
+                            foreach ($categorii as $categorie) {
+                                $parinte = \backend\models\Categorii::findOne(['id' => $categorie->parinte]);
+                                $nume = $categorie->nume;
+                                if (!is_null($parinte))
+                                    $nume = $parinte->nume . ' ' . $categorie->nume;
+                                if ($i == 0)
+                                    $idCategorie = $categorie->id;
+                                echo Html::a($nume, '#v-pills-' . $categorie->id, [
+                                    'id' => 'v-pills-' . $categorie->id . '-tab',
+                                    'class' => sprintf('%s %s', 'nav-link menu-nav-link', $i == 0 ? 'active' : ''),
+                                    'data-toggle' => 'pill',
+                                    'role' => 'tab',
+                                    'aria-controls' => 'v-pills-' . $categorie->id,
+                                    'aria-selected' => 'false',
+                                    'data-id' => $categorie->id,
+                                ]);
+                                $i++;
+                            }
+                            ?>
+                            <!--<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Pasta</a>-->
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12 align-items-center">
+                    <div class="col-md-12 align-items-center">
 
-                    <div class="tab-content ftco-animate" id="v-pills-tabContent">
-
-                        <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
+                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
+                            <?php
+                            echo $this->render('_categorie_view', ['id' => $idCategorie]);
+                            ?>
+                            <!-- <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-1-tab">
                             <div class="row">
                                 <div class="col-md-3 text-center">
                                     <div class="menu-wrap">
@@ -402,11 +359,47 @@ Modal::end();
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 </section>
+
+<section id="rest-menu" class="ftco-section">
+    <?= $this->render('_meniu_view') ?>
+</section>
+
+<section id="rest-contact" class="ftco-appointment">
+			<div class="overlay"></div>
+    	<div class="container-wrap">
+    		<div class="row no-gutters d-md-flex align-items-center">
+    			<div class="col-md-6 d-flex align-self-stretch">
+    				<div id="map"></div>
+    			</div>
+	    		<div class="col-md-6 appointment ftco-animate">
+	    			<h3 class="mb-3">Contactează-ne</h3>
+	    			<form action="#" class="appointment-form">
+	    				<div class="d-md-flex">
+		    				<div class="form-group">
+		    					<input type="text" class="form-control" placeholder="Nume">
+		    				</div>
+	    				</div>
+	    				<div class="d-me-flex">
+	    					<div class="form-group">
+		    					<input type="text" class="form-control" placeholder="Prenume">
+		    				</div>
+	    				</div>
+	    				<div class="form-group">
+	              <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Mesajul dumneavoastră"></textarea>
+	            </div>
+	            <div class="form-group">
+	              <input type="submit" value="Trimite" class="btn btn-primary py-3 px-4">
+	            </div>
+	    			</form>
+	    		</div>    			
+    		</div>
+    	</div>
+    </section>

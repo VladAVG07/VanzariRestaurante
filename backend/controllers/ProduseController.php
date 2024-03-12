@@ -6,6 +6,7 @@ use backend\models\PreturiProduse;
 use backend\models\ProdusDetaliuForm;
 use Yii;
 use backend\models\Produse;
+use backend\models\ProduseDetalii;
 use backend\models\ProduseSearch;
 use yii\db\Exception;
 use yii\web\Controller;
@@ -65,15 +66,27 @@ class ProduseController extends Controller
 
     public function actionCreate()
     {
+        $postData = Yii::$app->request->post();
         $model = new Produse();
         $model->stocabil = 0;
-        $model->disponibil=1;
-        $model->tip_produs=1;
-        $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
-      //  $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
-       // VarDumper::dump(count($model->produse_detalii));
+        $model->ordine = 0;
+        $model->disponibil = 1;
+        $model->tip_produs = 1;
+        $model->produse_detalii[] = new ProduseDetalii(['disponibil' => 1]);
+        //  $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
+        //  VarDumper::dump(Yii::$app->request->post());
         //exit();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load($postData)) {
+
+            $details = [];
+            foreach ($postData['ProduseDetalii'] as $detailData) {
+                $detailModel = new ProduseDetalii();
+                $detailModel->load(['ProduseDetalii' => $detailData]);
+                $details[] = $detailModel;
+            }
+            $model->produse_detalii = $details;
+            //  VarDumper::dump($details);
+            // exit();
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $numeImagine = null;
             if (!is_null($model->imageFile)) {
@@ -260,24 +273,42 @@ class ProduseController extends Controller
      */
     public function actionUpdate($id)
     {
+        $postData = Yii::$app->request->post();
+
         $model = $this->findModel($id);
+        foreach ($model->produseDetalii as $pd) {
+            $model->produse_detalii[] = new ProduseDetalii(['pret' => $pd->pret, 'disponibil' => $pd->disponibil, 'descriere' => $pd->descriere]);
+        }
+        $model->tip_produs = 1;
+        if (count($model->produse_detalii) > 0) {
+            $model->tip_produs = 2;
+        }
         $model->data_productie = strtotime($model->data_productie);
         $query = PreturiProduse::find()->where([
             'and', ['produs' => $id],
             ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]
         ]);
         $preturiViitoare = count($query->all());
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load($postData)) {
+            $details = [];
+            foreach ($postData['ProduseDetalii'] as $detailData) {
+                $detailModel = new ProduseDetalii();
+                $detailModel->load(['ProduseDetalii' => $detailData]);
+                $details[] = $detailModel;
+            }
+            $model->produse_detalii = $details;
             $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
             $numeImagine = null;
             if (!is_null($model->imageFile)) {
                 $numeImagine = Yii::$app->security->generateRandomString(32);
+                $model->imageRemoved = 0;
             }
-            if ($preturiViitoare == 0) {
+            /*if ($preturiViitoare == 0) {
                 if ($model->saveProdus($numeImagine)) {
                     return $this->redirect(['view', 'id' => $model->id]);
                 }
-            } else if ($model->updateProdus($numeImagine)) {
+            } else */
+            if ($model->updateProdus($numeImagine)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
