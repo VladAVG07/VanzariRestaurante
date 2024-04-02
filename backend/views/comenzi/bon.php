@@ -9,6 +9,7 @@ foreach ($produse as $produs) {
 }
 $pretFaraTva = $total / 1.09;
 $tva = $total - $pretFaraTva;
+$comanda = \backend\models\Comenzi::findOne(['id'=>$idComanda])
 ?>
 
 <div id="invoice-POS">
@@ -43,13 +44,13 @@ $tva = $total - $pretFaraTva;
     <div class="row">
         <div class="col-md-6" style="font-size: 21px"><b>TOTAL</b></div>
         <div class="col-md-6"><b> 
-                <span class="float-right"  style="font-size: 21px"> <?= number_format((float)$total, 2, '.', '') ?> </span></b>
+                <span class="float-right"  style="font-size: 21px"> <?= number_format((float)$comanda->pret, 2, '.', '') ?> </span></b>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6" style="font-size: 18px">TVA</div>
         <div class="col-md-6"> 
-                <span class="float-right"  style="font-size: 18px"> <?= number_format((float)$tva, 2, '.', '') ?> </span>
+                <span class="float-right"  style="font-size: 18px"> <?= number_format((float)$comanda->tva, 2, '.', '') ?> </span>
         </div>
     </div>
     <div style="font-size: 18px; margin-top: 15px;">Numar bon: 0000</div>

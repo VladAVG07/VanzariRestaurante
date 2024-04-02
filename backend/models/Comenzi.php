@@ -48,9 +48,9 @@ class Comenzi extends ActiveRecord {
      */
     public function rules() {
         return [
-            [['numar_comanda', 'data_ora_creare', 'tva', 'canal', 'mod_plata'], 'required'],
-            [['numar_comanda', 'utilizator', 'status', 'mod_plata'], 'integer'],
-            [['data_ora_creare', 'data_ora_finalizare', 'adresa', 'numar_telefon'], 'safe'],
+            [['numar_comanda', 'data_ora_creare'], 'required'],
+            [['numar_comanda', 'utilizator', 'status',], 'integer'],
+            [['data_ora_creare', 'data_ora_finalizare', 'adresa', 'numar_telefon', 'canal', 'mod_plata', 'tva'], 'safe'],
             [['pret', 'tva'], 'number'],
             [['mentiuni'], 'string', 'max' => 255],
             [['canal'], 'string', 'max' => 20],
@@ -80,6 +80,143 @@ class Comenzi extends ActiveRecord {
 
     public function adaugaComanda() {
         $transaction = Yii::$app->db->beginTransaction();
+    }
+
+    public function salveazaComandaFaraSesiune($mentiuni, $adresa, $telefon, $produse) {
+        $transaction = Yii::$app->db->beginTransaction();
+
+        $this->numar_comanda = (int) (date('Ymd') . mt_rand(10000, 99999));
+        $this->utilizator = Yii::$app->user->id;
+        $this->data_ora_creare = new Expression('NOW()');
+        if (!empty($mentiuni))
+            $this->mentiuni = $mentiuni;
+        $this->adresa = $adresa;
+        $this->numar_telefon = $telefon;
+        if ($this->save()) {
+
+            $pret = 0;
+            foreach ($produse as $produs) {
+                $comandaLinie = new ComenziLinii();
+                $comandaLinie->comanda = $this->id;
+                $comandaLinie->produs = (int) $produs['id'];
+                $comandaLinie->cantitate = (int) $produs['cantitate'];
+                $comandaLinie->pret = (float) $produs['pret'];
+                $pret += (float) $produs['pret'];
+                if (!empty($produs['detaliu'])) {
+                    $comandaLinie->produs_detaliu = (int) $produs['detaliu'];
+                } else {
+                    $produsDetaliu = ProduseDetalii::findOne(['produs' => $produs['id']]);
+                    $comandaLinie->produs_detaliu = $produsDetaliu->id;
+                }
+                $save = $comandaLinie->save();
+                if (!$save) {
+                    $transaction->rollBack();
+                    return false;
+                }
+            }
+            $comandaDetaliu = new ComenziDetalii();
+            $comandaDetaliu->comanda = $this->id;
+            $comandaDetaliu->status = 3;
+            $comandaDetaliu->data_ora_inceput = new Expression('NOW()');
+            $save = $comandaDetaliu->save();
+//            $setareLivrare = SetariLivrare::find()
+//                    ->innerJoin('restaurant', 'restaurant.id = setari_livrare.restaurant')
+//                    ->innerJoin('restaurant_user', 'restaurant_user.restaurant = restaurant.id')
+//                    ->innerJoin('user', 'restaurant_user.user = user.id')
+//                    ->where(['user.id' => Yii::$app->user->id])
+//                    ->one();
+            $restaurantUser = RestauranteUser::findOne(['user' => Yii::$app->user->id]);
+            $restaurant = Restaurante::findOne(['id' => $restaurantUser->restaurant]);
+            $setareLivrare = SetariLivrare::findOne(['restaurant' => $restaurant->id]);
+            if ($setareLivrare->comanda_minima > $pret) {
+                $pret += $setareLivrare->produs0->pret_curent;
+            }
+            $this->pret = $pret;
+            $this->tva = 0.09; //* $this->pret;
+            $this->status = $comandaDetaliu->id;
+            if ($this->save() && $save) {
+                $transaction->commit();
+                return true;
+            }
+        }
+        $transaction->rollBack();
+        return false;
+    }
+
+    public function actualizeazaComanda($mentiuni, $adresa, $telefon, $produse) {
+        $transaction = \Yii::$app->db->beginTransaction();
+
+        if ($mentiuni != $this->mentiuni) {
+            $this->mentiuni = $mentiuni;
+        }
+        if ($adresa != $this->adresa) {
+            $this->adresa = $adresa;
+        }
+        if ($telefon != $this->numar_telefon) {
+            $this->numar_telefon = $telefon;
+        }
+
+        $liniiComanda = $this->comenziLiniis;
+        foreach ($liniiComanda as $linieComanda) {
+            if (!$linieComanda->delete()) {
+                $transaction->rollBack();
+                return false;
+            }
+        }
+        
+        $pret = 0;
+        foreach ($produse as $produs) {
+            $comandaLinie = new ComenziLinii();
+            $comandaLinie->comanda = $this->id;
+            $comandaLinie->produs = (int) $produs['id'];
+            $comandaLinie->cantitate = (int) $produs['cantitate'];
+            $comandaLinie->pret = (float) $produs['pret'];
+            $pret += (float) $produs['pret'];
+            if (!empty($produs['detaliu'])) {
+                $comandaLinie->produs_detaliu = (int) $produs['detaliu'];
+            } else {
+                $produsDetaliu = ProduseDetalii::findOne(['produs' => $produs['id']]);
+                $comandaLinie->produs_detaliu = $produsDetaliu->id;
+            }
+            $save = $comandaLinie->save();
+            if (!$save) {
+                $transaction->rollBack();
+                return false;
+            }
+        }
+        $restaurantUser = RestauranteUser::findOne(['user' => Yii::$app->user->id]);
+        $restaurant = Restaurante::findOne(['id' => $restaurantUser->restaurant]);
+        $setareLivrare = SetariLivrare::findOne(['restaurant' => $restaurant->id]);
+        if ($setareLivrare->comanda_minima > $pret) {
+            $pret += $setareLivrare->produs0->pret_curent;
+        }
+        $this->pret = $pret;
+        if ($this->save()) {
+            $transaction->commit();
+            return true;
+        }
+        $transaction->rollBack();
+        return false;
+    }
+
+    public function anuleazaComanda() {
+        $transaction = \Yii::$app->db->beginTransaction();
+
+        $comandaDetaliu = new ComenziDetalii();
+        $comandaDetaliu->comanda = $this->id;
+        $comandaDetaliu->status = 8;
+        $comandaDetaliu->data_ora_inceput = new Expression('NOW()');
+        $comandaDetaliu->data_ora_sfarsit = new Expression('NOW()');
+        if ($comandaDetaliu->save()) {
+            $this->status = $comandaDetaliu->id;
+            $this->data_ora_finalizare = new Expression('NOW()');
+            if ($this->save()) {
+                $transaction->commit();
+                return true;
+            }
+        }
+        $transaction->rollBack();
+        return false;
     }
 
     public function salveazaComanda($mentiuni, $adresa, $telefon) {
@@ -165,7 +302,7 @@ class Comenzi extends ActiveRecord {
                 //   \yii\helpers\VarDumper::dump("sunt aici");
                 $sesiune->data_ora_sfarsit = new Expression('NOW()');
                 if ($this->save() && $sesiune->save()) {
-                    
+
                     //   \yii\helpers\VarDumper::dump("sunt aici");
                     $transaction->commit();
                     return true;

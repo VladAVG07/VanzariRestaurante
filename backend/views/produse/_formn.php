@@ -266,12 +266,22 @@ $this->registerJs($js, \yii\web\View::POS_READY);
                                 $form->field($model, 'ordine')->textInput(['type' => 'number', 'min' => 0, 'max' => 1000, 'step' => 1]);
                             ?>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-1">
                             <?=
                                 $form->field($model, 'disponibil')->widget(SwitchInput::class, [
                                     'pluginOptions' => [
                                         'onText' => 'Da',
                                         'offText' => 'Nu',
+                                    ]
+                                ]);
+                            ?>
+                        </div>
+                        <div class="col-md-5">
+                            <?=
+                                $form->field($model, 'picant')->widget(SwitchInput::class, [
+                                    'pluginOptions' => [
+                                        'offText' => 'Nu',
+                                        'onText' => 'Da',
                                     ]
                                 ]);
                             ?>

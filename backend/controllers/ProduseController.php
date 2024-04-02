@@ -18,14 +18,12 @@ use yii\web\UploadedFile;
 /**
  * ProduseController implements the CRUD actions for Produse model.
  */
-class ProduseController extends Controller
-{
+class ProduseController extends Controller {
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
                 'class' => VerbFilter::class,
@@ -40,14 +38,13 @@ class ProduseController extends Controller
      * Lists all Produse models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ProduseSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -64,8 +61,7 @@ class ProduseController extends Controller
     //        return $this->render('upload', ['model' => $model]);
     //    }
 
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $postData = Yii::$app->request->post();
         $model = new Produse();
         $model->stocabil = 0;
@@ -97,12 +93,11 @@ class ProduseController extends Controller
         }
 
         return $this->render('create', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
-    public function actionIncarcareSesiune()
-    {
+    public function actionIncarcareSesiune() {
         $sesiune = \backend\models\Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
         if (!is_null($sesiune)) {
             $sesiuniProduse = \backend\models\SesiuniProduse::find()->where(['sesiune' => $sesiune])->all();
@@ -127,15 +122,17 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
-    public function actionEditeazaInterfata()
-    {
+    public function actionModalProdus($idProdus) {
+        return $this->renderAjax('_modal_produs', ['id' => $idProdus]);
+    }
+
+    public function actionEditeazaInterfata() {
         $model = new \backend\models\OrdineCategoriiForm();
         //$model->validate();
         //  \yii\helpers\VarDumper::dump($model->errors);
@@ -178,8 +175,7 @@ class ProduseController extends Controller
     //        
     //    }
 
-    public function actionAfisareIstoric($telefon)
-    {
+    public function actionAfisareIstoric($telefon) {
 
         $comenzi = \backend\models\Comenzi::getComenzi($telefon);
         $dataProvider = new \yii\data\ActiveDataProvider([
@@ -189,12 +185,23 @@ class ProduseController extends Controller
             ],
         ]);
         return $this->renderAjax('_istoric_view', [
-            'comenzi' => $dataProvider
+                    'comenzi' => $dataProvider
         ]);
     }
 
-    public function actionProceseazaComanda($categorie = NULL, $categorieMare = NULL)
-    {
+    public function actionIncarcaDetalii($idComanda) {
+        $comanda = \backend\models\Comenzi::findOne(['id' => $idComanda]);
+
+        $detalii = [
+            'adresa' => $comanda->adresa,
+            'mentiuni' => $comanda->mentiuni,
+            'telefon' => $comanda->numar_telefon,
+        ];
+        $detaliiJson = json_encode($detalii);
+        return $detaliiJson;
+    }
+
+    public function actionProceseazaComanda($update = NULL, $categorie = NULL, $categorieMare = NULL) {
         // \yii\helpers\VarDumper::dump($categorie);
         $linii = []; //Yii::$app->session->get('produseCos', []);
         $searchModel = new ProduseSearch();
@@ -228,32 +235,80 @@ class ProduseController extends Controller
                 return $this->renderPartial('_faraproduse_view');
             }
             return $this->renderAjax('_list_view', [
-                'searchModel' => $searchModel,
-                'categorie' => sprintf('list-%s', $catName),
-                'dataProvider' => $dataProvider,
+                        'searchModel' => $searchModel,
+                        'categorie' => sprintf('list-%s', $catName),
+                        'dataProvider' => $dataProvider,
             ]);
+        }
+        if (is_null($update)) {
+            $update = 0;
         }
         //  \yii\helpers\VarDumper::dump('sunt aici' . $categorieMare . 'da');
         return $this->render('view_products', [
-            //'searchModel' => $searchModel
-            'model' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'dataProviderCos' => $dataProviderCos,
+                    //'searchModel' => $searchModel
+                    'update' => $update,
+                    'model' => $searchModel,
+                    'dataProvider' => $dataProvider,
+                    'dataProviderCos' => $dataProviderCos,
         ]);
     }
 
-    public function actionSchimbaCategoria($idCategorie)
-    {
+    public function actionProduseComanda($idComanda) {
+        if ($idComanda != 0) {
+            $comenziLinii1 = \backend\models\ComenziLinii::find()->where(['comanda' => $idComanda])->all();
+            foreach ($comenziLinii1 as $cl) {
+                $produs = $cl->produs0;
+
+                $produsDetaliu = \backend\models\ProduseDetalii::findOne(['id' => $cl->produs_detaliu]);
+                $pret = $produsDetaliu->pret;
+
+                $modelData = $produs->toArray();
+                $additionalData = $produs->pretMeniu;
+                $modelData['pret'] = $additionalData;
+
+                $produseDetalii = \backend\models\ProduseDetalii::find()->where(['produs' => $produs->id])
+                                ->andWhere(['disponibil' => 1])->all();
+                $detaliu = $cl->produs_detaliu;
+                $numeComplet = $produs->nume;
+                if (sizeof($produseDetalii) > 1) {
+                    $numeComplet = $numeComplet . ' - ' . $produsDetaliu->descriere;
+                    $modelData['id_detaliu'] = $cl->produs_detaliu;
+                    $modelData['pret_detaliu'] = $pret;
+                } else {
+                    $modelData['id_detaliu'] = null;
+                    $detaliu = null;
+                }
+
+
+
+                $produsCustom = [
+                    'id' => $produs->id,
+                    'cantitate' => $cl->cantitate,
+                    'denumire' => $numeComplet,
+                    'pret' => $pret,
+                    'json' => $modelData,
+                    'detaliu' => $detaliu
+                ];
+
+                $produseCustom[] = $produsCustom;
+            }
+
+            $jsonProduseCustom = json_encode($produseCustom);
+            return $jsonProduseCustom;
+        }
+        return;
+    }
+
+    public function actionSchimbaCategoria($idCategorie) {
         return $this->renderAjax('_subcategorii_view', ['id' => $idCategorie]);
     }
 
-    public function actionComandaSesiune($idUser, $idProdus, $cantitate)
-    {
+    public function actionComandaSesiune($idUser, $idProdus, $cantitate) {
         $result = Yii::$app->db->createCommand('SELECT VerificaSiGestioneazaSesiuneProdus(:user_id, :produs_id, :cantitate) as result')
-            ->bindValue(':user_id', $idUser)
-            ->bindValue(':produs_id', $idProdus)
-            ->bindValue(':cantitate', $cantitate)
-            ->queryOne();
+                ->bindValue(':user_id', $idUser)
+                ->bindValue(':produs_id', $idProdus)
+                ->bindValue(':cantitate', $cantitate)
+                ->queryOne();
         return $result;
     }
 
@@ -263,7 +318,6 @@ class ProduseController extends Controller
      * @return mixed
      */
 
-
     /**
      * Updates an existing Produse model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -271,8 +325,7 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $postData = Yii::$app->request->post();
 
         $model = $this->findModel($id);
@@ -303,18 +356,18 @@ class ProduseController extends Controller
                 $numeImagine = Yii::$app->security->generateRandomString(32);
                 $model->imageRemoved = 0;
             }
-            /*if ($preturiViitoare == 0) {
-                if ($model->saveProdus($numeImagine)) {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-            } else */
+            /* if ($preturiViitoare == 0) {
+              if ($model->saveProdus($numeImagine)) {
+              return $this->redirect(['view', 'id' => $model->id]);
+              }
+              } else */
             if ($model->updateProdus($numeImagine)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
 
         return $this->render('update', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -325,8 +378,7 @@ class ProduseController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         PreturiProduse::deleteAll(['produs' => $id]);
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
@@ -339,11 +391,11 @@ class ProduseController extends Controller
      * @return Produse the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Produse::findOne($id)) !== null) {
             return $model;
         }
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
+
 }

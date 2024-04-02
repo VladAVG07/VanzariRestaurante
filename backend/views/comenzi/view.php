@@ -121,7 +121,6 @@ Modal::end();
 ?>
 
 
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
@@ -174,28 +173,46 @@ Modal::end();
                             [
                                 'attribute' => 'mod_plata',
                                 'value' => function($model) {
-                                    return $model->modPlata0->nume;
+                                    return 'card'; //$model->modPlata0->nume;
                                 }
                             ],
                         ],
                     ])
                     ?>
                     <p>
-                        <?php if ($model->status0->status != 7) { ?>
-                            <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
-                        <?php } else { ?>
+                        <?php if ($model->status0->status == 7) { ?>
+
                             <?= Html::a('Vizualizare bon', ['comenzi/display-bon', 'id' => $model->id], ['class' => 'btn btn-success bonButton']) ?>
+                        <?php } else { ?>
+                            <?php if ($model->status0->status == 8) { ?>
+                                <?= Html::a('Vizualizare bon', ['comenzi/display-bon', 'id' => $model->id], ['class' => 'btn btn-success bonButton disabled']) ?>
+                            <?php } else { ?>
+                                <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
+                            <?php } ?>
                         <?php } ?>
-                        <?= Html::a(Yii::t('app', 'Actualizeaza'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-                        <?=
-                        Html::a(Yii::t('app', 'Sterge'), ['delete', 'id' => $model->id], [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => Yii::t('app', 'Esti sigur ca doresti sa stergi aceasta comanda?'),
-                                'method' => 'post',
-                            ],
-                        ])
-                        ?>
+                        <?php if ($model->status0->status == 7 || $model->status0->status == 8) { ?>
+                            <?= Html::a(Yii::t('app', 'Actualizeaza'), ['produse/proceseaza-comanda', 'update' => $model->id], ['class' => 'btn btn-primary disabled']) ?>
+                            <?=
+                            Html::a(Yii::t('app', 'Anuleaza comanda'), ['comenzi/anuleaza-comanda', 'id' => $model->id], [
+                                'class' => 'btn btn-danger disabled',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Esti sigur ca doresti sa anulezi aceasta comanda?'),
+                                    'method' => 'post',
+                                ],
+                            ])
+                            ?>
+                        <?php } else { ?>
+                            <?= Html::a(Yii::t('app', 'Actualizeaza'), ['produse/proceseaza-comanda', 'update' => $model->id], ['class' => 'btn btn-primary']) ?>
+                            <?=
+                            Html::a(Yii::t('app', 'Anuleaza comanda'), ['comenzi/anuleaza-comanda', 'id' => $model->id], [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Esti sigur ca doresti sa anulezi aceasta comanda?'),
+                                    'method' => 'post',
+                                ],
+                            ])
+                            ?>
+                        <?php } ?>
 
 
                     <h3>Produse comanda</h3>

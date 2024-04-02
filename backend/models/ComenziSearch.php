@@ -77,6 +77,8 @@ class ComenziSearch extends Comenzi
         $query->andFilterWhere(['like', 'mentiuni', $this->mentiuni])
             ->andFilterWhere(['like', 'canal', $this->canal]);
 
+        $query->orderBy(['data_ora_creare' => SORT_DESC]);
+        
         return $dataProvider;
     }
 }

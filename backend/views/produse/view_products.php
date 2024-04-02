@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use kartik\form\ActiveForm;
 use \yii\bootstrap5\Modal;
 use backend\assets\AppComenziAsset;
+
 AppComenziAsset::register($this);
 
 
@@ -29,8 +30,11 @@ $urlProduse = \yii\helpers\Url::toRoute('produse/proceseaza-comanda');
 $urlComenzi = \yii\helpers\Url::toRoute('produse/afisare-istoric');
 $urlSchimba = yii\helpers\Url::toRoute('produse/schimba-categoria');
 $urlCreazaComanda = \yii\helpers\Url::toRoute('comenzi/create');
+$urlGetProduseComanda = \yii\helpers\Url::toRoute('produse/produse-comanda');
 $urlVerificaStoc = \yii\helpers\Url::toRoute('produse/verifica-stoc');
 $urlIncarcareSesiune = yii\helpers\Url::toRoute('produse/incarcare-sesiune');
+$urlModalProdus = \yii\helpers\Url::toRoute('produse/modal-produs');
+$urlIncarcaDetalii = yii\helpers\Url::toRoute('produse/incarca-detalii');
 $authKey = Yii::$app->user->identity->auth_key;
 $verificaStoc = 'http://localhost/VanzariRestaurant/api/web/v1/produse/verifica-stoc';
 $comandaSesiune = Yii::$app->urlManager->createUrl('produse/comanda-sesiune');
@@ -45,6 +49,9 @@ $setariLivrare = backend\models\SetariLivrare::find()
 $pretLivrare = $setariLivrare->produs0->pret_curent;
 $comandaMinima = $setariLivrare->comanda_minima;
 $livrare = 0;
+
+if (is_null($update))
+    $update=0;
 
 $sesiune = backend\models\Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
 if (!is_null($sesiune)) {
@@ -126,7 +133,39 @@ SCRIPT;
 $this->registerJs($formatJsH, yii\web\View::POS_END);
 
 $formatJs = <<< SCRIPT
-   let linii=[];
+        
+    let linii=[];
+        
+        $.ajax({// create an AJAX call...
+                data: {'idComanda': $update}, // get the form data
+                type: 'GET', // GET or POST
+                url: '$urlGetProduseComanda', // the file to call
+                success: function (data) { // on success..
+                    let liniiJson = data;
+                    if (liniiJson !== ''){
+                        linii = JSON.parse(liniiJson);
+        
+                        for (let i=0;i<linii.length;i++){
+                            for (let j=0;j<linii[i].cantitate;j++){
+                                const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+                                const xxx = verificareTotal(x, $comandaMinima, $pretLivrare);
+                                console.log('x=', x);
+                                if (x > 0) {
+                                    $('#sum').show();
+                                    $('.cart-sum-price').text(xxx.toFixed(2) + ' Lei');
+                                    $('.cart-sum-price-sub').text(x.toFixed(2) + ' Lei');
+                                    $('#btn-comanda').removeClass('disabled btn-default');
+                                    $('#btn-comanda').addClass('btn-danger');
+                                }
+                                $('#cos-list').html(linii.map(Item));
+                                showHideButton();
+                            }
+                        }
+                    }
+                }
+            });
+        
+   
         
         incarcaSesiune('$urlIncarcareSesiune',$comandaMinima,$pretLivrare);
         
@@ -138,12 +177,13 @@ $formatJs = <<< SCRIPT
    
         cartAddButton('$authKey','$produsSesiune','$idUser',$comandaMinima,$pretLivrare);
         
-        subcategoriiAddButton('$authKey','$produsSesiune','$idUser',$comandaMinima,$pretLivrare);
+        subcategoriiAddButton('$authKey','$produsSesiune','$idUser',$comandaMinima,$pretLivrare,'$urlModalProdus');
         
-    const Item=({id,cantitate,denumire,simbol,pret})=>`
+        butonAddFromModal('$authKey','$produsSesiune','$idUser',$comandaMinima,$pretLivrare);
+    const Item=({id,cantitate,denumire,simbol,pret,detaliu})=>`
         <div data-key='\${id}'> 
         <div class="cart-single-meal">
-            <div class="cart-row" data-restaurant="1" data-id='\${id}' data-cantitate='\${cantitate}' data-pret='\${pret}'>
+            <div class="cart-row" data-restaurant="1" data-id='\${id}' detaliu-id='\${detaliu}' data-cantitate='\${cantitate}' data-pret='\${pret}'>
                 <div class="meal-json"></div>
                 <span class="cart-meal-amount"><span class="amount">\${cantitate}</span>x</span>
                 <span class="cart-meal-name">\${denumire}</span>
@@ -160,7 +200,8 @@ $formatJs = <<< SCRIPT
     let timeout=1000;    
     searchBar('#$searchId');     
     $('.taba').eq(1).click();   
-    buttonConfirm('$urlCreazaComanda');
+    buttonConfirm('$urlCreazaComanda',$update);
+    buttonActualizeaza($update,'$urlIncarcaDetalii');
     slickSlide('$urlSchimba');
      $(".kioskboard-row").on('click','.kioskboard-key',function(){
         alert('test');
@@ -177,6 +218,22 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
 $this->registerJsFile('https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/index.js', ['position' => \yii\web\View::POS_END]);
 $this->registerJsFile('https://cdn.socket.io/4.1.2/socket.io.min.js');
 //$this->registerJsFile('../index1.js', ['position' => \yii\web\View::POS_END]);
+
+Modal::begin([
+    'title' => '<h4>Anulare comanda</h4>',
+    'id' => 'cancel-modal',
+]);
+?>
+
+<h5>Sunteti sigur ca doriti sa anulati aceasta comanda? </h5>
+
+<?=
+Html::a(Yii::t('app', 'Anuleaza comanda'), ['comenzi/anuleaza-comanda', 'id' => $update], [
+    'class' => 'btn btn-danger',
+])
+?>
+<?php
+Modal::end();
 
 Modal::begin([
     'title' => '<h4>Confirmare comanda</h4>',
@@ -196,6 +253,22 @@ Modal::begin([
         <span style="font-size:20px;">Confirma</span>
     </a>
 </span>
+<?php
+Modal::end();
+?>
+<?php
+Modal::begin([
+    'title' => '<h4>Detalii produs</h4>',
+    'id' => 'modalProdus',
+    'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
+    'options' => [
+        'class' => 'custom-modal-bg', // Add your custom CSS class here
+    ],
+]);
+?>
+<div id="modal-produs1">
+
+</div>
 <?php
 Modal::end();
 ?>
@@ -317,9 +390,13 @@ Modal::end();
             ?>
             <div class="row" id="subcategorii_content">
                 <?php
-                    echo $this->render('_subcategorii_view',['id'=>5]);
+                if (count($categorii) > 0)
+                    echo $this->render('_subcategorii_view', ['id' => $categorii[0]->id]);
+                else {
+                    echo 'Nu avem categorii introduse';
+                }
                 ?>
-                
+
             </div>
         </div>
     </div>
@@ -359,7 +436,6 @@ Modal::end();
                             //   'layout' => '{items}{summary}',
                             'itemView' => '_linie_comanda',
                             'emptyText' => '<center><i class="fas fa-shopping-basket" style="color: #FF0000;font-size:150px;"></i></center>',
-
                         ]);
                         yii\widgets\Pjax::end();
                         ?>
@@ -376,7 +452,13 @@ Modal::end();
                                 <span class="cart-sum-name">Total</span>
                                 <span class="cart-sum-price">36,00 lei</span>
                             </div></div>
-                        <?= Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']) ?>
+
+                        <?php
+                        if ($update == 0)
+                            echo Html::button('Comanda', ['id' => 'btn-comanda', 'class' => 'btn btn-block btn-default btn-lg disabled']);
+                        else
+                            echo Html::button('Actualizeaza produse', ['id' => 'btn-actualizare', 'class' => 'btn btn-block btn-danger btn-lg']);
+                        ?>
 
                     </div>
                 </div>

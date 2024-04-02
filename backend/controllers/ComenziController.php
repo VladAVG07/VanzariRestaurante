@@ -63,6 +63,7 @@ class ComenziController extends Controller {
         ]);
 
         return $this->renderPartial('bon', [
+                    'idComanda' => $id,
                     'listDataProvider' => $dataProvider,
         ]);
     }
@@ -105,17 +106,28 @@ class ComenziController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
-        $model = new Comenzi();
         $mentiuni = Yii::$app->request->post('mentiuni');
         $adresa = Yii::$app->request->post('adresa');
         $telefon = Yii::$app->request->post('telefon');
-        if ($model->salveazaComanda($mentiuni, $adresa, $telefon)) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $produse = Yii::$app->request->post('produse');
+        $update = Yii::$app->request->post('update');
+        if ($update == 0) {
+            $model = new Comenzi();
+            if ($model->salveazaComandaFaraSesiune($mentiuni, $adresa, $telefon, $produse)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            return $this->render('create', [
+                        'model' => $model,
+            ]);
+        } else {
+            $model = Comenzi::findOne(['id'=>$update]);
+            if ($model->actualizeazaComanda($mentiuni, $adresa, $telefon, $produse)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+            return $this->render('create', [
+                        'model' => $model,
+            ]);
         }
-
-        return $this->render('create', [
-                    'model' => $model,
-        ]);
     }
 
     /**
@@ -148,6 +160,13 @@ class ComenziController extends Controller {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionAnuleazaComanda($id) {
+        if ($this->findModel($id)->anuleazaComanda()) {
+            //   Yii::$app->session->setFlash('success', 'Comanda a fost anulată cu succes.');
+            return $this->render('view', ['model' => $this->findModel($id)]);
+        }
     }
 
     /**

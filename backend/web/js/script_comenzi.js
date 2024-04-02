@@ -115,32 +115,41 @@ function verificareTotal(x, comandaMinima, pretLivrare) {
 
 function cartDeleteButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrare) {
     $('.cos').on('click', '.cart-delete-button', function () {
-        const id = $(this).parent().attr('data-id');
+        let id;
+        let index;
+        if ($(this).parent().attr('detaliu-id') === "null") {
+            id = $(this).parent().attr('data-id');
+            index = linii.findIndex(x => x.id == id);
+        } else {
+            id = $(this).parent().attr('detaliu-id');
+            index = linii.findIndex(x => x.detaliu == id);
+        }
         const selector = `div[data-key='\${id}']`;
-        let index = linii.findIndex(x => x.id == id);
+        console.log(index);
         const l = linii[index];
-        const product = JSON.parse(l.json);
+
+        const product = l.json;
         //   console.log(product);
         const bearerToken = authKey;
-        $.ajax({
-            type: "POST",
-            url: produsSesiune,
-            data: {
-                id: idUser,
-                produs: product.id,
-                cantitate: -l.cantitate
-            },
-            beforeSend: function (xhr) {
-                // Set the Authorization header with the Bearer token
-                xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
-            },
-            success: function (data) {
-                console.log(data);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        });
+//        $.ajax({
+//            type: "POST",
+//            url: produsSesiune,
+//            data: {
+//                id: idUser,
+//                produs: product.id,
+//                cantitate: -l.cantitate
+//            },
+//            beforeSend: function (xhr) {
+//                // Set the Authorization header with the Bearer token
+//                xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//            },
+//            success: function (data) {
+//                console.log(data);
+//            },
+//            error: function (error) {
+//                console.log(error);
+//            }
+//        });
         $(this).parent().parent().remove();
         //console.log($(this).parent().parent());
         linii.splice(index, 1);
@@ -166,34 +175,46 @@ function cartDeleteButton(authKey, produsSesiune, idUser, comandaMinima, pretLiv
 
 function cartRemoveButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrare) {
     $('.cos').on('click', '.remove', function () {
-        const id = $(this).parent().parent().attr('data-id');
+        let id;
+        let index;
+        if ($(this).parent().parent().attr('detaliu-id') === "null") {
+            id = $(this).parent().parent().attr('data-id');
+            index = linii.findIndex(x => x.id == id);
+        } else {
+            id = $(this).parent().parent().attr('detaliu-id');
+            index = linii.findIndex(x => x.detaliu == id);
+        }
         const selector = `div[data-key='\${id}']`;
-        let index = linii.findIndex(x => x.id == id);
         const l = linii[index];
-        const product = JSON.parse(l.json);
+        const product = l.json;
         linii = linii.map((l) => {
-            if (l.id === product.id) {
-                const bearerToken = authKey;
-                $.ajax({
-                    type: "POST",
-                    url: produsSesiune,
-                    data: {
-                        id: idUser,
-                        produs: product.id,
-                        cantitate: -1
-                    },
-                    beforeSend: function (xhr) {
-                        // Set the Authorization header with the Bearer token
-                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-                return {...l, cantitate: l.cantitate - 1, pret: parseFloat(product.pret_curent * (l.cantitate - 1)).toFixed(2)};
+            if (product.id_detaliu === null) {
+                if (l.id === product.id) {
+                    const bearerToken = authKey;
+//                   $.ajax({
+//                    type: "POST",
+//                    url: produsSesiune,
+//                    data: {
+//                        id: idUser,
+//                        produs: product.id,
+//                        cantitate: -1
+//                    },
+//                    beforeSend: function (xhr) {
+//                        // Set the Authorization header with the Bearer token
+//                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//                    },
+//                    success: function (data) {
+//                        console.log(data);
+//                    },
+//                    error: function (error) {
+//                        console.log(error);
+//                    }
+//                });
+                    return {...l, cantitate: l.cantitate - 1, pret: parseFloat(product.pret * (l.cantitate - 1)).toFixed(2)};
+                }
+            } else
+            if (l.json.id_detaliu === product.id_detaliu) {
+                return {...l, cantitate: l.cantitate - 1, pret: parseFloat(product.pret_detaliu * (l.cantitate - 1)).toFixed(2)};
             }
             return l;
         }).filter(item => {
@@ -227,13 +248,19 @@ function cartRemoveButton(authKey, produsSesiune, idUser, comandaMinima, pretLiv
 
 function cartAddButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrare) {
     $('.cos').on('click', '.add', function () {
-        const id = $(this).parent().parent().attr('data-id');
+        let id;
+        let index;
+        if ($(this).parent().parent().attr('detaliu-id') === "null") {
+            id = $(this).parent().parent().attr('data-id');
+            index = linii.findIndex(x => x.id == id);
+        } else {
+            id = $(this).parent().parent().attr('detaliu-id');
+            index = linii.findIndex(x => x.detaliu == id);
+        }
         const selector = `div[data-key='\${id}']`;
-        let index = linii.findIndex(x => x.id == id);
         const l = linii[index];
-        const product = JSON.parse(l.json);
+        const product = l.json;
         linii = linii.map((l) => {
-
 //            const bearerToken = '$authKey';
 //            $.ajax({
 //                    type: "GET",
@@ -249,28 +276,33 @@ function cartAddButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrar
 //                        console.log(error);
 //                    }
 //                });
-            if (l.id === product.id) {
-                const bearerToken = authKey;
-                $.ajax({
-                    type: "POST",
-                    url: produsSesiune,
-                    data: {
-                        id: idUser,
-                        produs: product.id,
-                        cantitate: 1
-                    },
-                    beforeSend: function (xhr) {
-                        // Set the Authorization header with the Bearer token
-                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
-                    },
-                    success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                });
-                return {...l, cantitate: l.cantitate + 1, pret: parseFloat(product.pret_curent * (l.cantitate + 1)).toFixed(2)};
+            if (product.id_detaliu === null) {
+                if (l.id === product.id) {
+                    const bearerToken = authKey;
+//                   $.ajax({
+//                    type: "POST",
+//                    url: produsSesiune,
+//                    data: {
+//                        id: idUser,
+//                        produs: product.id,
+//                        cantitate: 1
+//                    },
+//                    beforeSend: function (xhr) {
+//                        // Set the Authorization header with the Bearer token
+//                        xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//                    },
+//                    success: function (data) {
+//                        console.log(data);
+//                    },
+//                    error: function (error) {
+//                        console.log(error);
+//                    }
+//                });
+                    return {...l, cantitate: l.cantitate + 1, pret: parseFloat(product.pret * (l.cantitate + 1)).toFixed(2)};
+                }
+            } else
+            if (l.json.id_detaliu === product.id_detaliu) {
+                return {...l, cantitate: l.cantitate + 1, pret: parseFloat(product.pret_detaliu * (l.cantitate + 1)).toFixed(2)};
             }
             return l;
         });
@@ -289,44 +321,99 @@ function cartAddButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrar
     });
 }
 
-function subcategoriiAddButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrare) {
+function butonAddFromModal(authKey, produsSesiune, idUser, comandaMinima, pretLivrare) {
+    $(document).on('click', '.buton-add', function () {
+        let product = JSON.parse($(this).parent().find('.meal-json').text());
+        var selectedRadioButton = document.querySelector('input[name="marime"]:checked');
+        if (selectedRadioButton) {
+            let pretP = selectedRadioButton.getAttribute('pret');
+            let numeP = selectedRadioButton.getAttribute('id');
+            let numeComplet = product.nume + " - " + numeP;
+            const json1 = product;
+            json1["id_detaliu"] = selectedRadioButton.getAttribute('data-id');
+            json1["pret_detaliu"] = pretP;
+            const linie = {id: product.id, cantitate: 1, denumire: numeComplet, pret: pretP, json: json1, detaliu: selectedRadioButton.getAttribute('data-id')};
+            let existent = false;
+            linii = linii.map((l) => {
+                if (l.json.id_detaliu === linie.json.id_detaliu) {
+                    existent = true;
+                    return {...l, cantitate: l.cantitate + 1, pret: parseFloat(pretP * (l.cantitate + 1)).toFixed(2)};
+                }
+                return l;
+            });
+            if (!existent) {
+                linii.push(linie);
+            }
+            const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
+            const xxx = verificareTotal(x, comandaMinima, pretLivrare);
+            console.log('x=', x);
+            if (x > 0) {
+                $('#sum').show();
+                $('.cart-sum-price').text(xxx.toFixed(2) + ' Lei');
+                $('.cart-sum-price-sub').text(x.toFixed(2) + ' Lei');
+                $('#btn-comanda').removeClass('disabled btn-default');
+                $('#btn-comanda').addClass('btn-danger');
+            }
+            $('#cos-list').html(linii.map(Item));
+            showHideButton();
+            $('#modalProdus').modal('hide');
+            console.log(linie.json);
+        }
+    });
+}
+
+function subcategoriiAddButton(authKey, produsSesiune, idUser, comandaMinima, pretLivrare, urlModalProdus) {
     $('#subcategorii_content').on('click', '.left-corner', function () {
         let product = JSON.parse($(this).parent().parent().find('.meal-json').text());
-        const json1 = $(this).parent().parent().find('.meal-json').text();
-        const linie = {id: product.id, cantitate: 1, denumire: product.nume, pret: product.pret_curent, json: json1};
+        if (product.pret.includes("/")) {
+            $('#modalProdus').modal('show');
+            $.ajax({// create an AJAX call...
+                data: {'idProdus': product.id}, // get the form data
+                type: 'GET', // GET or POST
+                url: urlModalProdus, // the file to call
+                success: function (data) { // on success..
+                    $('#modal-produs1').html(data);
+                }
+            });
+            return 1;
+        }
+        const json1 = product;
+        json1["id_detaliu"] = null;
+        const linie = {id: product.id, cantitate: 1, denumire: product.nume, pret: product.pret, json: json1, detaliu: null};
         let existent = false;
         const bearerToken = authKey;
-        $.ajax({
-            type: "POST",
-            url: produsSesiune,
-            data: {
-                id: idUser,
-                produs: product.id,
-                cantitate: 1
-            },
-            beforeSend: function (xhr) {
-                // Set the Authorization header with the Bearer token
-                xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
-            },
-            success: function (data) {
-                console.log(data);
-
-            },
-            error: function (error) {
-                console.log(error);
-            }
-
-        });
+//        $.ajax({
+//            type: "POST",
+//            url: produsSesiune,
+//            data: {
+//                id: idUser,
+//                produs: product.id,
+//                cantitate: 1
+//            },
+//            beforeSend: function (xhr) {
+//                // Set the Authorization header with the Bearer token
+//                xhr.setRequestHeader('Authorization', 'Bearer ' + bearerToken);
+//            },
+//            success: function (data) {
+//                console.log(data);
+//
+//            },
+//            error: function (error) {
+//                console.log(error);
+//            }
+//
+//        });
         linii = linii.map((l) => {
             if (l.id === linie.id) {
                 existent = true;
-                return {...l, cantitate: l.cantitate + 1, pret: parseFloat(product.pret_curent * (l.cantitate + 1)).toFixed(2)};
+                return {...l, cantitate: l.cantitate + 1, pret: parseFloat(product.pret * (l.cantitate + 1)).toFixed(2)};
             }
             return l;
         });
         if (!existent) {
             linii.push(linie);
         }
+        console.log(linii);
         const x = linii.reduce((a, b) => (a + parseFloat(b.pret)), 0.00);
         const xxx = verificareTotal(x, comandaMinima, pretLivrare);
         console.log('x=', x);
@@ -376,6 +463,7 @@ function searchBar(searchId) {
 }
 
 $('#btn-comanda').on('click', function () {
+    console.log('hello');
     $("#confirmation-modal").modal("show");
     const items = [];
     var fd = new FormData();
@@ -395,20 +483,38 @@ $('#btn-comanda').on('click', function () {
     });
 });
 
-function buttonConfirm(urlCreazaComanda) {
+function buttonActualizeaza(idComanda, urlIncarcaDetalii) {
+    $('#btn-actualizare').on('click', function () {
+        if (linii.length === 0) {
+            $("#cancel-modal").modal('show');
+        } else {
+            $("#confirmation-modal").modal("show");
+            $("#btn-confirma").addClass("actualizare");
+            $.ajax({
+                data: {'idComanda': idComanda},
+                type: 'GET',
+                url: urlIncarcaDetalii,
+                success: function (data) {
+                    let detalii = JSON.parse(data);
+                    $("#text-area-adresa").val(detalii.adresa);
+                    $("#text-area-mentiuni").val(detalii.mentiuni);
+                    $("#text-nr-telefon").val(detalii.telefon);
+                }
+            });
+        }
+    });
+}
+
+function buttonConfirm(urlCreazaComanda,update) {
     $('#btn-confirma').on('click', function () {
         var textAdresa = $('#text-area-adresa').val();
         var textMentiuni = $('#text-area-mentiuni').val();
         var telefon = $("#text-nr-telefon").val();
-        $.ajax({// create an AJAX call...
-            data: {'mentiuni': textMentiuni, 'adresa': textAdresa, 'telefon': telefon}, // get the form data
-            type: 'POST', // GET or POST
-            //  contentType: false,
-            //processData: false,
-            url: urlCreazaComanda, // the file to call
-            success: function (data) { // on success..
-//                    $(tabId+' > .box-body').html(data);
-                console.log('a mers');
+        $.ajax({
+            data: {'mentiuni': textMentiuni, 'adresa': textAdresa, 'telefon': telefon, 'produse': linii, 'update':update}, // get the form data
+            type: 'POST',
+            url: urlCreazaComanda,
+            success: function (data) {
             }
         });
     });

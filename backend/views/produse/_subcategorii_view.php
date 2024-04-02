@@ -5,26 +5,27 @@ use yii\helpers\Html;
 $subcategorii = \backend\models\Categorii::getSubcategories($id);
 
 if (!$subcategorii) {
-
-    $categorii = \backend\models\Categorii::find()
-                                ->innerJoin('produse p', 'p.categorie = categorii.id')
-                                //->innerJoin('categorii c', 'c.parinte = categorii.id')
-                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
-                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
-                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
-                                ->innerJoin('user u', 'ru.user=u.id')
-                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
-                                ->all();
-                        $categorii1 = \backend\models\Categorii::find()
-                                //  ->innerJoin('produse p', 'p.categorie = categorii.id')
-                                ->innerJoin('categorii c', 'c.parinte = categorii.id')
-                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
-                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
-                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
-                                ->innerJoin('user u', 'ru.user=u.id')
-                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
-                                ->all();
-                        $subcategorii = array_merge($categorii, $categorii1);
+    $categorie = backend\models\Categorii::findOne(['id'=>$id]);
+    array_push($subcategorii, $categorie);
+//    $categorii = \backend\models\Categorii::find()
+//                                ->innerJoin('produse p', 'p.categorie = categorii.id')
+//                                //->innerJoin('categorii c', 'c.parinte = categorii.id')
+//                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+//                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+//                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+//                                ->innerJoin('user u', 'ru.user=u.id')
+//                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+//                                ->all();
+//                        $categorii1 = \backend\models\Categorii::find()
+//                                //  ->innerJoin('produse p', 'p.categorie = categorii.id')
+//                                ->innerJoin('categorii c', 'c.parinte = categorii.id')
+//                                ->innerJoin('restaurante_categorii rc', 'rc.categorie=categorii.id')
+//                                ->innerJoin('restaurante r', 'rc.restaurant=r.id')
+//                                ->innerJoin('restaurante_user ru', 'ru.restaurant=r.id')
+//                                ->innerJoin('user u', 'ru.user=u.id')
+//                                ->where(['u.id' => \Yii::$app->user->id])->andWhere(['<>', 'categorii.nume', 'Servicii'])->andWhere(['categorii.parinte' => null])
+//                                ->all();
+//                        $subcategorii = array_merge($categorii, $categorii1);
 
     ?>
     <!-- <div class="col-sm-12 card">

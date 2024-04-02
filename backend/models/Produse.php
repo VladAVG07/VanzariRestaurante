@@ -24,14 +24,14 @@ use yii\helpers\VarDumper;
  * @property string $image_file
  * @property integer $ordine
  * @property float|null $pretFinal
+ * @property boolean $picant
  * 
  * @property Categorii $categorie0
  * @property PreturiProduse[] $preturiProduses
  * @property Stocuri[] $stocuris
  * @property ProduseDetalii[] $produseDetalii
  */
-class Produse extends \yii\db\ActiveRecord
-{
+class Produse extends \yii\db\ActiveRecord {
 
     public $pret;
     public $dataInceputPret;
@@ -45,20 +45,18 @@ class Produse extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'produse';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['categorie', 'nume', 'descriere', 'stocabil', 'disponibil', 'tip_produs'], 'required'],
             [['categorie', 'cod_produs', 'valid', 'alerta_stoc', 'pret', 'imageRemoved', 'ordine'], 'integer'],
-            [['data_productie', 'dataInceputPret', 'dataSfarsitPret', 'pret', 'alerta_stoc', 'imageFile', 'image_file'], 'safe'],
+            [['data_productie', 'dataInceputPret', 'dataSfarsitPret', 'pret', 'alerta_stoc', 'imageFile', 'image_file', 'picant'], 'safe'],
             [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             [['pret_curent', 'pret'], 'number'],
             [['nume'], 'string', 'max' => 100],
@@ -68,8 +66,7 @@ class Produse extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert)
-    {
+    public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
             if ($insert) {
                 $this->data_productie = date('Y-m-d');
@@ -83,8 +80,7 @@ class Produse extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'categorie' => 'Categorie',
@@ -103,8 +99,7 @@ class Produse extends \yii\db\ActiveRecord
         ];
     }
 
-    public function upload($numeImagine)
-    {
+    public function upload($numeImagine) {
         if ($this->validate()) {
             $this->imageFile->saveAs('uploads/' . $numeImagine);
             return true;
@@ -112,27 +107,27 @@ class Produse extends \yii\db\ActiveRecord
             return false;
         }
     }
-    public function afterFind()
-    {
-        parent::afterFind();
-        
-        // Custom logic here, for example, modifying attribute values
-        $detalii = $this->produseDetalii;
 
-        $pret = sprintf('%s', $detalii[0]->pret);
-        if (count($detalii) > 1) {
-            $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
-        }
-        return $pret;
-    }
+//    public function afterFind()
+//    {
+//        parent::afterFind();
+//        
+//        // Custom logic here, for example, modifying attribute values
+//        $detalii = $this->produseDetalii;
+//
+//        $pret = sprintf('%s', $detalii[0]->pret);
+//        if (count($detalii) > 1) {
+//            $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+//        }
+//        return $pret;
+//    }
 
     /**
      * Gets query for [[Categorie0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCategorie0()
-    {
+    public function getCategorie0() {
         return $this->hasOne(Categorii::class, ['id' => 'categorie']);
     }
 
@@ -141,8 +136,7 @@ class Produse extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProduseDetalii()
-    {
+    public function getProduseDetalii() {
         return $this->hasMany(ProduseDetalii::class, ['produs' => 'id'])->where(['IS', 'data_sfarsit', NULL])->orderBy(['pret' => SORT_ASC]);
     }
 
@@ -151,8 +145,7 @@ class Produse extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPreturiProduses()
-    {
+    public function getPreturiProduses() {
         return $this->hasMany(PreturiProduse::class, ['produs' => 'id']);
     }
 
@@ -161,49 +154,45 @@ class Produse extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getStocuris()
-    {
+    public function getStocuris() {
         return $this->hasMany(Stocuri::class, ['produs' => 'id']);
     }
 
-    public function getPretCurent()
-    {
+    public function getPretCurent() {
         return $this->getPreturiProduses()->where('valid = 1')->one();
     }
 
-    public function getPretText()
-    {
+    public function getPretText() {
         $detalii = $this->produseDetalii;
-
-        $pret = sprintf('%s', $detalii[0]->pret);
-        if (count($detalii) > 1) {
-            $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+        if (!empty($detalii)) {
+            $pret = sprintf('%s', $detalii[0]->pret);
+            if (count($detalii) > 1) {
+                $pret = sprintf('%s - %s', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+            }
+            return $pret;
         }
-        return $pret;
+        return null;
     }
 
-    public function getPretMeniu()
-    {
+    public function getPretMeniu() {
         $detalii = $this->produseDetalii;
         return implode('/', array_map(function ($el) {
-            return $el->pret;
-        }, $detalii));
+                    return $el->pret;
+                }, $detalii));
     }
 
-    public function getProdusDetaliiDescriere()
-    {
+    public function getProdusDetaliiDescriere() {
         $detalii = $this->produseDetalii;
         $text = implode('/', array_map(function ($el) {
-            return $el->descriere;
-        }, $detalii));
+                    return $el->descriere;
+                }, $detalii));
         if (strlen(trim($text)) == 0) {
             return '';
         }
         return sprintf('(%s)', $text);
     }
 
-    public function saveProdus($numeImagine)
-    {
+    public function saveProdus($numeImagine) {
         $transaction = \Yii::$app->db->beginTransaction();
         $pret = new PreturiProduse();
         if (!is_null($this->data_productie))
@@ -247,8 +236,7 @@ class Produse extends \yii\db\ActiveRecord
         return false;
     }
 
-    public function saveProdusDetalii()
-    {
+    public function saveProdusDetalii() {
         foreach ($this->produse_detalii as $produsDetaliu) {
             $produsDetaliu->produs = $this->id;
             $saved = $produsDetaliu->save();
@@ -260,16 +248,14 @@ class Produse extends \yii\db\ActiveRecord
         return true;
     }
 
-    public function getProdusAndCategorie()
-    {
+    public function getProdusAndCategorie() {
         if (!is_null($this->categorie0->parinte0)) {
             return sprintf('%s(%s)', $this->nume, $this->categorie0->nume);
         }
         return $this->nume;
     }
 
-    public function updateProdus($numeImagine)
-    {
+    public function updateProdus($numeImagine) {
         $transaction = Yii::$app->db->beginTransaction();
         $pret = new PreturiProduse();
         $this->data_productie = date('Y-m-d', strtotime($this->data_productie));
@@ -294,7 +280,6 @@ class Produse extends \yii\db\ActiveRecord
         $save = $this->save();
         // if ($save) {
         //     if (is_null($this->pret) || empty($pret)) {
-
         //     } else {
         //         $save1 = true;
         //         $pretCurent = PreturiProduse::findOne(['produs' => $this->id, 'valid' => 1]);
@@ -390,8 +375,7 @@ class Produse extends \yii\db\ActiveRecord
         return false;
     }
 
-    public function saveOrUpdateWithPret($data, $formName = null)
-    {
+    public function saveOrUpdateWithPret($data, $formName = null) {
 
         $transaction = Yii::$app->db->beginTransaction();
         $pretNou = new PreturiProduse();
@@ -434,4 +418,5 @@ class Produse extends \yii\db\ActiveRecord
             return false;
         }
     }
+
 }

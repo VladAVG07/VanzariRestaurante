@@ -180,3 +180,7 @@ a.desc:after {
     width:auto !important;
     min-width: 260px !important;
 } */
+
+.select2-search__field {
+    height: 30px;
+}
