@@ -67,6 +67,10 @@ class ComenziController extends Controller {
                     'listDataProvider' => $dataProvider,
         ]);
     }
+    
+    public function actionDisplayBonProduse($id){
+        return $this->renderPartial('_bon_produse',['id'=>$id]);
+    }
 
     public function actionPrinteaza() {
         //todo: printarea catre imprimanta, nu stim inca cum se face, daca aceasta s-a efectuat cu succes, atunci schimba starea comenzi in FINALIZAT

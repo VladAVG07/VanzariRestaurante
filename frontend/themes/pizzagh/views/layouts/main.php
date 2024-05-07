@@ -25,7 +25,10 @@ $urlAdaugaProdus = Url::toRoute('site/adauga-in-cos');
 $urlAdaugaProdusInCos = Url::toRoute('site/produs-adauga-in-cos');
 $urlGetContinutCos = Url::toRoute('site/continut-cos');
 $urlStergeProdus = Url::toRoute('site/sterge-din-cos');
-$urlGenereazaModalProdus=Url::toRoute('site/genereaza-modal-produs');
+$basket = \Yii::$app->session->get('basket');
+$urlGenereazaModalProdus = Url::toRoute('site/genereaza-modal-produs');
+$urlProceseazaComanda = Url::toRoute('site/proceseaza-comanda');
+$empty = $basket !== null && count($basket->basketItems) > 0;
 
 $csrlf = sprintf('\'%s\':\'%s\'', \Yii::$app->request->csrfParam, \Yii::$app->request->getCsrfToken());
 $formatJs = <<< SCRIPT
@@ -41,6 +44,10 @@ $('a[href*="#"]').on('click', function(event) {
     }
 });
 
+$('.btn-casa').on('click',function(event){
+    window.location.href='$urlProceseazaComanda';
+});
+
 // Calculate total cost of products in the shopping cart
 function getTotal() {
     var total = 0.00;
@@ -49,6 +56,7 @@ function getTotal() {
     });
     console.log(total);
     $('.btn-casa').text('La casă ' + total.toFixed(2) + ' RON');
+    $('.btn-casa').attr('data-total',total.toFixed(2));
 }
 
 // Show the shopping cart
@@ -96,7 +104,7 @@ function initTouchSpin() {
             $(this).closest('.item').remove();
         }
         var idProdus = $(this).attr('data-produs');
-        deleteProductFromCart($(this), idProdus, $(this).val());
+    //    deleteProductFromCart($(this), idProdus, $(this).val());
     });
 }
 
@@ -127,7 +135,7 @@ $(document).on('click', '.btn-meniu', function(e) {
 
 $(document).on('click', '#btn-adauga-in-cos', function(e) {
     e.preventDefault();
-    var idProdus = $(this).attr('data-id');
+    var idProdus = $('.field-basketitem-idprodus #basketitem-idprodus').val();//.attr('data-id');
     var cantitate = $('.cos-produs-input').val();
     $.ajax({
         url: '$urlAdaugaProdusInCos',
@@ -152,7 +160,7 @@ $(document).on('click', '#btn-adauga-in-cos', function(e) {
 });
 
 // Event handler for changing product quantity in the shopping cart
-$(document).on('change', '.cos-produs-input', function() {
+$(document).on('change', '#cos-modal .cos-produs-input', function() {
     var value = $(this).val();
     if (value === '0') {
         $(this).closest('.item').remove();
@@ -221,96 +229,99 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
 <html lang="<?= Yii::$app->language ?>">
 
 <head>
-  <?php $this->registerCsrfMetaTags() ?>
-  <title><?= Html::encode($this->title) ?></title>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-  <meta charset="<?= Yii::$app->charset ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Include Babel Standalone -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <?php $this->head() ?>
+    <?php $this->registerCsrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="<?= Yii::$app->charset ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Include Babel Standalone -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <?php $this->head() ?>
 </head>
 
 <body class="container-fluid scrollable-page">
-  <?php $this->beginBody() ?>
-<?php
-  Modal::begin([
-    'title' => '<h4>Detalii produs</h4>',
-    'id' => 'produs-modal',
-    'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
-    'options' => [
-        'class' => 'custom-modal-bg', // Add your custom CSS class here
-    ],
-]);
-?>
-<div class="modal-content">
-    <div class="modal-body">
+    <?php $this->beginBody() ?>
+    <?php
+    Modal::begin([
+        'title' => '<h4>Detalii produs</h4>',
+        'id' => 'produs-modal',
+        'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
+        'options' => [
+            'class' => 'custom-modal-bg', // Add your custom CSS class here
+        ],
+    ]);
+    ?>
+    <div class="modal-content">
+        <div class="modal-body">
 
+        </div>
+        <div class="modal-footer">
+            <?= Html::button('Adaugă în coș', ['id' => 'btn-adauga-in-cos', 'class' => ['btn', 'btn-primary btn-arata-cos p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal']) ?>
+        </div>
     </div>
-    <div class="modal-footer">
-        <?= Html::button('Adaugă în coș', ['id'=>'btn-adauga-in-cos','class' => ['btn', 'btn-primary btn-arata-cos p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal']) ?>
+    <?php
+    Modal::end();
+    ?>
+
+    <?php
+    Modal::begin([
+        'title' => '<h4>Coșul meu</h4>',
+        'id' => 'cos-modal',
+        'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
+        'options' => [
+            'class' => 'custom-modal-bg', // Add your custom CSS class here
+        ],
+    ]);
+
+    echo '<div class="modal-content">';
+    ?>
+         <div class="d-flex justify-content-center mb-3 position-relative">
+            <div class="spinner-border text-primary" id="loadingSpinner" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <span class="position-absolute top-50 start-50 translate-middle text-warning">Loading...</span>
+        </div> 
+        
+    <?php
+    echo '   <div class="modal-body">';
+    ?>
+
+    <?php
+    echo '   </div>';
+    echo '   <div class="modal-footer">';
+    echo Html::button('Continuă cumpărăturile', ['class' => ['btn', 'btn-white btn-outline-white p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal']);
+    if ($empty) {
+        echo Html::button('La casă 0.00 RON', ['class' => ['btn', 'btn-primary p-3 px-xl-4 py-xl-3 btn-casa'], 'data-dismiss' => 'modal', 'data-total' => '0.00']);
+    }
+    echo '   </div>';
+    echo '</div>';
+
+    Modal::end();
+    ?>
+    <!-- Navbar -->
+    <?= $this->render('navbar', ['assetDir' => $assetDir]) ?>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <?= $this->render('content', ['content' => $content, 'assetDir' => $assetDir]) ?>
+    <!-- /.content-wrapper -->
+    <div class="floating-cart">
+        <a class="cart-button">
+            <i class="fas fa-shopping-cart" style="color:#ffffff"></i>
+        </a>
     </div>
-</div>
-<?php
-Modal::end();
-?>
+    <!-- Main Footer -->
+    <?= $this->render('footer') ?>
 
-<?php
-Modal::begin([
-    'title' => '<h4>Coșul meu</h4>',
-    'id' => 'cos-modal',
-    'size' => 'modal-lg', // You can use 'lg', 'sm', or 'xl' for large, small, or extra-large modal
-    'options' => [
-        'class' => 'custom-modal-bg', // Add your custom CSS class here
-    ],
-]);
-
-echo '<div class="modal-content">';
-?>
-<div class="d-flex justify-content-center mb-3 position-relative">
-    <div class="spinner-border text-primary" id="loadingSpinner" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-    <span class="position-absolute top-50 start-50 translate-middle text-warning">Loading...</span>
-</div>
-<?php
-echo '   <div class="modal-body">';
-?>
-
-<?php
-echo '   </div>';
-echo '   <div class="modal-footer">';
-echo Html::button('Continuă cumpărăturile', ['class' => ['btn', 'btn-white btn-outline-white p-3 px-xl-4 py-xl-3'], 'data-dismiss' => 'modal']);
-echo Html::button('La casă 0.00 RON', ['class' => ['btn', 'btn-primary p-3 px-xl-4 py-xl-3 btn-casa'], 'data-dismiss' => 'modal', 'data-total' => '72.00']);
-echo '   </div>';
-echo '</div>';
-
-Modal::end();
-?>
-  <!-- Navbar -->
-  <?= $this->render('navbar', ['assetDir' => $assetDir]) ?>
-  <!-- /.navbar -->
-
-  <!-- Content Wrapper. Contains page content -->
-  <?= $this->render('content', ['content' => $content, 'assetDir' => $assetDir]) ?>
-  <!-- /.content-wrapper -->
-  <div class="floating-cart">
-    <a class="cart-button">
-      <i class="fas fa-shopping-cart" style="color:#ffffff"></i>
-    </a>
-  </div>
-  <!-- Main Footer -->
-  <?= $this->render('footer') ?>
-
-  <?php $this->endBody() ?>
+    <?php $this->endBody() ?>
 </body>
 
 </html>

@@ -12,13 +12,13 @@
 ?>
 
 <div class="d-flex align-items-center pt-2">
-    <div class="col-md-6">
+    <div class="col-md-6 col-6">
         <span><?=$model->denumire?></span>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3 col-3 text-center">
         <span><?=$model->cantitate?></span>
     </div>
-    <div class="col-md-4">
-        <span class='price'><?=$model->pret?> RON</span>
+    <div class="col-md-3 col-3 text-right">
+        <span class='price'><?=$model->pret?></span>
     </div>
 </div>

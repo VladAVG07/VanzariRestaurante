@@ -6,12 +6,12 @@ use yii\helpers\Html;
 //use kartik\touchspin\TouchSpin;
 use yii\helpers\Url;
 
+$this->title='Acasă - DioBistro Călărași';
 $assetDir = Yii::$app->assetManager->getBundle('frontend\themes\pizzagh\assets\PizzGhAsset');
-
 $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
 
 ?>
-<section class="home-slider owl-carousel img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_1.jpg);">
+<!-- <section class="home-slider owl-carousel img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_1.jpg);">
     <div class="slider-item">
         <div class="overlay"></div>
         <div class="container">
@@ -65,121 +65,21 @@ $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
-<section id="rest-program" class="ftco-intro">
-    <div class="container-wrap">
-        <div class="wrap d-md-flex">
-            <div class="info">
-                <div class="row no-gutters">
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-phone"></span></div>
-                        <div class="text">
-                            <h3>+40722 885 551</h3>
-                            <p>DIO Bistro este locul unde tu și prietenii tăi o să vă simțiți minunat!</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-my_location"></span></div>
-                        <div class="text">
-                            <h3>Prelungirea București numărul 123</h3>
-                            <p>Călărași, România</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 d-flex ftco-animate">
-                        <div class="icon"><span class="icon-clock-o"></span></div>
-                        <div class="text">
-                            <h3>Luni - Vineri</h3>
-                            <p>08:00 - 22:00</p>
-                        </div>
-                        <div class="text">
-                            <h3>Sâmbătă - Duminică</h3>
-                            <p>10:00 - 22:00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="social d-md-flex pl-md-5 p-4 align-items-center">
-                <ul class="social-icon">
-                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
-                    <li class="ftco-animate"><a href="https://web.facebook.com/people/Dio-Bistro/100086182524636/"><span class="icon-facebook"></span></a></li>
-                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li> -->
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- <section class="ftco-about d-md-flex">
-    	<div class="one-half img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);"></div>
-    	<div class="one-half ftco-animate">
-        <div class="heading-section ftco-animate ">
-          <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizza</span> A Restaurant</h2>
-        </div>
-        <div>
-  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-  			</div>
-    	</div>
-    </section> -->
 
-<section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="row">
-                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <div class="icon"><span class="flaticon-pizza-1"></span></div>
-                                <strong class="number" data-number="5432">0</strong>
-                                <span>Pizza livrate</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-		            <div class="block-18 text-center">
-		              <div class="text">
-		              	<div class="icon"><span class="flaticon-medal"></span></div>
-		              	<strong class="number" data-number="85">0</strong>
-		              	<span>Number of Awards</span>
-		              </div>
-		            </div>
-		          </div> -->
-                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <div class="icon"><span class="flaticon-laugh"></span></div>
-                                <strong class="number" data-number="1056">0</strong>
-                                <span>Clienți mulțumiți</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-                        <div class="block-18 text-center">
-                            <div class="text">
-                                <div class="icon"><span class="flaticon-chef"></span></div>
-                                <strong class="number" data-number="14">0</strong>
-                                <span>Angajați</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="ftco-menu">
+<section id="rest-acasa" class="ftco-menu">
     <div class="container-fluid">
         <div class="row d-md-flex">
-            <div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);">
+            <div class="col-lg-4 ftco-animate img f-menu-img mb-5 mb-md-0" style="width: 496px; height: 575px;background-image: url(<?= $assetDir->baseUrl ?>/images/aboutdio2.jpg);">
             </div>
             <div class="col-lg-8 ftco-animate p-md-5 fadeInUp ftco-animated">
                 <div class="row">
                     <div class="col-md-12 nav-link-wrap mb-5">
                         <div class="nav ftco-animate nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                             <?php
-                            $restaurantId = 10;
+                            $restaurantId = 9;
                             $categorii = \backend\models\Categorii::find()
                                 ->innerJoin('produse p', 'p.categorie = categorii.id')
                                 ->innerJoin('restaurante_categorii', 'categorii.id = restaurante_categorii.categorie')
@@ -199,6 +99,7 @@ $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
                                     $nume = $parinte->nume . ' ' . $categorie->nume;
                                 if ($i == 0)
                                     $idCategorie = $categorie->id;
+                                    echo "<!-- Categoria  $nume-->";
                                 echo Html::a($nume, '#v-pills-' . $categorie->id, [
                                     'id' => 'v-pills-' . $categorie->id . '-tab',
                                     'class' => sprintf('%s %s', 'nav-link menu-nav-link', $i == 0 ? 'active' : ''),
@@ -211,7 +112,6 @@ $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
                                 $i++;
                             }
                             ?>
-                            <!--<a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false">Pasta</a>-->
                         </div>
                     </div>
                     <div class="col-md-12 align-items-center">
@@ -370,6 +270,119 @@ $urlCategorie = \yii\helpers\Url::toRoute('site/schimba-categorie');
 
 <section id="rest-menu" class="ftco-section">
     <?= $this->render('_meniu_view') ?>
+</section>
+
+<section id="rest-program" class="ftco-intro">
+    <div class="container-wrap">
+        <div class="wrap d-md-flex">
+            <div class="info" style="width:100% !important">
+                <div class="row no-gutters">
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-phone"></span></div>
+                        <div class="text">
+                            <h3>+40722 885 551</h3>
+                            <p>DIO Bistro este locul unde tu și prietenii tăi o să vă simțiți minunat!</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-my_location"></span></div>
+                        <div class="text">
+                            <h3>Prelungirea București numărul 123</h3>
+                            <p>Călărași, România</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-clock-o"></span></div>
+                        <div class="text">
+                            <h3>Luni - Vineri</h3>
+                            <p>08:00 - 22:00</p>
+                        </div>
+                        <div class="text">
+                            <h3>Sâmbătă - Duminică</h3>
+                            <p>10:00 - 22:00</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex ftco-animate">
+                        <div class="icon"><span class="icon-clock-o"></span></div>
+                        <div class="text">
+                            <h3>Luni - Vineri</h3>
+                            <p>08:00 - 22:00</p>
+                        </div>
+                        <div class="text">
+                            <h3>Sâmbătă - Duminică</h3>
+                            <p>10:00 - 22:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="social d-md-flex pl-md-5 p-4 align-items-center"> -->
+                <!-- <ul class="social-icon"> -->
+                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
+                    <!-- <li class="ftco-animate"><a href="https://web.facebook.com/people/Dio-Bistro/100086182524636/"><span class="icon-facebook"></span></a></li> -->
+                    <!-- <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li> -->
+                <!-- </ul> -->
+            <!-- </div> -->
+        </div>
+    </div>
+</section>
+<!-- <section class="ftco-about d-md-flex">
+    	<div class="one-half img" style="background-image: url(<?= $assetDir->baseUrl ?>/images/about.jpg);"></div>
+    	<div class="one-half ftco-animate">
+        <div class="heading-section ftco-animate ">
+          <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizza</span> A Restaurant</h2>
+        </div>
+        <div>
+  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
+  			</div>
+    	</div>
+    </section> -->
+
+<section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(<?= $assetDir->baseUrl ?>/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-pizza-1"></span></div>
+                                <strong class="number" data-number="5432">0</strong>
+                                <span>Pizza livrate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+		            <div class="block-18 text-center">
+		              <div class="text">
+		              	<div class="icon"><span class="flaticon-medal"></span></div>
+		              	<strong class="number" data-number="85">0</strong>
+		              	<span>Number of Awards</span>
+		              </div>
+		            </div>
+		          </div> -->
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-laugh"></span></div>
+                                <strong class="number" data-number="1056">0</strong>
+                                <span>Clienți mulțumiți</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+                        <div class="block-18 text-center">
+                            <div class="text">
+                                <div class="icon"><span class="flaticon-chef"></span></div>
+                                <strong class="number" data-number="14">0</strong>
+                                <span>Angajați</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="rest-contact" class="ftco-appointment">

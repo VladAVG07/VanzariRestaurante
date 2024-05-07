@@ -30,7 +30,7 @@ foreach ($produse as $produs) {
             <?php } ?> -->
             <div class="desc w-100 pr-2 pl-1">
                 <div class="d-flex text align-items-center">
-                    <h3><span><?= sprintf('%s<br />%s',$produs->nume,$produs->produsDetaliiDescriere) ?></span></h3>
+                    <h3><span><?= sprintf('%s %s<br />%s',$produs->nume,$produs->picant?'<i class="fas fa-pepper-hot" data-toggle="tooltip" data-placement="top" title="Picant" style="color: #ff0000;"></i>':'',$produs->produsDetaliiDescriere) ?></span></h3>
                     <span class="price"><?= $produs->pretMeniu ?></span>
                 </div>
                 <div class="row">

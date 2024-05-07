@@ -20,7 +20,9 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\FormularComanda;
+use Symfony\Component\HttpFoundation\UrlHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 
 /**
  * Site controller
@@ -81,6 +83,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        //$this->title='Acasă - DioBistro Călărași';
         return $this->render('_home_view');
     }
 
@@ -185,7 +188,7 @@ class SiteController extends Controller
         $request = \Yii::$app->request;
         $idProdus = $request->post('idProdus');
         $basket = \Yii::$app->session->get('basket');
-        $produs = Produse::findOne($idProdus);
+        $produs = ProduseDetalii::findOne($idProdus);
         if (is_null($produs)) {
             throw new BadRequestHttpException('Id produs inexistent');
         }
@@ -202,6 +205,7 @@ class SiteController extends Controller
 
     public function actionContinutCos()
     {
+        //  Yii::$app->session->destroy();
         $basket = \Yii::$app->session->get('basket');
         return $this->renderAjax('_cos_view', [
             'model' => $basket,
@@ -226,13 +230,13 @@ class SiteController extends Controller
         }
         if (is_null($basket)) {
             $basket = new Basket(['metodaPlata' => 1]);
-            $basket->basketItems[$idProdus] = new BasketItem(['idProdus' => $idProdus, 'cantitate' => 1, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            $basket->basketItems[$idProdus] = new BasketItem(['idProdus' => $idProdus, 'cantitate' => 1, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
         } else {
             if (array_key_exists($idProdus, $basket->basketItems)) {
                 $currentItem = $basket->basketItems[$idProdus];
                 $currentItem->cantitate = $cantitate;
             } else {
-                $currentItem = new BasketItem(['idProdus' => $idProdus, 'cantitate' => $cantitate, 'pret' =>  $produsDetaliu->pret, 'denumire' => $produs->nume]);
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'cantitate' => $cantitate, 'pret' =>  $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
             }
             $basket->basketItems[$idProdus] = $currentItem;
             if ($cantitate == 0) {
@@ -247,15 +251,37 @@ class SiteController extends Controller
     }
 
     public function actionProceseazaComanda()
-    {
+    {   
         $basket = \Yii::$app->session->get('basket');
-        $model=new FormularComanda();
-        if(is_null($basket)){
-            return $this->redirect('site/index');
-        }
-        return $this->render('comanda',['model'=>$model,'basket'=>$basket]);
-    }
+        $model = new FormularComanda();
+        $model->metodaPlata = 1;
+        $model->tipLocuinta = 1;
+        $post = Yii::$app->request->post();
+        if (count($post) > 0) {
+            $value = $post['FormularComanda']['tipLocuinta'];
+            $model->load($post);
+            $model->tipLocuinta = intval($value);
+            if ($model->validate()) {
+                if ($model->saveComanda($basket) && $model->sendMail($basket)) {
+                    Yii::$app->session->remove('basket');
+                    
+                    $this->redirect(Url::to(['site/pagina-home']));
+                }
 
+                // if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+                //     Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                // } else {
+                //     Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                // }
+
+
+
+            }
+        }
+
+        return $this->render('comanda', ['model' => $model, 'basket' => $basket]);
+    }
+    
     public function actionGenereazaModalProdus()
     {
         $request = \Yii::$app->request;
@@ -265,10 +291,11 @@ class SiteController extends Controller
             throw new BadRequestHttpException('Id produs inexistent');
         }
         $detalii = array_map(function ($el) {
-            return ['id' => $el->id, 'descriere' => $el->descriere, 'pret' => $el->pret];
+            return ['id' => $el->id,'descriere' => $el->descriere, 'pret' => $el->pret];
         }, $produs->produseDetalii);
         $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => 1, 'pret' => $detalii[0]['pret'], 'denumire' => $produs->nume]);
         return $this->renderAjax('_produs_in_cos_view', [
+            'generare' => true,
             'model' => $currentItem,
         ]);
     }
@@ -289,21 +316,28 @@ class SiteController extends Controller
         $detalii = array_map(function ($el) {
             return ['id' => $el->id, 'descriere' => $el->descriere, 'pret' => $el->pret];
         }, $produs->produseDetalii);
+
         if (is_null($basket)) {
             $basket = new Basket(['metodaPlata' => 1]);
-            $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii,'pdId'=>$produsDetaliu->id, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
+            $currentItem->produseDetalii = $detalii;
             $basket->basketItems[$idProdus] = $currentItem;
         } else {
             if (array_key_exists($idProdus, $basket->basketItems)) {
                 $currentItem = $basket->basketItems[$idProdus];
                 $currentItem->cantitate += 1;
             } else {
-                $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'pdId'=>$produsDetaliu->id,'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
             }
+            $currentItem->produseDetalii = $detalii;
             $basket->basketItems[$idProdus] = $currentItem;
         }
+        //  var_dump($detalii);
+        // var_dump($currentItem);
+        //exit();
         \Yii::$app->session->set('basket', $basket);
         return $this->renderAjax('_produs_in_cos_view', [
+            'generare' => false,
             'model' => $currentItem,
         ]);
     }

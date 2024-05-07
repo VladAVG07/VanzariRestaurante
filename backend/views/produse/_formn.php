@@ -75,6 +75,9 @@ $js = <<< SCRIPT
     
     $(document).on('click', '.produs-record button', function(e) {
         e.preventDefault(); // Prevent the default action of the button click
+        const elements = document.querySelectorAll('.produs-record');
+        const count = elements.length;
+        if (count != 1){
         const id=$(this).attr('attr-data');
 
         console.log('search by ',id);
@@ -95,7 +98,9 @@ $js = <<< SCRIPT
             console.log(item.id,'fucking problem is here',item.status);
         });
         // Find the parent div with the class produs-record and remove it
-        $(this).closest('.produs-record').remove();
+
+            $(this).closest('.produs-record').remove();
+        }
     });
 
     $(document).on('click', '#add-prod-detalii', function(e){

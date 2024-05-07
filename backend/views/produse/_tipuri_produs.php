@@ -33,7 +33,7 @@ foreach ($model->produse_detalii as $produsDetaliuForm) {
                     ?>
                 </div>
                 <div class="col-md-auto">
-                    <button type="button" attr-data="<?=$i?>" class="btn btn-danger d-none btn-block btn-xs"><i class="fa fa-trash-alt"></i></button>
+                    <button type="button" attr-data="<?=$i?>" class="btn btn-danger btn-block btn-xs"><i class="fa fa-trash-alt"></i></button>
                 </div>
             </div>
         </div>

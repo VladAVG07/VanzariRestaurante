@@ -58,12 +58,36 @@ $js = <<< SCRIPT
         });
     });
 });
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $(function () {
+        $('.bonProduse').click(function (){
+            
+            $.get($(this).attr('href'), function(data) {
+                $('#modalBonProduse').modal('show').find('#modalContent1').html(data)
+            });
+            return false;
+        });
+    });
+});
 SCRIPT;
 $this->registerJs($js, \yii\web\View::POS_READY);
 
 \yii\web\YiiAsset::register($this);
 ?>
 
+<?php
+Modal::begin([
+    'title' => '<h4>Bon produse</h4>',
+    'id' => 'modalBonProduse',
+    'size' => 'modal-lg'
+]);
+echo "<div id='modalContent1'></div>";
+?>
+
+<?php
+Modal::end();
+?>
 
 <?php
 Modal::begin([
@@ -213,6 +237,7 @@ Modal::end();
                             ])
                             ?>
                         <?php } ?>
+                        <?=  Html::a(Yii::t('app', 'Bon produse'), ['comenzi/display-bon-produse', 'id' => $model->id], ['class' => 'btn btn-warning bonProduse']) ?>
 
 
                     <h3>Produse comanda</h3>

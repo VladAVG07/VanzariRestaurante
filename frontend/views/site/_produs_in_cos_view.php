@@ -19,6 +19,10 @@ $urlProdus = Url::toRoute('site/afiseaza-produs');
 $urlAdaugaProdus = Url::toRoute('site/adauga-in-cos');
 $idProdus=Html::getInputId($model,'idProdus');
 $csrlf = sprintf('\'%s\':\'%s\'', \Yii::$app->request->csrfParam, \Yii::$app->request->getCsrfToken());
+
+$produs = backend\models\Produse::findOne(['id'=>$model->idProdus]);
+$categoriiAsociate = backend\models\CategoriiAsociate::find()->where(['categorie'=>$produs->categorie])->all();
+
 $formatJs = <<< SCRIPT
        
 $(document).ready(function() {
@@ -73,9 +77,10 @@ $form = ActiveForm::begin([
                 </div>
                 <div class="col-4 cos-produs align-items-center">
                     <?php
-                    $model->idProdus=$model->produseDetalii[0]['id'];
-                    echo $form->field($model, "idProdus", ['options' => ['class' => 'd-none']])->hiddenInput()->label(false);
-                    if(count($model->produseDetalii)>1){
+                    if($generare)
+                        $model->idProdus=$model->produseDetalii[0]['id'];
+                        echo $form->field($model, "idProdus", ['options' => ['class' => 'd-none']])->hiddenInput()->label(false);
+                    if($generare && count($model->produseDetalii)>1){
                         $i=0;
                         foreach($model->produseDetalii as $pDetaliu){
                             echo Html::hiddenInput("detalii_produse[$i]",$pDetaliu['id'],['class'=>'detalii-produse-hidden','data-d-pret'=>sprintf('%s RON',$pDetaliu['pret'])]);
@@ -104,7 +109,7 @@ $form = ActiveForm::begin([
                     ])->label(false);
                     ?>
                 </div>
-                <div class="col-3 text-left"><span class="price"><?= $model->produseDetalii[0]['pret'] ?> RON</span></div>
+                <div class="col-3 text-left"><span class="price"><?= $generare?$model->produseDetalii[0]['pret']:$model->pret ?> RON</span></div>
             </div>
             <!-- </div> -->
             <!-- </div> -->
@@ -115,6 +120,7 @@ $form = ActiveForm::begin([
 <div class="p-3">
     <div>
         <h5>Alte produse sugerate</h5>
+        
     </div>
     <div class="form-row">
 

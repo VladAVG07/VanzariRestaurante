@@ -93,7 +93,21 @@ class Comenzi extends ActiveRecord {
         $this->adresa = $adresa;
         $this->numar_telefon = $telefon;
         if ($this->save()) {
-
+            $restaurantUser = RestauranteUser::findOne(['user' => Yii::$app->user->id]);
+            $restaurant = Restaurante::findOne(['id' => $restaurantUser->restaurant]);
+            $restaurantComanda = new RestauranteComenzi();
+            $restaurantComanda->restaurant = $restaurant->id;
+            $restaurantComanda->comanda = $this->id;
+            $lastRow = RestauranteComenzi::find()
+                    ->where(['restaurant' => $restaurant->id])
+                    ->orderBy(['id' => SORT_DESC])
+                    ->one();
+            if ($lastRow !== null) {
+                $restaurantComanda->numar_comanda = $lastRow->numar_comanda + 1;
+            } else {
+                $restaurantComanda->numar_comanda = 1;
+            }
+            $this->numar_comanda = $restaurantComanda->numar_comanda;
             $pret = 0;
             foreach ($produse as $produs) {
                 $comandaLinie = new ComenziLinii();
@@ -124,9 +138,7 @@ class Comenzi extends ActiveRecord {
 //                    ->innerJoin('restaurant_user', 'restaurant_user.restaurant = restaurant.id')
 //                    ->innerJoin('user', 'restaurant_user.user = user.id')
 //                    ->where(['user.id' => Yii::$app->user->id])
-//                    ->one();
-            $restaurantUser = RestauranteUser::findOne(['user' => Yii::$app->user->id]);
-            $restaurant = Restaurante::findOne(['id' => $restaurantUser->restaurant]);
+//                    ->one();            
             $setareLivrare = SetariLivrare::findOne(['restaurant' => $restaurant->id]);
             if ($setareLivrare->comanda_minima > $pret) {
                 $pret += $setareLivrare->produs0->pret_curent;
@@ -134,7 +146,7 @@ class Comenzi extends ActiveRecord {
             $this->pret = $pret;
             $this->tva = 0.09; //* $this->pret;
             $this->status = $comandaDetaliu->id;
-            if ($this->save() && $save) {
+            if ($this->save() && $restaurantComanda->save() && $save) {
                 $transaction->commit();
                 return true;
             }
@@ -163,7 +175,7 @@ class Comenzi extends ActiveRecord {
                 return false;
             }
         }
-        
+
         $pret = 0;
         foreach ($produse as $produs) {
             $comandaLinie = new ComenziLinii();
