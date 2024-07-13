@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use kartik\datetime\DateTimePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\ComenziSearch */
@@ -19,11 +20,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="col-md-12">
                             <?= Html::a(Yii::t('app', 'Adauga Comanda'), ['produse/proceseaza-comanda'], ['class' => 'btn btn-success']) ?>
                             <?= Html::a(Yii::t('app', 'Editeaza interfata'), ['produse/editeaza-interfata'], ['class' => 'btn btn-primary']) ?>
+                            <?= Html::a(Yii::t('app', 'Raport incasari'), ['comenzi/report'], ['class' => 'btn btn-primary']) ?>
+                            <div class="col-md-5"> <?php echo DateTimePicker::widget([
+    'name' => 'dp_3',
+    'type' => DateTimePicker::TYPE_COMPONENT_APPEND,
+    'value' => '23-Feb-1982 12:35 AM',
+    'pluginOptions' => [
+        'autoclose'=>true,
+        'format' => 'dd-M-yyyy HH:ii P'
+    ]
+                                ]); ?> </div>
                         </div>
                     </div>
 
 
-                    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+                    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+                    ?>
 
                     <?=
                     GridView::widget([
@@ -46,14 +58,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'attribute' => 'data_ora_creare',
-                                'value' => function($model) {
+                                'value' => function ($model) {
                                     return date('d-m-Y H:i:s', strtotime($model->data_ora_creare));
                                 }
                             ],
                             //'data_ora_finalizare',
                             [
                                 'attribute' => 'pret',
-                                'value' => function($model) {
+                                'value' => function ($model) {
                                     return $model->pret . " RON";
                                 }
                             ],

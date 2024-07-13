@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Comenzi;
 use backend\models\ComenziSearch;
+use common\reports\RaportIncasari;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,12 +14,14 @@ use yii\db\Expression;
 /**
  * ComenziController implements the CRUD actions for Comenzi model.
  */
-class ComenziController extends Controller {
+class ComenziController extends Controller
+{
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -33,13 +36,14 @@ class ComenziController extends Controller {
      * Lists all Comenzi models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new ComenziSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -49,13 +53,15 @@ class ComenziController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
-    public function actionDisplayBon($id) {
+    public function actionDisplayBon($id)
+    {
 
         $dataProvider = new \yii\data\ActiveDataProvider([
             'query' => \backend\models\ComenziLinii::find()->where(['comanda' => $id]),
@@ -63,16 +69,18 @@ class ComenziController extends Controller {
         ]);
 
         return $this->renderPartial('bon', [
-                    'idComanda' => $id,
-                    'listDataProvider' => $dataProvider,
+            'idComanda' => $id,
+            'listDataProvider' => $dataProvider,
         ]);
     }
-    
-    public function actionDisplayBonProduse($id){
-        return $this->renderPartial('_bon_produse',['id'=>$id]);
+
+    public function actionDisplayBonProduse($id)
+    {
+        return $this->renderPartial('_bon_produse', ['id' => $id]);
     }
 
-    public function actionPrinteaza() {
+    public function actionPrinteaza()
+    {
         //todo: printarea catre imprimanta, nu stim inca cum se face, daca aceasta s-a efectuat cu succes, atunci schimba starea comenzi in FINALIZAT
 
         $id = Yii::$app->request->post('id');
@@ -109,7 +117,8 @@ class ComenziController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $mentiuni = Yii::$app->request->post('mentiuni');
         $adresa = Yii::$app->request->post('adresa');
         $telefon = Yii::$app->request->post('telefon');
@@ -121,15 +130,15 @@ class ComenziController extends Controller {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             return $this->render('create', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         } else {
-            $model = Comenzi::findOne(['id'=>$update]);
+            $model = Comenzi::findOne(['id' => $update]);
             if ($model->actualizeazaComanda($mentiuni, $adresa, $telefon, $produse)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
             return $this->render('create', [
-                        'model' => $model,
+                'model' => $model,
             ]);
         }
     }
@@ -141,7 +150,8 @@ class ComenziController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -149,7 +159,7 @@ class ComenziController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -160,17 +170,28 @@ class ComenziController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
-    public function actionAnuleazaComanda($id) {
+    public function actionAnuleazaComanda($id)
+    {
         if ($this->findModel($id)->anuleazaComanda()) {
             //   Yii::$app->session->setFlash('success', 'Comanda a fost anulată cu succes.');
             return $this->render('view', ['model' => $this->findModel($id)]);
         }
+    }
+
+    public function actionReport()
+    {
+        $report = new RaportIncasari(array("data" => 100));
+        $report->run();
+        return $this->render('report', array(
+            "report" => $report
+        ));
     }
 
     /**
@@ -180,12 +201,12 @@ class ComenziController extends Controller {
      * @return Comenzi the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Comenzi::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-
 }
