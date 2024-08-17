@@ -18,7 +18,7 @@ $assetDir = Yii::$app->assetManager->getBundle('frontend\themes\pizzagh\assets\P
             $detalii = $produs->produseDetalii;
             $pret = sprintf('%s RON', $detalii[0]->pret);
             if (count($detalii) > 1) {
-                $pret = sprintf('%s - %s RON', $detalii[0]->pret, $detalii[count($detalii) - 1]->pret);
+                $pret = sprintf('De la %s RON', $detalii[0]->pret);//, $detalii[count($detalii) - 1]->pret);
             }
             // echo Html::beginTag('div', ['class' => 'col-md-3 text-center', 'style' => 'margin-bottom: 25px']);
             // echo Html::beginTag('div', ['class' => 'menu-wrap']);
@@ -36,12 +36,18 @@ $assetDir = Yii::$app->assetManager->getBundle('frontend\themes\pizzagh\assets\P
             <div class="col-md-3 text-center" style="margin-bottom:25px;">
                 <div class="menu-wrap">
                     <?php if (is_null($produs->image_file)||strlen(trim($produs->image_file))===0) { ?>
-                        <a href="#" class="menu-img img mb-4" style="background-image: url(<?=$assetDir->baseUrl?>/images/no-photo.png);"></a>
-                    <?php } else { ?>
-                        <a href="#" class="menu-img img mb-4" style="background-image: url(<?= $imagine ?>);"></a>
-                    <?php } ?>
+                        <div style="max-width:100%;max-height:100%">
+                        <!-- <a href="#" class="menu-img img mb-4" style="max-width:100%;background-image: url(<?=$assetDir->baseUrl?>/images/no-photo.png);"></a> -->
+                        <img class="menu-img img mb-4" src="<?= $assetDir->baseUrl ?>/images/no-photo.png" />
+                    </div>
+                        <?php } else { ?>
+                        <div style="max-width:100%;max-height:100%">
+                        <!-- <a href="#" class="menu-img img mb-4" style="max-width:100%;background-image: url(<?= $imagine ?>);"></a> -->
+                        <img class="menu-img img mb-4" src="<?= $imagine ?>" />
+                        </div>
+                        <?php } ?>
                     <div class="text">
-                        <h3><a href="#"><?= $produs->nume ?></a></h3>
+                        <h3><a href="#"><?= sprintf('%s %s',$produs->nume,$produs->picant?'<i class="fas fa-pepper-hot" data-toggle="tooltip" data-placement="top" title="Picant" style="color: #ff0000;"></i>':'') ?></a></h3>
                         <!-- <p><?= $produs->descriere ?></p> -->
                         <p class="price"><span><?= $pret ?></span></p>
                         <p><a href="#" class="btn btn-white btn-outline-white btn-meniu" data-id="<?=$produs->id?>">Adaugă în coș</a></p>

@@ -12,7 +12,7 @@ $tva = $total - $pretFaraTva;
 $comanda = \backend\models\Comenzi::findOne(['id'=>$idComanda])
 ?>
 
-<div id="invoice-POS">
+<div class="bon-layout" id="bonFiscal">
     <center>
         <h5 style="margin:0;padding:0">S.C. RESTAURANT S.R.L.</h5>
         <h5 style="margin:0;padding:0">STR. PETROSANI, NR. 49</h5>

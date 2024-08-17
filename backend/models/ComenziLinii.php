@@ -44,7 +44,6 @@ class ComenziLinii extends \yii\db\ActiveRecord {
             [['comanda', 'produs', 'cantitate'], 'integer'],
             [['pret'], 'number'],
             [['produs_detaliu'], 'safe'],
-            [['comanda', 'produs'], 'unique', 'targetAttribute' => ['comanda', 'produs']],
             [['comanda'], 'exist', 'skipOnError' => true, 'targetClass' => Comenzi::class, 'targetAttribute' => ['comanda' => 'id']],
             [['produs'], 'exist', 'skipOnError' => true, 'targetClass' => Produse::class, 'targetAttribute' => ['produs' => 'id']],
         ];

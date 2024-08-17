@@ -7953,8 +7953,9 @@ h1, h2, h3, h4, h5,
 
 .menu-wrap .menu-img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   margin: 0 auto;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -8975,4 +8976,94 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.livrare {
+    font-size: 15px;
+    font-weight: 300;
+    color: gray;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+.popup {
+    position: fixed;
+    top: 80px; /* Adjust this value as needed based on the height of your navbar */
+    right: -320px; /* Initially off-screen */
+    width: 300px;
+    background-color: #000;
+    color: #fac564;
+    border: 1px solid #fac564;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: right 0.5s ease-in-out; /* Transition for shifting animation */
+}
+
+.popup.show {
+    right: 20px; /* Shifted to the right when shown */
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.close-btn {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #fac564;
+    background: none;
+    border: none;
+}
+
+.cookie-notification {
+  position: fixed;
+  bottom: -100px; /* Initially hidden */
+  right: 20px; /* Position it on the bottom right corner */
+  width: 300px;
+  background-color: #000;
+  color: #fac564;
+  border: 1px solid #fac564;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  height: 0; /* Initial height */
+  overflow: hidden; /* Hide content when height is 0 */
+  transition: bottom 0.5s ease-in-out, height 0.5s ease-in-out; /* Smooth slide-up and height change animation */
+}
+
+.cookie-notification.show {
+  bottom: 20px; /* Slide up into view */
+  height: auto; /* Allow height to change */
+}
+
+.cookie-content {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: flex-start; /* Align items to the start of the container */
+}
+
+.cookie-button {
+  display: inline-block; /* Ensure buttons are displayed inline */
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px; /* Add margin between text and buttons */
+  color: #fac564;
+  background: none;
+  border: 1px solid #fac564;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.cookie-button + .cookie-button {
+  margin-top: 10px; /* Remove margin between buttons */
+  margin-left: 10px; /* Add margin between buttons */
+}
       

@@ -108,14 +108,13 @@ a.desc:after {
 #list-wrapper {
 }
 
-#invoice-POS{
+.bon-layout {
     box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5);
-    padding:2mm;
-    margin: 0 auto;
-    width: 80mm;
-    background: #FFF;  
+    margin: 0 auto; 
+    padding: 5mm;
+    width: 58mm;
 }
-#invoice-POS h4{
+.bon-layout h4{
     margin:0;
     padding:0;
     font-weight:normal;
@@ -128,7 +127,7 @@ a.desc:after {
 
 .title{
     font-size: 15px;
-     margin:0;
+    margin:0;
     padding:0;
 }
 
@@ -167,9 +166,9 @@ a.desc:after {
     background-color: #fff;
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
-   width: 400px;
-   height: 300px; 
-  }
+    width: 400px;
+    height: 300px; 
+}
 
 /*  .file-preview {
     border-radius: 5px;
@@ -184,3 +183,37 @@ a.desc:after {
 .select2-search__field {
     height: 30px;
 }
+
+#printArea {
+    display: none; /* Initially hide the print area */
+}
+
+/*@media print {
+    @page {
+        width:58mm;  Automatically determine the size based on content 
+    }
+    html, body {
+        width: 58mm;
+        height:100%;
+        position:absolute;
+    }
+    body * {
+        visibility: hidden;  Hide all elements on the page 
+    }
+    #printArea, #printArea * {
+        visibility: visible;  Make the print area and its children visible 
+    }
+    #printArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+}*/
+
+ @media print {
+
+       .no-print{
+               display : none !important;
+                }
+              }

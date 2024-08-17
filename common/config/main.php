@@ -6,6 +6,9 @@ return [
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'stripe' => [
+            'class' => 'backend\components\StripeComponent',
+        ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
         ],

@@ -9,6 +9,7 @@ $categorii = \backend\models\Categorii::find()
         ->where(['restaurante_categorii.restaurant' => $restaurantId])
         //->andWhere(['<>', 'categorii.parinte', 'null'])
         ->andWhere(['<>', 'categorii.nume', 'Servicii'])
+        ->orderBy(['ordine'=>SORT_ASC])
         ->all();
 
 // $urlAdaugaProdusInCos = Url::toRoute('site/produs-adauga-in-cos');
@@ -116,6 +117,9 @@ $csrlf = sprintf('\'%s\':\'%s\'', \Yii::$app->request->csrfParam, \Yii::$app->re
             ?>
             <div class="row justify-content-center mb-5 pb-3 mt-5 pt-5">
                 <div class="col-md-7 heading-section text-center ftco-animate">
+                    <?php 
+                        echo "<!-- Categoria  $nume-->";
+                    ?>
                     <h2 class="mb-4"><?= $nume ?></h2>
                     <p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
                 </div>

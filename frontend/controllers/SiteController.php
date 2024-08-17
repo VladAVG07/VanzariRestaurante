@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use backend\models\Produse;
 use backend\models\ProduseDetalii;
+use backend\models\Restaurante;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -20,18 +21,19 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\FormularComanda;
+use Symfony\Component\HttpFoundation\UrlHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::class,
@@ -61,8 +63,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => \yii\web\ErrorAction::class,
@@ -79,8 +80,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
+        //$this->title='Acasă - DioBistro Călărași';
         return $this->render('_home_view');
     }
 
@@ -89,8 +90,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -103,7 +103,7 @@ class SiteController extends Controller
         $model->password = '';
 
         return $this->render('login', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -112,8 +112,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
 
         return $this->goHome();
@@ -124,8 +123,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -138,7 +136,7 @@ class SiteController extends Controller
         }
 
         return $this->render('contact', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -147,45 +145,72 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
-    {
+    public function actionAbout() {
         return $this->render('about');
     }
 
-    public function actionPaginaMeniu()
-    {
+    public function actionPaginaMeniu() {
         return $this->render('_meniu_view');
     }
 
-    public function actionPaginaHome()
-    {
+    public function actionPaginaHome() {
         return $this->render('_home_view');
     }
 
-    public function actionPaginaContact()
-    {
+    public function actionPaginaContact() {
         return $this->render('_contact_view');
     }
 
-    public function actionSchimbaCategorie($idCategorie)
-    {
+    public function actionSchimbaCategorie($idCategorie) {
         if (Yii::$app->request->isAjax) {
             return $this->renderAjax('_categorie_view', ['id' => $idCategorie]);
         }
         return $this->renderPartial('_categorie_view', ['id' => $idCategorie]);
     }
 
-    public function actionAfiseazaProdus($idProdus)
-    {
+    public function actionAfiseazaProdus($idProdus) {
         return $this->renderAjax('_produs_view', ['id' => $idProdus]);
     }
 
-    public function actionStergeDinCos()
-    {
+    public function actionRestaurantInchis() {
+        $dayOfWeek = date('w');
+        if ($dayOfWeek == 0) {
+            $dayOfWeek = 7;
+        }
+        $model = \backend\models\IntervaleLivrare::findOne(['restaurant' => 10, 'ziua_saptamanii' => $dayOfWeek, 'program' => 1]);
+        $newTimezone = new \DateTimeZone('Europe/Bucharest');
+        $currentDateTime = new \DateTime('now', $newTimezone);
+        $startDateTime = \DateTime::createFromFormat('H:i', $model->ora_inceput, $newTimezone);
+        $endDateTime = \DateTime::createFromFormat('H:i', $model->ora_sfarsit, $newTimezone);
+        $currentDate = $currentDateTime->format('Y-m-d');
+        $startDateTime->setDate($currentDateTime->format('Y'), $currentDateTime->format('m'), $currentDateTime->format('d'));
+        $endDateTime->setDate($currentDateTime->format('Y'), $currentDateTime->format('m'), $currentDateTime->format('d'));
+
+        $response = array(
+            'inchis' => 0,
+            'message' => "mesaj"
+        );
+
+        $setariVanzari = \backend\models\SetariVanzari::findOne(['restaurant'=>10]);
+        if ($setariVanzari->vanzari_oprite){
+            $response['inchis']=1;
+            $response['message']=$setariVanzari->mesaj_oprit;
+            return json_encode($response);
+        }
+        if ($currentDateTime >= $startDateTime && $currentDateTime <= $endDateTime) {
+            return json_encode($response);
+        } else {
+            $response['inchis']=1;
+            $response['message']=$setariVanzari->mesaj_generic;
+            return json_encode($response);
+        }
+    }
+
+    public function actionStergeDinCos() {
         $request = \Yii::$app->request;
         $idProdus = $request->post('idProdus');
         $basket = \Yii::$app->session->get('basket');
-        $produs = Produse::findOne($idProdus);
+        $produs = ProduseDetalii::findOne($idProdus);
         if (is_null($produs)) {
             throw new BadRequestHttpException('Id produs inexistent');
         }
@@ -200,16 +225,22 @@ class SiteController extends Controller
         \Yii::$app->session->set('basket', $basket);
     }
 
-    public function actionContinutCos()
-    {
+    public function actionContinutCos() {
+        //  Yii::$app->session->destroy();
         $basket = \Yii::$app->session->get('basket');
+        if (is_null($basket))
+            $basket = new Basket();
         return $this->renderAjax('_cos_view', [
-            'model' => $basket,
+                    'model' => $basket,
         ]);
     }
 
-    public function actionAdaugaInCos()
-    {
+    public function actionIsCosEmpty(){
+        $basket = \Yii::$app->session->get('basket');
+        return count($basket->basketItems);
+    }
+
+    public function actionAdaugaInCos() {
         $request = \Yii::$app->request;
         $idProdus = $request->post('idProdus');
         $cantitate = $request->post('cantitate');
@@ -226,13 +257,13 @@ class SiteController extends Controller
         }
         if (is_null($basket)) {
             $basket = new Basket(['metodaPlata' => 1]);
-            $basket->basketItems[$idProdus] = new BasketItem(['idProdus' => $idProdus, 'cantitate' => 1, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            $basket->basketItems[$idProdus] = new BasketItem(['idProdus' => $idProdus, 'cantitate' => 1, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
         } else {
             if (array_key_exists($idProdus, $basket->basketItems)) {
                 $currentItem = $basket->basketItems[$idProdus];
                 $currentItem->cantitate = $cantitate;
             } else {
-                $currentItem = new BasketItem(['idProdus' => $idProdus, 'cantitate' => $cantitate, 'pret' =>  $produsDetaliu->pret, 'denumire' => $produs->nume]);
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
             }
             $basket->basketItems[$idProdus] = $currentItem;
             if ($cantitate == 0) {
@@ -246,18 +277,36 @@ class SiteController extends Controller
         // ]);
     }
 
-    public function actionProceseazaComanda()
-    {
+    public function actionProceseazaComanda() {
         $basket = \Yii::$app->session->get('basket');
-        $model=new FormularComanda();
-        if(is_null($basket)){
-            return $this->redirect('site/index');
+        $model = new FormularComanda();
+        $model->metodaPlata = 1;
+        $model->tipLocuinta = 1;
+        $post = Yii::$app->request->post();
+        if (count($post) > 0) {
+            $value = $post['FormularComanda']['tipLocuinta'];
+            $model->load($post);
+            $model->tipLocuinta = intval($value);
+            if ($model->validate()) {
+                if ($model->saveComanda($basket) && $model->sendMail($basket)) {
+                    Yii::$app->session->remove('basket');
+                    $comanda = \backend\models\Comenzi::findOne(['id'=>$model->idComanda]);
+                    Yii::$app->session->set('comanda', $comanda);
+                    $this->redirect(Url::to(['site/pagina-home']));
+                }
+
+                // if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+                //     Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                // } else {
+                //     Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                // }
+            }
         }
-        return $this->render('comanda',['model'=>$model,'basket'=>$basket]);
+
+        return $this->render('comanda', ['model' => $model, 'basket' => $basket]);
     }
 
-    public function actionGenereazaModalProdus()
-    {
+    public function actionGenereazaModalProdus() {
         $request = \Yii::$app->request;
         $idProdus = $request->post('idProdus');
         $produs = Produse::findOne($idProdus);
@@ -269,12 +318,12 @@ class SiteController extends Controller
         }, $produs->produseDetalii);
         $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => 1, 'pret' => $detalii[0]['pret'], 'denumire' => $produs->nume]);
         return $this->renderAjax('_produs_in_cos_view', [
-            'model' => $currentItem,
+                    'generare' => true,
+                    'model' => $currentItem,
         ]);
     }
 
-    public function actionProdusAdaugaInCos()
-    {
+    public function actionProdusAdaugaInCos() {
         $request = \Yii::$app->request;
         $idProdus = $request->post('idProdus');
         $cantitate = $request->post('cantitate');
@@ -289,22 +338,29 @@ class SiteController extends Controller
         $detalii = array_map(function ($el) {
             return ['id' => $el->id, 'descriere' => $el->descriere, 'pret' => $el->pret];
         }, $produs->produseDetalii);
+
         if (is_null($basket)) {
             $basket = new Basket(['metodaPlata' => 1]);
-            $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+            $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'pdId' => $produsDetaliu->id, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
+            $currentItem->produseDetalii = $detalii;
             $basket->basketItems[$idProdus] = $currentItem;
         } else {
             if (array_key_exists($idProdus, $basket->basketItems)) {
                 $currentItem = $basket->basketItems[$idProdus];
                 $currentItem->cantitate += 1;
             } else {
-                $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produs->nume]);
+                $currentItem = new BasketItem(['idProdus' => $idProdus, 'produseDetalii' => $detalii, 'pdId' => $produsDetaliu->id, 'cantitate' => $cantitate, 'pret' => $produsDetaliu->pret, 'denumire' => $produsDetaliu->denumireCompleta]);
             }
+            $currentItem->produseDetalii = $detalii;
             $basket->basketItems[$idProdus] = $currentItem;
         }
+        //  var_dump($detalii);
+        // var_dump($currentItem);
+        //exit();
         \Yii::$app->session->set('basket', $basket);
         return $this->renderAjax('_produs_in_cos_view', [
-            'model' => $currentItem,
+                    'generare' => false,
+                    'model' => $currentItem,
         ]);
     }
 
@@ -313,8 +369,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
-    {
+    public function actionSignup() {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
@@ -322,7 +377,7 @@ class SiteController extends Controller
         }
 
         return $this->render('signup', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -331,8 +386,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset()
-    {
+    public function actionRequestPasswordReset() {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -345,7 +399,7 @@ class SiteController extends Controller
         }
 
         return $this->render('requestPasswordResetToken', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -356,8 +410,7 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
-    {
+    public function actionResetPassword($token) {
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
@@ -371,7 +424,7 @@ class SiteController extends Controller
         }
 
         return $this->render('resetPassword', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -382,8 +435,7 @@ class SiteController extends Controller
      * @throws BadRequestHttpException
      * @return yii\web\Response
      */
-    public function actionVerifyEmail($token)
-    {
+    public function actionVerifyEmail($token) {
         try {
             $model = new VerifyEmailForm($token);
         } catch (InvalidArgumentException $e) {
@@ -403,8 +455,7 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionResendVerificationEmail()
-    {
+    public function actionResendVerificationEmail() {
         $model = new ResendVerificationEmailForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -415,7 +466,49 @@ class SiteController extends Controller
         }
 
         return $this->render('resendVerificationEmail', [
-            'model' => $model
+                    'model' => $model
         ]);
     }
+
+    public function actionPayment()
+{
+    $request = Yii::$app->request;
+    $restaurant = Restaurante::findOne(9);
+
+    if (!$restaurant) {
+        throw new NotFoundHttpException('Restaurant not found.');
+    }
+
+    if ($request->isPost) {
+        $paymentMethodId = $request->post('paymentMethodId');
+        $amount = 5000; // Amount in cents (i.e., $50.00)
+        $productDetails = [
+            'name' => $request->post('productName'),
+            'description' => $request->post('productDescription'),
+            'quantity' => $request->post('productQuantity'),
+        ];
+
+        $stripe = Yii::$app->stripe;
+        $stripe->setApiKey('sk_test_51PWJWpAsMoeIDeIqqe3ewLdVa0Ki6Nm3BhS5I0AlTmTKkx0QMqdfYlTJu4myBTt45mfQImNLqjqnRVp8pavMw3ZN00EiRvNRIc');
+        $paymentIntent = $stripe->createPaymentIntent($amount, $productDetails);
+
+        try {
+            $paymentIntent = $stripe->confirmPaymentIntent($paymentIntent->id, $paymentMethodId);
+
+            if ($paymentIntent->status == 'succeeded') {
+                // Payment successful, handle post-payment actions
+                Yii::$app->session->setFlash('success', 'Payment successful!');
+                return $this->refresh();
+            } else {
+                Yii::$app->session->setFlash('error', 'Payment failed. Please try again.');
+            }
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', 'Error: ' . $e->getMessage());
+        }
+    }
+
+    return $this->render('payment', ['restaurant' => $restaurant]);
+}
+
+
 }

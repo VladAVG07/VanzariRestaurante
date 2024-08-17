@@ -36,6 +36,13 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <?php
+            $restaurantUser = \backend\models\RestauranteUser::findOne(['user'=>Yii::$app->user->id]);
+            $setariVanzari = \backend\models\SetariVanzari::findOne(['restaurant' => $restaurantUser->restaurant]);
+            if (!is_null($setariVanzari)){
+                $idSetariVanzari = $setariVanzari->id;
+            }else{
+                $idSetariVanzari = null;
+            }
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
 //                    [
@@ -53,6 +60,7 @@
                     'url'=>['restaurante/update','id'=>!is_null(Yii::$app->user->identity->restaurant)?Yii::$app->user->identity->restaurant->id:-1]],
                     ['label' => 'Restaurante', 'header' => true,'visible' => Yii::$app->user->can('admin')],
                     ['label' => 'Restaurante', 'url' => ['restaurante/index'], 'icon' => 'store','visible' => Yii::$app->user->can('admin')],
+                    ['label' => 'Setari Vanzari', 'url' => ['setari-vanzari/update', 'id'=>$idSetariVanzari],'icon' => 'cog'],
                     ['label' => 'Administrare', 'header' => true],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Comenzi', 'url' => ['comenzi/index'],'icon' => 'star'],
@@ -61,6 +69,7 @@
                     ['label' => 'Stocuri', 'url' => ['stocuri/index'], 'icon' => 'boxes'],
                     ['label' => 'Persoane', 'url' => ['persoane/index'], 'icon' => 'users'],
                     ['label' => 'Functii', 'url' => ['functii/index'],'icon' => 'chart-bar'],
+                    ['label' => 'Setari Program', 'url' => ['intervale-livrare/index'], 'icon' => 'cog'],
                     ['label' => 'Setari Livrare', 'url' => ['setari-livrare/index'], 'icon' => 'cog'],
 //                    ['label' => 'MULTI LEVEL EXAMPLE', 'header' => true],
 //                    ['label' => 'Level1'],

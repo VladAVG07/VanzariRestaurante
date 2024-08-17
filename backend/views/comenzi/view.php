@@ -14,6 +14,7 @@ $this->title = 'Comanda numarul #' . $model->numar_comanda;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Comenzi'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $printezaAction = Yii::$app->getUrlManager()->createAbsoluteUrl('comenzi/printeaza');
+$printeazaBon = Url::toRoute('comenzi/printeaza-bon');
 $js = <<< SCRIPT
     $( document ).ready(function() {
     console.log( "ready!" );
@@ -41,6 +42,46 @@ $js = <<< SCRIPT
         });
     });
     $(function () {
+        $('.btnPrinteazaBon').click(function (){
+//            var receiptContent = document.getElementById('bonProduse').outerHTML;;
+//            console.log(receiptContent);
+//            
+//            var printArea = document.getElementById('printArea'); 
+//            printArea.innerHTML = receiptContent;
+//            var originalDisplay = document.body.style.display;
+//
+//            printArea.style.display = 'block';
+//    
+//            setTimeout(function () {
+//            window.print();
+//
+//            // Restore original display settings after printing
+//            printArea.style.display = 'none';
+//            document.body.style.display = originalDisplay;
+//        }, 2000); // Delay to ensure content is properly rendered before printing
+//            var prtContent = document.getElementById("modalContent1");
+//            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+//            WinPrint.document.write('<link href="/backend/css/site.css" rel="stylesheet">');
+//            WinPrint.document.write(prtContent.innerHTML);
+//           
+//            WinPrint.document.close();
+//            WinPrint.focus();
+//            WinPrint.print();
+//            WinPrint.close();
+              $.ajax({
+                type: "POST",
+                data: {id: $model->id},
+                url: "$printeazaBon",
+                success: function (data) {
+                   console.log(data);
+                   console.log('sunt bun');
+                }
+            });
+        
+        
+        });
+    });
+    $(function () {
         $('.btnPrinteaza').click(function(){
             $.ajax({
                 type: "POST",
@@ -58,12 +99,41 @@ $js = <<< SCRIPT
         });
     });
 });
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $(function () {
+        $('.bonProduse').click(function (){
+            
+            $.get($(this).attr('href'), function(data) {
+                $('#modalBonProduse').modal('show').find('#modalContent1').html(data)
+            });
+            return false;
+        });
+    });
+});
 SCRIPT;
 $this->registerJs($js, \yii\web\View::POS_READY);
 
 \yii\web\YiiAsset::register($this);
 ?>
 
+<?php
+Modal::begin([
+    'title' => '<h4>Bon produse</h4>',
+    'id' => 'modalBonProduse',
+    'size' => 'modal-lg'
+]);
+echo "<div id='modalContent1'></div>";
+?>
+<div id="printArea" style="width: 80mm"></div>
+<span class="float-right">
+    <a class="btn btn-app bg-success btnPrinteazaBon" style="width:130px;height:60px;text-align: center; align-items: center; display: flex; justify-content: center;">
+        <span style="font-size:25px;">Printeaza</span>
+    </a>
+</span>
+<?php
+Modal::end();
+?>
 
 <?php
 Modal::begin([
@@ -119,8 +189,6 @@ echo "<div id='modalContent'></div>";
 <?php
 Modal::end();
 ?>
-
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
@@ -213,6 +281,7 @@ Modal::end();
                             ])
                             ?>
                         <?php } ?>
+                        <?= Html::a(Yii::t('app', 'Bon produse'), ['comenzi/display-bon-produse', 'id' => $model->id], ['class' => 'btn btn-warning bonProduse']) ?>
 
 
                     <h3>Produse comanda</h3>

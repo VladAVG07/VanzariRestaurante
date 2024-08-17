@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'visible' => count($model->produseDetalii) > 1
                                 ],
                                 [
-                                    'attribute' => 'pret curent',
+                                    'attribute' => 'pret_curent',
                                     'value' => function ($model) {
                                         $lng = count($model->produseDetalii);
                                         if (count($model->produseDetalii) > 1) {

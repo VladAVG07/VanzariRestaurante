@@ -19,6 +19,13 @@ $urlProdus = Url::toRoute('site/afiseaza-produs');
 $urlAdaugaProdus = Url::toRoute('site/adauga-in-cos');
 $idProdus=Html::getInputId($model,'idProdus');
 $csrlf = sprintf('\'%s\':\'%s\'', \Yii::$app->request->csrfParam, \Yii::$app->request->getCsrfToken());
+
+$produs = backend\models\Produse::findOne(['id'=>$model->idProdus]);
+$categoriiAsociate = [];
+if (!is_null($produs)){
+$categoriiAsociate = backend\models\CategoriiAsociate::find()->where(['categorie'=>$produs->categorie])->all();
+}
+
 $formatJs = <<< SCRIPT
        
 $(document).ready(function() {
@@ -32,6 +39,7 @@ $this->registerJs($formatJs, yii\web\View::POS_END);
 $this->registerJs("
     function updateRadioButtonClass(element) {
         var radioButtons = $(element).closest('.btn-group').find('input[type=\"radio\"]');
+        
         radioButtons.each(function() {
             var radioButton = $(this);
             if (radioButton.prop('checked')) {
@@ -71,11 +79,12 @@ $form = ActiveForm::begin([
                 <div class="col-5">
                     <h5><span><?= $model->denumire ?></span></h5>
                 </div>
-                <div class="col-4 cos-produs align-items-center">
+                <div class="col-7 cos-produs text-center" style="align-items:center;display:flex;justify-content: center;flex-direction: column;">
                     <?php
-                    $model->idProdus=$model->produseDetalii[0]['id'];
-                    echo $form->field($model, "idProdus", ['options' => ['class' => 'd-none']])->hiddenInput()->label(false);
-                    if(count($model->produseDetalii)>1){
+                    if($generare)
+                        $model->idProdus=$model->produseDetalii[0]['id'];
+                        echo $form->field($model, "idProdus", ['options' => ['class' => 'd-none']])->hiddenInput()->label(false);
+                    if($generare && count($model->produseDetalii)>1){
                         $i=0;
                         foreach($model->produseDetalii as $pDetaliu){
                             echo Html::hiddenInput("detalii_produse[$i]",$pDetaliu['id'],['class'=>'detalii-produse-hidden','data-d-pret'=>sprintf('%s RON',$pDetaliu['pret'])]);
@@ -103,8 +112,9 @@ $form = ActiveForm::begin([
                         // ]
                     ])->label(false);
                     ?>
+                    <span class="price"><?= $generare?$model->produseDetalii[0]['pret']:$model->pret ?> RON</span>
                 </div>
-                <div class="col-3 text-left"><span class="price"><?= $model->produseDetalii[0]['pret'] ?> RON</span></div>
+
             </div>
             <!-- </div> -->
             <!-- </div> -->
@@ -113,9 +123,47 @@ $form = ActiveForm::begin([
 </div>
 
 <div class="p-3">
-    <div>
+    <!-- <div>
         <h5>Alte produse sugerate</h5>
-    </div>
+        <?php
+        
+        foreach ($categoriiAsociate as $categorieAsociata){
+            $produse = \backend\models\Produse::findAll(['categorie'=> $categorieAsociata->categorie_asociata]);
+            foreach ($produse as $produs){
+                $produsDetaliu = \backend\models\ProduseDetalii::findOne(['produs'=>$produs->id]);
+             //   $basketItem = new models\BasketItem();
+            ?>
+            <div class="d-flex">
+            <div class="col-5">
+            <h5><span><?= $produs->nume ?></span></h5>
+            </div>
+            <div class="col-4">
+            <?php
+            echo TouchSpin::widget([
+                'name' => 'custom-touchspin',
+                'options' => [
+                    'class' => 'cos-produs-input',
+                ],
+                'pluginOptions' => [
+                    'initval' => 0,
+                    'min' => 0,
+                    'max' => 100,
+                    'buttonup_class' => 'h-50 btn btn-block btn-sm btn-primary',
+                    'buttondown_class' => 'h-50 btn btn-sm btn-info',
+                    'buttonup_txt' => '+',
+                    'buttondown_txt' => '-',
+                ],
+            ]);
+            ?>
+            </div>
+            
+            <div class="col-3 text-left"><span class="price"><?=$produsDetaliu->pret ?> RON</span></div>
+            </div>
+            <?php
+            }
+        }
+        ?>
+    </div> -->
     <div class="form-row">
 
     </div>

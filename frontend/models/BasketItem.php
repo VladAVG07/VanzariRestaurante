@@ -12,5 +12,6 @@ class BasketItem extends Model{
     public $cantitate;
     public $pretFinal;
     public $produseDetalii;
+    public $pdId;
     
 }

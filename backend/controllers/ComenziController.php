@@ -2,13 +2,19 @@
 
 namespace backend\controllers;
 
+require __DIR__ . '\..\..\vendor\autoload.php';
+
 use Yii;
 use backend\models\Comenzi;
 use backend\models\ComenziSearch;
+use backend\models\ProduseDetalii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\db\Expression;
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Mike42\Escpos\EscposImage;
 
 /**
  * ComenziController implements the CRUD actions for Comenzi model.
@@ -27,6 +33,104 @@ class ComenziController extends Controller {
                 ],
             ],
         ];
+    }
+
+    public function actionPrinteazaBon() {
+        $id = Yii::$app->request->post('id');
+        $comanda = Comenzi::findOne($id);
+        $linie = str_repeat("\xc4", 30);
+
+        //$logo = EscposImage::load("../web/uploads/diobistro.png", false);
+       // $logo = EscposImage::load(, false);
+        
+        $connector = new WindowsPrintConnector("pos-58");
+        $printer = new Printer($connector);
+
+        
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+      //  $printer->graphics($logo);
+        $printer->setEmphasis(true);
+        $printer->text("Comanda\n");
+
+        $printer->text($comanda->numar_comanda . "\n");
+        $printer->setEmphasis(false);
+        $printer->text($linie);
+        $printer->feed();
+        $printer->text("Telefon\n");
+        $printer->setTextSize(2, 2);
+        $printer->text($comanda->numar_telefon . "\n");
+        $printer->setTextSize(1, 1);
+        $printer->text($linie);
+        $printer->feed();
+        $printer->text($comanda->adresa);
+        $printer->feed();
+        $printer->text($linie);
+        $printer->feed();
+
+        $comenziLinii = \backend\models\ComenziLinii::findAll(['comanda' => $id]);
+        foreach ($comenziLinii as $comandaLinie) {
+            $produs = \backend\models\Produse::findOne(['id' => $comandaLinie->produs]);
+            if (!is_null($comandaLinie->produs_detaliu)) {
+                $detaliu = \backend\models\ProduseDetalii::find()->where(['id' => $comandaLinie->produs_detaliu])->one();
+            } else {
+                $detaliu = new ProduseDetalii();
+                $detaliu->pret = $produs->pret_curent;
+            }
+            if (empty($detaliu->descriere))
+                $linie1 = '[ ] ' . $comandaLinie->cantitate . ' x ' . $produs->nume;
+            else
+                $linie1 = '[ ] ' . $comandaLinie->cantitate . ' x ' . $produs->nume . ' - ' . $detaliu->descriere;
+
+
+            
+            if ($produs->picant){
+                $printer->setJustification(Printer::JUSTIFY_CENTER);
+                $printer->setFont(Printer::FONT_A);
+                $printer->setEmphasis(true);
+                $printer->setTextSize(2, 1);
+                $printer->text("**PICANT**\n");
+               // $printer->feed();
+                $printer->setTextSize(1, 1);
+                $printer->setEmphasis(false);
+                $printer->setFont(Printer::FONT_A);
+                $printer->setJustification(Printer::JUSTIFY_LEFT);
+                
+//                $printer->setJustification(Printer::JUSTIFY_RIGHT);
+//                $printer->setEmphasis(true);
+//                $printer->text("**PICANT**");
+//                $printer->setEmphasis(false);
+//                $printer->setJustification(Printer::JUSTIFY_LEFT);
+            }
+            $printer->setJustification(Printer::JUSTIFY_LEFT);
+            $printer->text($linie1);
+            
+            $printer->feed();
+            $printer->setJustification(Printer::JUSTIFY_RIGHT);
+            $printer->setEmphasis(true);
+            $printer->text($comandaLinie->pret . ' RON');
+            $printer->setEmphasis(false);
+            $printer->feed(2);
+        }
+
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->setEmphasis(true);
+        $printer->setTextSize(2, 2);
+        $printer->text("Total: " . number_format($comanda->pret, 2) . " RON\n");
+        $printer->setTextSize(1, 1);
+        $printer->setEmphasis(false);
+        $printer->setJustification(Printer::JUSTIFY_LEFT);
+        $printer->feed();
+        $printer->text($linie);
+        $printer->feed();
+        $printer->setEmphasis(true);
+        $printer->text("Mentiunile clientului: ");
+        $printer->setEmphasis(false);
+        $printer->text($comanda->mentiuni . "\n");
+        $printer->feed(3);
+        $printer->cut();
+
+
+        $printer->close();
     }
 
     /**
@@ -66,6 +170,10 @@ class ComenziController extends Controller {
                     'idComanda' => $id,
                     'listDataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionDisplayBonProduse($id) {
+        return $this->renderPartial('_bon_produse', ['id' => $id]);
     }
 
     public function actionPrinteaza() {
@@ -120,7 +228,7 @@ class ComenziController extends Controller {
                         'model' => $model,
             ]);
         } else {
-            $model = Comenzi::findOne(['id'=>$update]);
+            $model = Comenzi::findOne(['id' => $update]);
             if ($model->actualizeazaComanda($mentiuni, $adresa, $telefon, $produse)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
