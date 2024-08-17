@@ -42,6 +42,21 @@ $js = <<< SCRIPT
         });
     });
     $(function () {
+        // changed id to class
+        $('#printeaza-instant').click(function (){
+            $.ajax({
+                type: "POST",
+                url: "$printeazaBon",
+                data: {id: $model->id},
+                success: function (data) {
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+    $(function () {
         $('.btnPrinteazaBon').click(function (){
 //            var receiptContent = document.getElementById('bonProduse').outerHTML;;
 //            console.log(receiptContent);
@@ -282,6 +297,15 @@ Modal::end();
                             ?>
                         <?php } ?>
                         <?= Html::a(Yii::t('app', 'Bon produse'), ['comenzi/display-bon-produse', 'id' => $model->id], ['class' => 'btn btn-warning bonProduse']) ?>
+                        <?=
+                        Html::a(
+                                '<i class="fas fa-print" style="color: #ffffff;"></i> Printeaza', 'javascript:void(0);', // This prevents the default link behavior
+                                [
+                            'class' => 'btn btn-dark',
+                            'id' => 'printeaza-instant'
+                                ]
+                        )
+                        ?>
 
 
                     <h3>Produse comanda</h3>

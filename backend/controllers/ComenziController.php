@@ -38,33 +38,39 @@ class ComenziController extends Controller {
     public function actionPrinteazaBon() {
         $id = Yii::$app->request->post('id');
         $comanda = Comenzi::findOne($id);
-        $linie = str_repeat("\xc4", 30);
+        $linie = str_repeat("\xc4", 32);
+        $logo = EscposImage::load("../web/uploads/diobistro.png");
+        // $logo = EscposImage::load(, false);
 
-        //$logo = EscposImage::load("../web/uploads/diobistro.png", false);
-       // $logo = EscposImage::load(, false);
-        
         $connector = new WindowsPrintConnector("pos-58");
         $printer = new Printer($connector);
 
-        
+        $data = date("d.m.Y");
+        $time = date("H:i");
+
+        $lineLength = 32;
+        $space = $lineLength - strlen($data) - strlen($time);
+        $padding = str_repeat(' ', $space);
+        $printer->text($data . $padding . $time . "\n");
+
         $printer->setJustification(Printer::JUSTIFY_CENTER);
-      //  $printer->graphics($logo);
+        $printer->bitImage($logo);
         $printer->setEmphasis(true);
         $printer->text("Comanda\n");
 
         $printer->text($comanda->numar_comanda . "\n");
         $printer->setEmphasis(false);
-        $printer->text($linie);
+        $printer->textRaw($linie);
         $printer->feed();
         $printer->text("Telefon\n");
         $printer->setTextSize(2, 2);
         $printer->text($comanda->numar_telefon . "\n");
         $printer->setTextSize(1, 1);
-        $printer->text($linie);
+        $printer->textRaw($linie);
         $printer->feed();
         $printer->text($comanda->adresa);
         $printer->feed();
-        $printer->text($linie);
+        $printer->textRaw($linie);
         $printer->feed();
 
         $comenziLinii = \backend\models\ComenziLinii::findAll(['comanda' => $id]);
@@ -82,19 +88,19 @@ class ComenziController extends Controller {
                 $linie1 = '[ ] ' . $comandaLinie->cantitate . ' x ' . $produs->nume . ' - ' . $detaliu->descriere;
 
 
-            
-            if ($produs->picant){
+
+            if ($produs->picant) {
                 $printer->setJustification(Printer::JUSTIFY_CENTER);
                 $printer->setFont(Printer::FONT_A);
                 $printer->setEmphasis(true);
                 $printer->setTextSize(2, 1);
                 $printer->text("**PICANT**\n");
-               // $printer->feed();
+                // $printer->feed();
                 $printer->setTextSize(1, 1);
                 $printer->setEmphasis(false);
                 $printer->setFont(Printer::FONT_A);
                 $printer->setJustification(Printer::JUSTIFY_LEFT);
-                
+
 //                $printer->setJustification(Printer::JUSTIFY_RIGHT);
 //                $printer->setEmphasis(true);
 //                $printer->text("**PICANT**");
@@ -103,7 +109,7 @@ class ComenziController extends Controller {
             }
             $printer->setJustification(Printer::JUSTIFY_LEFT);
             $printer->text($linie1);
-            
+
             $printer->feed();
             $printer->setJustification(Printer::JUSTIFY_RIGHT);
             $printer->setEmphasis(true);
@@ -114,13 +120,23 @@ class ComenziController extends Controller {
 
         $printer->setJustification(Printer::JUSTIFY_CENTER);
         $printer->setEmphasis(true);
+        $printer->setFont(Printer::FONT_B);
         $printer->setTextSize(2, 2);
         $printer->text("Total: " . number_format($comanda->pret, 2) . " RON\n");
         $printer->setTextSize(1, 1);
         $printer->setEmphasis(false);
         $printer->setJustification(Printer::JUSTIFY_LEFT);
+        $printer->setFont(Printer::FONT_A);
         $printer->feed();
-        $printer->text($linie);
+        $printer->textRaw($linie);
+        $printer->feed();
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
+        $printer->text("Tip plata\n");
+        $printer->setTextSize(2, 2);
+        $printer->text("NUMERAR\n");
+        $printer->setJustification(Printer::JUSTIFY_LEFT);
+        $printer->setTextSize(1, 1);
+        $printer->textRaw($linie);
         $printer->feed();
         $printer->setEmphasis(true);
         $printer->text("Mentiunile clientului: ");
