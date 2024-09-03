@@ -53,8 +53,8 @@ public function actionIndex() {
     }*/
    public function prepareDataProvider() {
     $pageSize = Yii::$app->request->get('per-page', 10); // Number of elements per page
-    $filterProperty = Yii::$app->request->get('filter-property', null); // Property filter value
-    $filterValue = Yii::$app->request->get('filter-value', null); // Property filter value
+    $filterProperties = Yii::$app->request->get('filter-properties', null); // Property filter value
+    $filterValues = Yii::$app->request->get('filter-values', null); // Property filter value
     $page = Yii::$app->request->get('page', 1); // Page number, default to 1 if not specified
 
         $query = (new \yii\db\Query())
