@@ -1,0 +1,5 @@
+[12-Jul-2024 07:44:12 UTC] PHP Notice:  Trying to get property 'restaurant' of non-object in /home/diobistro/admin.diobistro.ro/backend/views/layouts/sidebar.php on line 5
+[12-Jul-2024 07:44:12 UTC] PHP Notice:  Trying to get property 'nume' of non-object in /home/diobistro/admin.diobistro.ro/backend/views/layouts/sidebar.php on line 5
+[12-Jul-2024 07:44:12 UTC] PHP Notice:  Trying to get property 'restaurant' of non-object in /home/diobistro/admin.diobistro.ro/backend/views/layouts/sidebar.php on line 40
+[12-Jul-2024 07:44:12 UTC] PHP Notice:  Trying to get property 'restaurant' of non-object in /home/diobistro/admin.diobistro.ro/backend/views/layouts/sidebar.php on line 59
+[12-Jul-2024 07:44:12 UTC] PHP Notice:  Trying to get property 'restaurant' of non-object in /home/diobistro/admin.diobistro.ro/backend/views/layouts/sidebar.php on line 60

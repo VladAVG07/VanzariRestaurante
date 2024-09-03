@@ -1,0 +1,20 @@
+suite_namespace: api\tests
+actor: ApiTester
+modules:
+    enabled:
+        - REST:
+            #url: http://localhost/TenisApp/api/web/v1
+            url: 'v1/'
+            depends: Yii2
+            # depends: PhpBrowser
+            part: Json
+           # configFile: 'config/test.php'
+        - \api\tests\Helper\Api
+    config:
+        - Yii2:
+           #     configFile: 'codeception/config/functional.php'
+           # entryUrl: http://localhost/TenisApp
+           part: [fixtures, orm]
+           cleanup: false
+           transaction: true
+       

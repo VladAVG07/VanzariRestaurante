@@ -1,0 +1,278 @@
+.btn-meniu-stil {
+    background-color: #f8ac20; /* Green background */
+    border: none;
+    color: white;
+    padding: 10px 10px; /* Add padding */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded edges */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.btn-meniu-stil:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}
+.floating-cart {
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    z-index: 999; /* Ensure the button is above other elements */
+}
+
+.cart-button {
+    background-color: #f8ac20; /* Green background */
+    border: 2px solid white !important;
+    border: none;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    cursor: pointer;
+    border-radius: 50%; /* Make the button round */
+    transition: background-color 0.3s; /* Add transition */
+}
+
+.cart-button i {
+    font-size: 2em; /* Adjust the icon size */
+}
+
+.cart-button:hover {
+    background-color: #cb8607; /* Darker green on hover */
+}
+
+
+.modal-content {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #121618;
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: gray;
+    background: url(../images/bg_4.jpg) no-repeat fixed;
+    background-size: cover; 
+}
+.bootstrap-touchspin{
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+     align-items: center !important;
+}
+.cos-produs-input{
+    text-align: center;
+}
+.modal-body{
+    margin:0;
+    padding: 5px 0px 0px 0px;
+}
+
+.modal-body .form-group {
+    margin-bottom: 0px !important;
+}
+  
+.form-check-input  {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+, .custom-control-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Dot inside the radio button */
+.form-check-input::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.custom-control-input::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* Styles for checked radio buttons */
+.form-check-input:checked::before {
+    background-color: #fac564;
+}
+.custom-control-input:checked::before {
+    background-color: #fac564;
+}
+/* Styles for border when unchecked */
+.form-check-input:checked {
+    border-color: #fac564;
+}
+.custom-control-input:checked {
+    border-color: #fac564;
+}
+/* Styles for border when unchecked */
+.form-check-input:not(:checked) {
+    border-color: #333;
+}
+
+.custom-control-input:not(:checked) {
+    border-color: #333;
+}
+/* Hover effect */
+.form-check-input:hover:not(:checked) {
+    border-color: #555;
+}
+
+.custom-control-input:hover:not(:checked) {
+    border-color: #555;
+}
+
+.form-check label {
+    margin-bottom: 0px;
+    margin-left: 1.25em;
+}
+.custom-control label {
+    margin-bottom: 0px;
+    margin-left: 1.25em;
+}
+.form-check label {
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 200;
+    font-family: "Josefin Sans", Arial, sans-serif;
+    font-size: 1rem;
+}
+.custom-control label {
+    line-height: 1.4;
+    color: #fff;
+    font-weight: 200;
+    font-family: "Josefin Sans", Arial, sans-serif;
+    font-size: 1rem;
+}
+
+.selecteaza-varianta {
+    border-top: 1px solid #e9ecef;
+}
+
+.bootstrap-touchspin {
+    max-width:10em !important
+}
+
+.modal-content .spinner-border {
+    width: 10rem;
+    height: 10rem;
+    border-width: 0.6rem;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.top-50 {
+    top: 50%;
+}
+
+.start-50 {
+    left: 50%;
+}
+
+.translate-middle {
+    transform: translate(-50%, -50%);
+}
+
+span.price  {
+    color: #fac564;
+}
+.form-group label {
+    color: #fff !important;
+}
+
+#comanda-form input[type=text] {
+    border: 1px solid white !important;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    /* border-bottom: 1px solid white !important; Set white as default bottom border color */
+    /* outline: none; Remove default focus outline */
+}
+
+/* Style for the input text field when focused */
+#comanda-form input[type=text]:focus {
+    border-radius: 5px;
+    border-color: #fac564 !important; /* Change the bottom border color when focused */
+}
+
+#comanda-form .form-group textarea {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: white !important;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    /* border-bottom: 1px solid white !important; Set white as default bottom border color */
+    /* outline: none; Remove default focus outline */
+}
+
+/* Style for the input text field when focused */
+#comanda-form textarea:focus {
+    border-radius: 5px;
+
+    border-color: #fac564 !important; /* Change the bottom border color when focused */
+}
+
+.cos-entry {
+   width: 100%;
+    border-top: 1px dashed #bf7e06;
+}
+.cos-produs .form-group {
+    display: inline;
+}
+
+.form-group select {
+    background-color: #000 !important; /* Set your desired background color */
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: white !important;
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    padding-right: 1.0rem;
+    /* Add any additional styling as needed */
+}
+
+.form-group .form-control option:hover {
+    background-color: #fac564 !important; /* Set your desired hover background color */
+    /* Add any additional styling as needed */
+}
+
