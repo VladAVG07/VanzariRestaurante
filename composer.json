@@ -39,7 +39,8 @@
         "kartik-v/yii2-widget-touchspin": "dev-master",
         "kartik-v/yii2-widget-timepicker": "v1.0.5",
         "stripe/stripe-php": "v15.0.0",
-        "mike42/escpos-php": "dev-development#f414320fc510afcacd4cbb75902f827399dee429"
+        "mike42/escpos-php": "dev-development#f414320fc510afcacd4cbb75902f827399dee429",
+        "koolreport/core": "6.5.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

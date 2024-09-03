@@ -61,17 +61,31 @@ class ProduseController extends Controller {
     //        return $this->render('upload', ['model' => $model]);
     //    }
 
-    public function actionCreate() {
+    public function actionCreate($id = NULL) {
         $postData = Yii::$app->request->post();
         $model = new Produse();
+
+
+
         $model->stocabil = 0;
         $model->ordine = 0;
         $model->disponibil = 1;
         $model->tip_produs = 1;
-        $model->produse_detalii[] = new ProduseDetalii(['disponibil' => 1]);
-        //  $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
-        //  VarDumper::dump(Yii::$app->request->post());
-        //exit();
+
+        if (is_null($id)) {
+
+            $model->produse_detalii[] = new ProduseDetalii(['disponibil' => 1]);
+            //  $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
+            //  VarDumper::dump(Yii::$app->request->post());
+            //exit();
+        } else {
+            $produsVechi = Produse::findOne(['id' => $id]);
+            $model->categorie = $produsVechi->categorie;
+            $produseDetaliiVechi = $produsVechi->produseDetalii;
+            foreach ($produseDetaliiVechi as $pdv) {
+                $model->produse_detalii[] = new ProduseDetalii(['disponibil' => 1, 'descriere' => $pdv->descriere]);
+            }
+        }
         if ($model->load($postData)) {
 
             $details = [];
@@ -91,7 +105,7 @@ class ProduseController extends Controller {
             if ($model->saveProdus($numeImagine)) //&& $model->upload($numeImagine))
                 return $this->redirect(['view', 'id' => $model->id]);
         }
-
+        
         return $this->render('create', [
                     'model' => $model,
         ]);
