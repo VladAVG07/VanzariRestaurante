@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use backend\models\Restaurante;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -208,5 +209,22 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRol() {
+        return $this->hasOne(\backend\models\AuthItem::className(), 
+                ['name' => 'item_name'])->viaTable('auth_assignment', ['user_id' => 'id']);
+    }
+     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRestaurant()
+    {
+        // Define the one-to-one relationship via the junction table
+        return $this->hasOne(Restaurante::className(), ['id' => 'restaurant'])
+                    ->viaTable('restaurante_user', ['user' => 'id']);
     }
 }

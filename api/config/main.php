@@ -137,6 +137,20 @@ return [
                 [
                     // 'class' => 'api\modules\v1\rules\CustomUrlRule',
                     'class' => 'yii\rest\UrlRule',
+                    'controller' => 'v1/restaurante', // our country api rule,
+                    'pluralize' => false,
+                    'tokens' => [
+                        '{id}' => '<id:\\w+>'
+                    ],
+                    'extraPatterns' => [
+                       // 'GET verificaStoc' => 'verifica-stoc',
+                        //'POST produsSesiune' => 'produs-sesiune'
+                        ]
+//                    'except' => ['delete'],
+                ],
+                [
+                    // 'class' => 'api\modules\v1\rules\CustomUrlRule',
+                    'class' => 'yii\rest\UrlRule',
                     'controller' => 'v1/produse', // our country api rule,
                     'pluralize' => false,
                     'tokens' => [

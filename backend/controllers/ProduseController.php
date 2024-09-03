@@ -3,13 +3,17 @@
 namespace backend\controllers;
 
 use backend\models\PreturiProduse;
+use backend\models\ProdusDetaliuForm;
 use Yii;
 use backend\models\Produse;
+use backend\models\ProduseDetalii;
 use backend\models\ProduseSearch;
 use yii\db\Exception;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\VarDumper;
+use yii\web\UploadedFile;
 
 /**
  * ProduseController implements the CRUD actions for Produse model.
@@ -44,6 +48,55 @@ class ProduseController extends Controller {
         ]);
     }
 
+    //    public function actionUpload() {
+    //        $model = new UploadForm();
+    //
+    //        if (Yii::$app->request->isPost) {
+    //            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+    //            if ($model->upload()) {
+    //                return;
+    //            }
+    //        }
+    //
+    //        return $this->render('upload', ['model' => $model]);
+    //    }
+
+    public function actionCreate() {
+        $postData = Yii::$app->request->post();
+        $model = new Produse();
+        $model->stocabil = 0;
+        $model->ordine = 0;
+        $model->disponibil = 1;
+        $model->tip_produs = 1;
+        $model->produse_detalii[] = new ProduseDetalii(['disponibil' => 1]);
+        //  $model->produse_detalii[]=new ProdusDetaliuForm(['disponibil'=>false]);
+        //  VarDumper::dump(Yii::$app->request->post());
+        //exit();
+        if ($model->load($postData)) {
+
+            $details = [];
+            foreach ($postData['ProduseDetalii'] as $detailData) {
+                $detailModel = new ProduseDetalii();
+                $detailModel->load(['ProduseDetalii' => $detailData]);
+                $details[] = $detailModel;
+            }
+            $model->produse_detalii = $details;
+            //  VarDumper::dump($details);
+            // exit();
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $numeImagine = null;
+            if (!is_null($model->imageFile)) {
+                $numeImagine = Yii::$app->security->generateRandomString(32);
+            }
+            if ($model->saveProdus($numeImagine)) //&& $model->upload($numeImagine))
+                return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('create', [
+                    'model' => $model,
+        ]);
+    }
+
     public function actionIncarcareSesiune() {
         $sesiune = \backend\models\Sesiuni::findOne(['user' => \Yii::$app->user->id, 'data_ora_sfarsit' => NULL]);
         if (!is_null($sesiune)) {
@@ -75,6 +128,10 @@ class ProduseController extends Controller {
         ]);
     }
 
+    public function actionModalProdus($idProdus) {
+        return $this->renderAjax('_modal_produs', ['id' => $idProdus]);
+    }
+
     public function actionEditeazaInterfata() {
         $model = new \backend\models\OrdineCategoriiForm();
         //$model->validate();
@@ -98,25 +155,25 @@ class ProduseController extends Controller {
         return $this->render('edit_interfata', ['model' => $model]);
     }
 
-//    public function actionModificaOrdine($ordine){
-//        $transaction = Yii::$app->db->beginTransaction();
-//        \yii\helpers\VarDumper::dump('sault');
-//        exit();
-////        $x=1;
-////        $save = true;
-////        foreach ($ordine as $ordin){
-////            $categorie = \backend\models\Categorii::findOne($ordin);
-////            $categorie->ordine = $x;
-////            $save = $categorie->save();
-////            $x++;
-////        }
-////        if ($save) {
-////            $transaction->commit();
-////        }  else{
-////            $transaction->rollBack();
-////        }
-//        
-//    }
+    //    public function actionModificaOrdine($ordine){
+    //        $transaction = Yii::$app->db->beginTransaction();
+    //        \yii\helpers\VarDumper::dump('sault');
+    //        exit();
+    ////        $x=1;
+    ////        $save = true;
+    ////        foreach ($ordine as $ordin){
+    ////            $categorie = \backend\models\Categorii::findOne($ordin);
+    ////            $categorie->ordine = $x;
+    ////            $save = $categorie->save();
+    ////            $x++;
+    ////        }
+    ////        if ($save) {
+    ////            $transaction->commit();
+    ////        }  else{
+    ////            $transaction->rollBack();
+    ////        }
+    //        
+    //    }
 
     public function actionAfisareIstoric($telefon) {
 
@@ -132,7 +189,19 @@ class ProduseController extends Controller {
         ]);
     }
 
-    public function actionProceseazaComanda($categorie = NULL, $categorieMare = NULL) {
+    public function actionIncarcaDetalii($idComanda) {
+        $comanda = \backend\models\Comenzi::findOne(['id' => $idComanda]);
+
+        $detalii = [
+            'adresa' => $comanda->adresa,
+            'mentiuni' => $comanda->mentiuni,
+            'telefon' => $comanda->numar_telefon,
+        ];
+        $detaliiJson = json_encode($detalii);
+        return $detaliiJson;
+    }
+
+    public function actionProceseazaComanda($update = NULL, $categorie = NULL, $categorieMare = NULL) {
         // \yii\helpers\VarDumper::dump($categorie);
         $linii = []; //Yii::$app->session->get('produseCos', []);
         $searchModel = new ProduseSearch();
@@ -141,21 +210,29 @@ class ProduseController extends Controller {
         }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-//        $linie=new \backend\models\LinieComanda([
-//            'cantitate'=>3,
-//            'produs'=>90,
-//        ]);A
-//        $linii[]=$linie;
+        //        $linie=new \backend\models\LinieComanda([
+        //            'cantitate'=>3,
+        //            'produs'=>90,
+        //        ]);A
+        //        $linii[]=$linie;
         //Yii::$app->session->set('produseCos', $linii);
         $dataProviderCos = new \yii\data\ArrayDataProvider([
             'allModels' => $linii,
         ]);
         $cat = \backend\models\Categorii::findOne($categorie);
         //  \yii\helpers\VarDumper::dump($categorieMare);
+
         if (\Yii::$app->request->isAjax && is_null($categorieMare)) {
+
+            //            exit();
             $catName = 'rezultate-cautare';
             if ($cat) {
                 $catName = \yii\helpers\Inflector::slug($cat->nume);
+            }
+
+            $produse = Produse::findAll(['categorie' => $cat->id]);
+            if (!$produse) {
+                return $this->renderPartial('_faraproduse_view');
             }
             return $this->renderAjax('_list_view', [
                         'searchModel' => $searchModel,
@@ -163,13 +240,67 @@ class ProduseController extends Controller {
                         'dataProvider' => $dataProvider,
             ]);
         }
+        if (is_null($update)) {
+            $update = 0;
+        }
         //  \yii\helpers\VarDumper::dump('sunt aici' . $categorieMare . 'da');
         return $this->render('view_products', [
                     //'searchModel' => $searchModel
+                    'update' => $update,
                     'model' => $searchModel,
                     'dataProvider' => $dataProvider,
                     'dataProviderCos' => $dataProviderCos,
         ]);
+    }
+
+    public function actionProduseComanda($idComanda) {
+        if ($idComanda != 0) {
+            $comenziLinii1 = \backend\models\ComenziLinii::find()->where(['comanda' => $idComanda])->all();
+            foreach ($comenziLinii1 as $cl) {
+                $produs = $cl->produs0;
+
+                $produsDetaliu = \backend\models\ProduseDetalii::findOne(['id' => $cl->produs_detaliu]);
+                $pret = $produsDetaliu->pret;
+
+                $modelData = $produs->toArray();
+                $additionalData = $produs->pretMeniu;
+                $modelData['pret'] = $additionalData;
+
+                $produseDetalii = \backend\models\ProduseDetalii::find()->where(['produs' => $produs->id])
+                                ->andWhere(['disponibil' => 1])->all();
+                $detaliu = $cl->produs_detaliu;
+                $numeComplet = $produs->nume;
+                if (sizeof($produseDetalii) > 1) {
+                    $numeComplet = $numeComplet . ' - ' . $produsDetaliu->descriere;
+                    $modelData['id_detaliu'] = $cl->produs_detaliu;
+                    $modelData['pret_detaliu'] = $pret;
+                } else {
+                    $modelData['id_detaliu'] = null;
+                    $detaliu = null;
+                }
+
+
+
+                $produsCustom = [
+                    'id' => $produs->id,
+                    'cantitate' => $cl->cantitate,
+                    'denumire' => $numeComplet,
+                    'pret' => $pret,
+                    'json' => $modelData,
+                    'detaliu' => $detaliu
+                ];
+
+                $produseCustom[] = $produsCustom;
+            }
+
+            $jsonProduseCustom = json_encode($produseCustom);
+            return $jsonProduseCustom;
+        }
+        return;
+    }
+
+    public function actionSchimbaCategoria($idCategorie) {
+        return $this->renderAjax('_subcategorii_view', ['id' => $idCategorie]);
     }
 
     public function actionComandaSesiune($idUser, $idProdus, $cantitate) {
@@ -186,17 +317,6 @@ class ProduseController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
-        $model = new Produse();
-        $model->stocabil = 0;
-        if ($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('create', [
-                    'model' => $model,
-        ]);
-    }
 
     /**
      * Updates an existing Produse model.
@@ -206,19 +326,44 @@ class ProduseController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id) {
-        $model = $this->findModel($id);
-        $model->data_productie = strtotime($model->data_productie);
-        $query = PreturiProduse::find()->where(['and', ['produs' => $id],
-            ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]]);
-        $preturiViitoare = count($query->all());
+        $postData = Yii::$app->request->post();
 
-        if ($preturiViitoare == 0) {
-            if ($model->load(Yii::$app->request->post()) && $model->saveProdus()) {
+        $model = $this->findModel($id);
+        foreach ($model->produseDetalii as $pd) {
+            $model->produse_detalii[] = new ProduseDetalii(['pret' => $pd->pret, 'disponibil' => $pd->disponibil, 'descriere' => $pd->descriere]);
+        }
+        $model->tip_produs = 1;
+        if (count($model->produse_detalii) > 0) {
+            $model->tip_produs = 2;
+        }
+        $model->data_productie = strtotime($model->data_productie);
+        $query = PreturiProduse::find()->where([
+            'and', ['produs' => $id],
+            ['or', ['IS', 'data_sfarsit', NULL], ['>=', 'data_sfarsit', new \yii\db\Expression('now()')]]
+        ]);
+        $preturiViitoare = count($query->all());
+        if ($model->load($postData)) {
+            $details = [];
+            foreach ($postData['ProduseDetalii'] as $detailData) {
+                $detailModel = new ProduseDetalii();
+                $detailModel->load(['ProduseDetalii' => $detailData]);
+                $details[] = $detailModel;
+            }
+            $model->produse_detalii = $details;
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $numeImagine = null;
+            if (!is_null($model->imageFile)) {
+                $numeImagine = Yii::$app->security->generateRandomString(32);
+                $model->imageRemoved = 0;
+            }
+            /* if ($preturiViitoare == 0) {
+              if ($model->saveProdus($numeImagine)) {
+              return $this->redirect(['view', 'id' => $model->id]);
+              }
+              } else */
+            if ($model->updateProdus($numeImagine)) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
-        } else
-        if ($model->load(Yii::$app->request->post()) && $model->updateProdus()) {
-            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -234,6 +379,7 @@ class ProduseController extends Controller {
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id) {
+        PreturiProduse::deleteAll(['produs' => $id]);
         $this->findModel($id)->delete();
         return $this->redirect(['index']);
     }

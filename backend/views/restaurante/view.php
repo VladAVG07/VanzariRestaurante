@@ -25,6 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
                             'cui',
                             'adresa',
                             'numar_telefon',
+                            [
+                                'attribute' => 'imageFile',
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                   /// \yii\helpers\VarDumper::dump($model->imageFile);
+                                    return Html::img(Yii::$app->request->baseUrl . '/' . $model->poza_prezentare, ['class' => 'img-thumbnail', 'style' => 'max-width:400px;']);
+                                },
+                            ],
                         ],
                     ]) ?>
                     <p>

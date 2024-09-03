@@ -13,6 +13,7 @@ use Yii;
  * @property string $numeProdus
  * @property int $cantitate
  * @property float $pret
+ * @property int $produs_detaliu
  *
  * @property Comenzi $comanda0
  * @property Produse $produs0
@@ -42,7 +43,7 @@ class ComenziLinii extends \yii\db\ActiveRecord {
             [['comanda', 'produs', 'cantitate', 'pret'], 'required'],
             [['comanda', 'produs', 'cantitate'], 'integer'],
             [['pret'], 'number'],
-            [['comanda', 'produs'], 'unique', 'targetAttribute' => ['comanda', 'produs']],
+            [['produs_detaliu'], 'safe'],
             [['comanda'], 'exist', 'skipOnError' => true, 'targetClass' => Comenzi::class, 'targetAttribute' => ['comanda' => 'id']],
             [['produs'], 'exist', 'skipOnError' => true, 'targetClass' => Produse::class, 'targetAttribute' => ['produs' => 'id']],
         ];

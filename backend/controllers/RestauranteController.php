@@ -5,19 +5,23 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Restaurante;
 use backend\models\RestauranteSearch;
+use backend\services\FileUploadService;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * RestauranteController implements the CRUD actions for Restaurante model.
  */
-class RestauranteController extends Controller {
+class RestauranteController extends Controller
+{
 
     /**
      * {@inheritdoc}
      */
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -32,17 +36,19 @@ class RestauranteController extends Controller {
      * Lists all Restaurante models.
      * @return mixed
      */
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $searchModel = new RestauranteSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                    'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
-    public function actionVerificaCui($cui) {
+    public function actionVerificaCui($cui)
+    {
         $jsonContent['success'] = false;
         $ch = curl_init();
         $headers = [
@@ -50,8 +56,8 @@ class RestauranteController extends Controller {
         ];
 
         $postData = [[
-        'cui' => $cui,
-        'data' => date('Y-m-d')
+            'cui' => $cui,
+            'data' => date('Y-m-d')
         ]];
         curl_setopt($ch, CURLOPT_URL, 'https://webservicesp.anaf.ro/PlatitorTvaRest/api/v8/ws/tva');
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -81,9 +87,10 @@ class RestauranteController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id) {
+    public function actionView($id)
+    {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -92,15 +99,17 @@ class RestauranteController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate()
+    {
         $model = new Restaurante();
 
         if ($model->load(Yii::$app->request->post()) && $model->salveazaRestaurant()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'id' => $model->id]);
+            
         }
 
         return $this->render('create', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -111,7 +120,8 @@ class RestauranteController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -119,7 +129,7 @@ class RestauranteController extends Controller {
         }
 
         return $this->render('update', [
-                    'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -130,7 +140,8 @@ class RestauranteController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -143,12 +154,12 @@ class RestauranteController extends Controller {
      * @return Restaurante the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id) {
+    protected function findModel($id)
+    {
         if (($model = Restaurante::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
     }
-
 }

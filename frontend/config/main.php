@@ -12,6 +12,14 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/views' => '@app/themes/pizzagh/views',
+                    // Other mappings if needed
+                ],
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],

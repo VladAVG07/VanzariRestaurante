@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\Produse */
 /* @var $modelPret backend\models\PreturiProduse */
 
-$this->title = Yii::t('app', 'Adauga Produse');
+$this->title = Yii::t('app', 'Adaugă Produse');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Produse'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
-                    <?=$this->render('_form', [
+                    <?=$this->render('_formn', [
                         'model' => $model,
                     ]) ?>
                 </div>

@@ -12,6 +12,26 @@ use rmrevin\yii\fontawesome\FA;
 
 $this->title = Yii::t('app', 'Produse');
 $this->params['breadcrumbs'][] = $this->title;
+
+// Register the tooltip initialization script
+$js = <<<JS
+    // $(document).ready(function(){
+    //     $('[data-toggle="tooltip"]').tooltip({
+    //         html: true,
+    //         container: 'body'
+    //     });
+    // });
+    $(document).ready(function(){
+        $('.gridview-row').tooltip({
+            title: function() {
+                return $(this).attr('data-tooltip');
+            },
+            html: true,
+            placement: 'top'
+        });
+    });
+JS;
+$this->registerJs($js);
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -20,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="card-body">
                     <div class="row mb-2">
                         <div class="col-md-12">
-                            <?= Html::a(Yii::t('app', 'Adauga Produse'), ['create'], ['class' => 'btn btn-success']) ?>
+                            <?= Html::a(Yii::t('app', 'Adaugă produs'), ['create'], ['class' => 'btn btn-success']) ?>
                         </div>
                     </div>
 
@@ -29,18 +49,27 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php
                     // echo $this->render('_search', ['model' => $searchModel]);
                     //
-                    $categorii = \backend\models\Categorii::find()->select(['id', 'nume', 'parinte'])
-                                    ->orderBy(['parinte' => SORT_ASC])->all();
+                    $categorii = Categorii::find()
+                        ->innerJoin('restaurante_categorii rc', 'rc.categorie = categorii.id')
+                        ->innerJoin('restaurante r', 'rc.restaurant = r.id')
+                        ->innerJoin('restaurante_user ru', 'ru.restaurant = r.id')
+                        ->innerJoin('user u', 'ru.user = u.id')
+                        ->where(['u.id' => \Yii::$app->user->id])->all(); //\backend\models\Categorii::find()->select(['id', 'nume', 'parinte'])
+                    // ->orderBy(['parinte' => SORT_ASC])->all();
                     //  
                     ?>
 
                     <?=
-                    GridView::widget([
-                        'dataProvider' => $dataProvider,
-                        'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => 'yii\grid\SerialColumn'],
-                            [
+                        GridView::widget([
+                            'dataProvider' => $dataProvider,
+                            'rowOptions' => function ($model, $key, $index, $grid) {
+                                // Add a custom class to each row
+                                return ['class' => 'gridview-row', 'data-tooltip' => Html::decode(sprintf('<h5>Descriere produs</h5>%s', $model->descriere))];
+                            },
+                            'filterModel' => $searchModel,
+                            'columns' => [
+                                ['class' => 'yii\grid\SerialColumn'],
+                                /* [
                                 'attribute' => 'nume',
                                 'format' => 'raw',
                                 'value' => function ($model) {
@@ -67,31 +96,41 @@ $this->params['breadcrumbs'][] = $this->title;
                                         
                                         
                                 }
+                            ],*/
+                                ['attribute' => 'nume',
+                                    // 'format'=>'raw',
+                                    // 'value'=>function($model){
+                                    //     return Html::tag('span',$model->nume,[
+                                    //         'data-toggle'=>"tooltip",
+                                    //          'data-html'=>'true', 
+                                    //          'title'=>Html::decode(sprintf('<h5>Descriere produs</h5>%s',$model->descriere))
+                                    //     ]);
+                                    // }
+                                ],
+                                [
+                                    'attribute' => 'categorie',
+                                    'value' => 'categorie0.nume', //relation name with their attribute
+                                    //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
+                                    'filter' => Html::activeDropDownList($searchModel, 'categorie', Categorii::formatItemsArray($categorii), ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
+                                ],
+                                //  'cod_produs',
+                                //['attribute'=>'descriere','format'=>'raw'],
+                                [
+
+                                    'attribute' => 'pret',
+                                    'value' => function ($model) {
+                                        return $model->pretText . ' RON';
+                                    }
+                                ],
+                                //'data_productie',
+                                ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
                             ],
-                            //  'nume',
-                            [
-                                'attribute' => 'categorie',
-                                'value' => 'categorie0.nume', //relation name with their attribute
-                                //  'filter'=> yii\helpers\ArrayHelper::map(Categorii::find()->asArray()->all(), 'id', 'nume'),
-                                'filter' => Html::activeDropDownList($searchModel, 'categorie', Categorii::formatItemsArray($categorii), ['class' => 'form-control', 'prompt' => '--Toate categoriile--']),
-                            ], 
-                            'cod_produs',
-                            'descriere',
-                            [
-                                'attribute' => 'pret',
-                                'value' => function ($model) {
-                                    return $model->pret_curent . ' RON';
-                                }
-                            ],
-                            //'data_productie',
-                            ['class' => 'hail812\adminlte3\yii\grid\ActionColumn'],
-                        ],
-                        'summaryOptions' => ['class' => 'summary mb-2'],
-                        'layout' => "{items}\n{pager}\n{summary}",
-                        'pager' => [
-                            'class' => 'yii\bootstrap4\LinkPager',
-                        ]
-                    ]);
+                            'summaryOptions' => ['class' => 'summary mb-2'],
+                            'layout' => "{items}\n{pager}\n{summary}",
+                            'pager' => [
+                                'class' => 'yii\bootstrap4\LinkPager',
+                            ]
+                        ]);
                     ?>
 
                     <?php Pjax::end(); ?>

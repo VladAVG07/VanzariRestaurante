@@ -69,7 +69,7 @@ class ProduseSearch extends Produse {
         $this->load($params);
         $query->joinWith('categorie0');
 //        $query->joinWith('preturiProduses');
-        $query->innerJoin('preturi_produse', 'produse.id=preturi_produse.produs');
+        //$query->leftJoin('preturi_produse', 'produse.id=preturi_produse.produs');
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
@@ -83,9 +83,9 @@ class ProduseSearch extends Produse {
             'cod_produs' => $this->cod_produs,
             'data_productie' => $this->data_productie,
             // 'pret' => $this->pret,
-            'preturi_produse.valid' => 1
+          //  'preturi_produse.valid' => 1
         ]);
-        $query->andWhere(['preturi_produse.valid' => 1]);
+        //$query->andWhere(['preturi_produse.valid' => 1]);
         $query->andFilterWhere(['like', 'produse.nume', $this->nume])
                 ->andFilterWhere(['like', 'descriere', $this->descriere])
                 ->andFilterCompare('pret', $this->pret);

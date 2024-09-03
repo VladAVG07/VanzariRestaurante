@@ -86,11 +86,14 @@ if ($model->stocabil){
     $stocRamas = $query->one()->cantitate_ramasa; 
 }
 
+$modelData = $model->toArray();
+$additionalData = $model->pretMeniu;
+$modelData['pret'] = $additionalData;
 ?>
 <div class="meal-container js-meal-container js-meal-search-popularOPON0O17Q" id="popularOPON0O17Q">
     <div tabindex="0" role="button" class="meal meal__top-button js-meal-item" itemscope="" itemtype="http://schema.org/Product">
         <div class="meal__wrapper js-has-sidedishes">
-            <div class="meal-json"><?= \yii\helpers\Json::encode($model->toArray()) ?></div>
+            <div class="meal-json"><?= \yii\helpers\Json::encode($modelData) ?></div>
             <div class="meal__description-texts js-meal-description-text">
                 <span class="meal-name" itemprop="name">
                     <?php if ($model->stocabil){ ?>
@@ -101,16 +104,18 @@ if ($model->stocabil){
                         <?php } else { ?> 
                             <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?>   <span style="color:green;">Stoc: <?= $stocRamas ?></span> </span>
                         <?php } ?>
-                    <?php }else{ ?>
+                    <?php }else if ($model->picant){?>
+                        <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?> <i class="fas fa-pepper-hot" style="color: #ff0000;"></i></span>
+                    <?php } else {?>
                         <span data-product-name="Pizza Casei Camizo"><?= $model->nume ?></span>
                     <?php } ?>
                         
                      
                 </span>
                 <div class="meal__description-additional-info" itemprop="description"><?= $model->descriere ?></div>
-                <div class="meal__description-choose-from">Alege: Usturoi, Branza de burduf, Gorgonzola, Mozzarella, Parmezan, Pecorinno, Ceapa și mai multe.</div>
+                <!--<div class="meal__description-choose-from">Alege: Usturoi, Branza de burduf, Gorgonzola, Mozzarella, Parmezan, Pecorinno, Ceapa și mai multe.</div>-->
 
-                <div itemprop="price" class="meal__price"><?= Yii::$app->formatter->asCurrency($model->pret_curent)?></div>
+                <div itemprop="price" class="meal__price"><?= $model->pretText . ' Lei'?></div>
                 <div class="sizeattributecontainer" id="sizeattributecontainerOPON0O17Q"></div>                
             </div>
         </div>

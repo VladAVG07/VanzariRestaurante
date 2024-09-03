@@ -14,7 +14,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=7.2.4",
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
         "yiisoft/yii2-symfonymailer": "~2.0.3",
@@ -31,7 +31,15 @@
         "npm-asset/kioskboard": "2.3.0",
         "yiisoft/yii2-jui": "2.0.7",
         "cboden/ratchet": "^0.5.0-dev",
-        "elephantio/elephant.io": "v4.3.1"
+        "elephantio/elephant.io": "v4.3.1",
+        "2amigos/yii2-ckeditor-widget": "^2.1",
+        "kartik-v/yii2-widget-fileinput": "dev-master",
+        "kartik-v/yii2-widget-select2": "dev-master",
+        "yiisoft/yii2-imagine": "^2.3",
+        "kartik-v/yii2-widget-touchspin": "dev-master",
+        "kartik-v/yii2-widget-timepicker": "v1.0.5",
+        "stripe/stripe-php": "v15.0.0",
+        "mike42/escpos-php": "dev-development#f414320fc510afcacd4cbb75902f827399dee429"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -42,7 +50,7 @@
         "codeception/lib-innerbrowser": "^3.0 || ^1.1",
         "codeception/module-asserts": "^3.0 || ^1.1",
         "codeception/module-yii2": "^1.1",
-        "codeception/module-filesystem": "^3.0 || ^1.1",
+    "codeception/module-filesystem": "3.0.0",
         "codeception/verify": "^2.2",
         "symfony/browser-kit": "^6.0 || >=2.7 <=4.2.4"
     },

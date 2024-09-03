@@ -14,6 +14,7 @@ $this->title = 'Comanda numarul #' . $model->numar_comanda;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Comenzi'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 $printezaAction = Yii::$app->getUrlManager()->createAbsoluteUrl('comenzi/printeaza');
+$printeazaBon = Url::toRoute('comenzi/printeaza-bon');
 $js = <<< SCRIPT
     $( document ).ready(function() {
     console.log( "ready!" );
@@ -41,6 +42,61 @@ $js = <<< SCRIPT
         });
     });
     $(function () {
+        // changed id to class
+        $('#printeaza-instant').click(function (){
+            $.ajax({
+                type: "POST",
+                url: "$printeazaBon",
+                data: {id: $model->id},
+                success: function (data) {
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+    $(function () {
+        $('.btnPrinteazaBon').click(function (){
+//            var receiptContent = document.getElementById('bonProduse').outerHTML;;
+//            console.log(receiptContent);
+//            
+//            var printArea = document.getElementById('printArea'); 
+//            printArea.innerHTML = receiptContent;
+//            var originalDisplay = document.body.style.display;
+//
+//            printArea.style.display = 'block';
+//    
+//            setTimeout(function () {
+//            window.print();
+//
+//            // Restore original display settings after printing
+//            printArea.style.display = 'none';
+//            document.body.style.display = originalDisplay;
+//        }, 2000); // Delay to ensure content is properly rendered before printing
+//            var prtContent = document.getElementById("modalContent1");
+//            var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+//            WinPrint.document.write('<link href="/backend/css/site.css" rel="stylesheet">');
+//            WinPrint.document.write(prtContent.innerHTML);
+//           
+//            WinPrint.document.close();
+//            WinPrint.focus();
+//            WinPrint.print();
+//            WinPrint.close();
+              $.ajax({
+                type: "POST",
+                data: {id: $model->id},
+                url: "$printeazaBon",
+                success: function (data) {
+                   console.log(data);
+                   console.log('sunt bun');
+                }
+            });
+        
+        
+        });
+    });
+    $(function () {
         $('.btnPrinteaza').click(function(){
             $.ajax({
                 type: "POST",
@@ -58,12 +114,41 @@ $js = <<< SCRIPT
         });
     });
 });
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $(function () {
+        $('.bonProduse').click(function (){
+            
+            $.get($(this).attr('href'), function(data) {
+                $('#modalBonProduse').modal('show').find('#modalContent1').html(data)
+            });
+            return false;
+        });
+    });
+});
 SCRIPT;
 $this->registerJs($js, \yii\web\View::POS_READY);
 
 \yii\web\YiiAsset::register($this);
 ?>
 
+<?php
+Modal::begin([
+    'title' => '<h4>Bon produse</h4>',
+    'id' => 'modalBonProduse',
+    'size' => 'modal-lg'
+]);
+echo "<div id='modalContent1'></div>";
+?>
+<div id="printArea" style="width: 80mm"></div>
+<span class="float-right">
+    <a class="btn btn-app bg-success btnPrinteazaBon" style="width:130px;height:60px;text-align: center; align-items: center; display: flex; justify-content: center;">
+        <span style="font-size:25px;">Printeaza</span>
+    </a>
+</span>
+<?php
+Modal::end();
+?>
 
 <?php
 Modal::begin([
@@ -119,9 +204,6 @@ echo "<div id='modalContent'></div>";
 <?php
 Modal::end();
 ?>
-
-
-
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
@@ -174,27 +256,55 @@ Modal::end();
                             [
                                 'attribute' => 'mod_plata',
                                 'value' => function($model) {
-                                    return $model->modPlata0->nume;
+                                    return 'card'; //$model->modPlata0->nume;
                                 }
                             ],
                         ],
                     ])
                     ?>
                     <p>
-                        <?php if ($model->status0->status != 7) { ?>
-                            <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
-                        <?php } else { ?>
+                        <?php if ($model->status0->status == 7) { ?>
+
                             <?= Html::a('Vizualizare bon', ['comenzi/display-bon', 'id' => $model->id], ['class' => 'btn btn-success bonButton']) ?>
+                        <?php } else { ?>
+                            <?php if ($model->status0->status == 8) { ?>
+                                <?= Html::a('Vizualizare bon', ['comenzi/display-bon', 'id' => $model->id], ['class' => 'btn btn-success bonButton disabled']) ?>
+                            <?php } else { ?>
+                                <?= Html::button('Incaseaza', ['class' => 'btn btn-success', 'id' => 'modalButton']) ?>
+                            <?php } ?>
                         <?php } ?>
-                        <?= Html::a(Yii::t('app', 'Actualizeaza'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+                        <?php if ($model->status0->status == 7 || $model->status0->status == 8) { ?>
+                            <?= Html::a(Yii::t('app', 'Actualizeaza'), ['produse/proceseaza-comanda', 'update' => $model->id], ['class' => 'btn btn-primary disabled']) ?>
+                            <?=
+                            Html::a(Yii::t('app', 'Anuleaza comanda'), ['comenzi/anuleaza-comanda', 'id' => $model->id], [
+                                'class' => 'btn btn-danger disabled',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Esti sigur ca doresti sa anulezi aceasta comanda?'),
+                                    'method' => 'post',
+                                ],
+                            ])
+                            ?>
+                        <?php } else { ?>
+                            <?= Html::a(Yii::t('app', 'Actualizeaza'), ['produse/proceseaza-comanda', 'update' => $model->id], ['class' => 'btn btn-primary']) ?>
+                            <?=
+                            Html::a(Yii::t('app', 'Anuleaza comanda'), ['comenzi/anuleaza-comanda', 'id' => $model->id], [
+                                'class' => 'btn btn-danger',
+                                'data' => [
+                                    'confirm' => Yii::t('app', 'Esti sigur ca doresti sa anulezi aceasta comanda?'),
+                                    'method' => 'post',
+                                ],
+                            ])
+                            ?>
+                        <?php } ?>
+                        <?= Html::a(Yii::t('app', 'Bon produse'), ['comenzi/display-bon-produse', 'id' => $model->id], ['class' => 'btn btn-warning bonProduse']) ?>
                         <?=
-                        Html::a(Yii::t('app', 'Sterge'), ['delete', 'id' => $model->id], [
-                            'class' => 'btn btn-danger',
-                            'data' => [
-                                'confirm' => Yii::t('app', 'Esti sigur ca doresti sa stergi aceasta comanda?'),
-                                'method' => 'post',
-                            ],
-                        ])
+                        Html::a(
+                                '<i class="fas fa-print" style="color: #ffffff;"></i> Printeaza', 'javascript:void(0);', // This prevents the default link behavior
+                                [
+                            'class' => 'btn btn-dark',
+                            'id' => 'printeaza-instant'
+                                ]
+                        )
                         ?>
 
 

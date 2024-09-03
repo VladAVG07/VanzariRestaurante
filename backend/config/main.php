@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'ro', // Default language
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -33,6 +34,10 @@ return [
         ]
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles'=>['guest']
+        ],
         'formatter' => [
             'dateFormat' => 'dd.MM.yyyy',
             'decimalSeparator' => ',',

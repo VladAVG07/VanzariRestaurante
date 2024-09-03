@@ -64,7 +64,10 @@ class CategoriiController extends Controller
      */
     public function actionCreate()
     {
+        
         $model = new Categorii();
+        $model->valid = 1;
+        $model->ordine = 0;
 
         if ($model->load(Yii::$app->request->post()) && $model->salveazaCategorie()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -86,7 +89,7 @@ class CategoriiController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->salveazaCategorie()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
